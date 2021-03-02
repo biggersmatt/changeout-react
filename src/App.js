@@ -6,7 +6,8 @@ function App() {
   return (
     <div>
       <nav>
-        <Link to='/'>Home</Link>
+        <Link to='/'>Home</Link>{' '}
+        <Link to='/new'>New Endcap</Link>
       </nav>
       <div>
         {routes}
