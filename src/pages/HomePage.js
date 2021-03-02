@@ -6,6 +6,18 @@ class HomePage extends React.Component {
     endcaps: []
   }
 
+  componentDidMount() {
+    fetch('http://localhost:4000/api/endcaps')
+      .then((response) => response.json())
+      .then((jsonData) => {
+        const endcaps = jsonData.allEndcaps;
+        this.setState({
+          endcaps: endcaps
+        })
+      })
+      .catch()
+  }
+
   render() {
     return (
       <div>
