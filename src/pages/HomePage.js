@@ -1,21 +1,16 @@
 import React from 'react';
+import EndcapsList from '../components/Endcaps/EndcapsList';
 
 class HomePage extends React.Component {
   state = {
     endcaps: []
   }
 
-  // getEndcaps = () => {
-  //   return this.state.endcaps.map((endcap) => {
-  //     return <div>{endcap.title}</div>
-  //   })
-  // }
-
   render() {
     return (
       <div>
         <h1>Change Out Homepage</h1>
-        {this.getEndcaps()}
+        <EndcapsList endcaps={this.state.endcaps}/>
       </div>
     )
   }

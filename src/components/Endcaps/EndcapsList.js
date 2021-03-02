@@ -1,6 +1,8 @@
+import EndcapCard from '../Endcaps/EndcapCard';
+
 const EndcapsList = (props) => {
   return props.endcaps.map((endcap) => {
-    return <div>{endcap.title}</div>
+    return <EndcapCard endcap={endcap}/>
   })
 }
 
