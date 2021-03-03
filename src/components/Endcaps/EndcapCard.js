@@ -14,7 +14,7 @@ class EndcapCard extends React.Component {
 
   render() {
     return (
-      <div className="endcap-card" id={this.state.active ? 'green': null}>
+      <div className="endcap-card" id={this.state.active ? 'yellow': null}>
         <h3>{this.props.endcap.title}</h3>
         <p>{this.props.endcap.itemOne}</p>
         <p>{this.props.endcap.itemTwo}</p>
