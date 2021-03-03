@@ -11,10 +11,13 @@ const EndcapCard = (props) => {
       <p>{props.endcap.itemFour}</p>
       <p>{props.endcap.itemFive}</p>
       <div>
-        <h4 className="endcap-change">Change</h4>
         <Link to={`/edit/${props.endcap._id}`}>
-          <input type="checkbox" className="endcap-edit-btn"/>
+          <button className="endcap-edit-btn">Edit</button>
         </Link>
+        <div>
+          <h4 className="endcap-change">Change</h4>
+          <input type="checkbox" className="endcap-edit-checkbox"/>
+        </div>
       </div>
     </div>
   )

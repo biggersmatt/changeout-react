@@ -15,10 +15,18 @@
 
 .endcap-edit-btn {
   position: absolute;
+  bottom: 5%;
+  left: 10%;
   height: 25px;
-  width: 25px;
+  width: 50px;
+}
+
+.endcap-edit-checkbox {
+  position: absolute;
   bottom: 5%;
   right: 10%;
+  height: 25px;
+  width: 25px;
   cursor: pointer;
 }
 
