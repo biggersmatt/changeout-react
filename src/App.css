@@ -144,19 +144,46 @@ main {
 }
 
 .new-endcap h1 {
-  margin-top: 100px;
+  margin-top: 50px;
 }
 
 .new-endcap-form {
   background-color: var(--green);
-  height: 600px;
+  height: 720px;
   width: 500px;
   border: 1px solid rgb(179,204,162);
   border-radius: 35px;
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: center;
   align-items: center;
   margin-top: 50px;
+}
+
+.new-endcap-section {
+  margin-top: 25px;
+}
+
+label {
+  font-size: 30px;
+}
+
+.new-endcap-btn {
+  background-color: rgb(254,242,208);
+  height: 75px;
+  width: 250px;
+  margin-top: 20px;
+  border: 1px solid rgb(231,213,155);
+  border-radius: 20px;
+}
+
+.new-endcap-btn:hover {
+  cursor: pointer;
+  transform: scale(1.1);
+}
+
+input {
+  width: 350px;
+  line-height: 35px;
 }
