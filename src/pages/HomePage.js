@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import EndcapsList from '../components/Endcaps/EndcapsList';
 
 class HomePage extends React.Component {
@@ -40,7 +41,9 @@ class HomePage extends React.Component {
       <div>
         <header>
           <div className="homepage-new-endcap">
-            <button className="homepage-new-btn">+</button>
+            <Link to="/new">
+              <button className="homepage-new-btn">+</button>
+            </Link>
             <h3>New Endcap</h3>
           </div>
           <h1 className="homepage-title">Change Out</h1>
