@@ -28,7 +28,7 @@ class EditEndcapPage extends React.Component {
       },
       body: JSON.stringify(this.state),
     })
-      .then(() => this.props.history.push('/endcaps'))
+      .then(() => this.props.history.push('/'))
       .catch((err) => console.log(err));
   }
 
@@ -36,7 +36,6 @@ class EditEndcapPage extends React.Component {
     return (
       <div>
         <h1>Edit Endcap Page</h1>
-  
         <form onSubmit={this.handleSubmit}>
           <div>
             <label htmlFor="title">Title</label><br />
@@ -48,7 +47,6 @@ class EditEndcapPage extends React.Component {
           </div>
           <button type="submit">Update Endcap</button>
         </form>
-
       </div>
 
     )
