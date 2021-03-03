@@ -9,7 +9,10 @@ class EditEndcapPage extends React.Component {
   componentDidMount() {
     fetch(`http://localhost:4000/api/endcaps/${this.props.match.params.id}`)
       .then((response) => response.json())
-      .then((jsonData) => this.setState(jsonData))
+      .then((jsonData) => {
+        const endcap = jsonData.foundEndcap;
+        this.setState(endcap);
+      })
       .catch((err) => console.log(err));
   }
 
@@ -35,15 +38,15 @@ class EditEndcapPage extends React.Component {
   render() {
     return (
       <div>
-        <h1>Edit Endcap Page</h1>
+        <h1>Edit {this.state.title}</h1>
         <form onSubmit={this.handleSubmit}>
           <div>
             <label htmlFor="title">Title</label><br />
-            <input type="text" id="title" value={this.state.title} onChange={this.handleChange} />
+            <input type="text" id="title" placeholder={this.state.title} onChange={this.handleChange} />
           </div>
           <div>
             <label htmlFor="itemOne">Item One</label><br />
-            <input type="text" id="itemOne" value={this.state.itemOne} onChange={this.handleChange} />
+            <input type="text" id="itemOne" placeholder={this.state.itemOne} onChange={this.handleChange} />
           </div>
           <button type="submit">Update Endcap</button>
         </form>
