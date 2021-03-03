@@ -32,11 +32,11 @@ class NewEndcapPage extends React.Component {
         <form onSubmit={this.handleSubmit}>
           <div>
             <label htmlFor="title">Title</label><br />
-            <input type="text" id="title" name="title" value={this.state.title} onChange={this.handleChange} />
+            <input type="text" id="title" name="title" value={this.state.title} placeholder="Enter Endcap Name" onChange={this.handleChange} />
           </div>
           <div>
             <label htmlFor="itemOne">Item One</label><br />
-            <input type="text" id="itemOne" name="itemOne" value={this.state.itemOne} onChange={this.handleChange} />
+            <input type="text" id="itemOne" name="itemOne" value={this.state.itemOne} placeholder="Enter Item One" onChange={this.handleChange} />
           </div>
           <button type="submit">Add Endcap</button>
         </form>
