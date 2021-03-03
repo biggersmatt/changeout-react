@@ -37,5 +37,6 @@
 }
 
 #green {
-  background-color: green;
+  background-color: var(--yellow);
+  border: 1px solid var(--yellow-border);
 }
