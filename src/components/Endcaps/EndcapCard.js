@@ -10,8 +10,12 @@ const EndcapCard = (props) => {
       <p>{props.endcap.itemThree}</p>
       <p>{props.endcap.itemFour}</p>
       <p>{props.endcap.itemFive}</p>
-      <button onClick={() => props.deleteEndcap(props.endcap._id)}>Delete</button>{' '}
-      <Link to={`/edit/${props.endcap._id}`}><button>Edit</button></Link>
+      <div>
+        <h4 className="endcap-change">Change</h4>
+        <Link to={`/edit/${props.endcap._id}`}>
+          <input type="checkbox" className="endcap-edit-btn"/>
+        </Link>
+      </div>
     </div>
   )
 }

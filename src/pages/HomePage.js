@@ -19,23 +19,6 @@ class HomePage extends React.Component {
       .catch()
   }
 
-  handleDeleteEndcap = (endcapId) => {
-    fetch(`http://localhost:4000/api/endcaps/${endcapId}`, {
-      method: 'DELETE',
-    })
-      .then((response) => response.json())
-      .then((jsonData) => {
-        const stateCopy = {...this.state};
-        const updatedState = stateCopy.endcaps.filter((endcap) => {
-          return endcap._id !== endcapId;
-        });
-        this.setState({
-          endcaps: updatedState
-        })
-      })
-      .catch((err) => console.log(err))
-  }
-
   render() {
     return (
       <div>
@@ -76,7 +59,7 @@ class HomePage extends React.Component {
           </div>
         </header>
         <main>
-          <EndcapsList endcaps={this.state.endcaps} deleteEndcap={this.handleDeleteEndcap}/>
+          <EndcapsList endcaps={this.state.endcaps}/>
         </main>
       </div>
     )
