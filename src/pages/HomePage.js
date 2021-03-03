@@ -5,7 +5,6 @@ import EndcapsList from '../components/Endcaps/EndcapsList';
 class HomePage extends React.Component {
   state = {
     endcaps: [],
-    active: false,
   }
 
   componentDidMount() {
@@ -18,11 +17,6 @@ class HomePage extends React.Component {
         })
       })
       .catch()
-  }
-
-  handleToggleClass = () => {
-    const currentState = this.state.active;
-    this.setState({ active: !currentState });
   }
 
   render() {
@@ -65,7 +59,7 @@ class HomePage extends React.Component {
           </div>
         </header>
         <main>
-          <EndcapsList endcaps={this.state.endcaps} active={this.state.active} toggle={this.handleToggleClass} />
+          <EndcapsList endcaps={this.state.endcaps} />
         </main>
       </div>
     )
