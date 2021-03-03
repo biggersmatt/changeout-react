@@ -4,6 +4,14 @@
   margin: 0;
 }
 
+*:focus {
+  outline: 0;
+}
+
+body {
+  background-color: whitesmoke;
+}
+
 a {
   text-decoration: none;
   color: green;
@@ -28,6 +36,7 @@ nav {
   align-items: center;
   background-color: lightblue;
   height: 100px;
+  border-bottom: 1px solid grey;
 }
 
 img {
@@ -45,4 +54,50 @@ img {
 
 .nav-items li:hover {
   transform: scale(1.2);
+}
+
+/* Homepage */
+header {
+  display: flex;
+  justify-content: space-between;
+  height: 150px;
+  margin-top: 10px;
+}
+
+.homepage-new-endcap{
+  display: flex;
+  align-items: center;
+  margin-top: 50px;
+  padding-left: 20px;
+}
+
+.homepage-new-btn {
+  height: 50px;
+  width: 50px;
+  margin-right: 10px;
+  border-radius: 100px;
+  font-size: 40px;
+}
+
+.homepage-title {
+  font-size: 40px;
+  margin-top: 20px;
+}
+
+.homepage-promo-title {
+  font-size: 20px;
+  text-align: center;
+}
+
+.homepage-promo-selection {
+  display: flex;
+  margin: 5px 20px 0 0;
+}
+
+.homepage-promo-selection p {
+  margin-right: 10px;
+}
+
+select {
+  width: 100%;
 }
