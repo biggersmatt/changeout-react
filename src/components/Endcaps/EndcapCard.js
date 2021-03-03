@@ -3,7 +3,8 @@ require('./Endcap.css')
 
 const EndcapCard = (props) => {
   return (
-    <div className="endcap-card">
+    <div className="endcap-card" id={props.active ? 'green': null}>
+      {console.log(props.active)}
       <h3>{props.endcap.title}</h3>
       <p>{props.endcap.itemOne}</p>
       <p>{props.endcap.itemTwo}</p>
@@ -16,11 +17,11 @@ const EndcapCard = (props) => {
         </Link>
         <div>
           <h4 className="endcap-change">Change</h4>
-          <input type="checkbox" className="endcap-edit-checkbox"/>
+          <input type="checkbox" id="endcap-checkbox" onClick={props.toggle}/>
         </div>
       </div>
     </div>
   )
 }
 
-export default EndcapCard
+export default EndcapCard;

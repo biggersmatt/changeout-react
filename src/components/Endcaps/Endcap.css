@@ -19,9 +19,10 @@
   left: 10%;
   height: 25px;
   width: 50px;
+  cursor: pointer;
 }
 
-.endcap-edit-checkbox {
+#endcap-checkbox {
   position: absolute;
   bottom: 5%;
   right: 10%;
@@ -33,4 +34,8 @@
 .endcap-change {
   margin-left: 125px;
   margin-bottom: 5px;
+}
+
+#green {
+  background-color: green;
 }
