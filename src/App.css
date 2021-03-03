@@ -136,18 +136,18 @@ main {
 }
 
 /* New Endcap Page */
-.new-endcap {
+.endcap-wrapper {
   display: flex;
   flex-direction: column;
   align-items: center;
   height: calc(100vh - 152px);
 }
 
-.new-endcap h1 {
+.endcap-wrapper h1 {
   margin-top: 50px;
 }
 
-.new-endcap-form {
+.endcap-wrapper-form {
   background-color: var(--green);
   height: 720px;
   width: 500px;
@@ -158,10 +158,11 @@ main {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-top: 50px;
+  margin-top: 20px;
+  margin-bottom: 40px;
 }
 
-.new-endcap-section {
+.endcap-wrapper-section {
   margin-top: 25px;
 }
 
@@ -169,21 +170,22 @@ label {
   font-size: 30px;
 }
 
-.new-endcap-btn {
+.endcap-wrapper-btn {
   background-color: rgb(254,242,208);
   height: 75px;
   width: 250px;
   margin-top: 20px;
   border: 1px solid rgb(231,213,155);
   border-radius: 20px;
+  margin-bottom: 10px;
 }
 
-.new-endcap-btn:hover {
+.endcap-wrapper-btn:hover {
   cursor: pointer;
   transform: scale(1.1);
 }
 
 input {
   width: 350px;
-  line-height: 35px;
+  line-height: 30px;
 }

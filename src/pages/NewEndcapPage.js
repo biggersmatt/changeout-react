@@ -27,10 +27,10 @@ class NewEndcapPage extends React.Component {
 
   render() {
     return (
-      <div className="new-endcap">
+      <div className="endcap-wrapper">
         <h1>Create a New Endcap</h1>
-        <form onSubmit={this.handleSubmit}  className="new-endcap-form">
-          <div className="new-endcap-section">
+        <form onSubmit={this.handleSubmit}  className="endcap-wrapper-form">
+          <div className="endcap-wrapper-section">
             <label htmlFor="title">Title</label><br />
             <input type="text" id="title" name="title" 
               value={this.state.title} 
@@ -38,7 +38,7 @@ class NewEndcapPage extends React.Component {
               onChange={this.handleChange}
             />
           </div>
-          <div className="new-endcap-section">
+          <div className="endcap-wrapper-section">
             <label htmlFor="itemOne">Item One</label><br />
             <input type="text" id="itemOne" name="itemOne" 
               value={this.state.itemOne} 
@@ -46,7 +46,7 @@ class NewEndcapPage extends React.Component {
               onChange={this.handleChange} 
             />
           </div>
-          <div className="new-endcap-section">
+          <div className="endcap-wrapper-section">
             <label htmlFor="itemOne">Item Two</label><br />
             <input type="text" id="itemTwo" name="itemTwo"
               // value={this.state.itemTwo} 
@@ -54,7 +54,7 @@ class NewEndcapPage extends React.Component {
               // onChange={this.handleChange} 
             />
           </div>
-          <div className="new-endcap-section">
+          <div className="endcap-wrapper-section">
             <label htmlFor="itemOne">Item Three</label><br />
             <input type="text" id="itemThree" name="itemThree" 
               // value={this.state.itemThree} 
@@ -62,7 +62,7 @@ class NewEndcapPage extends React.Component {
               // onChange={this.handleChange}
             />
           </div>
-          <div className="new-endcap-section">
+          <div className="endcap-wrapper-section">
             <label htmlFor="itemOne">Item Four</label><br />
             <input type="text" id="itemFour" name="itemFour" 
               // value={this.state.itemFour} 
@@ -70,7 +70,7 @@ class NewEndcapPage extends React.Component {
               // onChange={this.handleChange}
             />
           </div>
-          <div className="new-endcap-section">
+          <div className="endcap-wrapper-section">
             <label htmlFor="itemOne">Item Five</label><br />
             <input type="text" id="itemFive" name="itemFive"
               // value={this.state.itemFive} 
@@ -78,7 +78,7 @@ class NewEndcapPage extends React.Component {
               // onChange={this.handleChange}
             />
           </div>
-          <button type="submit" className="new-endcap-btn">Add Endcap</button>
+          <button type="submit" className="endcap-wrapper-btn">Add Endcap</button>
         </form>
       </div>
     )

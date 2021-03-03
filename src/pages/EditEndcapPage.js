@@ -37,18 +37,52 @@ class EditEndcapPage extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="endcap-wrapper">
         <h1>Edit {this.state.title}</h1>
-        <form onSubmit={this.handleSubmit}>
-          <div>
+        <form onSubmit={this.handleSubmit} className="endcap-wrapper-form">
+          <div className="endcap-wrapper-section">
             <label htmlFor="title">Title</label><br />
-            <input type="text" id="title" value={this.state.title} onChange={this.handleChange} />
+            <input type="text" id="title" 
+              value={this.state.title} 
+              onChange={this.handleChange}
+            />
           </div>
-          <div>
+          <div className="endcap-wrapper-section">
             <label htmlFor="itemOne">Item One</label><br />
-            <input type="text" id="itemOne" value={this.state.itemOne} onChange={this.handleChange} />
+            <input type="text" id="itemOne" 
+              value={this.state.itemOne} 
+              onChange={this.handleChange}
+            />
           </div>
-          <button type="submit">Update Endcap</button>
+          <div className="endcap-wrapper-section">
+            <label htmlFor="itemTwo">Item Two</label><br />
+            <input type="text" id="itemTwo" 
+              // value={this.state.itemTwo} 
+              // onChange={this.handleChange}
+            />
+          </div>
+          <div className="endcap-wrapper-section">
+            <label htmlFor="itemThree">Item Three</label><br />
+            <input type="text" id="itemThree" 
+              // value={this.state.itemThree} 
+              // onChange={this.handleChange}
+            />
+          </div>
+          <div className="endcap-wrapper-section">
+            <label htmlFor="itemFour">Item Four</label><br />
+            <input type="text" id="itemFour" 
+              // value={this.state.itemFour} 
+              // onChange={this.handleChange}
+            />
+          </div>
+          <div className="endcap-wrapper-section">
+            <label htmlFor="itemFive">Item Five</label><br />
+            <input type="text" id="itemFive" 
+              // value={this.state.itemFive} 
+              // onChange={this.handleChange}
+            />
+          </div>
+          <button type="submit" className="endcap-wrapper-btn">Update Endcap</button>
         </form>
       </div>
 
