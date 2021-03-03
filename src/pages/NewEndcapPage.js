@@ -21,6 +21,8 @@ class NewEndcapPage extends React.Component {
       },
       body: JSON.stringify(this.state),
     })
+      .then(() => this.props.history.push('/'))
+      .catch((err) => console.log(err));
   }
 
   render() {
