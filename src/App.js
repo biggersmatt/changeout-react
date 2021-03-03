@@ -16,12 +16,13 @@ function App() {
             <Link to='/new'>New Endcap</Link>
           </li>
         </ul>
-          
-
       </nav>
       <div>
         {routes}
       </div>
+      <footer>
+        ChangeOut 2021&copy;
+      </footer>
     </div>
   );
 }

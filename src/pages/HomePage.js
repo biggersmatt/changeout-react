@@ -51,7 +51,6 @@ class HomePage extends React.Component {
             <ul>
               <li className="homepage-promo-title">Promo</li>
               <li className="homepage-promo-selection">
-                <p>Month</p>
                 <select>
                   <option value="1">January</option>
                   <option value="2">February</option>
@@ -68,7 +67,6 @@ class HomePage extends React.Component {
                 </select>
               </li>
               <li className="homepage-promo-selection">
-                <p>Period</p>
                 <select>
                   <option value="1">A</option>
                   <option value="2">B</option>
