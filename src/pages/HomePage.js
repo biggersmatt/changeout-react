@@ -74,7 +74,9 @@ class HomePage extends React.Component {
             </ul>
           </div>
         </header>
-        <EndcapsList endcaps={this.state.endcaps} deleteEndcap={this.handleDeleteEndcap}/>
+        <main>
+          <EndcapsList endcaps={this.state.endcaps} deleteEndcap={this.handleDeleteEndcap}/>
+        </main>
       </div>
     )
   }

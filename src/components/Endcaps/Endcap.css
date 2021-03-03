@@ -1,3 +1,13 @@
 .endcap-card {
   background-color: rgb(218,231,214);
+  height: 300px;
+  width: 300px;
+  border: 1px solid rgb(179,204,162);
+  border-radius: 35px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  margin-bottom: 20px;
 }
