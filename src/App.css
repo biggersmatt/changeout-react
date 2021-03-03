@@ -117,13 +117,15 @@ main {
 /* Footer */
 footer {
   background-color: lightblue;
-  position: absolute;
-  bottom: 0;
   height: 50px;
   width: 100%;
   border-top: 1px solid grey;
   display: flex;
   justify-content: center;
   align-items: center;
+}
 
+.test {
+  display: flex;
+  flex-direction: column;
 }
