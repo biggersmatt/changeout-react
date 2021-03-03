@@ -27,19 +27,61 @@ class NewEndcapPage extends React.Component {
 
   render() {
     return (
-      <div>
-        <h1>Add New Endcap</h1>
-        <form onSubmit={this.handleSubmit}>
-          <div>
-            <label htmlFor="title">Title</label><br />
-            <input type="text" id="title" name="title" value={this.state.title} placeholder="Enter Endcap Name" onChange={this.handleChange} />
-          </div>
-          <div>
-            <label htmlFor="itemOne">Item One</label><br />
-            <input type="text" id="itemOne" name="itemOne" value={this.state.itemOne} placeholder="Enter Item One" onChange={this.handleChange} />
-          </div>
-          <button type="submit">Add Endcap</button>
-        </form>
+      <div className="new-endcap">
+        <h1>Create a New Endcap</h1>
+        <div className="new-endcap-form">
+          <form onSubmit={this.handleSubmit}>
+            <div>
+              <label htmlFor="title">Title</label><br />
+              <input type="text" id="title" name="title" 
+                value={this.state.title} 
+                placeholder="Enter Endcap Name" 
+                onChange={this.handleChange}
+              />
+            </div>
+            <div>
+              <label htmlFor="itemOne">Item One</label><br />
+              <input type="text" id="itemOne" name="itemOne" 
+                value={this.state.itemOne} 
+                placeholder="Enter Item One" 
+                onChange={this.handleChange} 
+              />
+            </div>
+            <div>
+              <label htmlFor="itemOne">Item Two</label><br />
+              <input type="text" id="itemTwo" name="itemTwo"
+                // value={this.state.itemTwo} 
+                placeholder="Enter Item Two" 
+                // onChange={this.handleChange} 
+              />
+            </div>
+            <div>
+              <label htmlFor="itemOne">Item Three</label><br />
+              <input type="text" id="itemThree" name="itemThree" 
+                // value={this.state.itemThree} 
+                placeholder="Enter Item Three" 
+                // onChange={this.handleChange}
+              />
+            </div>
+            <div>
+              <label htmlFor="itemOne">Item Four</label><br />
+              <input type="text" id="itemFour" name="itemFour" 
+                // value={this.state.itemFour} 
+                placeholder="Enter Item Four" 
+                // onChange={this.handleChange}
+              />
+            </div>
+            <div>
+              <label htmlFor="itemOne">Item Five</label><br />
+              <input type="text" id="itemFive" name="itemFive"
+                // value={this.state.itemFive} 
+                placeholder="Enter Item Five" 
+                // onChange={this.handleChange}
+              />
+            </div>
+            <button type="submit">Add Endcap</button>
+          </form>
+        </div>
       </div>
     )
   }

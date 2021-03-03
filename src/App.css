@@ -44,6 +44,16 @@ li {
   flex-grow: 1;
 }
 
+footer {
+  background-color: lightblue;
+  height: 50px;
+  width: 100%;
+  border-top: 1px solid grey;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 /* Navbar */
 nav {
   display: flex;
@@ -125,13 +135,28 @@ main {
   align-items: center;
 }
 
-/* Footer */
-footer {
-  background-color: lightblue;
-  height: 50px;
-  width: 100%;
-  border-top: 1px solid grey;
+/* New Endcap Page */
+.new-endcap {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
+  height: calc(100vh - 152px);
+}
+
+.new-endcap h1 {
+  margin-top: 100px;
+}
+
+.new-endcap-form {
+  background-color: var(--green);
+  height: 600px;
+  width: 500px;
+  border: 1px solid rgb(179,204,162);
+  border-radius: 35px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  margin-top: 50px;
 }
