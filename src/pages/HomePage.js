@@ -38,7 +38,6 @@ class HomePage extends React.Component {
   render() {
     return (
       <div>
-        <h1>Change Out Homepage</h1>
         <EndcapsList endcaps={this.state.endcaps} deleteEndcap={this.handleDeleteEndcap}/>
       </div>
     )
