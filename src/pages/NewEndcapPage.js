@@ -4,6 +4,10 @@ class NewEndcapPage extends React.Component {
   state = {
     title: '',
     itemOne: '',
+    itemTwo: '',
+    itemThree: '',
+    itemFour: '',
+    itemFive: '',
   }
 
   handleChange = (event) => {
@@ -49,33 +53,33 @@ class NewEndcapPage extends React.Component {
           <div className="endcap-wrapper-section">
             <label htmlFor="itemOne">Item Two</label><br />
             <input type="text" id="itemTwo" name="itemTwo"
-              // value={this.state.itemTwo} 
+              value={this.state.itemTwo} 
               placeholder="Enter Item Two" 
-              // onChange={this.handleChange} 
+              onChange={this.handleChange} 
             />
           </div>
           <div className="endcap-wrapper-section">
             <label htmlFor="itemOne">Item Three</label><br />
             <input type="text" id="itemThree" name="itemThree" 
-              // value={this.state.itemThree} 
+              value={this.state.itemThree} 
               placeholder="Enter Item Three" 
-              // onChange={this.handleChange}
+              onChange={this.handleChange}
             />
           </div>
           <div className="endcap-wrapper-section">
             <label htmlFor="itemOne">Item Four</label><br />
             <input type="text" id="itemFour" name="itemFour" 
-              // value={this.state.itemFour} 
+              value={this.state.itemFour} 
               placeholder="Enter Item Four" 
-              // onChange={this.handleChange}
+              onChange={this.handleChange}
             />
           </div>
           <div className="endcap-wrapper-section">
             <label htmlFor="itemOne">Item Five</label><br />
             <input type="text" id="itemFive" name="itemFive"
-              // value={this.state.itemFive} 
+              value={this.state.itemFive} 
               placeholder="Enter Item Five" 
-              // onChange={this.handleChange}
+              onChange={this.handleChange}
             />
           </div>
           <button type="submit" className="endcap-wrapper-btn">Add Endcap</button>
