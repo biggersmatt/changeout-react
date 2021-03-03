@@ -33,6 +33,17 @@ li {
   list-style-type: none;
 }
 
+/* App.js */
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.content {
+  flex-grow: 1;
+}
+
 /* Navbar */
 nav {
   display: flex;
@@ -123,9 +134,4 @@ footer {
   display: flex;
   justify-content: center;
   align-items: center;
-}
-
-.test {
-  display: flex;
-  flex-direction: column;
 }
