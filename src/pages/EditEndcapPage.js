@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 class EditEndcapPage extends React.Component {
   state = {
@@ -59,46 +60,49 @@ class EditEndcapPage extends React.Component {
   render() {
     return (
       <div className="endcap-wrapper">
-        <h1>Edit {this.state.title}</h1>
-        <form onSubmit={this.handleSubmit} className="endcap-wrapper-form">
+        <h1>Edit Endcap</h1>
+        <Link to="/">
           <button className="" onClick={() => this.handleDeleteEndcap(this.state._id)}>Delete</button>
+        </Link>
+        <form onSubmit={this.handleSubmit} className="endcap-wrapper-form">
+          <p className="endcap-form-title">Title</p>
           <div className="endcap-wrapper-section">
-            <label htmlFor="title">Title</label><br />
             <input type="text" id="title" 
               value={this.state.title} 
               onChange={this.handleChange}
             />
           </div>
+          <p className="endcap-form-title">Items</p>
           <div className="endcap-wrapper-section">
-            <label htmlFor="itemOne">Item One</label><br />
+            <label htmlFor="itemOne">One:</label>
             <input type="text" id="itemOne" 
               value={this.state.itemOne} 
               onChange={this.handleChange}
             />
           </div>
           <div className="endcap-wrapper-section">
-            <label htmlFor="itemTwo">Item Two</label><br />
+            <label htmlFor="itemTwo">Two:</label>
             <input type="text" id="itemTwo" 
               value={this.state.itemTwo} 
               onChange={this.handleChange}
             />
           </div>
           <div className="endcap-wrapper-section">
-            <label htmlFor="itemThree">Item Three</label><br />
+            <label htmlFor="itemThree">Three:</label>
             <input type="text" id="itemThree" 
               value={this.state.itemThree} 
               onChange={this.handleChange}
             />
           </div>
           <div className="endcap-wrapper-section">
-            <label htmlFor="itemFour">Item Four</label><br />
+            <label htmlFor="itemFour">Four:</label>
             <input type="text" id="itemFour" 
               value={this.state.itemFour} 
               onChange={this.handleChange}
             />
           </div>
           <div className="endcap-wrapper-section">
-            <label htmlFor="itemFive">Item Five</label><br />
+            <label htmlFor="itemFive">Five:</label>
             <input type="text" id="itemFive" 
               value={this.state.itemFive} 
               onChange={this.handleChange}
