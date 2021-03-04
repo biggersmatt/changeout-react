@@ -4,7 +4,24 @@ import Month from '../components/Promo/Month';
 import Period from '../components/Promo/Period';
 import EndcapsList from '../components/Endcaps/EndcapsList';
 
- const HomePage = (props) => {
+class HomePage extends React.Component {
+  state = {
+    endcaps: [],
+  }
+
+  componentDidMount() {
+    fetch('http://localhost:4000/api/endcaps')
+      .then((response) => response.json())
+      .then((jsonData) => {
+        const endcaps = jsonData.allEndcaps;
+        this.setState({
+          endcaps: endcaps
+        })
+      })
+      .catch()
+  }
+
+  render() {
     return (
       <div>
         <header>
@@ -18,17 +35,18 @@ import EndcapsList from '../components/Endcaps/EndcapsList';
           <div className="homepage-promo">
             <ul>
               <li className="homepage-promo-title">Promo</li>
-              <Month month={props.month} handleChangeMonth={props.handleChangeMonth}/>
-              <Period period={props.period} handleChangePeriod={props.handleChangePeriod} />
+              <Month month={this.props.month} handleChangeMonth={this.props.handleChangeMonth}/>
+              <Period period={this.props.period} handleChangePeriod={this.props.handleChangePeriod} />
             </ul>
           </div>
         </header>
         <main>
-          <EndcapsList endcaps={props.endcaps} />
+          <EndcapsList endcaps={this.state.endcaps} />
         </main>
       </div>
     )
   }
+}
 
 
 export default HomePage;

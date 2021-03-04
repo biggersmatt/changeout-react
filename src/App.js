@@ -8,21 +8,8 @@ import './App.css';
 
 class App extends React.Component {
   state = {
-    endcaps: [],
     month: '',
     period: '',
-  }
-
-  componentDidMount() {
-    fetch('http://localhost:4000/api/endcaps')
-      .then((response) => response.json())
-      .then((jsonData) => {
-        const endcaps = jsonData.allEndcaps;
-        this.setState({
-          endcaps: endcaps
-        })
-      })
-      .catch()
   }
 
   handleChangeMonth = (event) => {
@@ -44,7 +31,6 @@ class App extends React.Component {
           <Switch>
             <Route exact path='/'>
               <HomePage 
-                endcaps={this.state.endcaps} 
                 month={this.state.month} 
                 period={this.state.period} 
                 handleChangeMonth={this.handleChangeMonth} 
