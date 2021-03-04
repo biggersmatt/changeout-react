@@ -6,7 +6,7 @@ import EditEndcapPage from '../pages/EditEndcapPage';
 const routes = (
   <Switch>
     <Route exact path='/'>
-      <HomePage handleChange={this.handleChange} />
+      <HomePage />
     </Route>
     <Route exact path='/new' component={NewEndcapPage} />
     <Route exact path='/edit/:id' component={EditEndcapPage} />
