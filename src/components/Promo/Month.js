@@ -14,7 +14,6 @@ const Month = (props) => {
         <option value="9">October</option>
         <option value="10">November</option>
         <option value="11">December</option>
-        <option value={props.month} hidden>{props.month}</option>
       </select>
     </li>
   )

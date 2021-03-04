@@ -26,13 +26,13 @@ class App extends React.Component {
   }
 
   handleChangeMonth = (event) => {
-    const updatedMonth = event.target[event.target.value].innerHTML;
-    this.setState({ month: updatedMonth});
+    const monthIndex = event.target.value;
+    this.setState({ month: monthIndex });
   }
 
   handleChangePeriod = (event) => {
-    const updatedPeriod = event.target[event.target.value].outerText;
-    this.setState({ period: updatedPeriod});
+    const periodIndex = event.target.value;
+    this.setState({ period: periodIndex });
   }
 
 
