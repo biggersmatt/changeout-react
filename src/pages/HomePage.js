@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import Month from '../components/Promo/Month';
+import Period from '../components/Promo/Period';
 import EndcapsList from '../components/Endcaps/EndcapsList';
 
  const HomePage = (props) => {
@@ -17,13 +18,8 @@ import EndcapsList from '../components/Endcaps/EndcapsList';
           <div className="homepage-promo">
             <ul>
               <li className="homepage-promo-title">Promo</li>
-              <Month month={props.month} handleChange={props.handleChange}/>
-              <li className="homepage-promo-selection">
-                <select>
-                  <option value="1">A</option>
-                  <option value="2">B</option>
-                </select>
-              </li>
+              <Month month={props.month} handleChangeMonth={props.handleChangeMonth}/>
+              <Period period={props.period} handleChangePeriod={props.handleChangePeriod} />
             </ul>
           </div>
         </header>

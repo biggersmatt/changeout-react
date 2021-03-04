@@ -25,9 +25,14 @@ class App extends React.Component {
       .catch()
   }
 
-  handleChange = (event) => {
+  handleChangeMonth = (event) => {
     const updatedMonth = event.target[event.target.value].innerHTML;
     this.setState({ month: updatedMonth});
+  }
+
+  handleChangePeriod = (event) => {
+    const updatedPeriod = event.target[event.target.value].outerText;
+    this.setState({ period: updatedPeriod});
   }
 
 
@@ -38,7 +43,13 @@ class App extends React.Component {
         <div className="content">
           <Switch>
             <Route exact path='/'>
-              <HomePage endcaps={this.state.endcaps} month={this.state.month} handleChange={this.handleChange} />
+              <HomePage 
+                endcaps={this.state.endcaps} 
+                month={this.state.month} 
+                period={this.state.period} 
+                handleChangeMonth={this.handleChangeMonth} 
+                handleChangePeriod={this.handleChangePeriod} 
+              />
             </Route>
             <Route exact path='/new' component={NewEndcapPage} />
             <Route exact path='/edit/:id' component={EditEndcapPage} />

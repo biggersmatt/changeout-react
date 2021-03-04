@@ -1,7 +1,7 @@
 const Month = (props) => {
   return (
     <li className="homepage-promo-selection">
-      <select onChange={props.handleChange}>
+      <select defaultValue={props.month} onChange={props.handleChangeMonth}>
         <option value="0">January</option>
         <option value="1">February</option>
         <option value="2">March</option>
@@ -14,7 +14,7 @@ const Month = (props) => {
         <option value="9">October</option>
         <option value="10">November</option>
         <option value="11">December</option>
-        <option value="none" selected hidden>{props.month}</option>
+        <option value={props.month} hidden>{props.month}</option>
       </select>
     </li>
   )
