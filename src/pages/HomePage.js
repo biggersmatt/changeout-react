@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import Month from '../components/Promo/Month';
 import EndcapsList from '../components/Endcaps/EndcapsList';
 
 class HomePage extends React.Component {
@@ -40,7 +41,8 @@ class HomePage extends React.Component {
           <div className="homepage-promo">
             <ul>
               <li className="homepage-promo-title">Promo</li>
-              <li className="homepage-promo-selection">
+              <Month handleChange={this.handleChange}/>
+              {/* <li className="homepage-promo-selection">
                 <select onChange={this.handleChange}>
                   <option value="0">January</option>
                   <option value="1">February</option>
@@ -55,7 +57,7 @@ class HomePage extends React.Component {
                   <option value="10">November</option>
                   <option value="11">December</option>
                 </select>
-              </li>
+              </li> */}
               <li className="homepage-promo-selection">
                 <select>
                   <option value="1">A</option>
