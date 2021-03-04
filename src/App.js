@@ -23,8 +23,6 @@ class App extends React.Component {
   }
 
   render() {
-    console.log(this.state.month)
-    console.log(this.state.period)
     return (
       <div className="wrapper">
         <Navbar />

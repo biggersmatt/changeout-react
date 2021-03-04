@@ -91,20 +91,25 @@ header {
   margin-top: 10px;
 }
 
-.homepage-new-endcap{
+.endcap-btn-wrapper {
   display: flex;
   align-items: center;
   margin-top: 50px;
   padding-left: 20px;
 }
 
-.homepage-new-btn {
+.endcap-btn {
   height: 50px;
   width: 50px;
   margin-right: 10px;
   border-radius: 100px;
   font-size: 40px;
   background-color: var(--green);
+}
+
+.endcap-btn:hover {
+  transform: scale(1.1);
+  cursor: pointer;
 }
 
 .homepage-new-btn:hover {
@@ -146,7 +151,7 @@ main {
 }
 
 .endcap-wrapper h1 {
-  margin-top: 50px;
+  margin: 40px 0 -10px 0;
 }
 
 .endcap-wrapper-form {
@@ -197,4 +202,9 @@ label {
 
 input {
   text-align: center;
+}
+
+/* Edit Endcap */
+.endcap-delete-btn {
+  margin-left: -50%;
 }

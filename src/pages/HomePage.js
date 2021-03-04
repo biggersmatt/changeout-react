@@ -25,9 +25,9 @@ class HomePage extends React.Component {
     return (
       <div>
         <header>
-          <div className="homepage-new-endcap">
+          <div className="endcap-btn-wrapper">
             <Link to="/new">
-              <button className="homepage-new-btn">+</button>
+              <button className="endcap-btn">+</button>
             </Link>
             <h3>New Endcap</h3>
           </div>
