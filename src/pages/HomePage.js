@@ -5,6 +5,8 @@ import EndcapsList from '../components/Endcaps/EndcapsList';
 class HomePage extends React.Component {
   state = {
     endcaps: [],
+    month: '',
+    period: '',
   }
 
   componentDidMount() {
@@ -17,6 +19,11 @@ class HomePage extends React.Component {
         })
       })
       .catch()
+  }
+
+  handleChange = (event) => {
+    const updatedMonth = event.target[event.target.value].innerHTML;
+    this.setState({ month: updatedMonth});
   }
 
   render() {
@@ -34,19 +41,19 @@ class HomePage extends React.Component {
             <ul>
               <li className="homepage-promo-title">Promo</li>
               <li className="homepage-promo-selection">
-                <select>
-                  <option value="1">January</option>
-                  <option value="2">February</option>
-                  <option value="3">March</option>
-                  <option value="4">April</option>
-                  <option value="5">May</option>
-                  <option value="6">June</option>
-                  <option value="7">July</option>
-                  <option value="8">August</option>
-                  <option value="9">September</option>
-                  <option value="10">October</option>
-                  <option value="11">November</option>
-                  <option value="12">December</option>
+                <select onChange={this.handleChange}>
+                  <option value="0">January</option>
+                  <option value="1">February</option>
+                  <option value="2">March</option>
+                  <option value="3">April</option>
+                  <option value="4">May</option>
+                  <option value="5">June</option>
+                  <option value="6">July</option>
+                  <option value="7">August</option>
+                  <option value="8">September</option>
+                  <option value="9">October</option>
+                  <option value="10">November</option>
+                  <option value="11">December</option>
                 </select>
               </li>
               <li className="homepage-promo-selection">
