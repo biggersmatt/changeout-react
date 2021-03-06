@@ -15,7 +15,7 @@ class App extends React.Component {
       'column-1': {
         id: 'column-1',
         title: 'To do',
-        taskIds: [],
+        endcapIds: [],
       }
     },
     columnOrder: ['column-1'],
@@ -26,11 +26,11 @@ class App extends React.Component {
       .then((response) => response.json())
       .then((jsonData) => {
         const endcapData = jsonData.allEndcaps;
-        const updatedTaskIds = endcapData.map((endcap) => {
+        const updatedEndcapIds = endcapData.map((endcap) => {
           return endcap._id;
         })
         const columnOneClone = {...this.state.columns['column-1']}
-        columnOneClone.taskIds = updatedTaskIds;
+        columnOneClone.endcapIds = updatedEndcapIds;
         const newState = {
           ...this.state,
           endcaps: endcapData,
@@ -66,14 +66,14 @@ class App extends React.Component {
       return;
     }
     this.setState(function(state) {
-      const newTaskIds = [...state.columns['column-1'].taskIds];
+      const newEndcapIds = [...state.columns['column-1'].endcapIds];
       const sourceIndex = source.index;
       const destinationIndex = destination.index;
-      newTaskIds.splice(sourceIndex, 1);
-      newTaskIds.splice(destinationIndex, 0, draggableId);
+      newEndcapIds.splice(sourceIndex, 1);
+      newEndcapIds.splice(destinationIndex, 0, draggableId);
       const newColumnOne = {
         ...state.columns['column-1'],
-        taskIds: [...newTaskIds],
+        endcapIds: [...newEndcapIds],
       }
       return {
         ...state,

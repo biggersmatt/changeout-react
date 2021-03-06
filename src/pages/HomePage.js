@@ -31,11 +31,11 @@ class HomePage extends React.Component {
           <main>
             {this.props.columnOrder.map(columnId => {
             const column = this.props.columns[columnId];
-            const tasks = column.taskIds.map(taskId => {
-            return this.props.endcaps.find((endcap) => endcap._id === taskId);
+            const endcaps = column.endcapIds.map(endcapId => {
+            return this.props.endcaps.find((endcap) => endcap._id === endcapId);
             });
             return <EndcapsList 
-                      endcaps={tasks}
+                      endcaps={endcaps}
                       key={column.id}  
                       column={column} 
                     />;
