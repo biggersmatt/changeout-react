@@ -7,6 +7,7 @@ import EndcapsList from '../components/Endcaps/EndcapsList';
 
 class HomePage extends React.Component {
   state = {
+    endcaps: [],
     columns: {
       'column-1': {
         id: 'column-1',
