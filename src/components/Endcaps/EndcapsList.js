@@ -12,7 +12,7 @@ const EndcapsList = (props) => {
         >
           {props.endcaps.map((endcap, index) => {
             return <EndcapCard 
-                      key={index} 
+                      key={endcap._id} 
                       index={index} 
                       endcap={endcap}
                     />
