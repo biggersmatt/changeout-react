@@ -5,22 +5,41 @@ require('./Endcap.css')
 
 class EndcapCard extends React.Component {
   state = {
-    active: false,
+    title: this.props.endcap.title,
+    itemOne: this.props.endcap.itemOne,
+    itemTwo: this.props.endcap.itemTwo,
+    itemThree: this.props.endcap.itemThree,
+    itemFour: this.props.endcap.itemFour,
+    itemFive: this.props.endcap.itemFive,
+    change: this.props.endcap.change,
   }
 
-  handleToggleClass = () => {
-    const currentState = this.state.active;
-    this.setState({ active: !currentState });
+  handleToggleClass = (event) => {
+    event.preventDefault();
+    const updatedState = {
+      ...this.state,
+      change: !this.state.change,
+    }
+    console.log(this.state.change)
+    fetch(`http://localhost:4000/api/endcaps/${this.props.endcap._id}`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(updatedState),
+    })
+      .then(() => this.setState(updatedState))
+      .catch((err) => console.log(err));
   }
 
   render() {
-    console.log(this.props.endcap.change)
+    console.log(this.state.change)
     return (
       <Draggable draggableId={this.props.endcap._id} index={this.props.index}>
         {(provided, snapshot) => (
           <div 
             className="endcap-card" 
-            id={this.state.active ? 'yellow': null}
+            id={this.state.change ? 'yellow': null}
             {...provided.draggableProps}
             {...provided.dragHandleProps}
             ref={provided.innerRef}
