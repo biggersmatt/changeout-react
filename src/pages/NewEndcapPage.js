@@ -8,6 +8,7 @@ class NewEndcapPage extends React.Component {
     itemThree: '',
     itemFour: '',
     itemFive: '',
+    change: false,
   }
 
   handleChange = (event) => {

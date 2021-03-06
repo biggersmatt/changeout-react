@@ -14,6 +14,7 @@ class EndcapCard extends React.Component {
   }
 
   render() {
+    console.log(this.props.endcap.change)
     return (
       <Draggable draggableId={this.props.endcap._id} index={this.props.index}>
         {(provided, snapshot) => (
@@ -30,6 +31,7 @@ class EndcapCard extends React.Component {
             <p>{this.props.endcap.itemThree}</p>
             <p>{this.props.endcap.itemFour}</p>
             <p>{this.props.endcap.itemFive}</p>
+            <p>{this.props.endcap.change}</p>
             <div>
               <Link to={`/edit/${this.props.endcap._id}`}>
                 <button className="endcap-edit-btn">Edit</button>
