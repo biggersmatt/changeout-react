@@ -6,73 +6,6 @@ import Period from '../components/Promo/Period';
 import EndcapsList from '../components/Endcaps/EndcapsList';
 
 class HomePage extends React.Component {
-  state = {
-    endcaps: [],
-    columns: {
-      'column-1': {
-        id: 'column-1',
-        title: 'To do',
-        taskIds: [],
-      }
-    },
-    columnOrder: ['column-1'],
-  }
-
-  componentDidMount() {
-    fetch('http://localhost:4000/api/endcaps')
-      .then((response) => response.json())
-      .then((jsonData) => {
-        const endcapData = jsonData.allEndcaps;
-        const updatedTaskIds = endcapData.map((endcap) => {
-          return endcap._id;
-        })
-        const columnOneClone = {...this.state.columns['column-1']}
-        columnOneClone.taskIds = updatedTaskIds;
-        const newState = {
-          ...this.state,
-          endcaps: endcapData,
-          columns: {
-            ...this.state.columns,
-            'column-1': columnOneClone,
-          }
-        }
-        this.setState(newState);
-      })
-      .catch()
-  }
-
-  onDragEnd = (result) => {
-    const { destination, source, draggableId } = result;
-    if(!destination) {
-      return;
-    }
-    if(
-      destination.droppableId === source.droppableId &&
-      destination.index === source.index
-    ) {
-      return;
-    }
-    this.setState(function(state) {
-      const newTaskIds = [...state.columns['column-1'].taskIds];
-      const sourceIndex = source.index;
-      const destinationIndex = destination.index;
-      newTaskIds.splice(sourceIndex, 1);
-      newTaskIds.splice(destinationIndex, 0, draggableId);
-      const newColumnOne = {
-        ...state.columns['column-1'],
-        taskIds: [...newTaskIds],
-      }
-      return {
-        ...state,
-        columns: {
-          ...state.columns,
-          'column-1': newColumnOne,
-        }
-      }
-    });
-
-  }
-
   render() {
     return (
       <div>
@@ -93,13 +26,13 @@ class HomePage extends React.Component {
           </div>
         </header>
         <DragDropContext
-          onDragEnd={this.onDragEnd}
+          onDragEnd={this.props.onDragEnd}
         >
           <main>
-            {this.state.columnOrder.map(columnId => {
-            const column = this.state.columns[columnId];
+            {this.props.columnOrder.map(columnId => {
+            const column = this.props.columns[columnId];
             const tasks = column.taskIds.map(taskId => {
-            return this.state.endcaps.find((endcap) => endcap._id === taskId);
+            return this.props.endcaps.find((endcap) => endcap._id === taskId);
             });
             return <EndcapsList 
                       endcaps={tasks}
