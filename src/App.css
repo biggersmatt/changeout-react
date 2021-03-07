@@ -210,3 +210,7 @@ input {
   justify-content: space-between;
   width: 50%;
 }
+
+.endcap-edit-btn-titles {
+  margin-top: 5px;
+}

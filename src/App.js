@@ -1,10 +1,11 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 import HomePage from './pages/HomePage';
-import NewEndcapPage from './pages/NewEndcapPage';
-import EditEndcapPage from './pages/EditEndcapPage';
+import NewEndcapPage from './pages/Endcaps/NewEndcapPage';
+import EditEndcapPage from './pages/Endcaps/EditEndcapPage';
 import Navbar from './components/Navbar/Navbar';
 import './App.css';
+import NewFlankPage from './pages/Flanks/NewFlankPage';
 
 class App extends React.Component {
   state = {
@@ -105,6 +106,7 @@ class App extends React.Component {
             </Route>
             <Route exact path='/new' component={NewEndcapPage} />
             <Route exact path='/edit/:id' component={EditEndcapPage} />
+            <Route exact path='/edit/:id/flank/new' component={NewFlankPage} />
           </Switch>
         </div>
         <footer>

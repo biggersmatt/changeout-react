@@ -71,17 +71,17 @@ class EditEndcapPage extends React.Component {
                 -
               </button>
             </Link>
-            <h3>Delete</h3>
+            <h3 className="endcap-edit-btn-titles">Delete</h3>
           </div>
           <div>
-            <Link to={`/edit/${this.state._id}/flanks/new`}>
+            <Link to={`/edit/${this.state._id}/flank/new`}>
               <button 
                 className="endcap-btn" 
                 >
                 +
               </button>
             </Link>
-            <h3>Flank</h3>
+            <h3 className="endcap-edit-btn-titles">Flank</h3>
           </div>
         </div>
         <form onSubmit={this.handleSubmit} className="endcap-wrapper-form">
