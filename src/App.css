@@ -205,6 +205,8 @@ input {
 }
 
 /* Edit Endcap */
-.endcap-delete-btn {
-  margin-left: -50%;
+.endcap-edit-wrapper {
+  display: flex;
+  justify-content: space-between;
+  width: 50%;
 }

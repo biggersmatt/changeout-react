@@ -61,16 +61,28 @@ class EditEndcapPage extends React.Component {
     return (
       <div className="endcap-wrapper">
         <h1>Edit Endcap</h1>
-        <div className="endcap-btn-wrapper endcap-delete-btn">
-          <Link to="/">
-            <button 
-              className="endcap-btn" 
-              onClick={() => this.handleDeleteEndcap(this.state._id)}
-              >
-              -
-            </button>
-          </Link>
-          <h3>Delete</h3>
+        <div className="endcap-edit-wrapper">
+          <div>
+            <Link to="/">
+              <button 
+                className="endcap-btn" 
+                onClick={() => this.handleDeleteEndcap(this.state._id)}
+                >
+                -
+              </button>
+            </Link>
+            <h3>Delete</h3>
+          </div>
+          <div>
+            <Link to={`/edit/${this.state._id}/flanks/new`}>
+              <button 
+                className="endcap-btn" 
+                >
+                +
+              </button>
+            </Link>
+            <h3>Flank</h3>
+          </div>
         </div>
         <form onSubmit={this.handleSubmit} className="endcap-wrapper-form">
           <p className="endcap-form-title">Title</p>
