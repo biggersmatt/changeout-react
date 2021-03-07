@@ -20,7 +20,6 @@ class EndcapCard extends React.Component {
       ...this.state,
       change: !this.state.change,
     }
-    console.log(this.state.change)
     fetch(`http://localhost:4000/api/endcaps/${this.props.endcap._id}`, {
       method: 'PUT',
       headers: {
@@ -33,6 +32,7 @@ class EndcapCard extends React.Component {
   }
 
   render() {
+    // console.log(this.state.change)
     return (
       <Draggable draggableId={this.props.endcap._id} index={this.props.index}>
         {(provided, snapshot) => (

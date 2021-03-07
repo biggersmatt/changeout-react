@@ -41,7 +41,7 @@ class App extends React.Component {
         }
         this.setState(newState);
       })
-      .catch()
+      .catch((err) => console.log(err));
   }
 
   handleChangeMonth = (event) => {

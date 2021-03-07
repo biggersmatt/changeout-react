@@ -6,6 +6,22 @@ import Period from '../components/Promo/Period';
 import EndcapsList from '../components/Endcaps/EndcapsList';
 
 class HomePage extends React.Component {
+  // state = {
+  //   upToDateEndcaps: [],
+  // }
+
+  // componentDidMount() {
+  //   console.log('Homepage Mounted')
+  //   fetch('http://localhost:4000/api/endcaps')
+  //   .then((response) => response.json())
+  //   .then((jsonData) => {
+  //     const endcapData = jsonData.allEndcaps;
+  //     this.setState({
+  //       upToDateEndcaps: endcapData,
+  //     });
+  //   })
+  // }
+  
   render() {
     return (
       <div>
@@ -35,7 +51,7 @@ class HomePage extends React.Component {
             return this.props.endcaps.find((endcap) => endcap._id === endcapId);
             });
             return <EndcapsList 
-                      endcaps={endcaps}
+                      endcaps={endcaps || this.props.endcaps}
                       key={column.id}  
                       column={column} 
                     />;
