@@ -12,29 +12,30 @@ class EndcapCard extends React.Component {
     itemFour: this.props.endcap.itemFour,
     itemFive: this.props.endcap.itemFive,
     change: this.props.endcap.change,
-    flank: '',
+    flankA: '',
+    flankB: '',
   }
 
   componentDidMount() {
     fetch('http://localhost:4000/api/flanks')
       .then((response) => response.json())
       .then((jsonData) => {
-        const flankData = jsonData.allFlanks;
-        const thisEndcapsFlanks = this.props.endcap.flanks.map((endcapFlankIds) => {
-          return endcapFlankIds;
-        })
-        const foundFlanks = flankData.map((flank) => {
-          thisEndcapsFlanks.forEach(thisEndcapFlank => {
-            if(flank._id === thisEndcapFlank) {
-              return flank;
-            }
-          })
-          return flank;
+        const allFlanks = jsonData.allFlanks;
+        let flankA = '';
+        let flankB = '';
+        allFlanks.forEach((flank) => {
+          if(flank._id === this.props.endcap.flanks[0]) {
+            flankA = flank;
+          }
+          if(flank._id === this.props.endcap.flanks[1]) {
+            flankB = flank;
+          }
         })
         this.setState({
-          flank: foundFlanks,
+          flankA: flankA,
+          flankB: flankB,
         })
-    })
+      })
   }
 
   handleToggleClass = (event) => {
@@ -53,8 +54,10 @@ class EndcapCard extends React.Component {
       .then(() => this.setState(updatedState))
       .catch((err) => console.log(err));
   }
-
   render() {
+    console.log(this.state.title);
+    console.log(this.state.flankA);
+    console.log(this.state.flankB);
     return (
       <Draggable draggableId={this.props.endcap._id} index={this.props.index}>
         {(provided, snapshot) => (
@@ -64,14 +67,7 @@ class EndcapCard extends React.Component {
             ref={provided.innerRef}
           >
             <div className="flank-a">
-              {}
-              <h3>{this.state.flank.title}</h3>
-              <p>{this.state.flank.itemOne}</p>
-              <p>{this.state.flank.itemTwo}</p>
-              <p>{this.state.flank.itemThree}</p>
-              <p>{this.state.flank.itemFour}</p>
-              <p>{this.state.flank.itemFive}</p>
-              <p>{this.state.flank.change}</p>
+
             </div>
             <div 
               className="endcap-card" 
