@@ -49,6 +49,7 @@ class NewFlankPage extends React.Component {
       body: JSON.stringify(this.state),
     })
       .then(() => this.props.history.push('/'))
+      .then(() => this.props.handleHasUpdated(true))
       .catch((err) => console.log(err));
   }
 
