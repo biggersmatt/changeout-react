@@ -2,7 +2,8 @@ import React from 'react';
 
 class NewFlankPage extends React.Component {
   state = {
-    currentEndcap: '',
+    currentEndcapTitle: '',
+    selectedEndcap: '',
     title: '',
     itemOne: '',
     itemTwo: '',
@@ -18,14 +19,15 @@ class NewFlankPage extends React.Component {
       .then((response) => response.json())
       .then((jsonData => {
         const endcapData = jsonData.allEndcaps;
-        let currentEndcap = '';
+        let currentEndcapTitle = '';
         endcapData.map(endcap => {
           if(endcap._id === this.props.match.params.id)
-          currentEndcap = endcap.title;
-          return currentEndcap;
+          currentEndcapTitle = endcap.title;
+          return currentEndcapTitle;
         })
         this.setState({
-          currentEndcap: currentEndcap,
+          currentEndcapTitle: currentEndcapTitle,
+          selectedEndcap: this.props.match.params.id,
         })
       }))
   }
@@ -52,7 +54,7 @@ class NewFlankPage extends React.Component {
   render() {
     return (
       <div className="endcap-wrapper">
-        <h1>Add a Flank to {this.state.currentEndcap}</h1>
+        <h1>Add a Flank to {this.state.currentEndcapTitle}</h1>
         <form onSubmit={this.handleSubmit}  className="endcap-wrapper-form">
           <div className="endcap-wrapper-section">
             <label htmlFor="title">Title</label><br />

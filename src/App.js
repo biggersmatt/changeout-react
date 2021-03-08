@@ -110,7 +110,7 @@ class App extends React.Component {
           </Switch>
         </div>
         <footer>
-          ChangeOut 2021&copy;
+        &copy;  Change Out {new Date().getFullYear()}
         </footer>
       </div>
     );
