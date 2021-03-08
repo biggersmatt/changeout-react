@@ -36,29 +36,34 @@ class EndcapCard extends React.Component {
     return (
       <Draggable draggableId={this.props.endcap._id} index={this.props.index}>
         {(provided, snapshot) => (
-          <div 
-            className="endcap-card" 
-            id={this.state.change ? 'yellow': null}
+          <div className="endcap-flank-container"
             {...provided.draggableProps}
             {...provided.dragHandleProps}
             ref={provided.innerRef}
           >
-            <h3>{this.props.endcap.title}</h3>
-            <p>{this.props.endcap.itemOne}</p>
-            <p>{this.props.endcap.itemTwo}</p>
-            <p>{this.props.endcap.itemThree}</p>
-            <p>{this.props.endcap.itemFour}</p>
-            <p>{this.props.endcap.itemFive}</p>
-            <p>{this.props.endcap.change}</p>
-            <div>
-              <Link to={`/edit/${this.props.endcap._id}`}>
-                <button className="endcap-edit-btn">Edit</button>
-              </Link>
+            <div className="flank-a"></div>
+            <div 
+              className="endcap-card" 
+              id={this.state.change ? 'yellow': null}
+            >
+              <h3>{this.props.endcap.title}</h3>
+              <p>{this.props.endcap.itemOne}</p>
+              <p>{this.props.endcap.itemTwo}</p>
+              <p>{this.props.endcap.itemThree}</p>
+              <p>{this.props.endcap.itemFour}</p>
+              <p>{this.props.endcap.itemFive}</p>
+              <p>{this.props.endcap.change}</p>
               <div>
-                <h4 className="endcap-change">Change</h4>
-                <input type="checkbox" id="endcap-checkbox" onClick={this.handleToggleClass}/>
+                <Link to={`/edit/${this.props.endcap._id}`}>
+                  <button className="endcap-edit-btn">Edit</button>
+                </Link>
+                <div>
+                  <h4 className="endcap-change">Change</h4>
+                  <input type="checkbox" id="endcap-checkbox" onClick={this.handleToggleClass}/>
+                </div>
               </div>
             </div>
+            <div className="flank-b"></div>
           </div>
         )}
       </Draggable>

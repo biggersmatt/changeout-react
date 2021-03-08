@@ -40,3 +40,22 @@
   background-color: var(--yellow);
   border: 1px solid var(--yellow-border);
 }
+
+/* Flanks */
+.flank-a {
+  background-color: lightblue;
+  height: 300px;
+  width: 150px;
+  border-radius: 35px;
+}
+
+.flank-b {
+  background-color: lightblue;
+  height: 300px;
+  width: 150px;
+  border-radius: 35px;
+}
+
+.endcap-flank-container {
+  display: flex;
+}
