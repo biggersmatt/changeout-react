@@ -43,14 +43,16 @@
 
 /* Flanks */
 .flank-a {
-  background-color: lightblue;
+  background-color: var(--green);
+  border: 1px solid rgb(179,204,162);
   height: 300px;
   width: 150px;
   border-radius: 35px;
 }
 
 .flank-b {
-  background-color: lightblue;
+  background-color: var(--green);
+  border: 1px solid rgb(179,204,162);
   height: 300px;
   width: 150px;
   border-radius: 35px;

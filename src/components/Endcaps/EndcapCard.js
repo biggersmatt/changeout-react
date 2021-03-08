@@ -12,6 +12,45 @@ class EndcapCard extends React.Component {
     itemFour: this.props.endcap.itemFour,
     itemFive: this.props.endcap.itemFive,
     change: this.props.endcap.change,
+    flank: [],
+  }
+
+  componentDidMount() {
+    fetch('http://localhost:4000/api/flanks')
+      .then((response) => response.json())
+      .then((jsonData) => {
+        const flankData = jsonData.allFlanks;
+        const thisEndcapsFlanks = this.props.endcap.flanks.map((endcapFlankIds) => {
+          return endcapFlankIds;
+        })
+        const foundFlanks = flankData.map((flank) => {
+          thisEndcapsFlanks.forEach(thisEndcapFlank => {
+            if(flank._id === thisEndcapFlank) {
+              return flank;
+            }
+          })
+          return flank;
+        })
+
+
+
+
+
+
+
+        // const flanks = thisEndcapsFlanks.map((thisEndcapFlank) => {
+        //   const foundFlanks = flankData.map((flank) => {
+        //     if(flank._id === thisEndcapFlank) {
+        //       return flank;
+        //     }
+        //     return flank;
+        //   })
+        //   return foundFlanks
+        // })
+        this.setState({
+          flank: foundFlanks,
+        })
+    })
   }
 
   handleToggleClass = (event) => {
@@ -32,7 +71,8 @@ class EndcapCard extends React.Component {
   }
 
   render() {
-    // console.log(this.state.change)
+    console.log(this.state.title)
+    console.log(this.state.flank)
     return (
       <Draggable draggableId={this.props.endcap._id} index={this.props.index}>
         {(provided, snapshot) => (

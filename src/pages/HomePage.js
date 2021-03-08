@@ -45,9 +45,6 @@ class HomePage extends React.Component {
           onDragEnd={this.props.onDragEnd}
         >
           <main>
-          {this.props.endcaps.map((endcap) => {
-            console.log(endcap.flanks)
-          })}
             {this.props.columnOrder.map(columnId => {
             const column = this.props.columns[columnId];
             const endcaps = column.endcapIds.map(endcapId => {
