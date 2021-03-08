@@ -1,4 +1,5 @@
 import React from 'react';
+import { withRouter } from 'react-router-dom';
 
 class NewEndcapPage extends React.Component {
   state = {
@@ -27,6 +28,7 @@ class NewEndcapPage extends React.Component {
       body: JSON.stringify(this.state),
     })
       .then(() => this.props.history.push('/'))
+      .then(() => this.props.handleHasUpdated(true))
       .catch((err) => console.log(err));
   }
 
@@ -90,4 +92,4 @@ class NewEndcapPage extends React.Component {
   }
 }
 
-export default NewEndcapPage;
+export default withRouter(NewEndcapPage);

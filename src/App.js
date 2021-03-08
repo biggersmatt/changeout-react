@@ -20,6 +20,40 @@ class App extends React.Component {
       }
     },
     columnOrder: ['column-1'],
+    hasUpdated: false,
+  }
+
+  handleHasUpdated = (hasUpdated) => {
+    console.log(this.state.hasUpdated);
+    this.setState({
+      hasUpdated: hasUpdated,
+    })
+    console.log(this.state.hasUpdated);
+  }
+
+  componentDidUpdate() {
+    if(this.state.hasUpdated){
+      fetch('http://localhost:4000/api/endcaps')
+      .then((response) => response.json())
+      .then((jsonData) => {
+        const endcapData = jsonData.allEndcaps;
+        const endcapIds = endcapData.map((endcapId) => {
+          return endcapId._id;
+        })
+        const hasUpdated = !this.state.hasUpdated;
+        this.setState({
+          endcaps: endcapData,
+          hasUpdated: hasUpdated,
+          columns: {
+            ...this.state.columns,
+            'column-1': {
+              ...this.state.columns['column-1'],
+              endcapIds: endcapIds,
+            }
+          }
+        })
+      })
+    }
   }
 
   componentDidMount() {
@@ -104,7 +138,11 @@ class App extends React.Component {
                 onDragEnd={this.onDragEnd}
               />
             </Route>
-            <Route exact path='/new' component={NewEndcapPage} />
+            <Route path='/new'>
+              <NewEndcapPage 
+                handleHasUpdated={this.handleHasUpdated}
+              />›
+            </Route>
             <Route exact path='/edit/:id' component={EditEndcapPage} />
             <Route exact path='/edit/:id/flank/new' component={NewFlankPage} />
           </Switch>

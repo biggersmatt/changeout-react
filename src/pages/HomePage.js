@@ -6,22 +6,6 @@ import Period from '../components/Promo/Period';
 import EndcapsList from '../components/Endcaps/EndcapsList';
 
 class HomePage extends React.Component {
-  // state = {
-  //   upToDateEndcaps: [],
-  // }
-
-  // componentDidMount() {
-  //   console.log('Homepage Mounted')
-  //   fetch('http://localhost:4000/api/endcaps')
-  //   .then((response) => response.json())
-  //   .then((jsonData) => {
-  //     const endcapData = jsonData.allEndcaps;
-  //     this.setState({
-  //       upToDateEndcaps: endcapData,
-  //     });
-  //   })
-  // }
-  
   render() {
     return (
       <div>

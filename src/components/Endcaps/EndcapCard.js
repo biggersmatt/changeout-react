@@ -71,8 +71,8 @@ class EndcapCard extends React.Component {
   }
 
   render() {
-    console.log(this.state.title)
-    console.log(this.state.flank)
+    // console.log(this.state.title)
+    // console.log(this.state.flank)
     return (
       <Draggable draggableId={this.props.endcap._id} index={this.props.index}>
         {(provided, snapshot) => (
