@@ -141,12 +141,14 @@ class App extends React.Component {
                 handleHasUpdated={this.handleHasUpdated}
               />›
             </Route>
+            <Route path='/edit/:id/flank/new'>
+              <NewFlankPage />
+            </Route>
             <Route path='/edit/:id'>
               <EditEndcapPage 
                 handleHasUpdated={this.handleHasUpdated}
               />›
             </Route>
-            <Route exact path='/edit/:id/flank/new' component={NewFlankPage} />
           </Switch>
         </div>
         <footer>

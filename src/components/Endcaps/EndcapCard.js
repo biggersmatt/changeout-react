@@ -12,7 +12,7 @@ class EndcapCard extends React.Component {
     itemFour: this.props.endcap.itemFour,
     itemFive: this.props.endcap.itemFive,
     change: this.props.endcap.change,
-    flank: [],
+    flank: '',
   }
 
   componentDidMount() {
@@ -31,22 +31,6 @@ class EndcapCard extends React.Component {
           })
           return flank;
         })
-
-
-
-
-
-
-
-        // const flanks = thisEndcapsFlanks.map((thisEndcapFlank) => {
-        //   const foundFlanks = flankData.map((flank) => {
-        //     if(flank._id === thisEndcapFlank) {
-        //       return flank;
-        //     }
-        //     return flank;
-        //   })
-        //   return foundFlanks
-        // })
         this.setState({
           flank: foundFlanks,
         })
@@ -71,8 +55,6 @@ class EndcapCard extends React.Component {
   }
 
   render() {
-    // console.log(this.state.title)
-    // console.log(this.state.flank)
     return (
       <Draggable draggableId={this.props.endcap._id} index={this.props.index}>
         {(provided, snapshot) => (
@@ -81,7 +63,16 @@ class EndcapCard extends React.Component {
             {...provided.dragHandleProps}
             ref={provided.innerRef}
           >
-            <div className="flank-a"></div>
+            <div className="flank-a">
+              {}
+              <h3>{this.state.flank.title}</h3>
+              <p>{this.state.flank.itemOne}</p>
+              <p>{this.state.flank.itemTwo}</p>
+              <p>{this.state.flank.itemThree}</p>
+              <p>{this.state.flank.itemFour}</p>
+              <p>{this.state.flank.itemFive}</p>
+              <p>{this.state.flank.change}</p>
+            </div>
             <div 
               className="endcap-card" 
               id={this.state.change ? 'yellow': null}

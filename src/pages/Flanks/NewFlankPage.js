@@ -1,4 +1,5 @@
 import React from 'react';
+import { withRouter } from 'react-router-dom';
 
 class NewFlankPage extends React.Component {
   state = {
@@ -119,4 +120,4 @@ class NewFlankPage extends React.Component {
   }
 }
 
-export default NewFlankPage;
+export default withRouter(NewFlankPage);
