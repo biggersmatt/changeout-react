@@ -24,11 +24,9 @@ class App extends React.Component {
   }
 
   handleHasUpdated = (hasUpdated) => {
-    console.log(this.state.hasUpdated);
     this.setState({
       hasUpdated: hasUpdated,
     })
-    console.log(this.state.hasUpdated);
   }
 
   componentDidUpdate() {
@@ -143,7 +141,11 @@ class App extends React.Component {
                 handleHasUpdated={this.handleHasUpdated}
               />›
             </Route>
-            <Route exact path='/edit/:id' component={EditEndcapPage} />
+            <Route path='/edit/:id'>
+              <EditEndcapPage 
+                handleHasUpdated={this.handleHasUpdated}
+              />›
+            </Route>
             <Route exact path='/edit/:id/flank/new' component={NewFlankPage} />
           </Switch>
         </div>

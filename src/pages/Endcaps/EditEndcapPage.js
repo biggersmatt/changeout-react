@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 
 class EditEndcapPage extends React.Component {
   state = {
@@ -37,6 +37,7 @@ class EditEndcapPage extends React.Component {
       body: JSON.stringify(this.state),
     })
       .then(() => this.props.history.push('/'))
+      .then(() => this.props.handleHasUpdated(true))
       .catch((err) => console.log(err));
   }
 
@@ -44,15 +45,8 @@ class EditEndcapPage extends React.Component {
     fetch(`http://localhost:4000/api/endcaps/${endcapId}`, {
       method: 'DELETE',
     })
-      .then((response) => response.json())
-      .then((jsonData) => {
-        const stateCopy = {...this.state};
-        const updatedState = stateCopy.endcaps.filter((endcap) => {
-          return endcap._id !== endcapId;
-        });
-        this.setState({
-          endcaps: updatedState
-        })
+      .then(() => {
+        this.props.handleHasUpdated(true)
       })
       .catch((err) => console.log(err))
   }
@@ -136,4 +130,4 @@ class EditEndcapPage extends React.Component {
   }
 }
 
-export default EditEndcapPage;
+export default withRouter(EditEndcapPage);
