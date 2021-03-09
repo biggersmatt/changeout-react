@@ -71,6 +71,15 @@ class EndcapCard extends React.Component {
               <p>{this.state.flankA.itemThree}</p>
               <p>{this.state.flankA.itemFour}</p>
               <p>{this.state.flankA.itemFive}</p>
+              <div>
+                <Link to={`/edit/${this.props.endcap._id}/flank/${this.state.flankA._id}`}>
+                  <button>Edit</button>
+                </Link>
+                <div>
+                  <h4>Change</h4>
+                  <input type="checkbox"/>
+                </div>
+              </div>
             </div>
             {/* Endcap */}
             <div className="endcap-card" id={this.state.change ? 'yellow': null}>

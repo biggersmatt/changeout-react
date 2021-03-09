@@ -142,13 +142,13 @@ class App extends React.Component {
                 handleHasUpdated={this.handleHasUpdated}
               />
             </Route>
-            <Route path='/edit/:id/flank/:id'>
-              <EditFlankPage 
+            <Route path='/edit/:id/flank/new'>
+              <NewFlankPage 
                 handleHasUpdated={this.handleHasUpdated}
               />
             </Route>
-            <Route path='/edit/:id/flank/new'>
-              <NewFlankPage 
+            <Route path='/edit/:id/flank/:id'>
+              <EditFlankPage 
                 handleHasUpdated={this.handleHasUpdated}
               />
             </Route>
