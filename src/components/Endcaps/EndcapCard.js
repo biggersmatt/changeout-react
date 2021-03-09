@@ -55,9 +55,6 @@ class EndcapCard extends React.Component {
       .catch((err) => console.log(err));
   }
   render() {
-    console.log(this.state.title);
-    console.log(this.state.flankA);
-    console.log(this.state.flankB);
     return (
       <Draggable draggableId={this.props.endcap._id} index={this.props.index}>
         {(provided, snapshot) => (
@@ -66,8 +63,13 @@ class EndcapCard extends React.Component {
             {...provided.dragHandleProps}
             ref={provided.innerRef}
           >
-            <div className="flank-a">
-
+            <div className="flank">
+              <h4>{this.state.flankA.title}</h4>
+              <p>{this.state.flankA.itemOne}</p>
+              <p>{this.state.flankA.itemTwo}</p>
+              <p>{this.state.flankA.itemThree}</p>
+              <p>{this.state.flankA.itemFour}</p>
+              <p>{this.state.flankA.itemFive}</p>
             </div>
             <div 
               className="endcap-card" 
@@ -90,7 +92,14 @@ class EndcapCard extends React.Component {
                 </div>
               </div>
             </div>
-            <div className="flank-b"></div>
+            <div className="flank">
+              <h4>{this.state.flankB.title}</h4>
+              <p>{this.state.flankB.itemOne}</p>
+              <p>{this.state.flankB.itemTwo}</p>
+              <p>{this.state.flankB.itemThree}</p>
+              <p>{this.state.flankB.itemFour}</p>
+              <p>{this.state.flankB.itemFive}</p>
+            </div>
           </div>
         )}
       </Draggable>
