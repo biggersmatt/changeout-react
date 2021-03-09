@@ -63,6 +63,7 @@ class EndcapCard extends React.Component {
             {...provided.dragHandleProps}
             ref={provided.innerRef}
           >
+            {/* Flank A */}
             <div className="flank">
               <h4>{this.state.flankA.title}</h4>
               <p>{this.state.flankA.itemOne}</p>
@@ -71,10 +72,8 @@ class EndcapCard extends React.Component {
               <p>{this.state.flankA.itemFour}</p>
               <p>{this.state.flankA.itemFive}</p>
             </div>
-            <div 
-              className="endcap-card" 
-              id={this.state.change ? 'yellow': null}
-            >
+            {/* Endcap */}
+            <div className="endcap-card" id={this.state.change ? 'yellow': null}>
               <h3>{this.props.endcap.title}</h3>
               <p>{this.props.endcap.itemOne}</p>
               <p>{this.props.endcap.itemTwo}</p>
@@ -92,6 +91,7 @@ class EndcapCard extends React.Component {
                 </div>
               </div>
             </div>
+            {/* Flank B */}
             <div className="flank">
               <h4>{this.state.flankB.title}</h4>
               <p>{this.state.flankB.itemOne}</p>
@@ -99,6 +99,15 @@ class EndcapCard extends React.Component {
               <p>{this.state.flankB.itemThree}</p>
               <p>{this.state.flankB.itemFour}</p>
               <p>{this.state.flankB.itemFive}</p>
+              <div>
+                <Link to={`/edit/${this.props.endcap._id}/flank/${this.state.flankB._id}`}>
+                  <button>Edit</button>
+                </Link>
+                <div>
+                  <h4>Change</h4>
+                  <input type="checkbox"/>
+                </div>
+              </div>
             </div>
           </div>
         )}
