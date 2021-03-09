@@ -4,8 +4,9 @@ import HomePage from './pages/HomePage';
 import NewEndcapPage from './pages/Endcaps/NewEndcapPage';
 import EditEndcapPage from './pages/Endcaps/EditEndcapPage';
 import Navbar from './components/Navbar/Navbar';
-import './App.css';
 import NewFlankPage from './pages/Flanks/NewFlankPage';
+import EditFlankPage from './pages/Flanks/EditFlankPage';
+import './App.css';
 
 class App extends React.Component {
   state = {
@@ -139,7 +140,12 @@ class App extends React.Component {
             <Route path='/new'>
               <NewEndcapPage 
                 handleHasUpdated={this.handleHasUpdated}
-              />›
+              />
+            </Route>
+            <Route path='/edit/:id/flank/:id'>
+              <EditFlankPage 
+                handleHasUpdated={this.handleHasUpdated}
+              />
             </Route>
             <Route path='/edit/:id/flank/new'>
               <NewFlankPage 
