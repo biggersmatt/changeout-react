@@ -34,6 +34,20 @@ class EditFlankPage extends React.Component {
     })
   }
 
+  handleSubmit = (event) => {
+    event.preventDefault();
+    fetch(`http://localhost:4000/api/flanks/${this.props.match.params.id}`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(this.state),
+    })
+      .then(() => this.props.history.push('/'))
+      .then(() => this.props.handleHasUpdated(true))
+      .catch((err) => console.log(err));
+  }
+
   handleDeleteEndcap = (flankId) => {
     fetch(`http://localhost:4000/api/flanks/${flankId}`, {
       method: 'DELETE',
@@ -53,7 +67,7 @@ class EditFlankPage extends React.Component {
             <Link to="/">
               <button 
                 className="endcap-btn" 
-                // onClick={() => this.handleDeleteEndcap(this.state._id)}
+                onClick={() => this.handleDeleteEndcap(this.props.match.params.id)}
                 >
                 -
               </button>
@@ -65,7 +79,7 @@ class EditFlankPage extends React.Component {
           <p className="endcap-form-title">Title</p>
           <div className="endcap-wrapper-section">
             <input type="text" id="title" 
-              // value={this.state.title} 
+              value={this.state.title} 
               onChange={this.handleChange}
             />
           </div>
@@ -73,35 +87,35 @@ class EditFlankPage extends React.Component {
           <div className="endcap-wrapper-section">
             <label htmlFor="itemOne">One:</label>
             <input type="text" id="itemOne" 
-              // value={this.state.itemOne} 
+              value={this.state.itemOne} 
               onChange={this.handleChange}
             />
           </div>
           <div className="endcap-wrapper-section">
             <label htmlFor="itemTwo">Two:</label>
             <input type="text" id="itemTwo" 
-              // value={this.state.itemTwo} 
+              value={this.state.itemTwo} 
               onChange={this.handleChange}
             />
           </div>
           <div className="endcap-wrapper-section">
             <label htmlFor="itemThree">Three:</label>
             <input type="text" id="itemThree" 
-              // value={this.state.itemThree} 
+              value={this.state.itemThree} 
               onChange={this.handleChange}
             />
           </div>
           <div className="endcap-wrapper-section">
             <label htmlFor="itemFour">Four:</label>
             <input type="text" id="itemFour" 
-              // value={this.state.itemFour} 
+              value={this.state.itemFour} 
               onChange={this.handleChange}
             />
           </div>
           <div className="endcap-wrapper-section">
             <label htmlFor="itemFive">Five:</label>
             <input type="text" id="itemFive" 
-              // value={this.state.itemFive} 
+              value={this.state.itemFive} 
               onChange={this.handleChange}
             />
           </div>
