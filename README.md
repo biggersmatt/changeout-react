@@ -1,3 +1,4 @@
+<img width="513" alt="Screen Shot 2021-03-10 at 7 58 09 AM" src="https://user-images.githubusercontent.com/26800130/110658232-5d842f00-8176-11eb-85b3-f6a598074515.png">
  # Change Out
 Most grocery stores have a two week advertising schedule. At the end of the two weeks, all Endcaps and Flanks change in the store to better match that period's sale items.
   - An Endcap is the end section between two aisles.
