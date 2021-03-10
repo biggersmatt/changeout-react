@@ -1,5 +1,4 @@
-<img width="513" alt="Screen Shot 2021-03-10 at 7 58 09 AM" src="https://user-images.githubusercontent.com/26800130/110658232-5d842f00-8176-11eb-85b3-f6a598074515.png">
- # Change Out
+# Change Out
 Most grocery stores have a two week advertising schedule. At the end of the two weeks, all Endcaps and Flanks change in the store to better match that period's sale items.
   - An Endcap is the end section between two aisles.
   - A Flank is side shelfing at the end of an aisle but before the Endcap.
@@ -24,3 +23,12 @@ Change Out is a MERN Application
 ### Wireframes & User Stories
 ##### Endcap Component
 <img width="597" alt="Screen Shot 2021-03-10 at 7 56 57 AM" src="https://user-images.githubusercontent.com/26800130/110658044-32014480-8176-11eb-81c0-e79d9fa74aed.png">
+
+##### Flank Component
+<img width="513" alt="Screen Shot 2021-03-10 at 7 58 09 AM" src="https://user-images.githubusercontent.com/26800130/110658232-5d842f00-8176-11eb-85b3-f6a598074515.png">
+
+##### Main Page
+![Screen Shot 2021-03-10 at 8 00 54 AM](https://user-images.githubusercontent.com/26800130/110658678-bf449900-8176-11eb-98ed-a5e138a88e76.png)
+
+
+
