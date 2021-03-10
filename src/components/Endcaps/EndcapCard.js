@@ -60,13 +60,17 @@ class EndcapCard extends React.Component {
               <p>{flankA.itemThree}</p>
               <p>{flankA.itemFour}</p>
               <p>{flankA.itemFive}</p>
-              <div>
+              <div className="endcap-card-btns">
                 <Link to={`/edit/${this.props.endcap._id}/flank/${flankA.id}`}>
-                  <button>Edit</button>
+                <h4 className={this.props.endcap.change ? 'endcap-edit-completed' : 'endcap-edit-change'}>Edit</h4>
                 </Link>
                 <div>
-                  <h4>Change</h4>
-                  <input type="checkbox"/>
+                  <h4 
+                    className={this.props.endcap.change ? 'endcap-completed' : 'endcap-change'}
+                    onClick={() => this.props.handleToggleClass(this.props.endcap.change, this.props.endcap._id)}
+                  >
+                    {this.props.endcap.change ? 'Completed' : 'Change'}
+                  </h4>
                 </div>
               </div>
             </div>
@@ -108,13 +112,17 @@ class EndcapCard extends React.Component {
               <p>{flankB.itemThree}</p>
               <p>{flankB.itemFour}</p>
               <p>{flankB.itemFive}</p>
-              <div>
+              <div className="endcap-card-btns">
                 <Link to={`/edit/${this.props.endcap._id}/flank/${flankB.id}`}>
-                  <button>Edit</button>
+                  <h4 className={this.props.endcap.change ? 'endcap-edit-completed' : 'endcap-edit-change'}>Edit</h4>
                 </Link>
                 <div>
-                  <h4>Change</h4>
-                  <input type="checkbox"/>
+                  <h4 
+                    className={this.props.endcap.change ? 'endcap-completed' : 'endcap-change'}
+                    onClick={() => this.props.handleToggleClass(this.props.endcap.change, this.props.endcap._id)}
+                  >
+                    {this.props.endcap.change ? 'Completed' : 'Change'}
+                  </h4>
                 </div>
               </div>
             </div>
