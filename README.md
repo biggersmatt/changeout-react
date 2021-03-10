@@ -47,3 +47,6 @@ Change Out is a MERN Application
 React Beautiful DnD 
 * https://egghead.io/lessons/react-course-introduction-beautiful-and-accessible-drag-and-drop-with-react-beautiful-dnd
 
+## Shout Outs
+Thank you to the instructional team for all of their support and knowledge. 
+Kenny, Michael, Quin, and Milcah
