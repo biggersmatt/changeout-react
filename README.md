@@ -22,6 +22,8 @@ Change Out is a MERN Application
 * Node
 * Postman
 
+<hr />
+
 ### Wireframes & User Stories
 #### Endcap Component
 <img width="597" alt="Screen Shot 2021-03-10 at 7 56 57 AM" src="https://user-images.githubusercontent.com/26800130/110658044-32014480-8176-11eb-81c0-e79d9fa74aed.png">
