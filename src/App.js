@@ -25,6 +25,28 @@ class App extends React.Component {
   }
   
   componentDidMount() {
+    // Checks and Updates Settings
+    fetch('http://localhost:4000/api/settings')
+      .then((response) => response.json())
+      .then((jsonData) => {
+        if(jsonData.settings.length === 0) {
+          console.log('No Settings, Create')
+          fetch('http://localhost:4000/api/settings', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(this.state)
+          })
+        }
+        if(jsonData.settings.length === 1) {
+          console.log('Update Settings')
+        }
+        // console.log((jsonData.settings.length))
+      })
+
+
+    // Collect All Endcaps
     fetch('http://localhost:4000/api/endcaps')
     .then((response) => response.json())
     .then((jsonData) => {
