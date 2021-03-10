@@ -38,7 +38,12 @@ Change Out is a MERN Application
 * Deleting a Flank from an Endcap sets that Endcaps Flank to 'null' preventing creation of a new Flank in it's place afterwards
 * The Promo Month and Period do not store in the database and on refresh, reset
 
-### Future Features
+#### Future Features
 * Creation of a User Model
 * Login / Auth
 * Responsiveness that scales up on Desktops
+
+#### Resources
+React Beautiful DnD 
+* https://egghead.io/lessons/react-course-introduction-beautiful-and-accessible-drag-and-drop-with-react-beautiful-dnd
+
