@@ -13,6 +13,7 @@ const EndcapsList = (props) => {
           {props.endcaps.map((endcap, index) => {
             return <EndcapCard 
                       handleToggleEndcap={props.handleToggleEndcap}
+                      handleToggleFlank={props.handleToggleFlank}
                       key={endcap._id} 
                       index={index} 
                       endcap={endcap}

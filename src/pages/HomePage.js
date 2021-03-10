@@ -36,6 +36,7 @@ class HomePage extends React.Component {
             });
             return <EndcapsList 
                       handleToggleEndcap={this.props.handleToggleEndcap}
+                      handleToggleFlank={this.props.handleToggleFlank}
                       endcaps={endcaps}
                       key={column.id}  
                       column={column} 

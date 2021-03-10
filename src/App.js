@@ -112,6 +112,38 @@ class App extends React.Component {
     }
   }
 
+  handleToggleFlank = (toggle, flank) => {
+    if(!toggle) {
+      const updatedFlank = {
+        ...flank,
+        change: true,
+      }
+      fetch(`http://localhost:4000/api/flanks/${flank._id}`, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(updatedFlank),
+      })
+      .then(() => this.handleHasUpdated(true))
+      .catch((err) => console.log(err));
+    } else {
+      const updatedFlank = {
+        ...flank,
+        change: false,
+      }
+      fetch(`http://localhost:4000/api/flanks/${flank._id}`, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(updatedFlank),
+      })
+      .then(() => this.handleHasUpdated(true))
+      .catch((err) => console.log(err));
+    }
+  }
+
   
   handleHasUpdated = (hasUpdated) => {
     this.setState({
@@ -171,6 +203,7 @@ class App extends React.Component {
                 month={this.state.month} 
                 period={this.state.period} 
                 handleToggleEndcap={this.handleToggleEndcap}
+                handleToggleFlank={this.handleToggleFlank}
                 handleChangeMonth={this.handleChangeMonth} 
                 handleChangePeriod={this.handleChangePeriod} 
                 columnOrder={this.state.columnOrder}

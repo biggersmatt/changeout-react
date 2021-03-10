@@ -36,6 +36,7 @@ class EndcapCard extends React.Component {
             ref={provided.innerRef}
           >
             {/* Flank A */}
+            {console.log(flankA.change)}
             <div className="flank" id={!this.props.endcap.flanks[0] ? 'hidden' : null}>
               <h4>{flankA.title}</h4>
               <p>{flankA.itemOne}</p>
@@ -50,7 +51,7 @@ class EndcapCard extends React.Component {
                 <div>
                   <h4 
                     className={this.props.endcap.change ? 'endcap-completed' : 'endcap-change'}
-                    onClick={() => this.props.handleToggleEndcap(this.props.endcap.change, this.props.endcap._id)}
+                    onClick={() => this.props.handleToggleFlank(this.props.endcap.flanks[0].change, this.props.endcap.flanks[0])}
                   >
                     {this.props.endcap.change ? 'Completed' : 'Change'}
                   </h4>
