@@ -30,6 +30,7 @@ class App extends React.Component {
       .then((response) => response.json())
       .then((jsonData) => {
         if(jsonData.settings.length === 0) {
+          // If No Settings exist, creates Settings
           console.log('No Settings, Create')
           fetch('http://localhost:4000/api/settings', {
             method: 'POST',
@@ -40,7 +41,28 @@ class App extends React.Component {
           })
         }
         if(jsonData.settings.length === 1) {
+          // If Settings do exist, Update date them
           console.log('Update Settings')
+          const settings = {
+            columnOrder: {
+              id: 'column-1',
+              title: 'To Do',
+              endcapsIds: [],
+            },
+            promoMonth: 'March',
+            promoPeriod: 'B',
+          }
+
+          jsonData.settings.forEach((setting) => {
+            fetch(`http://localhost:4000/api/settings/${setting._id}`, {
+              method: 'PUT',
+              headers: {
+                'Content-Type': 'application/json',
+              },
+              body: JSON.stringify(settings),
+            })
+              .catch((err) => console.log(err));
+          })
         }
         // console.log((jsonData.settings.length))
       })
