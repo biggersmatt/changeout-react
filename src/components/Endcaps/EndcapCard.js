@@ -4,32 +4,7 @@ import { Draggable } from 'react-beautiful-dnd';
 require('./Endcap.css')
 
 class EndcapCard extends React.Component {
-  // state = {
-
-  // }
-
-  // componentDidMount() {
-  //   fetch('http://localhost:4000/api/flanks')
-  //     .then((response) => response.json())
-  //     .then((jsonData) => {
-  //       const allFlanks = jsonData.allFlanks;
-  //       let flankA = '';
-  //       let flankB = '';
-  //       allFlanks.forEach((flank) => {
-  //         if(flank._id === this.props.endcap.flanks[0]) {
-  //           flankA = flank;
-  //         }
-  //         if(flank._id === this.props.endcap.flanks[1]) {
-  //           flankB = flank;
-  //         }
-  //       })
-  //       this.setState({
-  //         flankA: flankA,
-  //         flankB: flankB,
-  //       })
-  //     })
-  // }
-
+  
   handleToggleClass = (event) => {
     event.preventDefault();
     const updatedState = {
@@ -43,30 +18,50 @@ class EndcapCard extends React.Component {
       },
       body: JSON.stringify(updatedState),
     })
-      .then(() => this.setState(updatedState))
-      .catch((err) => console.log(err));
+    .then(() => this.setState(updatedState))
+    .catch((err) => console.log(err));
   }
   render() {
+    const flankA = {
+      id: this.props.endcap.flanks[0] ? this.props.endcap.flanks[0]._id: '',
+      title: this.props.endcap.flanks[0] ? this.props.endcap.flanks[0].title : '',
+      itemOne: this.props.endcap.flanks[0] ? this.props.endcap.flanks[0].itemOne : '',
+      itemTwo: this.props.endcap.flanks[0] ? this.props.endcap.flanks[0].itemTwo: '',
+      itemThree: this.props.endcap.flanks[0] ? this.props.endcap.flanks[0].itemThree : '',
+      itemFour: this.props.endcap.flanks[0] ? this.props.endcap.flanks[0].itemFour : '',
+      itemFive: this.props.endcap.flanks[0] ? this.props.endcap.flanks[0].itemFive : '',
+    }
+
+    const flankB = {
+      id: this.props.endcap.flanks[1] ? this.props.endcap.flanks[1]._id: '',
+      title: this.props.endcap.flanks[1] ? this.props.endcap.flanks[1].title : '',
+      itemOne: this.props.endcap.flanks[1] ? this.props.endcap.flanks[1].itemOne : '',
+      itemTwo: this.props.endcap.flanks[1] ? this.props.endcap.flanks[1].itemTwo: '',
+      itemThree: this.props.endcap.flanks[1] ? this.props.endcap.flanks[1].itemThree : '',
+      itemFour: this.props.endcap.flanks[1] ? this.props.endcap.flanks[1].itemFour : '',
+      itemFive: this.props.endcap.flanks[1] ? this.props.endcap.flanks[1].itemFive : '',
+    }
     return (
       <Draggable draggableId={this.props.endcap._id} index={this.props.index}>
         {(provided, snapshot) => (
+
           <div className="endcap-flank-container"
             {...provided.draggableProps}
             {...provided.dragHandleProps}
             ref={provided.innerRef}
           >
             {/* Flank A */}
-            <div className="flank">
-              <h4>{this.props.endcap.flanks[0] ? this.props.endcap.flanks[0].title : ''}</h4>
-              <p>{this.props.endcap.flanks[0] ? this.props.endcap.flanks[0].itemOne : ''}</p>
-              <p>{this.props.endcap.flanks[0] ? this.props.endcap.flanks[0].itemTwo : ''}</p>
-              <p>{this.props.endcap.flanks[0] ? this.props.endcap.flanks[0].itemThree : ''}</p>
-              <p>{this.props.endcap.flanks[0] ? this.props.endcap.flanks[0].itemFour : ''}</p>
-              <p>{this.props.endcap.flanks[0] ? this.props.endcap.flanks[0].itemFive : ''}</p>
+            <div className="flank" id={!this.props.endcap.flanks[0] ? 'hidden' : null}>
+              <h4>{flankA.title}</h4>
+              <p>{flankA.itemOne}</p>
+              <p>{flankA.itemTwo}</p>
+              <p>{flankA.itemThree}</p>
+              <p>{flankA.itemFour}</p>
+              <p>{flankA.itemFive}</p>
               <div>
-                {/* <Link to={`/edit/${this.props.endcap._id}/flank/${this.state.flankA._id}`}>
+                <Link to={`/edit/${this.props.endcap._id}/flank/${flankA.id}`}>
                   <button>Edit</button>
-                </Link> */}
+                </Link>
                 <div>
                   <h4>Change</h4>
                   <input type="checkbox"/>
@@ -74,7 +69,13 @@ class EndcapCard extends React.Component {
               </div>
             </div>
             {/* Endcap */}
-            <div className="endcap-card" 
+            <div 
+              className="endcap-card" 
+              id={
+                (this.props.endcap.flanks[0] && this.props.endcap.flanks[1] ? 'nothing' : null) ||
+                (this.props.endcap.flanks[0] ? 'endcap-flank-a': '') || 
+                (this.props.endcap.flanks[1] ? 'endcap-flank-b' : '') 
+              }
             // id={this.props.endcap.change && 'yellow'}
             >
               <h3>{this.props.endcap.title}</h3>
@@ -95,17 +96,17 @@ class EndcapCard extends React.Component {
               </div>
             </div>
             {/* Flank B */}
-            <div className="flank">
-            <h4>{this.props.endcap.flanks[1] ? this.props.endcap.flanks[1].title : ''}</h4>
-              <p>{this.props.endcap.flanks[1] ? this.props.endcap.flanks[1].itemOne : ''}</p>
-              <p>{this.props.endcap.flanks[1] ? this.props.endcap.flanks[1].itemTwo : ''}</p>
-              <p>{this.props.endcap.flanks[1] ? this.props.endcap.flanks[1].itemThree : ''}</p>
-              <p>{this.props.endcap.flanks[1] ? this.props.endcap.flanks[1].itemFour : ''}</p>
-              <p>{this.props.endcap.flanks[1] ? this.props.endcap.flanks[1].itemFive : ''}</p>
+            <div className="flank" id={!this.props.endcap.flanks[1] ? 'hidden' : null}>
+            <h4>{flankB.title}</h4>
+              <p>{flankB.itemOne}</p>
+              <p>{flankB.itemTwo}</p>
+              <p>{flankB.itemThree}</p>
+              <p>{flankB.itemFour}</p>
+              <p>{flankB.itemFive}</p>
               <div>
-                {/* <Link to={`/edit/${this.props.endcap._id}/flank/${this.state.flankB._id}`}>
+                <Link to={`/edit/${this.props.endcap._id}/flank/${flankB.id}`}>
                   <button>Edit</button>
-                </Link> */}
+                </Link>
                 <div>
                   <h4>Change</h4>
                   <input type="checkbox"/>

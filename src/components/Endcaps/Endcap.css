@@ -41,6 +41,14 @@
   border: 1px solid var(--yellow-border);
 }
 
+#endcap-flank-a {
+  margin-right: 152px;
+}
+
+#endcap-flank-b {
+  margin-left: 152px;
+}
+
 /* Flanks */
 .flank {
   background-color: var(--green);
@@ -56,4 +64,9 @@
 
 .endcap-flank-container {
   display: flex;
+  justify-content: center;
+}
+
+#hidden {
+  display: none;
 }
