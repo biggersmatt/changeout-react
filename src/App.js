@@ -72,7 +72,7 @@ class App extends React.Component {
     }
   }
   
-  handleToggleClass = (toggle, endcapId) => {
+  handleToggleEndcap = (toggle, endcapId) => {
     if(!toggle) {
       this.state.endcaps.forEach((endcap) => {
         if(endcap._id === endcapId) {
@@ -170,7 +170,7 @@ class App extends React.Component {
               <HomePage 
                 month={this.state.month} 
                 period={this.state.period} 
-                handleToggleClass={this.handleToggleClass}
+                handleToggleEndcap={this.handleToggleEndcap}
                 handleChangeMonth={this.handleChangeMonth} 
                 handleChangePeriod={this.handleChangePeriod} 
                 columnOrder={this.state.columnOrder}

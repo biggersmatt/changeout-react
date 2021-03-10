@@ -4,23 +4,6 @@ import { Draggable } from 'react-beautiful-dnd';
 require('./Endcap.css')
 
 class EndcapCard extends React.Component {
-  handleToggleClass = (event) => {
-    event.preventDefault();
-    const updatedState = {
-      ...this.state,
-      change: !this.state.change,
-    }
-    fetch(`http://localhost:4000/api/endcaps/${this.props.endcap._id}`, {
-      method: 'PUT',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(updatedState),
-    })
-    .then(() => this.setState(updatedState))
-    .catch((err) => console.log(err));
-  }
-
   render() {
     const flankA = {
       id: this.props.endcap.flanks[0] ? this.props.endcap.flanks[0]._id: '',
@@ -67,7 +50,7 @@ class EndcapCard extends React.Component {
                 <div>
                   <h4 
                     className={this.props.endcap.change ? 'endcap-completed' : 'endcap-change'}
-                    onClick={() => this.props.handleToggleClass(this.props.endcap.change, this.props.endcap._id)}
+                    onClick={() => this.props.handleToggleEndcap(this.props.endcap.change, this.props.endcap._id)}
                   >
                     {this.props.endcap.change ? 'Completed' : 'Change'}
                   </h4>
@@ -97,7 +80,7 @@ class EndcapCard extends React.Component {
                 <div>
                   <h4 
                     className={this.props.endcap.change ? 'endcap-completed' : 'endcap-change'}
-                    onClick={() => this.props.handleToggleClass(this.props.endcap.change, this.props.endcap._id)}
+                    onClick={() => this.props.handleToggleEndcap(this.props.endcap.change, this.props.endcap._id)}
                   >
                     {this.props.endcap.change ? 'Completed' : 'Change'}
                   </h4>
@@ -119,7 +102,7 @@ class EndcapCard extends React.Component {
                 <div>
                   <h4 
                     className={this.props.endcap.change ? 'endcap-completed' : 'endcap-change'}
-                    onClick={() => this.props.handleToggleClass(this.props.endcap.change, this.props.endcap._id)}
+                    onClick={() => this.props.handleToggleEndcap(this.props.endcap.change, this.props.endcap._id)}
                   >
                     {this.props.endcap.change ? 'Completed' : 'Change'}
                   </h4>
