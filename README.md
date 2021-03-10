@@ -1,70 +1,69 @@
-# Getting Started with Create React App
+# Change Out
+Most grocery stores have a two week advertising schedule. At the end of the two weeks, all Endcaps and Flanks change in the store to better match that period's sale items.
+  - An Endcap is the end section between two aisles.
+  - A Flank is side shelfing at the end of an aisle but before the Endcap.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This application provides a clean, dynamic UI for any store to use to help facilitate a smoother transition between advertising cycle and clear communication to employees what is and is not changing.
 
-## Available Scripts
+<hr />
 
-In the project directory, you can run:
+### Technologies Used
+Change Out is a MERN Application
+* React
+* React-dom
+* React-router-dom
+* React-beautiful-dnd
+* Body-parser
+* Cors
+* Express
+* MongoDB
+* Mongoose
+* Nodemon
+* Node
+* Postman
 
-### `npm start`
+<hr />
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### Wireframes & User Stories
+### Endcap Component
+<img width="597" alt="Screen Shot 2021-03-10 at 7 56 57 AM" src="https://user-images.githubusercontent.com/26800130/110658044-32014480-8176-11eb-81c0-e79d9fa74aed.png">
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+### Flank Component
+<img width="513" alt="Screen Shot 2021-03-10 at 7 58 09 AM" src="https://user-images.githubusercontent.com/26800130/110658232-5d842f00-8176-11eb-85b3-f6a598074515.png">
 
-### `npm test`
+### Main Page
+![Screen Shot 2021-03-10 at 8 00 54 AM](https://user-images.githubusercontent.com/26800130/110658678-bf449900-8176-11eb-98ed-a5e138a88e76.png)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+<hr />
 
-### `npm run build`
+### Entity Relationship Diagrams
+<img width="857" alt="Screen Shot 2021-03-10 at 8 03 21 AM" src="https://user-images.githubusercontent.com/26800130/110659063-177b9b00-8177-11eb-8989-8e87ee48aa93.png">
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+<hr />
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+#### Unsolved Problems
+* New rotation order on a Drag and Drop is not stored in the Database.
+* Deleting a Flank from an Endcap sets that Endcaps Flank to 'null' preventing creation of a new Flank in it's place afterwards
+* The Promo Month and Period do not store in the database and on refresh, reset
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+<hr />
 
-### `npm run eject`
+#### Future Features
+* Creation of a User Model
+* Login / Auth
+* Responsiveness that scales up on Desktops
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+<hr />
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+#### Resources
+React Beautiful DnD 
+* https://egghead.io/lessons/react-course-introduction-beautiful-and-accessible-drag-and-drop-with-react-beautiful-dnd
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+<hr />
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## Shout Outs
+Thank you to the instructional team for all of their support and knowledge. 
+* Kenny
+* Michael
+* Quin
+* Milcah
