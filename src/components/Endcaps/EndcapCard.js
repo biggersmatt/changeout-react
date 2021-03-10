@@ -91,10 +91,12 @@ class EndcapCard extends React.Component {
                   <button className="endcap-edit-btn">Edit</button>
                 </Link>
                 <div>
-                  <h4 className="endcap-change">Change</h4>
-                  <input type="checkbox" id="endcap-checkbox" 
-                  onClick={() => this.props.handleToggleClass(this.props.endcap.change, this.props.endcap._id)}
-                  />
+                  <h4 
+                    className={this.props.endcap.change ? 'endcap-completed' : 'endcap-change'}
+                    onClick={() => this.props.handleToggleClass(this.props.endcap.change, this.props.endcap._id)}
+                  >
+                    {this.props.endcap.change ? 'Completed' : 'Change'}
+                  </h4>
                 </div>
               </div>
             </div>

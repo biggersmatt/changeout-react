@@ -1,6 +1,7 @@
 /* Universal */
 :root {
   --green: rgb(218,231,214);
+  --green-border: rgb(179,204,162);
   --yellow: rgb(253,242,208);
   --yellow-border: rgb(232,212,155);
 }

@@ -3,7 +3,7 @@
   background-color: var(--green);
   height: 300px;
   width: 300px;
-  border: 1px solid rgb(179,204,162);
+  border: 1px solid var(--green-border);
   border-radius: 35px;
   overflow: hidden;
   display: flex;
@@ -32,8 +32,31 @@
 }
 
 .endcap-change {
+  background-color: var(--yellow);
+  border: 1px solid var(--yellow-border);
+  border-radius: 10px;
+  padding: 5px;
   margin-left: 125px;
   margin-bottom: 5px;
+}
+
+.endcap-change:hover {
+  transform: scale(1.1);
+  transition: 0.2s ease;
+}
+
+.endcap-completed {
+  background-color: var(--green);
+  border: 1px solid var(--green-border);
+  border-radius: 10px;
+  padding: 5px;
+  margin-left: 125px;
+  margin-bottom: 5px;
+}
+
+.endcap-completed:hover {
+  transform: scale(1.1);
+  transition: 0.2s ease;
 }
 
 .yellow {
