@@ -33,4 +33,11 @@ Change Out is a MERN Application
 #### Entity Relationship Diagrams
 <img width="857" alt="Screen Shot 2021-03-10 at 8 03 21 AM" src="https://user-images.githubusercontent.com/26800130/110659063-177b9b00-8177-11eb-8989-8e87ee48aa93.png">
 
+#### Unsolved Problems
+* New rotation order on a Drag and Drop is not stored in the Database.
+* Deleting a Flank from an Endcap sets that Endcaps Flank to 'null' preventing creation of a new Flank in it's place afterwards
+* The Promo Month and Period do not store in the database and on refresh, reset
 
+### Future Features
+* Creation of a User Model
+* Login / Auth
