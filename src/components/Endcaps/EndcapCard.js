@@ -14,6 +14,7 @@ class EndcapCard extends React.Component {
       itemFour: this.props.endcap.flanks[0] ? this.props.endcap.flanks[0].itemFour : '',
       itemFive: this.props.endcap.flanks[0] ? this.props.endcap.flanks[0].itemFive : '',
       change: this.props.endcap.flanks[0] ? this.props.endcap.flanks[0].change : '',
+      side: this.props.endcap.flanks[0] ? this.props.endcap.flanks[0].side : '',
     }
 
     const flankB = {
@@ -25,6 +26,7 @@ class EndcapCard extends React.Component {
       itemFour: this.props.endcap.flanks[1] ? this.props.endcap.flanks[1].itemFour : '',
       itemFive: this.props.endcap.flanks[1] ? this.props.endcap.flanks[1].itemFive : '',
       change: this.props.endcap.flanks[1] ? this.props.endcap.flanks[1].change : '',
+      side: this.props.endcap.flanks[1] ? this.props.endcap.flanks[1].side : '',
     }
 
     return (
@@ -36,7 +38,6 @@ class EndcapCard extends React.Component {
             ref={provided.innerRef}
           >
             {/* Flank A */}
-
             <div className={flankA.change ? 'flank-yellow' : 'flank-green'} id={!flankA.title ? 'hidden' : null}>
               <h4>{flankA.title}</h4>
               <p>{flankA.itemOne}</p>
