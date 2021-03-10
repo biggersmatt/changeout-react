@@ -13,47 +13,55 @@
   margin-bottom: 20px;
 }
 
-.endcap-edit-btn {
-  position: absolute;
-  bottom: 5%;
-  left: 10%;
-  height: 25px;
-  width: 50px;
-  cursor: pointer;
+.endcap-card-btns {
+  width: 80%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
-#endcap-checkbox {
-  position: absolute;
-  bottom: 5%;
-  right: 10%;
-  height: 25px;
-  width: 25px;
-  cursor: pointer;
+
+/* Edit Change/Complete */
+.endcap-edit-change {
+  background-color: var(--yellow);
+  color: black;
+  border: 1px solid var(--yellow-border);
+  border-radius: 10px;
+  padding: 5px;
+}
+.endcap-edit-change:hover {
+  transform: scale(1.1);
+  transition: 0.2s ease;
+}
+.endcap-edit-completed {
+  background-color: var(--green);
+  color: black;
+  border: 1px solid var(--green-border);
+  border-radius: 10px;
+  padding: 5px;
+}
+.endcap-edit-completed:hover {
+  transform: scale(1.1);
+  transition: 0.2s ease;
 }
 
+/* Btn Change/Complete */
 .endcap-change {
   background-color: var(--yellow);
   border: 1px solid var(--yellow-border);
   border-radius: 10px;
   padding: 5px;
-  margin-left: 125px;
-  margin-bottom: 5px;
 }
-
 .endcap-change:hover {
   transform: scale(1.1);
   transition: 0.2s ease;
 }
-
 .endcap-completed {
   background-color: var(--green);
   border: 1px solid var(--green-border);
   border-radius: 10px;
   padding: 5px;
-  margin-left: 125px;
-  margin-bottom: 5px;
 }
-
 .endcap-completed:hover {
   transform: scale(1.1);
   transition: 0.2s ease;

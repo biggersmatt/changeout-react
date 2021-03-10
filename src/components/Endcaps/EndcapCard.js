@@ -86,9 +86,9 @@ class EndcapCard extends React.Component {
               <p>{this.props.endcap.itemFour}</p>
               <p>{this.props.endcap.itemFive}</p>
               <p>{this.props.endcap.change}</p>
-              <div>
+              <div className="endcap-card-btns">
                 <Link to={`/edit/${this.props.endcap._id}`}>
-                  <button className="endcap-edit-btn">Edit</button>
+                  <h4 className={this.props.endcap.change ? 'endcap-edit-completed' : 'endcap-edit-change'}>Edit</h4>
                 </Link>
                 <div>
                   <h4 
