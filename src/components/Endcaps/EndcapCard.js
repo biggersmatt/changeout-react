@@ -79,7 +79,6 @@ class EndcapCard extends React.Component {
                 (this.props.endcap.flanks[1] ? 'endcap-flank-b' : '') 
               }
             >
-              {console.log(this.props.endcap.change)}
               <h3>{this.props.endcap.title}</h3>
               <p>{this.props.endcap.itemOne}</p>
               <p>{this.props.endcap.itemTwo}</p>
