@@ -6,27 +6,27 @@ require('./Endcap.css')
 class EndcapCard extends React.Component {
   render() {
     const flankA = {
-      id: this.props.endcap.flanks[0] ? this.props.endcap.flanks[0]._id: '',
-      title: this.props.endcap.flanks[0] ? this.props.endcap.flanks[0].title : '',
-      itemOne: this.props.endcap.flanks[0] ? this.props.endcap.flanks[0].itemOne : '',
-      itemTwo: this.props.endcap.flanks[0] ? this.props.endcap.flanks[0].itemTwo: '',
-      itemThree: this.props.endcap.flanks[0] ? this.props.endcap.flanks[0].itemThree : '',
-      itemFour: this.props.endcap.flanks[0] ? this.props.endcap.flanks[0].itemFour : '',
-      itemFive: this.props.endcap.flanks[0] ? this.props.endcap.flanks[0].itemFive : '',
-      change: this.props.endcap.flanks[0] ? this.props.endcap.flanks[0].change : '',
-      side: this.props.endcap.flanks[0] ? this.props.endcap.flanks[0].side : '',
+      id: this.props.endcap.flankA ? this.props.endcap.flankA._id: '',
+      title: this.props.endcap.flankA ? this.props.endcap.flankA.title : '',
+      itemOne: this.props.endcap.flankA ? this.props.endcap.flankA.itemOne : '',
+      itemTwo: this.props.endcap.flankA ? this.props.endcap.flankA.itemTwo: '',
+      itemThree: this.props.endcap.flankA ? this.props.endcap.flankA.itemThree : '',
+      itemFour: this.props.endcap.flankA ? this.props.endcap.flankA.itemFour : '',
+      itemFive: this.props.endcap.flankA ? this.props.endcap.flankA.itemFive : '',
+      change: this.props.endcap.flankA ? this.props.endcap.flankA.change : '',
+      side: this.props.endcap.flankA ? this.props.endcap.flankA.side : '',
     }
 
     const flankB = {
-      id: this.props.endcap.flanks[1] ? this.props.endcap.flanks[1]._id: '',
-      title: this.props.endcap.flanks[1] ? this.props.endcap.flanks[1].title : '',
-      itemOne: this.props.endcap.flanks[1] ? this.props.endcap.flanks[1].itemOne : '',
-      itemTwo: this.props.endcap.flanks[1] ? this.props.endcap.flanks[1].itemTwo: '',
-      itemThree: this.props.endcap.flanks[1] ? this.props.endcap.flanks[1].itemThree : '',
-      itemFour: this.props.endcap.flanks[1] ? this.props.endcap.flanks[1].itemFour : '',
-      itemFive: this.props.endcap.flanks[1] ? this.props.endcap.flanks[1].itemFive : '',
-      change: this.props.endcap.flanks[1] ? this.props.endcap.flanks[1].change : '',
-      side: this.props.endcap.flanks[1] ? this.props.endcap.flanks[1].side : '',
+      id: this.props.endcap.flankB ? this.props.endcap.flankB._id: '',
+      title: this.props.endcap.flankB ? this.props.endcap.flankB.title : '',
+      itemOne: this.props.endcap.flankB ? this.props.endcap.flankB.itemOne : '',
+      itemTwo: this.props.endcap.flankB ? this.props.endcap.flankB.itemTwo: '',
+      itemThree: this.props.endcap.flankB ? this.props.endcap.flankB.itemThree : '',
+      itemFour: this.props.endcap.flankB ? this.props.endcap.flankB.itemFour : '',
+      itemFive: this.props.endcap.flankB ? this.props.endcap.flankB.itemFive : '',
+      change: this.props.endcap.flankB ? this.props.endcap.flankB.change : '',
+      side: this.props.endcap.flankB ? this.props.endcap.flankB.side : '',
     }
 
     return (
@@ -52,7 +52,7 @@ class EndcapCard extends React.Component {
                 <div>
                   <h4 
                     className={flankA.change ? 'flank-completed' : 'flank-change'}
-                    onClick={() => this.props.handleToggleFlank(flankA.change, this.props.endcap.flanks[0])}
+                    onClick={() => this.props.handleToggleFlank(flankA.change, this.props.endcap.flankA)}
                   >
                     {flankA.change ? 'Completed' : 'Change'}
                   </h4>
@@ -104,7 +104,7 @@ class EndcapCard extends React.Component {
                 <div>
                   <h4 
                     className={flankB.change ? 'flank-completed' : 'flank-change'}
-                    onClick={() => this.props.handleToggleFlank(flankB.change, this.props.endcap.flanks[1])}
+                    onClick={() => this.props.handleToggleFlank(flankB.change, this.props.endcap.flankB)}
                   >
                     {flankB.change ? 'Completed' : 'Change'}
                   </h4>
