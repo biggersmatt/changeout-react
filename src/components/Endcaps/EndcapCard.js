@@ -4,23 +4,23 @@ import { Draggable } from 'react-beautiful-dnd';
 require('./Endcap.css')
 
 class EndcapCard extends React.Component {
-  
-  handleToggleClass = (event) => {
-    event.preventDefault();
-    const updatedState = {
-      ...this.state,
-      change: !this.state.change,
-    }
-    fetch(`http://localhost:4000/api/endcaps/${this.props.endcap._id}`, {
-      method: 'PUT',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(updatedState),
-    })
-    .then(() => this.setState(updatedState))
-    .catch((err) => console.log(err));
-  }
+  // handleToggleClass = (event) => {
+  //   event.preventDefault();
+  //   const updatedState = {
+  //     ...this.state,
+  //     change: !this.state.change,
+  //   }
+  //   fetch(`http://localhost:4000/api/endcaps/${this.props.endcap._id}`, {
+  //     method: 'PUT',
+  //     headers: {
+  //       'Content-Type': 'application/json',
+  //     },
+  //     body: JSON.stringify(updatedState),
+  //   })
+  //   .then(() => this.setState(updatedState))
+  //   .catch((err) => console.log(err));
+  // }
+
   render() {
     const flankA = {
       id: this.props.endcap.flanks[0] ? this.props.endcap.flanks[0]._id: '',
@@ -30,6 +30,7 @@ class EndcapCard extends React.Component {
       itemThree: this.props.endcap.flanks[0] ? this.props.endcap.flanks[0].itemThree : '',
       itemFour: this.props.endcap.flanks[0] ? this.props.endcap.flanks[0].itemFour : '',
       itemFive: this.props.endcap.flanks[0] ? this.props.endcap.flanks[0].itemFive : '',
+      change: this.props.endcap.flanks[0] ? this.props.endcap.flanks[0].change : '',
     }
 
     const flankB = {
@@ -40,11 +41,12 @@ class EndcapCard extends React.Component {
       itemThree: this.props.endcap.flanks[1] ? this.props.endcap.flanks[1].itemThree : '',
       itemFour: this.props.endcap.flanks[1] ? this.props.endcap.flanks[1].itemFour : '',
       itemFive: this.props.endcap.flanks[1] ? this.props.endcap.flanks[1].itemFive : '',
+      change: this.props.endcap.flanks[1] ? this.props.endcap.flanks[1].change : '',
     }
+
     return (
       <Draggable draggableId={this.props.endcap._id} index={this.props.index}>
         {(provided, snapshot) => (
-
           <div className="endcap-flank-container"
             {...provided.draggableProps}
             {...provided.dragHandleProps}
@@ -70,7 +72,7 @@ class EndcapCard extends React.Component {
             </div>
             {/* Endcap */}
             <div 
-              className="endcap-card" 
+              className={`endcap-card ${this.props.endcap && 'yellow'}`} 
               id={
                 (this.props.endcap.flanks[0] && this.props.endcap.flanks[1] ? 'nothing' : null) ||
                 (this.props.endcap.flanks[0] ? 'endcap-flank-a': '') || 
@@ -91,7 +93,9 @@ class EndcapCard extends React.Component {
                 </Link>
                 <div>
                   <h4 className="endcap-change">Change</h4>
-                  <input type="checkbox" id="endcap-checkbox" onClick={this.handleToggleClass}/>
+                  <input type="checkbox" id="endcap-checkbox" 
+                  onClick={() => this.props.handleToggleClass('Hello Toggle')}
+                  />
                 </div>
               </div>
             </div>

@@ -23,13 +23,30 @@ class App extends React.Component {
     columnOrder: ['column-1'],
     hasUpdated: false,
   }
-
-  handleHasUpdated = (hasUpdated) => {
-    this.setState({
-      hasUpdated: hasUpdated,
+  
+  componentDidMount() {
+    fetch('http://localhost:4000/api/endcaps')
+    .then((response) => response.json())
+    .then((jsonData) => {
+      const endcapData = jsonData.allEndcaps;
+      const updatedEndcapIds = endcapData.map((endcap) => {
+        return endcap._id;
+      })
+      const columnOneClone = {...this.state.columns['column-1']}
+      columnOneClone.endcapIds = updatedEndcapIds;
+      const newState = {
+        ...this.state,
+        endcaps: endcapData,
+        columns: {
+          ...this.state.columns,
+          'column-1': columnOneClone,
+        }
+      }
+      this.setState(newState);
     })
+    .catch((err) => console.log(err));
   }
-
+  
   componentDidUpdate() {
     if(this.state.hasUpdated){
       fetch('http://localhost:4000/api/endcaps')
@@ -54,40 +71,27 @@ class App extends React.Component {
       })
     }
   }
-
-  componentDidMount() {
-    fetch('http://localhost:4000/api/endcaps')
-      .then((response) => response.json())
-      .then((jsonData) => {
-        const endcapData = jsonData.allEndcaps;
-        const updatedEndcapIds = endcapData.map((endcap) => {
-          return endcap._id;
-        })
-        const columnOneClone = {...this.state.columns['column-1']}
-        columnOneClone.endcapIds = updatedEndcapIds;
-        const newState = {
-          ...this.state,
-          endcaps: endcapData,
-          columns: {
-            ...this.state.columns,
-            'column-1': columnOneClone,
-          }
-        }
-        this.setState(newState);
-      })
-      .catch((err) => console.log(err));
+  
+  handleToggleClass = (toggle) => {
+    console.log(toggle);
+  }
+  
+  handleHasUpdated = (hasUpdated) => {
+    this.setState({
+      hasUpdated: hasUpdated,
+    })
   }
 
   handleChangeMonth = (event) => {
     const monthIndex = event.target.value;
     this.setState({ month: monthIndex });
   }
-
+  
   handleChangePeriod = (event) => {
     const periodIndex = event.target.value;
     this.setState({ period: periodIndex });
   }
-
+  
   onDragEnd = (result) => {
     const { destination, source, draggableId } = result;
     if(!destination) {
@@ -129,6 +133,7 @@ class App extends React.Component {
               <HomePage 
                 month={this.state.month} 
                 period={this.state.period} 
+                handleToggleClass={this.handleToggleClass}
                 handleChangeMonth={this.handleChangeMonth} 
                 handleChangePeriod={this.handleChangePeriod} 
                 columnOrder={this.state.columnOrder}
