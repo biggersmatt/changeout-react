@@ -4,22 +4,22 @@ import { Draggable } from 'react-beautiful-dnd';
 require('./Endcap.css')
 
 class EndcapCard extends React.Component {
-  // handleToggleClass = (event) => {
-  //   event.preventDefault();
-  //   const updatedState = {
-  //     ...this.state,
-  //     change: !this.state.change,
-  //   }
-  //   fetch(`http://localhost:4000/api/endcaps/${this.props.endcap._id}`, {
-  //     method: 'PUT',
-  //     headers: {
-  //       'Content-Type': 'application/json',
-  //     },
-  //     body: JSON.stringify(updatedState),
-  //   })
-  //   .then(() => this.setState(updatedState))
-  //   .catch((err) => console.log(err));
-  // }
+  handleToggleClass = (event) => {
+    event.preventDefault();
+    const updatedState = {
+      ...this.state,
+      change: !this.state.change,
+    }
+    fetch(`http://localhost:4000/api/endcaps/${this.props.endcap._id}`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(updatedState),
+    })
+    .then(() => this.setState(updatedState))
+    .catch((err) => console.log(err));
+  }
 
   render() {
     const flankA = {
@@ -72,14 +72,14 @@ class EndcapCard extends React.Component {
             </div>
             {/* Endcap */}
             <div 
-              className={`endcap-card ${this.props.endcap && 'yellow'}`} 
+              className={`endcap-card ${this.props.endcap.change && 'yellow'}`} 
               id={
                 (this.props.endcap.flanks[0] && this.props.endcap.flanks[1] ? 'nothing' : null) ||
                 (this.props.endcap.flanks[0] ? 'endcap-flank-a': '') || 
                 (this.props.endcap.flanks[1] ? 'endcap-flank-b' : '') 
               }
-            // id={this.props.endcap.change && 'yellow'}
             >
+              {console.log(this.props.endcap.change)}
               <h3>{this.props.endcap.title}</h3>
               <p>{this.props.endcap.itemOne}</p>
               <p>{this.props.endcap.itemTwo}</p>
@@ -94,7 +94,7 @@ class EndcapCard extends React.Component {
                 <div>
                   <h4 className="endcap-change">Change</h4>
                   <input type="checkbox" id="endcap-checkbox" 
-                  onClick={() => this.props.handleToggleClass('Hello Toggle')}
+                  onClick={() => this.props.handleToggleClass(this.props.endcap.change, this.props.endcap._id)}
                   />
                 </div>
               </div>

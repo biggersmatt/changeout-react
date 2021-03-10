@@ -72,9 +72,46 @@ class App extends React.Component {
     }
   }
   
-  handleToggleClass = (toggle) => {
-    console.log(toggle);
+  handleToggleClass = (toggle, endcapId) => {
+    if(!toggle) {
+      this.state.endcaps.forEach((endcap) => {
+        if(endcap._id === endcapId) {
+          const updatedEndcap = {
+            ...endcap,
+            change: true,
+          }
+          fetch(`http://localhost:4000/api/endcaps/${endcapId}`, {
+            method: 'PUT',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(updatedEndcap),
+          })
+          .then(() => this.handleHasUpdated(true))
+          .catch((err) => console.log(err));
+        }
+      })
+    } else {
+      this.state.endcaps.forEach((endcap) => {
+        if(endcap._id === endcapId) {
+          const updatedEndcap = {
+            ...endcap,
+            change: false,
+          }
+          fetch(`http://localhost:4000/api/endcaps/${endcapId}`, {
+            method: 'PUT',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(updatedEndcap),
+          })
+          .then(() => this.handleHasUpdated(true))
+          .catch((err) => console.log(err));
+        }
+      })
+    }
   }
+
   
   handleHasUpdated = (hasUpdated) => {
     this.setState({

@@ -36,7 +36,7 @@
   margin-bottom: 5px;
 }
 
-#yellow {
+.yellow {
   background-color: var(--yellow);
   border: 1px solid var(--yellow-border);
 }
