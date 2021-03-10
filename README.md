@@ -50,4 +50,7 @@ React Beautiful DnD
 
 ## Shout Outs
 Thank you to the instructional team for all of their support and knowledge. 
-Kenny, Michael, Quin, and Milcah
+* Kenny
+* Michael
+* Quin
+* Milcah
