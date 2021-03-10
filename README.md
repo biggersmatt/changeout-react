@@ -41,3 +41,4 @@ Change Out is a MERN Application
 ### Future Features
 * Creation of a User Model
 * Login / Auth
+* Responsiveness that scales up on Desktops
