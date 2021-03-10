@@ -6,4 +6,4 @@ Most grocery stores have a two week advertising schedule. At the end of the two 
 This application provides a clean, dynamic UI for any store to use to help facilitate a smoother transition between advertising cycle and clear communication to employees what is and is not changing.
 
 ### Technologies Used
-Change Out &copy;
+Change Out &copy; is a MERN Application
