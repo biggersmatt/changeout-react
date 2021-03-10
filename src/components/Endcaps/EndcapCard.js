@@ -61,11 +61,11 @@ class EndcapCard extends React.Component {
             {/* Endcap */}
             <div 
               className={`endcap-card ${this.props.endcap.change && 'yellow'}`} 
-              // id={
-              //   (flankA && flankB ? 'nothing' : null) ||
-              //   (flankA ? 'endcap-flank-a': '') || 
-              //   (flankB ? 'endcap-flank-b' : '') 
-              // }
+              id={
+                (flankA.title && flankB.title ? 'nothing' : null) ||
+                (flankA.title ? 'endcap-flank-a': '') || 
+                (flankB.title ? 'endcap-flank-b' : '') 
+              }
             >
               <h3>{this.props.endcap.title}</h3>
               <p>{this.props.endcap.itemOne}</p>
