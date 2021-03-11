@@ -40,34 +40,30 @@ class App extends React.Component {
             body: JSON.stringify(this.state)
           })
         }
-        if(jsonData.settings.length === 1) {
-          // If Settings do exist, Update date them
-          console.log('Update Settings')
-          const settings = {
-            columnOrder: {
-              id: 'column-1',
-              title: 'To Do',
-              endcapsIds: [],
-            },
-            promoMonth: 'March',
-            promoPeriod: 'B',
-          }
-
-          jsonData.settings.forEach((setting) => {
-            fetch(`http://localhost:4000/api/settings/${setting._id}`, {
-              method: 'PUT',
-              headers: {
-                'Content-Type': 'application/json',
-              },
-              body: JSON.stringify(settings),
-            })
-              .catch((err) => console.log(err));
-          })
-        }
-        // console.log((jsonData.settings.length))
+        // if(jsonData.settings.length === 1) {
+        //   // If Settings do exist, Update date them
+        //   console.log('Update Settings')
+        //   const settings = {
+        //     columnOrder: {
+        //       id: 'column-1',
+        //       title: 'To Do',
+        //       endcapsIds: [],
+        //     },
+        //     promoMonth: 'March',
+        //     promoPeriod: 'B',
+        //   }
+        //   jsonData.settings.forEach((setting) => {
+        //     fetch(`http://localhost:4000/api/settings/${setting._id}`, {
+        //       method: 'PUT',
+        //       headers: {
+        //         'Content-Type': 'application/json',
+        //       },
+        //       body: JSON.stringify(settings),
+        //     })
+        //       .catch((err) => console.log(err));
+        //   })
+        // }
       })
-
-
     // Collect All Endcaps
     fetch('http://localhost:4000/api/endcaps')
     .then((response) => response.json())
@@ -87,6 +83,7 @@ class App extends React.Component {
         }
       }
       this.setState(newState);
+      console.log(this.state.columns['column-1'])
     })
     .catch((err) => console.log(err));
   }
@@ -234,9 +231,41 @@ class App extends React.Component {
         }
       }
     });
+    // Update column in Database
+    fetch('http://localhost:4000/api/settings')
+    .then((response) => response.json())
+    .then((jsonData) => {
+    if(jsonData.settings.length === 1) {
+      // If Settings do exist, Update date them
+      console.log('Update Settings')
+      console.log(this.state.columns['column-1'].endcapIds)
+      const settings = {
+        columnOrder: {
+          id: 'column-1',
+          title: 'To Do',
+          endcapIds: this.state.columns['column-1'].endcapIds,
+        },
+        promoMonth: 'March',
+        promoPeriod: 'B',
+      }
+
+      jsonData.settings.forEach((setting) => {
+        fetch(`http://localhost:4000/api/settings/${setting._id}`, {
+          method: 'PUT',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(settings),
+        })
+          .catch((err) => console.log(err));
+      })
+    }
+    })
   }
 
+
   render() {
+    console.log(this.state.columns['column-1'])
     return (
       <div className="wrapper">
         <Navbar />
