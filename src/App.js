@@ -81,20 +81,10 @@ class App extends React.Component {
       .then((response) => response.json())
       .then((jsonData) => {
         const endcapData = jsonData.allEndcaps;
-        const endcapIds = endcapData.map((endcapId) => {
-          return endcapId._id;
-        })
         const hasUpdated = !this.state.hasUpdated;
         this.setState({
           endcaps: endcapData,
           hasUpdated: hasUpdated,
-          columns: {
-            ...this.state.columns,
-            'column-1': {
-              ...this.state.columns['column-1'],
-              endcapIds: endcapIds,
-            }
-          }
         })
       })
     }
@@ -171,7 +161,6 @@ class App extends React.Component {
       .catch((err) => console.log(err));
     }
   }
-
   
   handleHasUpdated = (hasUpdated) => {
     this.setState({
