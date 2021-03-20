@@ -25,65 +25,66 @@ class App extends React.Component {
   }
   
   componentDidMount() {
-    // Checks and Updates Settings
-    fetch('http://localhost:4000/api/settings')
-      .then((response) => response.json())
-      .then((jsonData) => {
-        if(jsonData.settings.length === 0) {
-          // If No Settings exist, creates Settings
-          console.log('No Settings, Create')
-          fetch('http://localhost:4000/api/settings', {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(this.state)
-          })
-        }
-        // if(jsonData.settings.length === 1) {
-        //   // If Settings do exist, Update date them
-        //   console.log('Update Settings')
-        //   const settings = {
-        //     columnOrder: {
-        //       id: 'column-1',
-        //       title: 'To Do',
-        //       endcapsIds: [],
-        //     },
-        //     promoMonth: 'March',
-        //     promoPeriod: 'B',
-        //   }
-        //   jsonData.settings.forEach((setting) => {
-        //     fetch(`http://localhost:4000/api/settings/${setting._id}`, {
-        //       method: 'PUT',
-        //       headers: {
-        //         'Content-Type': 'application/json',
-        //       },
-        //       body: JSON.stringify(settings),
-        //     })
-        //       .catch((err) => console.log(err));
-        //   })
-        // }
-      })
     // Collect All Endcaps
     fetch('http://localhost:4000/api/endcaps')
     .then((response) => response.json())
     .then((jsonData) => {
       const endcapData = jsonData.allEndcaps;
-      const updatedEndcapIds = endcapData.map((endcap) => {
-        return endcap._id;
-      })
-      const columnOneClone = {...this.state.columns['column-1']}
-      columnOneClone.endcapIds = updatedEndcapIds;
-      const newState = {
-        ...this.state,
-        endcaps: endcapData,
-        columns: {
-          ...this.state.columns,
-          'column-1': columnOneClone,
-        }
-      }
-      this.setState(newState);
-      console.log(this.state.columns['column-1'])
+  
+      // Checks and Updates Settings
+      fetch('http://localhost:4000/api/settings')
+        .then((response) => response.json())
+        .then((jsonData) => {
+          if(jsonData.settings.length === 0) {
+            // If No Settings exist, creates Settings
+            console.log('No Settings, Create')
+            fetch('http://localhost:4000/api/settings', {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json',
+              },
+              body: JSON.stringify(this.state)
+            })
+          }
+          if(jsonData.settings.length === 1) {
+            // If Settings do exist, Update date them
+            console.log('Update Settings')
+            fetch('http://localhost:4000/api/settings')
+              .then((response) => response.json())
+              .then((jsonData => {
+                const currentColumnOrder = jsonData.settings[0].columnOrder.endcapIds;
+                const newState = {
+                  ...this.state,
+                  endcaps: endcapData,
+                  columns: {
+                    ...this.state.columns,
+                    'column-1': {
+                      ...this.state.columns['column-1'],
+                      endcapIds: currentColumnOrder,
+                    }
+                  }
+                }
+                console.log(newState)
+                this.setState(newState);
+              })
+            )
+          }
+        })
+
+      // const updatedEndcapIds = endcapData.map((endcap) => {
+      //   return endcap._id;
+      // })
+      // const columnOneClone = {...this.state.columns['column-1']}
+      // columnOneClone.endcapIds = updatedEndcapIds;
+      // const newState = {
+      //   ...this.state,
+      //   endcaps: endcapData,
+      //   columns: {
+      //     ...this.state.columns,
+      //     'column-1': columnOneClone,
+      //   }
+      // }
+      // this.setState(newState);
     })
     .catch((err) => console.log(err));
   }
@@ -265,7 +266,6 @@ class App extends React.Component {
 
 
   render() {
-    console.log(this.state.columns['column-1'])
     return (
       <div className="wrapper">
         <Navbar />
