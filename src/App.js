@@ -30,7 +30,6 @@ class App extends React.Component {
     .then((response) => response.json())
     .then((jsonData) => {
       const endcapData = jsonData.allEndcaps;
-  
       // Checks and Updates Settings
       fetch('http://localhost:4000/api/settings')
         .then((response) => response.json())
@@ -48,43 +47,26 @@ class App extends React.Component {
           }
           if(jsonData.settings.length === 1) {
             // If Settings do exist, Update date them
-            console.log('Update Settings')
             fetch('http://localhost:4000/api/settings')
-              .then((response) => response.json())
-              .then((jsonData => {
-                const currentColumnOrder = jsonData.settings[0].columnOrder.endcapIds;
-                const newState = {
-                  ...this.state,
-                  endcaps: endcapData,
-                  columns: {
-                    ...this.state.columns,
-                    'column-1': {
-                      ...this.state.columns['column-1'],
-                      endcapIds: currentColumnOrder,
-                    }
+            .then((response) => response.json())
+            .then((jsonData => {
+              const currentColumnOrder = jsonData.settings[0].columnOrder.endcapIds;
+              const newState = {
+                ...this.state,
+                endcaps: endcapData,
+                columns: {
+                  ...this.state.columns,
+                  'column-1': {
+                    ...this.state.columns['column-1'],
+                    endcapIds: currentColumnOrder,
                   }
                 }
-                console.log(newState)
-                this.setState(newState);
-              })
-            )
-          }
-        })
-
-      // const updatedEndcapIds = endcapData.map((endcap) => {
-      //   return endcap._id;
-      // })
-      // const columnOneClone = {...this.state.columns['column-1']}
-      // columnOneClone.endcapIds = updatedEndcapIds;
-      // const newState = {
-      //   ...this.state,
-      //   endcaps: endcapData,
-      //   columns: {
-      //     ...this.state.columns,
-      //     'column-1': columnOneClone,
-      //   }
-      // }
-      // this.setState(newState);
+              }
+              this.setState(newState);
+            })
+          )
+        }
+      })
     })
     .catch((err) => console.log(err));
   }

@@ -31,7 +31,6 @@ class HomePage extends React.Component {
           <main>
             {this.props.columnOrder.map(columnId => {
             const column = this.props.columns[columnId];
-            console.log(column)
             const endcaps = column.endcapIds.map(endcapId => {
             return this.props.endcaps.find((endcap) => endcap._id === endcapId);
             });
