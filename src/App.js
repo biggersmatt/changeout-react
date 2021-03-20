@@ -51,6 +51,8 @@ class App extends React.Component {
             .then((response) => response.json())
             .then((jsonData => {
               const currentColumnOrder = jsonData.settings[0].columnOrder.endcapIds;
+              const currentPromoMonth = jsonData.settings[0].promoMonth;
+              const currentPromoPeriod = jsonData.settings[0].promoPeriod;
               const newState = {
                 ...this.state,
                 endcaps: endcapData,
@@ -60,7 +62,9 @@ class App extends React.Component {
                     ...this.state.columns['column-1'],
                     endcapIds: currentColumnOrder,
                   }
-                }
+                },
+                month: currentPromoMonth,
+                period: currentPromoPeriod,
               }
               this.setState(newState);
             })
