@@ -1,9 +1,13 @@
 const Month = (props) => {
-  console.log(props.month)
+  console.log(props)
   return (
     <li className="homepage-promo-selection">
-      <input type="text" placeholder={props.month}/>
-      {/* onChange={props.handleChangeMonth} */}
+      <form onSubmit={props.handleChangeMonth}>
+        <input 
+          type="text" 
+          value={props.month}
+          onChange={props.handleChange}/>
+      </form>
     </li>
   )
 }

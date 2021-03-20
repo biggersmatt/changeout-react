@@ -54,7 +54,7 @@ class EndcapCard extends React.Component {
                     className={flankA.change ? 'flank-completed' : 'flank-change'}
                     onClick={() => this.props.handleToggleFlank(flankA.change, this.props.endcap.flankA)}
                   >
-                    {flankA.change ? 'Completed' : 'Change'}
+                    {flankA.change ? 'Complete' : 'Change'}
                   </h4>
                 </div>
               </div>
@@ -84,7 +84,7 @@ class EndcapCard extends React.Component {
                     className={this.props.endcap.change ? 'endcap-completed' : 'endcap-change'}
                     onClick={() => this.props.handleToggleEndcap(this.props.endcap.change, this.props.endcap._id)}
                   >
-                    {this.props.endcap.change ? 'Completed' : 'Change'}
+                    {this.props.endcap.change ? 'Complete' : 'Change'}
                   </h4>
                 </div>
               </div>
@@ -106,7 +106,7 @@ class EndcapCard extends React.Component {
                     className={flankB.change ? 'flank-completed' : 'flank-change'}
                     onClick={() => this.props.handleToggleFlank(flankB.change, this.props.endcap.flankB)}
                   >
-                    {flankB.change ? 'Completed' : 'Change'}
+                    {flankB.change ? 'Complete' : 'Change'}
                   </h4>
                 </div>
               </div>

@@ -1,8 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { DragDropContext } from 'react-beautiful-dnd';
-import Month from '../components/Promo/Month';
-import Period from '../components/Promo/Period';
+// import Month from '../components/Promo/Month';
+// import Period from '../components/Promo/Period';
 import EndcapsList from '../components/Endcaps/EndcapsList';
 
 class HomePage extends React.Component {
@@ -17,13 +17,16 @@ class HomePage extends React.Component {
             <h3>New Endcap</h3>
           </div>
           <h1 className="homepage-title">Change Out</h1>
-          <div className="homepage-promo">
+          {/* <div className="homepage-promo">
             <ul>
               <li className="homepage-promo-title">Promo</li>
-              <Month month={this.props.month} handleChangeMonth={this.props.handleChangeMonth}/>
+              <Month 
+                month={this.props.month} 
+                handleChangeMonth={this.props.handleChangeMonth}
+                handleChange={this.props.handleChange}/>
               <Period period={this.props.period} handleChangePeriod={this.props.handleChangePeriod} />
             </ul>
-          </div>
+          </div> */}
         </header>
         <DragDropContext
           onDragEnd={this.props.onDragEnd}

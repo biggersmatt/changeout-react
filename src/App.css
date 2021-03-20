@@ -89,14 +89,14 @@ header {
   display: flex;
   justify-content: space-around;
   height: 150px;
+  width: 606px;
   margin-top: 10px;
 }
 
 .endcap-btn-wrapper {
   display: flex;
   align-items: center;
-  margin-top: 50px;
-  padding-left: 20px;
+  margin: 50px 0 0 0;
 }
 
 .endcap-btn {
@@ -121,7 +121,7 @@ header {
 .homepage-title {
   font-size: 40px;
   margin-top: 20px;
-  margin-left: -60px;
+  margin-right: 180px;
 }
 
 .homepage-promo-title {

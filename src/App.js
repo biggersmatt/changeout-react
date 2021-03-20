@@ -179,9 +179,15 @@ class App extends React.Component {
     })
   }
 
+  handleChange = (event) => {
+    this.setState({
+      [event.target.id]: event.target.value
+    })
+  }
+
   handleChangeMonth = (event) => {
-    const monthIndex = event.target.value;
-    this.setState({ month: monthIndex });
+    event.preventDefault();
+    console.log(event.target)
   }
   
   handleChangePeriod = (event) => {
@@ -261,6 +267,7 @@ class App extends React.Component {
               <HomePage 
                 month={this.state.month} 
                 period={this.state.period} 
+                handleChange={this.handleChange}
                 handleToggleEndcap={this.handleToggleEndcap}
                 handleToggleFlank={this.handleToggleFlank}
                 handleChangeMonth={this.handleChangeMonth} 
