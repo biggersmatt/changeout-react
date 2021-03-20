@@ -51,8 +51,6 @@ class App extends React.Component {
             .then((response) => response.json())
             .then((jsonData => {
               const currentColumnOrder = jsonData.settings[0].columnOrder.endcapIds;
-              const currentPromoMonth = jsonData.settings[0].promoMonth;
-              const currentPromoPeriod = jsonData.settings[0].promoPeriod;
               const newState = {
                 ...this.state,
                 endcaps: endcapData,
@@ -63,8 +61,6 @@ class App extends React.Component {
                     endcapIds: currentColumnOrder,
                   }
                 },
-                month: currentPromoMonth,
-                period: currentPromoPeriod,
               }
               this.setState(newState);
             })
@@ -81,11 +77,69 @@ class App extends React.Component {
       .then((response) => response.json())
       .then((jsonData) => {
         const endcapData = jsonData.allEndcaps;
-        const hasUpdated = !this.state.hasUpdated;
-        this.setState({
-          endcaps: endcapData,
-          hasUpdated: hasUpdated,
+        fetch('http://localhost:4000/api/settings')
+        .then((response) => response.json())
+        .then((jsonData) => {
+          const currentColumnOrder = jsonData.settings[0].columnOrder.endcapIds;
+          if(endcapData.length !== currentColumnOrder.length) {
+            const newEndCapId = endcapData[endcapData.length - 1]._id;
+            currentColumnOrder.push(newEndCapId);
+            // Update column in Database
+            fetch('http://localhost:4000/api/settings')
+            .then((response) => response.json())
+            .then((jsonData) => {
+                const settings = {
+                  columnOrder: {
+                    id: 'column-1',
+                    title: 'To Do',
+                    endcapIds: currentColumnOrder,
+                  },
+                  promoMonth: 'March',
+                  promoPeriod: 'B',
+                }
+                jsonData.settings.forEach((setting) => {
+                  fetch(`http://localhost:4000/api/settings/${setting._id}`, {
+                    method: 'PUT',
+                    headers: {
+                      'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(settings),
+                  })
+                  .catch((err) => console.log(err));
+                })
+                this.setState({
+                  endcaps: endcapData,
+                  columns: {
+                    ...this.state.columns,
+                    'column-1': {
+                      ...this.state.columns['column-1'],
+                      endcapIds: currentColumnOrder,
+                    }
+                  },
+                  hasUpdated: hasUpdated,
+                })
+            })
+          } else {
+            this.setState({
+              endcaps: endcapData,
+              hasUpdated: hasUpdated,
+            })
+          }
         })
+
+
+        const hasUpdated = !this.state.hasUpdated;
+        // this.setState({
+        //   endcaps: endcapData,
+        //   columns: {
+        //     ...this.state.columns,
+        //     'column-1': {
+        //       ...this.state.columns['column-1'],
+        //       endcapIds: currentColumnOrder,
+        //     }
+        //   },
+        //   hasUpdated: hasUpdated,
+        // })
       })
     }
   }
