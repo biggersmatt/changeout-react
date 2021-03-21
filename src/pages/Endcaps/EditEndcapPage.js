@@ -45,10 +45,35 @@ class EditEndcapPage extends React.Component {
     fetch(`http://localhost:4000/api/endcaps/${endcapId}`, {
       method: 'DELETE',
     })
-      .then(() => {
-        this.props.handleHasUpdated(true)
+    fetch('http://localhost:4000/api/settings')
+    .then((response) => response.json())
+    .then((jsonData) => {
+      const currentColumnOrder = jsonData.settings[0].columnOrder.endcapIds;
+      const updatedColumnOrder = currentColumnOrder.filter((value,index,arr) => !endcapId);
+      const settings = {
+        columnOrder: {
+          id: 'column-1',
+          title: 'To Do',
+          endcapIds: updatedColumnOrder,
+        },
+        promoMonth: 'March',
+        promoPeriod: 'B',
+      }
+      jsonData.settings.forEach((setting) => {
+        fetch(`http://localhost:4000/api/settings/${setting._id}`, {
+          method: 'PUT',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(settings),
+        })
+        .catch((err) => console.log(err));
       })
-      .catch((err) => console.log(err))
+
+    })
+
+    .then(() => this.props.handleHasUpdated(true))
+    .catch((err) => console.log(err))
   }
 
   render() {

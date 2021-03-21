@@ -2,6 +2,8 @@ import { Droppable } from 'react-beautiful-dnd';
 import EndcapCard from '../Endcaps/EndcapCard';
 
 const EndcapsList = (props) => {
+  console.log(props.endcaps.length)
+
     return (
       <Droppable droppableId={props.column.id}>
         {(provided, snapshot) => (

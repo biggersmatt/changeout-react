@@ -126,20 +126,7 @@ class App extends React.Component {
             })
           }
         })
-
-
         const hasUpdated = !this.state.hasUpdated;
-        // this.setState({
-        //   endcaps: endcapData,
-        //   columns: {
-        //     ...this.state.columns,
-        //     'column-1': {
-        //       ...this.state.columns['column-1'],
-        //       endcapIds: currentColumnOrder,
-        //     }
-        //   },
-        //   hasUpdated: hasUpdated,
-        // })
       })
     }
   }
@@ -273,8 +260,6 @@ class App extends React.Component {
     .then((jsonData) => {
     if(jsonData.settings.length === 1) {
       // If Settings do exist, Update date them
-      console.log('Update Settings')
-      console.log(this.state.columns['column-1'].endcapIds)
       const settings = {
         columnOrder: {
           id: 'column-1',
