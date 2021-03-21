@@ -69,9 +69,7 @@ class EditEndcapPage extends React.Component {
         })
         .catch((err) => console.log(err));
       })
-
     })
-
     .then(() => this.props.handleHasUpdated(true))
     .catch((err) => console.log(err))
   }
