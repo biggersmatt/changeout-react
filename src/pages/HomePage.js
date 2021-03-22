@@ -38,6 +38,7 @@ class HomePage extends React.Component {
             return this.props.endcaps.find((endcap) => endcap._id === endcapId);
             });
             console.log(endcaps)
+            console.log(column)
             return <EndcapsList 
                       handleToggleEndcap={this.props.handleToggleEndcap}
                       handleToggleFlank={this.props.handleToggleFlank}

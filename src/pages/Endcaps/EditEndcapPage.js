@@ -49,7 +49,7 @@ class EditEndcapPage extends React.Component {
     .then((response) => response.json())
     .then((jsonData) => {
       const currentColumnOrder = jsonData.settings[0].columnOrder.endcapIds;
-      const updatedColumnOrder = currentColumnOrder.filter((value,index,arr) => !endcapId);
+      const updatedColumnOrder = currentColumnOrder.filter((remainingId) => remainingId !== endcapId);
       const settings = {
         columnOrder: {
           id: 'column-1',
