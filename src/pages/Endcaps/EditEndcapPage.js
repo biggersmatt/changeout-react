@@ -79,7 +79,7 @@ class EditEndcapPage extends React.Component {
       <div className="endcap-wrapper">
         <h1>Edit Endcap</h1>
         <div className="endcap-edit-wrapper">
-          <div>
+          <div id={this.props.endcaps.length === 1 ? 'hidden' : null}>
             <Link to="/">
               <button 
                 className="endcap-btn" 

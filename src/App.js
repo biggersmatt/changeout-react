@@ -324,7 +324,8 @@ class App extends React.Component {
             <Route path='/edit/:id'>
               <EditEndcapPage 
                 handleHasUpdated={this.handleHasUpdated}
-              />›
+                endcaps={this.state.endcaps}
+              />
             </Route>
           </Switch>
         </div>
