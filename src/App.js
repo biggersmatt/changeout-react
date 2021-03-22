@@ -81,68 +81,141 @@ class App extends React.Component {
         console.log('How many Endcaps Currently')
         console.log(endcapData)
         console.log('*********************************************')
-        fetch('http://localhost:4000/api/settings')
-        .then((response) => response.json())
-        .then((jsonData) => {
-          // console.log(jsonData.settings[0].columnOrder.endcapIds)
-          const currentColumnOrder = jsonData.settings[0].columnOrder.endcapIds.map((endcapId) => {
-            // console.log(endcapId)
-            return endcapId;
-          });
+
+        if(endcapData.length > this.state.endcaps.length) {
+          console.log("Route Hit");
+
+          // Index Database For Current IDs to Compare
+          fetch('http://localhost:4000/api/settings')
+          .then((response) => response.json())
+          .then((jsonData) => {
+            const currentColumnOrder = jsonData.settings[0].columnOrder.endcapIds;
+            const newEndCapId = endcapData[endcapData.length - 1]._id;
+            currentColumnOrder.push(newEndCapId);
+              const settings = {
+                columnOrder: {
+                  id: 'column-1',
+                  title: 'To Do',
+                  endcapIds: currentColumnOrder,
+                },
+                promoMonth: 'March',
+                promoPeriod: 'B',
+              }
+
+              // Updates Database with New Order
+              jsonData.settings.forEach((setting) => {
+                fetch(`http://localhost:4000/api/settings/${setting._id}`, {
+                  method: 'PUT',
+                  headers: {
+                    'Content-Type': 'application/json',
+                  },
+                  body: JSON.stringify(settings),
+                })
+                .then(() => {
+                  fetch('http://localhost:4000/api/settings')
+                  .then((response) => response.json())
+                  .then((jsonData) => {
+                    const currentColumnOrder = jsonData.settings[0].columnOrder.endcapIds;
+                    console.log(jsonData);
+                    const hasUpdated = !this.state.hasUpdated;
+
+                    // Sets state With New Order
+                    this.setState({
+                      endcaps: endcapData,
+                      columns: {
+                        ...this.state.columns,
+                        'column-1': {
+                          ...this.state.columns['column-1'],
+                          endcapIds: currentColumnOrder,
+                        }
+                      },
+                      hasUpdated: hasUpdated,
+                    })
+                  })
+                })
+                .catch((err) => console.log(err));
+              })
+          })
+        } else {
+          fetch('http://localhost:4000/api/settings')
+          .then((response) => response.json())
+          .then((jsonData) => {
+            const currentColumnOrder = jsonData.settings[0].columnOrder.endcapIds;
+            console.log(jsonData);
+            const hasUpdated = !this.state.hasUpdated;
+            this.setState({
+              endcaps: endcapData,
+              columns: {
+                ...this.state.columns,
+                'column-1': {
+                  ...this.state.columns['column-1'],
+                  endcapIds: currentColumnOrder,
+                }
+              },
+              hasUpdated: hasUpdated,
+            })
+          })
+        }
+
+          // // console.log(jsonData.settings[0].columnOrder.endcapIds)
+          // const currentColumnOrder = jsonData.settings[0].columnOrder.endcapIds.map((endcapId) => {
+          //   // console.log(endcapId)
+          //   return endcapId;
+          // });
           // console.log('Amount of Endcaps in Array')
           // console.log(endcapData.length)
           // console.log('How many endcapIds are in the columnOrder')
           // console.log(currentColumnOrder.length)
-          if(endcapData.length !== currentColumnOrder.length) {
-            console.log("Route Hit");
-            const newEndCapId = endcapData[endcapData.length - 1]._id;
-            currentColumnOrder.push(newEndCapId);
-            // console.log('How many endcapIds are in the columnOrder')
-            // console.log(currentColumnOrder.length)
-            // console.log(currentColumnOrder)
-            fetch('http://localhost:4000/api/settings')
-            .then((response) => response.json())
-            .then((jsonData) => {
-                const settings = {
-                  columnOrder: {
-                    id: 'column-1',
-                    title: 'To Do',
-                    endcapIds: currentColumnOrder,
-                  },
-                  promoMonth: 'March',
-                  promoPeriod: 'B',
-                }
-                jsonData.settings.forEach((setting) => {
-                  fetch(`http://localhost:4000/api/settings/${setting._id}`, {
-                    method: 'PUT',
-                    headers: {
-                      'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify(settings),
-                  })
-                  .catch((err) => console.log(err));
-                })
-                // console.log(currentColumnOrder)
-                this.setState({
-                  endcaps: endcapData,
-                  columns: {
-                    ...this.state.columns,
-                    'column-1': {
-                      ...this.state.columns['column-1'],
-                      endcapIds: currentColumnOrder,
-                    }
-                  },
-                  hasUpdated: hasUpdated,
-                })
-            })
-          } else {
-            this.setState({
-              endcaps: endcapData,
-              hasUpdated: hasUpdated,
-            })
-          }
-        })
-        const hasUpdated = !this.state.hasUpdated;
+          // if(endcapData.length !== currentColumnOrder.length) {
+          //   console.log("Route Hit");
+          //   const newEndCapId = endcapData[endcapData.length - 1]._id;
+          //   currentColumnOrder.push(newEndCapId);
+          //   console.log('How many endcapIds are in the columnOrder')
+          //   console.log(currentColumnOrder.length)
+          //   console.log(currentColumnOrder)
+          //   fetch('http://localhost:4000/api/settings')
+          //   .then((response) => response.json())
+          //   .then((jsonData) => {
+          //       const settings = {
+          //         columnOrder: {
+          //           id: 'column-1',
+          //           title: 'To Do',
+          //           endcapIds: currentColumnOrder,
+          //         },
+          //         promoMonth: 'March',
+          //         promoPeriod: 'B',
+          //       }
+          //       jsonData.settings.forEach((setting) => {
+          //         fetch(`http://localhost:4000/api/settings/${setting._id}`, {
+          //           method: 'PUT',
+          //           headers: {
+          //             'Content-Type': 'application/json',
+          //           },
+          //           body: JSON.stringify(settings),
+          //         })
+          //         .catch((err) => console.log(err));
+          //       })
+          //       // console.log(currentColumnOrder)
+          //       this.setState({
+          //         endcaps: endcapData,
+          //         columns: {
+          //           ...this.state.columns,
+          //           'column-1': {
+          //             ...this.state.columns['column-1'],
+          //             endcapIds: currentColumnOrder,
+          //           }
+          //         },
+          //         hasUpdated: hasUpdated,
+          //       })
+          //   })
+          // } else {
+          //   this.setState({
+          //     endcaps: endcapData,
+          //     hasUpdated: hasUpdated,
+          //   })
+          // }
+        // })
+        // const hasUpdated = !this.state.hasUpdated;
       })
     }
   }
@@ -302,8 +375,8 @@ class App extends React.Component {
 
 
   render() {
-    // console.log(this.state.endcaps)
-    // console.log(this.state.columns)
+    console.log(this.state.endcaps)
+    console.log(this.state.columns['column-1'].endcapIds)
     return (
       <div className="wrapper">
         <Navbar />
