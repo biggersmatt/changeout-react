@@ -1,26 +1,31 @@
 header {
-  background-color: pink;
   display: flex;
+  flex-direction: column;
   justify-content: center;
-  height: 150px;
+  align-items: center;
+  height: 100px;
 }
 
 .endcap-btn-wrapper {
   display: flex;
   align-items: center;
-  margin: 50px 0 0 0;
+  margin: 20px 150px 0 0;
 }
 
 .endcap-btn {
-  height: 50px;
-  width: 50px;
+  height: 30px;
+  width: 30px;
   margin-right: 10px;
   border-radius: 100px;
-  font-size: 40px;
+  font-size: 20px;
   background-color: var(--green);
 }
 
 .endcap-btn:hover {
   transform: scale(1.1);
   cursor: pointer;
+}
+
+.header-title {
+  font-size: 30px;
 }

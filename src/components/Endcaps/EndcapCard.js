@@ -1,21 +1,22 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Draggable } from 'react-beautiful-dnd';
-require('./Endcap.css')
+import FlankA from '../FlankA/FlankA';
+require('./EndcapCard.css')
 
 class EndcapCard extends React.Component {
   render() {
-    const flankA = {
-      id: this.props.endcap.flankA ? this.props.endcap.flankA._id: '',
-      title: this.props.endcap.flankA ? this.props.endcap.flankA.title : '',
-      itemOne: this.props.endcap.flankA ? this.props.endcap.flankA.itemOne : '',
-      itemTwo: this.props.endcap.flankA ? this.props.endcap.flankA.itemTwo: '',
-      itemThree: this.props.endcap.flankA ? this.props.endcap.flankA.itemThree : '',
-      itemFour: this.props.endcap.flankA ? this.props.endcap.flankA.itemFour : '',
-      itemFive: this.props.endcap.flankA ? this.props.endcap.flankA.itemFive : '',
-      change: this.props.endcap.flankA ? this.props.endcap.flankA.change : '',
-      side: this.props.endcap.flankA ? this.props.endcap.flankA.side : '',
-    }
+    // const flankA = {
+    //   id: this.props.endcap.flankA ? this.props.endcap.flankA._id: '',
+    //   title: this.props.endcap.flankA ? this.props.endcap.flankA.title : '',
+    //   itemOne: this.props.endcap.flankA ? this.props.endcap.flankA.itemOne : '',
+    //   itemTwo: this.props.endcap.flankA ? this.props.endcap.flankA.itemTwo: '',
+    //   itemThree: this.props.endcap.flankA ? this.props.endcap.flankA.itemThree : '',
+    //   itemFour: this.props.endcap.flankA ? this.props.endcap.flankA.itemFour : '',
+    //   itemFive: this.props.endcap.flankA ? this.props.endcap.flankA.itemFive : '',
+    //   change: this.props.endcap.flankA ? this.props.endcap.flankA.change : '',
+    //   side: this.props.endcap.flankA ? this.props.endcap.flankA.side : '',
+    // }
 
     const flankB = {
       id: this.props.endcap.flankB ? this.props.endcap.flankB._id: '',
@@ -37,8 +38,9 @@ class EndcapCard extends React.Component {
             {...provided.dragHandleProps}
             ref={provided.innerRef}
           >
+            <FlankA endcap={this.props.endcap} flankA={this.props.endcap.flankA}/>
             {/* Flank A */}
-            <div className={flankA.change ? 'flank-yellow' : 'flank-green'} id={!flankA.title ? 'hidden' : null}>
+            {/* <div className={flankA.change ? 'flank-yellow' : 'flank-green'} id={!flankA.title ? 'hidden' : null}>
               <h4>{flankA.title}</h4>
               <p>{flankA.itemOne}</p>
               <p>{flankA.itemTwo}</p>
@@ -58,13 +60,13 @@ class EndcapCard extends React.Component {
                   </h4>
                 </div>
               </div>
-            </div>
+            </div> */}
             {/* Endcap */}
             <div 
               className={`endcap-card ${this.props.endcap.change && 'yellow'}`} 
               id={
-                (flankA.title && flankB.title ? 'nothing' : null) ||
-                (flankA.title ? 'endcap-flank-a': '') || 
+                (this.props.endcap.flankA.title && flankB.title ? 'nothing' : null) ||
+                (this.props.endcap.flankA.title ? 'endcap-flank-a': '') || 
                 (flankB.title ? 'endcap-flank-b' : '') 
               }
             >
