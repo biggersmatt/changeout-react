@@ -1,21 +1,14 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import { DragDropContext } from 'react-beautiful-dnd';
-import EndcapsList from '../components/Endcaps/EndcapsList';
+import Header from '../../components/Header/Header';
+import EndcapsList from '../../components/Endcaps/EndcapsList';
+require('./Homepage.css');
 
 class HomePage extends React.Component {
   render() {
     return (
       <div>
-        <header>
-          <div className="endcap-btn-wrapper">
-            <Link to="/new">
-              <button className="endcap-btn">+</button>
-            </Link>
-            <h3>New Endcap</h3>
-          </div>
-          <h1 className="homepage-title">Change Out</h1>
-        </header>
+        <Header />
         <DragDropContext
           onDragEnd={this.props.onDragEnd}
         >

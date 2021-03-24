@@ -1,9 +1,8 @@
-/* Navbar */
 nav {
   display: flex;
   justify-content: space-around;
   align-items: center;
-  background-color: rgb(13,94,54);
+  background-color: var(--wfm-green);
   height: 60px;
   border-bottom: 1px solid grey;
 }
@@ -16,6 +15,6 @@ nav {
   color: white;
 }
 
-.navbar-link:hover {
+.nav-items li:hover {
   transform: scale(1.2);
 }
