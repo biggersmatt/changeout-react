@@ -1,53 +1,6 @@
-header {
-  background-color: pink;
-  display: flex;
-  justify-content: center;
-  height: 150px;
-  margin-top: 10px;
-}
-
-.endcap-btn-wrapper {
-  display: flex;
-  align-items: center;
-  margin: 50px 0 0 0;
-}
-
-.endcap-btn {
-  height: 50px;
-  width: 50px;
-  margin-right: 10px;
-  border-radius: 100px;
-  font-size: 40px;
-  background-color: var(--green);
-}
-
-.endcap-btn:hover {
-  transform: scale(1.1);
-  cursor: pointer;
-}
-
 .homepage-new-btn:hover {
   cursor: pointer;
   transform: scale(1.1);
-}
-
-.homepage-title {
-  font-size: 40px;
-  margin-top: 20px;
-  margin-right: 180px;
-}
-
-.homepage-promo-title {
-  font-size: 20px;
-  text-align: center;
-}
-
-.homepage-promo-selection {
-  margin: 5px 20px 0 0;
-}
-
-select {
-  width: 100%;
 }
 
 main {
