@@ -1,27 +1,21 @@
 /* Navbar */
 nav {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
-  background-color: lightblue;
-  height: 100px;
+  background-color: rgb(13,94,54);
+  height: 60px;
   border-bottom: 1px solid grey;
 }
 
-img {
-  height: 100%;
-  width: 30%;
+.navbar-greeting {
+  color: white; 
 }
 
-.nav-items {
-  display: flex;
-  margin-right: 10px;
+.navbar-link {
+  color: white;
 }
 
-.nav-items li {
-  padding: 10px;
-}
-
-.nav-items li:hover {
+.navbar-link:hover {
   transform: scale(1.2);
 }
