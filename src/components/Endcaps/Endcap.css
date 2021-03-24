@@ -2,7 +2,7 @@
   position: relative;
   background-color: var(--green);
   height: 300px;
-  width: 300px;
+  width: 40%;
   border: 1px solid var(--green-border);
   border-radius: 35px;
   overflow: hidden;
@@ -84,7 +84,7 @@
   background-color: var(--green);
   border: 1px solid var(--green-border);
   height: 300px;
-  width: 150px;
+  width: 30%;
   border-radius: 35px;
   display: flex;
   flex-direction: column;
@@ -105,8 +105,10 @@
 }
 
 .endcap-flank-container {
+  background-color: blue;
   display: flex;
   justify-content: center;
+  width: 98vw;
 }
 
 #hidden {
