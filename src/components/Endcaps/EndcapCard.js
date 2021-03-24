@@ -6,18 +6,6 @@ require('./EndcapCard.css')
 
 class EndcapCard extends React.Component {
   render() {
-    // const flankA = {
-    //   id: this.props.endcap.flankA ? this.props.endcap.flankA._id: '',
-    //   title: this.props.endcap.flankA ? this.props.endcap.flankA.title : '',
-    //   itemOne: this.props.endcap.flankA ? this.props.endcap.flankA.itemOne : '',
-    //   itemTwo: this.props.endcap.flankA ? this.props.endcap.flankA.itemTwo: '',
-    //   itemThree: this.props.endcap.flankA ? this.props.endcap.flankA.itemThree : '',
-    //   itemFour: this.props.endcap.flankA ? this.props.endcap.flankA.itemFour : '',
-    //   itemFive: this.props.endcap.flankA ? this.props.endcap.flankA.itemFive : '',
-    //   change: this.props.endcap.flankA ? this.props.endcap.flankA.change : '',
-    //   side: this.props.endcap.flankA ? this.props.endcap.flankA.side : '',
-    // }
-
     const flankB = {
       id: this.props.endcap.flankB ? this.props.endcap.flankB._id: '',
       title: this.props.endcap.flankB ? this.props.endcap.flankB.title : '',
@@ -38,29 +26,11 @@ class EndcapCard extends React.Component {
             {...provided.dragHandleProps}
             ref={provided.innerRef}
           >
-            <FlankA endcap={this.props.endcap} flankA={this.props.endcap.flankA}/>
-            {/* Flank A */}
-            {/* <div className={flankA.change ? 'flank-yellow' : 'flank-green'} id={!flankA.title ? 'hidden' : null}>
-              <h4>{flankA.title}</h4>
-              <p>{flankA.itemOne}</p>
-              <p>{flankA.itemTwo}</p>
-              <p>{flankA.itemThree}</p>
-              <p>{flankA.itemFour}</p>
-              <p>{flankA.itemFive}</p>
-              <div className="endcap-card-btns">
-                <Link to={`/edit/${this.props.endcap._id}/flank/${flankA.id}`}>
-                <h4 className={flankA.change ? 'flank-edit-completed' : 'flank-edit-change'}>Edit</h4>
-                </Link>
-                <div>
-                  <h4 
-                    className={flankA.change ? 'flank-completed' : 'flank-change'}
-                    onClick={() => this.props.handleToggleFlank(flankA.change, this.props.endcap.flankA)}
-                  >
-                    {flankA.change ? 'Complete' : 'Change'}
-                  </h4>
-                </div>
-              </div>
-            </div> */}
+            <FlankA 
+              endcap={this.props.endcap} 
+              flankA={this.props.flankA} 
+              handleToggleFlank={this.props.handleToggleFlank}
+            />
             {/* Endcap */}
             <div 
               className={`endcap-card ${this.props.endcap.change && 'yellow'}`} 

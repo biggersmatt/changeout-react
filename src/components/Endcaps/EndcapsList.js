@@ -17,6 +17,8 @@ const EndcapsList = (props) => {
                       key={endcap._id} 
                       index={index} 
                       endcap={endcap}
+                      flankA={endcap.flankA}
+                      flankB={endcap.flankB}
                     />
           })}
           {provided.placeholder}
