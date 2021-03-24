@@ -51,14 +51,17 @@ class EditFlankPage extends React.Component {
   handleDeleteEndcap = (flankId) => {
     fetch(`http://localhost:4000/api/flanks/${flankId}`, {
       method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(this.props)
     })
-      .then(() => {
-        this.props.handleHasUpdated(true)
-      })
+      .then(() => this.props.handleHasUpdated(true))
       .catch((err) => console.log(err))
   }
 
   render() {
+    console.log(this.props.history.location.pathname.slice(6, 30))
     return (
       <div className="endcap-wrapper">
         <h1>Edit Flank</h1>
