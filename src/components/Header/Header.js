@@ -4,7 +4,7 @@ require('./Header.css');
 const Header = () => {
   return (
     <header>
-      <h1 className="header-title">Change Out</h1>
+      <h1 className="header-title">ChangeOut</h1>
       <div className="endcap-btn-wrapper">
         <Link to="/new">
           <button className="endcap-btn">+</button>

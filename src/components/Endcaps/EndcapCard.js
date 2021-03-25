@@ -36,7 +36,7 @@ class EndcapCard extends React.Component {
                 (flankB.title ? 'endcap-flank-b' : '') 
               }
             >
-              <h3>{this.props.endcap.title}</h3>
+              <h3 className="endcap-card-title">{this.props.endcap.title}</h3>
               <p>{this.props.endcap.itemOne}</p>
               <p>{this.props.endcap.itemTwo}</p>
               <p>{this.props.endcap.itemThree}</p>
@@ -45,15 +45,15 @@ class EndcapCard extends React.Component {
               <p>{this.props.endcap.change}</p>
               <div className="endcap-card-btns">
                 <Link to={`/edit/${this.props.endcap._id}`}>
-                <h4 className={this.props.endcap.change ? 'endcap-edit-completed' : 'endcap-edit-change'}>Edit</h4>
+                  <p className={this.props.endcap.change ? 'endcap-edit-completed' : 'endcap-edit-change'}>Edit Info</p>
                 </Link>
                 <div>
-                  <h4 
+                  <p 
                     className={this.props.endcap.change ? 'endcap-completed' : 'endcap-change'}
                     onClick={() => this.props.handleToggleEndcap(this.props.endcap.change, this.props.endcap._id)}
                   >
-                    {this.props.endcap.change ? 'Complete' : 'Change'}
-                  </h4>
+                    {this.props.endcap.change ? 'Complete' : 'ChangeOut'}
+                  </p>
                 </div>
               </div>
             </div>
