@@ -15,8 +15,11 @@ const FlankA = (props) => {
   }
 
   return (
-    <div className={flankA.change ? 'flank-yellow' : 'flank-green'} id={!flankA.title ? 'hidden' : null}>
-      <h4>{flankA.title}</h4>
+    <div 
+      className={flankA.change ? 'flank-yellow' : 'flank-green'} 
+      id={!flankA.title ? 'hidden' : null}
+    >
+      <h4 className="flank-title">{flankA.title}</h4>
       <p>{flankA.itemOne}</p>
       <p>{flankA.itemTwo}</p>
       <p>{flankA.itemThree}</p>
@@ -24,7 +27,7 @@ const FlankA = (props) => {
       <p>{flankA.itemFive}</p>
       <div className="flank-btns">
         <Link to={`/edit/${props.endcap._id}/flank/${flankA.id}`}>
-        <h4 className={flankA.change ? 'flank-edit-completed' : 'flank-edit-change'}>Edit</h4>
+          <h4 className={flankA.change ? 'flank-edit-completed' : 'flank-edit-change'}>Edit Info</h4>
         </Link>
         <div>
           <h4 

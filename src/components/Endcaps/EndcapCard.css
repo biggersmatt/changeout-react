@@ -41,17 +41,19 @@
 }
 
 .endcap-card-btns {
-  font-size: 10px;
+  font-size: 9px;
   width: 100%;
   display: flex;
   justify-content: center;
 }
 
-/* Edit Change/Complete */
+/* Edit Info Change/Complete */
 .endcap-edit-change {
   height: 20px;
-  width: 45px;
-  text-align: center;
+  width: 46px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background-color: var(--yellow);
   color: black;
   border: 1px solid var(--yellow-border);
@@ -62,7 +64,9 @@
 .endcap-edit-completed {
   height: 20px;
   width: 45px;
-  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background-color: var(--green);
   color: black;
   border: 1px solid var(--green-border);
@@ -73,8 +77,10 @@
 /* Btn Change/Complete */
 .endcap-change {
   height: 20px;
-  width: 45px;
-  text-align: center;
+  width: 46px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background-color: var(--yellow);
   border: 1px solid var(--yellow-border);
   border-radius: 10px 10px 0 0;
@@ -84,7 +90,9 @@
 .endcap-completed {
   height: 20px;
   width: 45px;
-  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background-color: var(--green);
   border: 1px solid var(--green-border);
   border-radius: 10px 10px 0 0;

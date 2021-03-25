@@ -3,10 +3,11 @@
   border: 1px solid var(--green-border);
   height: 225px;
   width: 31%;
-  border-radius: 35px;
+  border-radius: 20px 20px 5px 5px;
+  overflow: hidden;
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
 }
 
@@ -14,63 +15,74 @@
   background-color: var(--yellow);
   border: 1px solid var(--yellow-border);
   height: 225px;
-  width: 150px;
-  border-radius: 35px;
+  width: 31%;
+  border-radius: 20px 20px 5px 5px;
+  overflow: hidden;
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
-  align-items: center;
-}
-
-.flank-btns {
-  width: 80%;
-  display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-/* Edit Change/Complete */
+.flank-title {
+  padding: 10px;
+}
+
+.flank-btns {
+  font-size: 9px;
+  width: 80%;
+  display: flex;
+  justify-content: center;
+}
+
+/* Edit Info Change/Complete */
 .flank-edit-change {
+  height: 20px;
+  width: 38px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background-color: var(--yellow);
   color: black;
   border: 1px solid var(--yellow-border);
-  border-radius: 10px;
+  border-radius: 10px 10px 0 0;
   padding: 5px;
 }
-.flank-edit-change:hover {
-  transform: scale(1.1);
-  transition: 0.2s ease;
-}
+
 .flank-edit-completed {
+  height: 20px;
+  width: 38px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background-color: var(--green);
   color: black;
   border: 1px solid var(--green-border);
-  border-radius: 10px;
+  border-radius: 10px 10px 0 0;
   padding: 5px;
-}
-.flank-edit-completed:hover {
-  transform: scale(1.1);
-  transition: 0.2s ease;
 }
 
 /* Flank Change/Complete */
 .flank-change {
+  height: 20px;
+  width: 38px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background-color: var(--yellow);
   border: 1px solid var(--yellow-border);
-  border-radius: 10px;
+  border-radius: 10px 10px 0 0;
   padding: 5px;
 }
-.flank-change:hover {
-  transform: scale(1.1);
-  transition: 0.2s ease;
-}
+
 .flank-completed {
+  height: 20px;
+  width: 38px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background-color: var(--green);
   border: 1px solid var(--green-border);
-  border-radius: 10px;
+  border-radius: 10px 10px 0 0;
   padding: 5px;
-}
-.flank-completed:hover {
-  transform: scale(1.1);
-  transition: 0.2s ease;
 }
