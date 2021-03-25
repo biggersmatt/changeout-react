@@ -1,8 +1,8 @@
 .flank-green {
   background-color: var(--green);
   border: 1px solid var(--green-border);
-  height: 300px;
-  width: 30%;
+  height: 225px;
+  width: 31%;
   border-radius: 35px;
   display: flex;
   flex-direction: column;
@@ -13,7 +13,7 @@
 .flank-yellow {
   background-color: var(--yellow);
   border: 1px solid var(--yellow-border);
-  height: 300px;
+  height: 225px;
   width: 150px;
   border-radius: 35px;
   display: flex;

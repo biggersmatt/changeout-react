@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+require('../Flanks.css');
 
 const FlankB = (props) => {
   const flankB = {
@@ -21,7 +22,7 @@ const FlankB = (props) => {
       <p>{flankB.itemThree}</p>
       <p>{flankB.itemFour}</p>
       <p>{flankB.itemFive}</p>
-      <div className="endcap-card-btns">
+      <div className="flank-btns">
         <Link to={`/edit/${props.endcap._id}/flank/${flankB.id}`}>
         <h4 className={flankB.change ? 'flank-edit-completed' : 'flank-edit-change'}>Edit</h4>
         </Link>

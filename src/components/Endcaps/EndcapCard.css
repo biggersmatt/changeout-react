@@ -1,3 +1,7 @@
+#hidden {
+  display:none;
+}
+
 .endcap-flank-container {
   display: flex;
   justify-content: center;
@@ -7,8 +11,8 @@
 .endcap-card {
   position: relative;
   background-color: var(--green);
-  height: 300px;
-  width: 40%;
+  height: 225px;
+  width: 38%;
   border: 1px solid var(--green-border);
   border-radius: 35px;
   overflow: hidden;
