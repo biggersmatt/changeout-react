@@ -60,10 +60,13 @@
 }
 
 .endcap-edit-completed {
+  height: 20px;
+  width: 45px;
+  text-align: center;
   background-color: var(--green);
   color: black;
   border: 1px solid var(--green-border);
-  border-radius: 10px;
+  border-radius: 10px 10px 0 0;
   padding: 5px;
 }
 
@@ -79,8 +82,11 @@
 }
 
 .endcap-completed {
+  height: 20px;
+  width: 45px;
+  text-align: center;
   background-color: var(--green);
   border: 1px solid var(--green-border);
-  border-radius: 10px;
+  border-radius: 10px 10px 0 0;
   padding: 5px;
 }
