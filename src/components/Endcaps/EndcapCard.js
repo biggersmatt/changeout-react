@@ -2,32 +2,17 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Draggable } from 'react-beautiful-dnd';
 import FlankA from '../FlankA/FlankA';
+import FlankB from '../FlankB/FlankB';
 require('./EndcapCard.css')
 
 class EndcapCard extends React.Component {
   render() {
     const flankA = {
-      id: this.props.flankA ? this.props.flankA._id: '',
       title: this.props.flankA ? this.props.flankA.title : '',
-      itemOne: this.props.flankA ? this.props.flankA.itemOne : '',
-      itemTwo: this.props.flankA ? this.props.flankA.itemTwo: '',
-      itemThree: this.props.flankA ? this.props.flankA.itemThree : '',
-      itemFour: this.props.flankA ? this.props.flankA.itemFour : '',
-      itemFive: this.props.flankA ? this.props.flankA.itemFive : '',
-      change: this.props.flankA ? this.props.flankA.change : '',
-      side: this.props.flankA ? this.props.flankA.side : '',
     }
 
     const flankB = {
-      id: this.props.endcap.flankB ? this.props.endcap.flankB._id: '',
       title: this.props.endcap.flankB ? this.props.endcap.flankB.title : '',
-      itemOne: this.props.endcap.flankB ? this.props.endcap.flankB.itemOne : '',
-      itemTwo: this.props.endcap.flankB ? this.props.endcap.flankB.itemTwo: '',
-      itemThree: this.props.endcap.flankB ? this.props.endcap.flankB.itemThree : '',
-      itemFour: this.props.endcap.flankB ? this.props.endcap.flankB.itemFour : '',
-      itemFive: this.props.endcap.flankB ? this.props.endcap.flankB.itemFive : '',
-      change: this.props.endcap.flankB ? this.props.endcap.flankB.change : '',
-      side: this.props.endcap.flankB ? this.props.endcap.flankB.side : '',
     }
 
     return (
@@ -74,7 +59,12 @@ class EndcapCard extends React.Component {
               </div>
             </div>
             {/* Flank B */}
-            <div className={flankB.change ? 'flank-yellow' : 'flank-green'} id={!flankB.title ? 'hidden' : null}>
+            <FlankB 
+              endcap={this.props.endcap} 
+              flankB={this.props.flankB} 
+              handleToggleFlank={this.props.handleToggleFlank}
+            />
+            {/* <div className={flankB.change ? 'flank-yellow' : 'flank-green'} id={!flankB.title ? 'hidden' : null}>
             <h4>{flankB.title}</h4>
               <p>{flankB.itemOne}</p>
               <p>{flankB.itemTwo}</p>
@@ -94,7 +84,7 @@ class EndcapCard extends React.Component {
                   </h4>
                 </div>
               </div>
-            </div>
+            </div> */}
           </div>
         )}
       </Draggable>
