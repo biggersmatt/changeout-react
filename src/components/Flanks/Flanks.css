@@ -1,90 +1,76 @@
-.endcap-card {
-  position: relative;
+.flank-green {
   background-color: var(--green);
-  height: 300px;
-  width: 40%;
   border: 1px solid var(--green-border);
+  height: 300px;
+  width: 30%;
   border-radius: 35px;
-  overflow: hidden;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
-  margin-bottom: 20px;
 }
 
-/* Endcap Buttons */
-.endcap-card-btns {
+.flank-yellow {
+  background-color: var(--yellow);
+  border: 1px solid var(--yellow-border);
+  height: 300px;
+  width: 150px;
+  border-radius: 35px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.flank-btns {
   width: 80%;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
+
 /* Edit Change/Complete */
-.endcap-edit-change {
+.flank-edit-change {
   background-color: var(--yellow);
   color: black;
   border: 1px solid var(--yellow-border);
   border-radius: 10px;
   padding: 5px;
 }
-.endcap-edit-change:hover {
+.flank-edit-change:hover {
   transform: scale(1.1);
   transition: 0.2s ease;
 }
-.endcap-edit-completed {
+.flank-edit-completed {
   background-color: var(--green);
   color: black;
   border: 1px solid var(--green-border);
   border-radius: 10px;
   padding: 5px;
 }
-.endcap-edit-completed:hover {
+.flank-edit-completed:hover {
   transform: scale(1.1);
   transition: 0.2s ease;
 }
 
-/* Btn Change/Complete */
-.endcap-change {
+/* Flank Change/Complete */
+.flank-change {
   background-color: var(--yellow);
   border: 1px solid var(--yellow-border);
   border-radius: 10px;
   padding: 5px;
 }
-.endcap-change:hover {
+.flank-change:hover {
   transform: scale(1.1);
   transition: 0.2s ease;
 }
-.endcap-completed {
+.flank-completed {
   background-color: var(--green);
   border: 1px solid var(--green-border);
   border-radius: 10px;
   padding: 5px;
 }
-.endcap-completed:hover {
+.flank-completed:hover {
   transform: scale(1.1);
   transition: 0.2s ease;
-}
-
-.yellow {
-  background-color: var(--yellow);
-  border: 1px solid var(--yellow-border);
-}
-
-#endcap-flank-a {
-  margin-right: 152px;
-}
-
-#endcap-flank-b {
-  margin-left: 152px;
-}
-
-.endcap-flank-container {
-  display: flex;
-  justify-content: center;
-  width: 98vw;
-}
-
-#hidden {
-  display: none;
 }
