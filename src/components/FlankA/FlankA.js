@@ -1,27 +1,39 @@
 import { Link } from 'react-router-dom';
 
 const FlankA = (props) => {
+  const flankA = {
+    id: props.endcap.flankA ? props.endcap.flankA._id: '',
+    title: props.endcap.flankA ? props.endcap.flankA.title : '',
+    itemOne: props.endcap.flankA ? props.endcap.flankA.itemOne : '',
+    itemTwo: props.endcap.flankA ? props.endcap.flankA.itemTwo: '',
+    itemThree: props.endcap.flankA ? props.endcap.flankA.itemThree : '',
+    itemFour: props.endcap.flankA ? props.endcap.flankA.itemFour : '',
+    itemFive: props.endcap.flankA ? props.endcap.flankA.itemFive : '',
+    change: props.endcap.flankA ? props.endcap.flankA.change : '',
+    side: props.endcap.flankA ? props.endcap.flankA.side : '',
+  }
+
   return (
-    <div className={props.flankA.change ? 'flank-yellow' : 'flank-green'} id={!props.flankA.title ? 'hidden' : null}>
-      <h4>{props.flankA ? props.flankA.title : ''}</h4>
-      <p>{props.flankA ? props.flankA.itemOne : ''}</p>
-      <p>{props.flankA ? props.flankA.itemTwo : ''}</p>
-      <p>{props.flankA ? props.flankA.itemThree : ''}</p>
-      <p>{props.flankA ? props.flankA.itemFour : ''}</p>
-      <p>{props.flankA ? props.flankA.itemFive : ''}</p>
+    <div className={flankA.change ? 'flank-yellow' : 'flank-green'} id={!flankA.title ? 'hidden' : null}>
+      <h4>{flankA.title}</h4>
+      <p>{flankA.itemOne}</p>
+      <p>{flankA.itemTwo}</p>
+      <p>{flankA.itemThree}</p>
+      <p>{flankA.itemFour}</p>
+      <p>{flankA.itemFive}</p>
       <div className="endcap-card-btns">
-        <Link to={`/edit/${props.endcap._id}/flank/${props.flankA.id}`}>
-        <h4 className={props.flankA.change ? 'flank-edit-completed' : 'flank-edit-change'}>Edit</h4>
+        <Link to={`/edit/${props.endcap._id}/flank/${flankA.id}`}>
+        <h4 className={flankA.change ? 'flank-edit-completed' : 'flank-edit-change'}>Edit</h4>
         </Link>
         <div>
           <h4 
-            className={props.flankA.change ? 'flank-completed' : 'flank-change'}
+            className={flankA.change ? 'flank-completed' : 'flank-change'}
             onClick={() => props.handleToggleFlank(
-              props.flankA ? props.flankA.change : '', 
-              props.flankA ? props.flankA : '')
+              flankA.change, 
+              props.flankA)
             }
           >
-            {props.flankA.change ? 'Complete' : 'Change'}
+            {flankA.change ? 'Complete' : 'Change'}
           </h4>
         </div>
       </div>

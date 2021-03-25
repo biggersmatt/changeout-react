@@ -6,6 +6,18 @@ require('./EndcapCard.css')
 
 class EndcapCard extends React.Component {
   render() {
+    const flankA = {
+      id: this.props.flankA ? this.props.flankA._id: '',
+      title: this.props.flankA ? this.props.flankA.title : '',
+      itemOne: this.props.flankA ? this.props.flankA.itemOne : '',
+      itemTwo: this.props.flankA ? this.props.flankA.itemTwo: '',
+      itemThree: this.props.flankA ? this.props.flankA.itemThree : '',
+      itemFour: this.props.flankA ? this.props.flankA.itemFour : '',
+      itemFive: this.props.flankA ? this.props.flankA.itemFive : '',
+      change: this.props.flankA ? this.props.flankA.change : '',
+      side: this.props.flankA ? this.props.flankA.side : '',
+    }
+
     const flankB = {
       id: this.props.endcap.flankB ? this.props.endcap.flankB._id: '',
       title: this.props.endcap.flankB ? this.props.endcap.flankB.title : '',
@@ -35,8 +47,8 @@ class EndcapCard extends React.Component {
             <div 
               className={`endcap-card ${this.props.endcap.change && 'yellow'}`} 
               id={
-                (this.props.endcap.flankA.title && flankB.title ? 'nothing' : null) ||
-                (this.props.endcap.flankA.title ? 'endcap-flank-a': '') || 
+                (flankA.title && flankB.title ? 'nothing' : null) ||
+                (flankA.title ? 'endcap-flank-a': '') || 
                 (flankB.title ? 'endcap-flank-b' : '') 
               }
             >
