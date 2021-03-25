@@ -1,3 +1,9 @@
+.endcap-flank-container {
+  display: flex;
+  justify-content: center;
+  width: 98vw;
+}
+
 .endcap-card {
   position: relative;
   background-color: var(--green);
@@ -13,13 +19,26 @@
   margin-bottom: 20px;
 }
 
-/* Endcap Buttons */
+.yellow {
+  background-color: var(--yellow);
+  border: 1px solid var(--yellow-border);
+}
+
+#endcap-flank-a {
+  margin-right: 152px;
+}
+
+#endcap-flank-b {
+  margin-left: 152px;
+}
+
 .endcap-card-btns {
   width: 80%;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
+
 /* Edit Change/Complete */
 .endcap-edit-change {
   background-color: var(--yellow);
@@ -64,27 +83,4 @@
 .endcap-completed:hover {
   transform: scale(1.1);
   transition: 0.2s ease;
-}
-
-.yellow {
-  background-color: var(--yellow);
-  border: 1px solid var(--yellow-border);
-}
-
-#endcap-flank-a {
-  margin-right: 152px;
-}
-
-#endcap-flank-b {
-  margin-left: 152px;
-}
-
-.endcap-flank-container {
-  display: flex;
-  justify-content: center;
-  width: 98vw;
-}
-
-#hidden {
-  display: none;
 }

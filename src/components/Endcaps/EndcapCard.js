@@ -28,7 +28,6 @@ class EndcapCard extends React.Component {
               flankA={this.props.flankA} 
               handleToggleFlank={this.props.handleToggleFlank}
             />
-            {/* Endcap */}
             <div 
               className={`endcap-card ${this.props.endcap.change && 'yellow'}`} 
               id={
@@ -58,33 +57,11 @@ class EndcapCard extends React.Component {
                 </div>
               </div>
             </div>
-            {/* Flank B */}
             <FlankB 
               endcap={this.props.endcap} 
               flankB={this.props.flankB} 
               handleToggleFlank={this.props.handleToggleFlank}
             />
-            {/* <div className={flankB.change ? 'flank-yellow' : 'flank-green'} id={!flankB.title ? 'hidden' : null}>
-            <h4>{flankB.title}</h4>
-              <p>{flankB.itemOne}</p>
-              <p>{flankB.itemTwo}</p>
-              <p>{flankB.itemThree}</p>
-              <p>{flankB.itemFour}</p>
-              <p>{flankB.itemFive}</p>
-              <div className="endcap-card-btns">
-                <Link to={`/edit/${this.props.endcap._id}/flank/${flankB.id}`}>
-                  <h4 className={flankB.change ? 'flank-edit-completed' : 'flank-edit-change'}>Edit</h4>
-                </Link>
-                <div>
-                  <h4 
-                    className={flankB.change ? 'flank-completed' : 'flank-change'}
-                    onClick={() => this.props.handleToggleFlank(flankB.change, this.props.endcap.flankB)}
-                  >
-                    {flankB.change ? 'Complete' : 'Change'}
-                  </h4>
-                </div>
-              </div>
-            </div> */}
           </div>
         )}
       </Draggable>
