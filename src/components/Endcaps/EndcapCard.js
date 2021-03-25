@@ -52,7 +52,7 @@ class EndcapCard extends React.Component {
                     className={this.props.endcap.change ? 'endcap-completed' : 'endcap-change'}
                     onClick={() => this.props.handleToggleEndcap(this.props.endcap.change, this.props.endcap._id)}
                   >
-                    {this.props.endcap.change ? 'Complete' : 'ChangeOut'}
+                    {this.props.endcap.change ? 'Complete' : 'Change'}
                   </p>
                 </div>
               </div>
