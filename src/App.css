@@ -49,7 +49,7 @@ li {
   flex-grow: 1;
 }
 
-/* New Endcap Page */
+/* New Endcap Page
 .endcap-wrapper {
   display: flex;
   flex-direction: column;
@@ -109,7 +109,7 @@ label {
 
 input {
   text-align: center;
-}
+} */
 
 /* Edit Endcap */
 .endcap-edit-wrapper {

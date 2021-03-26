@@ -1,7 +1,7 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 import HomePage from './pages/Homepage/HomePage';
-import NewEndcapPage from './pages/Endcaps/NewEndcapPage';
+import NewEndcapPage from './pages/Endcaps/NewEndcap/NewEndcapPage';
 import EditEndcapPage from './pages/Endcaps/EditEndcapPage';
 import Navbar from './components/Navbar/Navbar';
 import NewFlankPage from './pages/Flanks/NewFlankPage';
