@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link, withRouter } from 'react-router-dom';
+require('./EditEndcap.css');
 
 class EditEndcapPage extends React.Component {
   state = {
@@ -76,9 +77,9 @@ class EditEndcapPage extends React.Component {
 
   render() {
     return (
-      <div className="endcap-wrapper">
-        <h1>Edit Endcap</h1>
-        <div className="endcap-edit-wrapper">
+      <div className="edit-endcap-wrapper">
+        <h1 className="edit-endcap-title">Edit {this.state.title}</h1>
+        <div className="edit-endcap-header-btns">
           <div id={this.props.endcaps.length === 1 ? 'hidden' : null}>
             <Link to="/">
               <button 
@@ -88,7 +89,7 @@ class EditEndcapPage extends React.Component {
                 -
               </button>
             </Link>
-            <h3 className="endcap-edit-btn-titles">Delete</h3>
+            <h3>Delete</h3>
           </div>
           <div>
             <Link to={`/edit/${this.props.match.params.id}/flank/new`}>
@@ -98,54 +99,53 @@ class EditEndcapPage extends React.Component {
                 +
               </button>
             </Link>
-            <h3 className="endcap-edit-btn-titles">Flank</h3>
+            <h3>Flank</h3>
           </div>
         </div>
-        <form onSubmit={this.handleSubmit} className="endcap-wrapper-form">
-          <p className="endcap-form-title">Title</p>
-          <div className="endcap-wrapper-section">
+        <form onSubmit={this.handleSubmit} className="edit-endcap-form">
+          <div className="edit-endcap-form-section">
+            <label htmlFor="title">Title</label><br />
             <input type="text" id="title" 
               value={this.state.title} 
               onChange={this.handleChange}
             />
           </div>
-          <p className="endcap-form-title">Items</p>
-          <div className="endcap-wrapper-section">
-            <label htmlFor="itemOne">One:</label>
+          <div className="edit-endcap-form-section">
+            <label htmlFor="itemOne">Item One</label><br />
             <input type="text" id="itemOne" 
               value={this.state.itemOne} 
               onChange={this.handleChange}
             />
           </div>
-          <div className="endcap-wrapper-section">
-            <label htmlFor="itemTwo">Two:</label>
+          <div className="edit-endcap-form-section">
+            <label htmlFor="itemOne">Item Two</label><br />
             <input type="text" id="itemTwo" 
               value={this.state.itemTwo} 
               onChange={this.handleChange}
             />
           </div>
-          <div className="endcap-wrapper-section">
-            <label htmlFor="itemThree">Three:</label>
+          <div className="edit-endcap-form-section">
+            <label htmlFor="itemOne">Item Three</label><br />
             <input type="text" id="itemThree" 
               value={this.state.itemThree} 
               onChange={this.handleChange}
             />
           </div>
-          <div className="endcap-wrapper-section">
-            <label htmlFor="itemFour">Four:</label>
+          <div className="edit-endcap-form-section">
+            <label htmlFor="itemOne">Item Four</label><br />
             <input type="text" id="itemFour" 
               value={this.state.itemFour} 
               onChange={this.handleChange}
             />
           </div>
-          <div className="endcap-wrapper-section">
-            <label htmlFor="itemFive">Five:</label>
+          <div className="edit-endcap-form-section">
+            <label htmlFor="itemOne">Item Five</label><br />
             <input type="text" id="itemFive" 
               value={this.state.itemFive} 
               onChange={this.handleChange}
             />
           </div>
-          <button type="submit" className="endcap-wrapper-btn">Update Endcap</button>
+          <button type="submit" className="edit-endcap-btn">Update Endcap</button>
         </form>
       </div>
 
