@@ -6,6 +6,7 @@ import EditEndcapPage from './pages/Endcaps/EditEndcapPage';
 import Navbar from './components/Navbar/Navbar';
 import NewFlankPage from './pages/Flanks/NewFlankPage';
 import EditFlankPage from './pages/Flanks/EditFlankPage';
+import Footer from './components/Footer/Footer';
 import './App.css';
 
 class App extends React.Component {
@@ -349,9 +350,7 @@ class App extends React.Component {
             </Route>
           </Switch>
         </div>
-        <footer>
-        &copy;  Change Out {new Date().getFullYear()}
-        </footer>
+        <Footer />
       </div>
     );
   }
