@@ -1,8 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Draggable } from 'react-beautiful-dnd';
-import FlankA from '../Flanks/FlankA/FlankA';
-import FlankB from '../Flanks/FlankB/FlankB';
+import FlankA from '../Flanks/FlankA';
+import FlankB from '../Flanks/FlankB';
 require('./EndcapCard.css')
 
 class EndcapCard extends React.Component {
