@@ -78,6 +78,7 @@ class EditEndcapPage extends React.Component {
   render() {
     return (
       <div className="edit-endcap-wrapper">
+        <h1 className="edit-endcap-title">Edit {this.state.title}</h1>
         <div className="edit-endcap-header-btns">
           <div className="edit-endcap-btn-wrapper" id={this.props.endcaps.length === 1 ? 'hidden' : null}>
             <Link to="/">
@@ -101,7 +102,6 @@ class EditEndcapPage extends React.Component {
             <h4>Flank</h4>
           </div>
         </div>
-        <h1 className="edit-endcap-title">Edit {this.state.title}</h1>
         <form onSubmit={this.handleSubmit} className="edit-endcap-form">
           <div className="edit-endcap-form-section">
             <label htmlFor="title">Title</label><br />
@@ -145,7 +145,7 @@ class EditEndcapPage extends React.Component {
               onChange={this.handleChange}
             />
           </div>
-          <button type="submit" className="edit-endcap-btn">Update {this.state.title}</button>
+          <button type="submit" className="edit-endcap-btn">Update Endcap</button>
         </form>
       </div>
 

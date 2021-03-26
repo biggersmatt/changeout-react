@@ -60,6 +60,13 @@ class NewFlankPage extends React.Component {
         <h1 className="new-flank-title">Add a Flank to {this.state.currentEndcapTitle}</h1>
         <form onSubmit={this.handleSubmit}  className="new-flank-form">
           <div className="new-flank-form-section">
+            <label htmlFor="itemOne">Side A or B?</label><br />
+            <input type="text" id="side" name="side"
+              value={this.state.side} 
+              onChange={this.handleChange}
+            />
+          </div>
+          <div className="new-flank-form-section">
             <label htmlFor="title">Title</label><br />
             <input type="text" id="title" name="title" 
               value={this.state.title} 
@@ -98,13 +105,6 @@ class NewFlankPage extends React.Component {
             <label htmlFor="itemOne">Item Five</label><br />
             <input type="text" id="itemFive" name="itemFive"
               value={this.state.itemFive} 
-              onChange={this.handleChange}
-            />
-          </div>
-          <div className="new-flank-form-section">
-            <label htmlFor="itemOne">Side A or B?</label><br />
-            <input type="text" id="side" name="side"
-              value={this.state.side} 
               onChange={this.handleChange}
             />
           </div>

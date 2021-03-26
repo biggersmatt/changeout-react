@@ -29,7 +29,7 @@
 
 .edit-endcap-title {
   font-size: 1.25em;
-  margin: 0 0 -10px 0;
+  margin: 10px 0 5px 0;
 }
 
 .edit-endcap-form {
@@ -43,7 +43,7 @@
   justify-content: center;
   align-items: center;
   flex-grow: 1;
-  margin: 20px 0 10px 0;
+  margin: 10px 0 10px 0;
   padding: 15px;
 }
 
