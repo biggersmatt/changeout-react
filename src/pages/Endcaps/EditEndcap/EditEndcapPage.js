@@ -78,30 +78,30 @@ class EditEndcapPage extends React.Component {
   render() {
     return (
       <div className="edit-endcap-wrapper">
-        <h1 className="edit-endcap-title">Edit {this.state.title}</h1>
         <div className="edit-endcap-header-btns">
-          <div id={this.props.endcaps.length === 1 ? 'hidden' : null}>
+          <div className="edit-endcap-btn-wrapper" id={this.props.endcaps.length === 1 ? 'hidden' : null}>
             <Link to="/">
               <button 
-                className="endcap-btn" 
+                className="edit-endcap-btns" 
                 onClick={() => this.handleDeleteEndcap(this.state._id)}
                 >
                 -
               </button>
             </Link>
-            <h3>Delete</h3>
+            <h4>Delete</h4>
           </div>
-          <div>
+          <div className="edit-endcap-btn-wrapper">
             <Link to={`/edit/${this.props.match.params.id}/flank/new`}>
               <button 
-                className="endcap-btn" 
+                className="edit-endcap-btns" 
                 >
                 +
               </button>
             </Link>
-            <h3>Flank</h3>
+            <h4>Flank</h4>
           </div>
         </div>
+        <h1 className="edit-endcap-title">Edit {this.state.title}</h1>
         <form onSubmit={this.handleSubmit} className="edit-endcap-form">
           <div className="edit-endcap-form-section">
             <label htmlFor="title">Title</label><br />
@@ -145,7 +145,7 @@ class EditEndcapPage extends React.Component {
               onChange={this.handleChange}
             />
           </div>
-          <button type="submit" className="edit-endcap-btn">Update Endcap</button>
+          <button type="submit" className="edit-endcap-btn">Update {this.state.title}</button>
         </form>
       </div>
 
