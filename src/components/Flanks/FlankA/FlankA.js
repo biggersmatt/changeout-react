@@ -20,11 +20,11 @@ const FlankA = (props) => {
       id={!flankA.title ? 'hidden' : null}
     >
       <h4 className="flank-title">{flankA.title}</h4>
-      <p>{flankA.itemOne}</p>
-      <p>{flankA.itemTwo}</p>
-      <p>{flankA.itemThree}</p>
-      <p>{flankA.itemFour}</p>
-      <p>{flankA.itemFive}</p>
+      <p className="flank-item">{flankA.itemOne}</p>
+      <p className="flank-item">{flankA.itemTwo}</p>
+      <p className="flank-item">{flankA.itemThree}</p>
+      <p className="flank-item">{flankA.itemFour}</p>
+      <p className="flank-item">{flankA.itemFive}</p>
       <div className="flank-btns">
         <Link to={`/edit/${props.endcap._id}/flank/${flankA.id}`}>
           <h4 className={flankA.change ? 'flank-edit-completed' : 'flank-edit-change'}>Edit Info</h4>

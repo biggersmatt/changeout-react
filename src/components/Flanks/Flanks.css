@@ -28,6 +28,10 @@
   padding: 10px;
 }
 
+.flank-item {
+  font-size: 12px;
+}
+
 .flank-btns {
   font-size: 9px;
   width: 80%;

@@ -16,12 +16,12 @@ const FlankB = (props) => {
 
   return (
     <div className={flankB.change ? 'flank-yellow' : 'flank-green'} id={!flankB.title ? 'hidden' : null}>
-      <h4>{flankB.title}</h4>
-      <p>{flankB.itemOne}</p>
-      <p>{flankB.itemTwo}</p>
-      <p>{flankB.itemThree}</p>
-      <p>{flankB.itemFour}</p>
-      <p>{flankB.itemFive}</p>
+      <h4 className="flank-title">{flankB.title}</h4>
+      <p className="flank-item">{flankB.itemOne}</p>
+      <p className="flank-item">{flankB.itemTwo}</p>
+      <p className="flank-item">{flankB.itemThree}</p>
+      <p className="flank-item">{flankB.itemFour}</p>
+      <p className="flank-item">{flankB.itemFive}</p>
       <div className="flank-btns">
         <Link to={`/edit/${props.endcap._id}/flank/${flankB.id}`}>
         <h4 className={flankB.change ? 'flank-edit-completed' : 'flank-edit-change'}>Edit</h4>

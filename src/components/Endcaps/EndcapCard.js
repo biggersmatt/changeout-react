@@ -37,12 +37,12 @@ class EndcapCard extends React.Component {
               }
             >
               <h3 className="endcap-card-title">{this.props.endcap.title}</h3>
-              <p>{this.props.endcap.itemOne}</p>
-              <p>{this.props.endcap.itemTwo}</p>
-              <p>{this.props.endcap.itemThree}</p>
-              <p>{this.props.endcap.itemFour}</p>
-              <p>{this.props.endcap.itemFive}</p>
-              <p>{this.props.endcap.change}</p>
+              <p className="endcap-card-item">{this.props.endcap.itemOne}</p>
+              <p className="endcap-card-item">{this.props.endcap.itemTwo}</p>
+              <p className="endcap-card-item">{this.props.endcap.itemThree}</p>
+              <p className="endcap-card-item">{this.props.endcap.itemFour}</p>
+              <p className="endcap-card-item">{this.props.endcap.itemFive}</p>
+              <p className="endcap-card-item">{this.props.endcap.change}</p>
               <div className="endcap-card-btns">
                 <Link to={`/edit/${this.props.endcap._id}`}>
                   <p className={this.props.endcap.change ? 'endcap-edit-completed' : 'endcap-edit-change'}>Edit Info</p>

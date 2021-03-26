@@ -23,6 +23,10 @@
   margin-bottom: 20px;
 }
 
+.endcap-card-item {
+  font-size: 12px;
+}
+
 .yellow {
   background-color: var(--yellow);
   border: 1px solid var(--yellow-border);
