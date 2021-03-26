@@ -1,0 +1,50 @@
+.new-flank-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: calc(100vh - 112px);
+}
+
+.new-flank-title {
+  font-size: 1.5em;
+  margin: 20px 0 0 0;
+}
+
+.new-flank-form {
+  background-color: var(--green);
+  height: 55%;
+  width: 80%;
+  border: 1px solid var(--green-border);
+  border-radius: 10px 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex-grow: 1;
+  margin: 10px 0 10px;
+  padding: 15px;
+}
+
+.new-flank-form-section {
+  display: flex;
+  flex-direction: column;
+  height: 15%;
+  width: 60%;
+}
+
+label {
+  font-size: 0.75em;
+}
+
+input {
+  margin-top: -20px;
+  margin-bottom: 15px;
+}
+
+.new-flank-btn {
+  background-color: var(--yellow);
+  height: 100px;
+  width: 250px;
+  border: 1px solid var(--yellow-border);
+  border-radius: 10px;
+}
