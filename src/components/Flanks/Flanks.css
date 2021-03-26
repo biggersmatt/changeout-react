@@ -90,3 +90,13 @@
   border-radius: 10px 10px 0 0;
   padding: 5px;
 }
+
+@media (min-width: 375px) {
+  .flank-change {
+    margin-left: 7px;
+  }
+
+  .flank-completed {
+    margin-left: 7px;
+  }
+}
