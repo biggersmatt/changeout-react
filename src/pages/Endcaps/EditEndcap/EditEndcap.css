@@ -32,6 +32,12 @@
   margin: 10px 0 5px 0;
 }
 
+@media (min-width: 375px) {
+  .edit-endcap-title {
+    margin: 20px 0 5px 0;
+  }
+}
+
 .edit-endcap-form {
   background-color: var(--green);
   height: 55%;
@@ -69,4 +75,10 @@ input {
   width: 250px;
   border: 1px solid var(--yellow-border);
   border-radius: 10px;
+}
+
+@media (min-width: 375px) {
+  .edit-endcap-btn {
+    height: 50px;
+  }
 }

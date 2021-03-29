@@ -48,3 +48,9 @@ input {
   border: 1px solid var(--yellow-border);
   border-radius: 10px;
 }
+
+@media (min-width: 375px) {
+  .new-flank-btn {
+    height: 50px;
+  }
+}
