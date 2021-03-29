@@ -11,6 +11,12 @@
   align-items: center;
 }
 
+@media (min-width: 768px) {
+  .flank-green {
+    width: 25vw;
+  }
+}
+
 .flank-yellow {
   background-color: var(--yellow);
   border: 1px solid var(--yellow-border);

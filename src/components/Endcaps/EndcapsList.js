@@ -1,5 +1,6 @@
 import { Droppable } from 'react-beautiful-dnd';
 import EndcapCard from '../Endcaps/EndcapCard';
+require('./EndcapCard.css');
 
 const EndcapsList = (props) => {
     return (
