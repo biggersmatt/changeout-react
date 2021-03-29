@@ -12,9 +12,28 @@
   margin: 10px 0 0 0;
 }
 
+@media (min-width: 768px) {
+  .edit-flank-header h4 {
+    font-size: 1.5em;
+  }
+}
+
 .edit-flank-title {
   font-size: 1.5em;
   margin: 10px 0 -10px 0;
+}
+
+@media (min-width: 768px) {
+  .edit-flank-title {
+    font-size: 2em;
+  }
+}
+
+.edit-flank-btn-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .edit-flank-btn {
@@ -23,6 +42,13 @@
   border-radius: 100px;
   font-size: 20px;
   background-color: var(--green);
+}
+
+@media (min-width: 768px) {
+  .edit-flank-btn {
+    height: 50px;
+    width: 50px;
+  }
 }
 
 .edit-flank-form {
@@ -58,5 +84,12 @@
 @media (min-width: 375px) {
   .edit-flank-submit {
     height: 50px;
+  }
+}
+
+@media (min-width: 768px) {
+  .edit-flank-submit {
+    width: 300px;
+    font-size: 1.5em;
   }
 }

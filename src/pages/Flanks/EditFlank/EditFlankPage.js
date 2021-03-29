@@ -66,7 +66,7 @@ class EditFlankPage extends React.Component {
       <div className="edit-flank-wrapper">
         <h1 className="edit-flank-title">Edit Flank {this.state.title}</h1>
         <div className="edit-flank-header">
-          <div>
+          <div className="edit-flank-btn-wrapper">
             <Link to="/">
               <button 
                 className="edit-flank-btn" 

@@ -5,6 +5,38 @@
   height: calc(100vh - 112px);
 }
 
+@media (min-width: 768px) {
+  .edit-endcap-wrapper {
+    height: 85vh;
+  }
+  .edit-endcap-wrapper h4 {
+    font-size: 24px;
+  }
+}
+
+.edit-endcap-title {
+  font-size: 1.25em;
+  margin: 10px 0 5px 0;
+}
+
+@media (min-width: 375px) {
+  .edit-endcap-title {
+    margin: 20px 0 5px 0;
+  }
+}
+
+@media (min-width: 414px) {
+  .edit-endcap-title {
+    font-size: 24px;
+  }
+}
+
+@media (min-width: 768px) {
+  .edit-endcap-title {
+    font-size: 30px;
+  }
+}
+
 .edit-endcap-header-btns {
   display: flex;
   justify-content: space-between;
@@ -27,20 +59,10 @@
   background-color: var(--green);
 }
 
-.edit-endcap-title {
-  font-size: 1.25em;
-  margin: 10px 0 5px 0;
-}
-
-@media (min-width: 375px) {
-  .edit-endcap-title {
-    margin: 20px 0 5px 0;
-  }
-}
-
-@media (min-width: 414px) {
-  .edit-endcap-title {
-    font-size: 24px;
+@media (min-width: 768px) {
+  .edit-endcap-btns {
+    height: 50px;
+    width: 50px;
   }
 }
 
@@ -77,5 +99,12 @@
 @media (min-width: 375px) {
   .edit-endcap-btn {
     height: 50px;
+  }
+}
+
+@media (min-width: 768px) {
+  .edit-endcap-btn {
+    width: 300px;
+    font-size: 1.5em;
   }
 }
