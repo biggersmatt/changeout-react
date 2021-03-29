@@ -25,12 +25,29 @@
 
 @media (min-width: 768px) {
   .endcap-card {
-    width: 50vw;
+    width: 42vw;
+  }
+}
+
+.endcap-card-title {
+  padding-top: 10px;
+  border-bottom: 1px solid black;
+}
+
+@media (min-width: 768px) {
+  .endcap-card-title {
+    font-size: 20px;
   }
 }
 
 .endcap-card-item {
   font-size: 12px;
+}
+
+@media (min-width: 768px) {
+  .endcap-card-item {
+    font-size: 16px;
+  }
 }
 
 .yellow {
@@ -42,12 +59,20 @@
   margin-right: 31%;
 }
 
+@media (min-width: 768px) {
+  #endcap-flank-a {
+    margin-right: 25vw;
+  }
+}
+
 #endcap-flank-b {
   margin-left: 31%;
 }
 
-.endcap-card-title {
-  padding-top: 9px;
+@media (min-width: 768px) {
+  #endcap-flank-b {
+    margin-left: 25vw;
+  }
 }
 
 .endcap-card-btns {

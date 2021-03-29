@@ -30,12 +30,31 @@
   align-items: center;
 }
 
+@media (min-width: 768px) {
+  .flank-yellow {
+    width: 25vw;
+  }
+}
+
 .flank-title {
-  padding: 10px;
+  padding-top: 10px;
+  border-bottom: 1px solid black;
+}
+
+@media (min-width: 768px) {
+  .flank-title {
+    font-size: 20px;
+  }
 }
 
 .flank-item {
   font-size: 12px;
+}
+
+@media (min-width: 768px) {
+  .flank-item {
+    font-size: 16px;
+  }
 }
 
 .flank-btns {
