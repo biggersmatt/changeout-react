@@ -66,15 +66,6 @@
   width: 60%;
 }
 
-label {
-  font-size: 0.75em;
-}
-
-input {
-  margin-top: -20px;
-  margin-bottom: 15px;
-}
-
 .edit-endcap-btn {
   background-color: var(--yellow);
   height: 75px;

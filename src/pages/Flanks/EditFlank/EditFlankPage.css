@@ -47,15 +47,6 @@
   width: 60%;
 }
 
-label {
-  font-size: 0.75em;
-}
-
-input {
-  margin-top: -20px;
-  margin-bottom: 15px;
-}
-
 .edit-flank-submit {
   background-color: var(--yellow);
   height: 75px;
