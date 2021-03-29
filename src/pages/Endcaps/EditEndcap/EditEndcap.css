@@ -38,6 +38,12 @@
   }
 }
 
+@media (min-width: 414px) {
+  .edit-endcap-title {
+    font-size: 24px;
+  }
+}
+
 .edit-endcap-form {
   background-color: var(--green);
   height: 55%;
