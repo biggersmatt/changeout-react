@@ -1,5 +1,6 @@
 import { Droppable } from 'react-beautiful-dnd';
 import EndcapCard from '../Endcaps/EndcapCard';
+require('./EndcapCard.css');
 
 const EndcapsList = (props) => {
     return (
@@ -17,6 +18,8 @@ const EndcapsList = (props) => {
                       key={endcap._id} 
                       index={index} 
                       endcap={endcap}
+                      flankA={endcap.flankA}
+                      flankB={endcap.flankB}
                     />
           })}
           {provided.placeholder}

@@ -1,12 +1,13 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 import HomePage from './pages/Homepage/HomePage';
-import NewEndcapPage from './pages/Endcaps/NewEndcapPage';
-import EditEndcapPage from './pages/Endcaps/EditEndcapPage';
+import NewEndcapPage from './pages/Endcaps/NewEndcap/NewEndcapPage';
+import EditEndcapPage from './pages/Endcaps/EditEndcap/EditEndcapPage';
 import Navbar from './components/Navbar/Navbar';
-import NewFlankPage from './pages/Flanks/NewFlankPage';
-import EditFlankPage from './pages/Flanks/EditFlankPage';
-import './App.css';
+import NewFlankPage from './pages/Flanks/NewFlank/NewFlankPage';
+import EditFlankPage from './pages/Flanks/EditFlank/EditFlankPage';
+import Footer from './components/Footer/Footer';
+require ('./App.css');
 
 class App extends React.Component {
   state = {
@@ -349,9 +350,7 @@ class App extends React.Component {
             </Route>
           </Switch>
         </div>
-        <footer>
-        &copy;  Change Out {new Date().getFullYear()}
-        </footer>
+        <Footer />
       </div>
     );
   }
