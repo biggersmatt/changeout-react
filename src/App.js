@@ -1,4 +1,5 @@
 import React from 'react';
+
 import { Switch, Route } from 'react-router-dom';
 import HomePage from './pages/Homepage/HomePage';
 import NewEndcapPage from './pages/Endcaps/NewEndcapPage';
@@ -6,6 +7,7 @@ import EditEndcapPage from './pages/Endcaps/EditEndcapPage';
 import Navbar from './components/Navbar/Navbar';
 import NewFlankPage from './pages/Flanks/NewFlankPage';
 import EditFlankPage from './pages/Flanks/EditFlankPage';
+import LoginPage from './pages/LoginPage/LoginPage'
 import './App.css';
 
 class App extends React.Component {
@@ -22,58 +24,56 @@ class App extends React.Component {
     },
     columnOrder: ['column-1'],
     hasUpdated: false,
+    isLoggedIn: false
+  }
+
+  
+
+  setIsLoggedIn = () => {
+    this.setState({isLoggedIn: true})
+  }
+
+  logout = () => {
+    this.setState({isLoggedIn: false})
   }
   
   componentDidMount() {
     // Collect All Endcaps
-    fetch('http://localhost:4000/api/endcaps')
+    fetch('http://localhost:4000/api/endcaps', {
+      credentials: 'include'
+    })
     .then((response) => response.json())
     .then((jsonData) => {
       const endcapData = jsonData.allEndcaps;
       // Checks and Updates Settings
-      fetch('http://localhost:4000/api/settings')
-        .then((response) => response.json())
-        .then((jsonData) => {
-          if(jsonData.settings.length === 0) {
-            // If No Settings exist, creates Settings
-            console.log('No Settings, Create')
-            fetch('http://localhost:4000/api/settings', {
-              method: 'POST',
-              headers: {
-                'Content-Type': 'application/json',
-              },
-              body: JSON.stringify(this.state)
-            })
-          }
-          if(jsonData.settings.length === 1) {
-            // If Settings do exist, Update date them
-            fetch('http://localhost:4000/api/settings')
-            .then((response) => response.json())
-            .then((jsonData => {
-              const currentColumnOrder = jsonData.settings[0].columnOrder.endcapIds;
-              const newState = {
-                ...this.state,
-                endcaps: endcapData,
-                columns: {
-                  ...this.state.columns,
-                  'column-1': {
-                    ...this.state.columns['column-1'],
-                    endcapIds: currentColumnOrder,
-                  }
-                },
-              }
-              this.setState(newState);
-            })
-          )
-        }
+      fetch('http://localhost:4000/api/settings', {
+        credentials: 'include'
       })
-    })
-    .catch((err) => console.log(err));
+      .then((response) => response.json())
+      .then((jsonData => {
+        const currentColumnOrder = jsonData.settings[0].columnOrder.endcapIds;
+        const newState = {
+          ...this.state,
+          endcaps: endcapData,
+          columns: {
+            ...this.state.columns,
+            'column-1': {
+              ...this.state.columns['column-1'],
+              endcapIds: currentColumnOrder,
+            }
+          },
+        }
+        this.setState(newState);
+      })
+    )})
+      .catch((err) => console.log(err));
   }
   
   componentDidUpdate() {
     if(this.state.hasUpdated){
-      fetch('http://localhost:4000/api/endcaps')
+      fetch('http://localhost:4000/api/endcaps', {
+        credentials: "include"
+      })
       .then((response) => response.json())
       .then((jsonData) => {
         const endcapData = jsonData.allEndcaps;
@@ -308,9 +308,16 @@ class App extends React.Component {
   render() {
     return (
       <div className="wrapper">
-        <Navbar />
+        <Navbar logout={this.logout}/>
         <div className="content">
           <Switch>
+            <Route path='/login'>
+              <LoginPage 
+                
+                isLoggedIn={this.state.isLoggedIn}
+                setIsLoggedIn={this.setIsLoggedIn} />
+            </Route>
+
             <Route exact path='/'>
               <HomePage 
                 month={this.state.month} 
