@@ -1,5 +1,6 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
+require('./NewFlankPage.css');
 
 class NewFlankPage extends React.Component {
   state = {
@@ -55,66 +56,59 @@ class NewFlankPage extends React.Component {
 
   render() {
     return (
-      <div className="endcap-wrapper">
-        <h1>Add a Flank to {this.state.currentEndcapTitle}</h1>
-        <form onSubmit={this.handleSubmit}  className="endcap-wrapper-form">
-          <div className="endcap-wrapper-section">
-            <label htmlFor="title">Title</label><br />
-            <input type="text" id="title" name="title" 
-              value={this.state.title} 
-              placeholder="Enter Flank Name" 
-              onChange={this.handleChange}
-            />
-          </div>
-          <div className="endcap-wrapper-section">
-            <label htmlFor="itemOne">Item One</label><br />
-            <input type="text" id="itemOne" name="itemOne" 
-              value={this.state.itemOne} 
-              placeholder="Enter Item One" 
-              onChange={this.handleChange} 
-            />
-          </div>
-          <div className="endcap-wrapper-section">
-            <label htmlFor="itemOne">Item Two</label><br />
-            <input type="text" id="itemTwo" name="itemTwo"
-              value={this.state.itemTwo} 
-              placeholder="Enter Item Two" 
-              onChange={this.handleChange} 
-            />
-          </div>
-          <div className="endcap-wrapper-section">
-            <label htmlFor="itemOne">Item Three</label><br />
-            <input type="text" id="itemThree" name="itemThree" 
-              value={this.state.itemThree} 
-              placeholder="Enter Item Three" 
-              onChange={this.handleChange}
-            />
-          </div>
-          <div className="endcap-wrapper-section">
-            <label htmlFor="itemOne">Item Four</label><br />
-            <input type="text" id="itemFour" name="itemFour" 
-              value={this.state.itemFour} 
-              placeholder="Enter Item Four" 
-              onChange={this.handleChange}
-            />
-          </div>
-          <div className="endcap-wrapper-section">
-            <label htmlFor="itemOne">Item Five</label><br />
-            <input type="text" id="itemFive" name="itemFive"
-              value={this.state.itemFive} 
-              placeholder="Enter Item Five" 
-              onChange={this.handleChange}
-            />
-          </div>
-          <div className="endcap-wrapper-section">
+      <div className="new-flank-wrapper">
+        <h1 className="new-flank-title">Add a Flank to {this.state.currentEndcapTitle}</h1>
+        <form onSubmit={this.handleSubmit}  className="new-flank-form">
+          <div className="new-flank-form-section">
             <label htmlFor="itemOne">Side A or B?</label><br />
             <input type="text" id="side" name="side"
               value={this.state.side} 
-              placeholder="A or B?" 
               onChange={this.handleChange}
             />
           </div>
-          <button type="submit" className="endcap-wrapper-btn">Add Flank</button>
+          <div className="new-flank-form-section">
+            <label htmlFor="title">Title</label><br />
+            <input type="text" id="title" name="title" 
+              value={this.state.title} 
+              onChange={this.handleChange}
+            />
+          </div>
+          <div className="new-flank-form-section">
+            <label htmlFor="itemOne">Item One</label><br />
+            <input type="text" id="itemOne" name="itemOne" 
+              value={this.state.itemOne} 
+              onChange={this.handleChange} 
+            />
+          </div>
+          <div className="new-flank-form-section">
+            <label htmlFor="itemOne">Item Two</label><br />
+            <input type="text" id="itemTwo" name="itemTwo"
+              value={this.state.itemTwo} 
+              onChange={this.handleChange} 
+            />
+          </div>
+          <div className="new-flank-form-section">
+            <label htmlFor="itemOne">Item Three</label><br />
+            <input type="text" id="itemThree" name="itemThree" 
+              value={this.state.itemThree} 
+              onChange={this.handleChange}
+            />
+          </div>
+          <div className="new-flank-form-section">
+            <label htmlFor="itemOne">Item Four</label><br />
+            <input type="text" id="itemFour" name="itemFour" 
+              value={this.state.itemFour} 
+              onChange={this.handleChange}
+            />
+          </div>
+          <div className="new-flank-form-section">
+            <label htmlFor="itemOne">Item Five</label><br />
+            <input type="text" id="itemFive" name="itemFive"
+              value={this.state.itemFive} 
+              onChange={this.handleChange}
+            />
+          </div>
+          <button type="submit" className="new-flank-btn">Add Flank</button>
         </form>
       </div>
     )
