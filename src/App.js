@@ -7,7 +7,7 @@ import Navbar from './components/Navbar/Navbar';
 import NewFlankPage from './pages/Flanks/NewFlank/NewFlankPage';
 import EditFlankPage from './pages/Flanks/EditFlank/EditFlankPage';
 import Footer from './components/Footer/Footer';
-import './App.css';
+require ('./App.css');
 
 class App extends React.Component {
   state = {
