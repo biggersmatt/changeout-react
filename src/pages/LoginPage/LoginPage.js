@@ -8,18 +8,20 @@ const LoginPage = (props) => {
   const history = useHistory()
   
   const onSubmit = (data) => {
-    console.log(data)
-    fetch(`http://localhost:4000/api/users/login`, {
-      method: "POST",
-      credentials: "include",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(data),
-    })
-    .then(() => props.setIsLoggedIn())
-    .then(() => history.push('/'))
-    .catch((err) => console.log(err))
+    
+    // fetch(`http://localhost:4000/api/users/login`, {
+    //   method: "POST",
+    //   credentials: "include",
+    //   headers: {
+    //     "Content-Type": "application/json",
+    //   },
+    //   body: JSON.stringify(data),
+    // })
+    // .then(() => props.setIsLoggedIn())
+    // .then(() => history.push('/'))
+    // .catch((err) => console.log(err))
+    props.login(data)
+    history.push('/')
   }
 
 
