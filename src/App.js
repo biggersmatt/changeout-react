@@ -88,7 +88,6 @@ class App extends React.Component {
     })
     .then((response) => response.json())
     .then((jsonData) => {
-      // console.log(jsonData)
       const endcapData = jsonData.allEndcaps;
       // Checks and Updates Settings
       fetch('http://localhost:4000/api/settings', {
@@ -96,15 +95,10 @@ class App extends React.Component {
       })
       .then((response) => response.json())
       .then((jsonData => {
-
-        const currentColNew = jsonData.settings.filter((setting) => {
+        const currentColNew = jsonData.settings.find((setting) => {
           return setting.user === this.state.user._id 
         })
-        // console.log('current column new', currentColNew)
-        const currentColumnOrder = currentColNew[0].columnOrder.endcapIds;
-        // console.log('CURRENT COLUMN ORDER', currentColumnOrder)
-
-
+        const currentColumnOrder = currentColNew.columnOrder.endcapIds;
         const newState = {
           ...this.state,
           endcaps: endcapData,
@@ -136,26 +130,18 @@ class App extends React.Component {
       .then((response) => response.json())
       .then((jsonData) => {
         const endcapData = jsonData.allEndcaps;
-
         // Executes If A New Endcap Has Been Created
         if(endcapData.length > this.state.endcaps.length) {
-          // console.log("Route Hit");
           // Index Database For Current IDs to Compare
           fetch('http://localhost:4000/api/settings')
           .then((response) => response.json())
           .then((jsonData) => {
-              const currentColNew = jsonData.settings.filter((setting) => {
+              const currentColNew = jsonData.settings.find((setting) => {
               return setting.user === this.state.user._id
             })
-            console.log('current column new', currentColNew)
-            const currentColumnOrder = currentColNew[0].columnOrder.endcapIds;
-
-            // const currentColumnOrder = jsonData.settings[0].columnOrder.endcapIds;
-            console.log('datadatadta', endcapData)
+            const currentColumnOrder = currentColNew.columnOrder.endcapIds;
             const newEndCapId = endcapData[endcapData.length - 1]._id;
             currentColumnOrder.push(newEndCapId);
-            console.log(currentColumnOrder)
-            console.log(newEndCapId)
             const settings = {
               columnOrder: {
                 id: 'column-1',
@@ -165,9 +151,8 @@ class App extends React.Component {
               promoMonth: 'March',
               promoPeriod: 'B',
             }
-              console.log(currentColNew[0].user)
             // Updates Database with New Order
-              fetch(`http://localhost:4000/api/settings/${currentColNew[0]._id}`, {
+              fetch(`http://localhost:4000/api/settings/${currentColNew._id}`, {
                 method: 'PUT',
                 headers: {
                   'Content-Type': 'application/json',
@@ -201,32 +186,35 @@ class App extends React.Component {
               .catch((err) => console.log(err));
 
           })
-        } 
-        // else {
-        //   fetch('http://localhost:4000/api/settings')
-        //   .then((response) => response.json())
-        //   .then((jsonData) => {
-        //     const currentColumnOrder = jsonData.settings[0].columnOrder.endcapIds;
-        //     const hasUpdated = !this.state.hasUpdated;
-        //     this.setState({
-        //       endcaps: endcapData,
-        //       columns: {
-        //         ...this.state.columns,
-        //         'column-1': {
-        //           ...this.state.columns['column-1'],
-        //           endcapIds: currentColumnOrder,
-        //         }
-        //       },
-        //       hasUpdated: hasUpdated,
-        //     })
-        //   })
-        // }
+        } else {
+          fetch('http://localhost:4000/api/settings')
+          .then((response) => response.json())
+          .then((jsonData) => {
+            const currentColNew = jsonData.settings.find((setting) => {
+              return setting.user === this.state.user._id
+            })
+            const currentColumnOrder = currentColNew.columnOrder.endcapIds;
+            const hasUpdated = !this.state.hasUpdated;
+            this.setState({
+              endcaps: endcapData,
+              columns: {
+                ...this.state.columns,
+                'column-1': {
+                  ...this.state.columns['column-1'],
+                  endcapIds: currentColumnOrder,
+                }
+              },
+              hasUpdated: hasUpdated,
+            })
+          })
+        }
       })
     }
   }
   
   handleToggleEndcap = (toggle, endcapId) => {
     if(!toggle) {
+      console.log('Toggle was False')
       this.state.endcaps.forEach((endcap) => {
         if(endcap._id === endcapId) {
           const updatedEndcap = {
@@ -234,6 +222,7 @@ class App extends React.Component {
             change: true,
           }
           fetch(`http://localhost:4000/api/endcaps/${endcapId}`, {
+            credentials: 'include',
             method: 'PUT',
             headers: {
               'Content-Type': 'application/json',
@@ -245,6 +234,7 @@ class App extends React.Component {
         }
       })
     } else {
+      console.log('Toggle was True')
       this.state.endcaps.forEach((endcap) => {
         if(endcap._id === endcapId) {
           const updatedEndcap = {
@@ -252,6 +242,7 @@ class App extends React.Component {
             change: false,
           }
           fetch(`http://localhost:4000/api/endcaps/${endcapId}`, {
+            credentials: 'include',
             method: 'PUT',
             headers: {
               'Content-Type': 'application/json',
