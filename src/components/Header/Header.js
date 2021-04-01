@@ -11,7 +11,7 @@ const Header = () => {
         </Link>
         <h3>New Endcap</h3>
       </div>
-  </header>
+    </header>
   )
 }
 
