@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Switch, Route } from 'react-router-dom';
+import { Switch, Route, Redirect } from 'react-router-dom';
 import HomePage from './pages/Homepage/HomePage';
 import NewEndcapPage from './pages/Endcaps/NewEndcap/NewEndcapPage';
 import EditEndcapPage from './pages/Endcaps/EditEndcap/EditEndcapPage';
@@ -98,7 +98,7 @@ class App extends React.Component {
       .then((jsonData => {
 
         const currentColNew = jsonData.settings.filter((setting) => {
-          return setting.user === this.state.user._id
+          return setting.user === this.state.user._id 
         })
         // console.log('current column new', currentColNew)
         const currentColumnOrder = currentColNew[0].columnOrder.endcapIds;
@@ -384,14 +384,13 @@ class App extends React.Component {
         <Navbar logout={this.logout}/>
         <div className="content">
           <Switch>
-            <Route path='/login'>
+          <Route path='/login'>
               <LoginPage 
                 login={this.login}
                 isLoggedIn={this.state.isLoggedIn}
                 setIsLoggedIn={this.setIsLoggedIn} />
             </Route>
-
-            <Route exact path='/'>
+            {this.state.isLoggedIn && <Route exact path='/'>
               <HomePage 
                 month={this.state.month} 
                 period={this.state.period} 
@@ -405,28 +404,31 @@ class App extends React.Component {
                 endcaps={this.state.endcaps}
                 onDragEnd={this.onDragEnd}
               />
-            </Route>
-            <Route path='/new'>
+            </Route>}
+            {this.state.isLoggedIn && <Route path='/new'>
               <NewEndcapPage 
                 handleHasUpdated={this.handleHasUpdated}
               />
-            </Route>
-            <Route path='/edit/:id/flank/new'>
+            </Route>}
+            {this.state.isLoggedIn && <Route path='/edit/:id/flank/new'>
               <NewFlankPage 
                 handleHasUpdated={this.handleHasUpdated}
               />
-            </Route>
-            <Route path='/edit/:id/flank/:id'>
+            </Route>}
+            {this.state.isLoggedIn && <Route path='/edit/:id/flank/:id'>
               <EditFlankPage 
                 handleHasUpdated={this.handleHasUpdated}
               />
-            </Route>
-            <Route path='/edit/:id'>
+            </Route>}
+            {this.state.isLoggedIn && <Route path='/edit/:id'>
               <EditEndcapPage 
                 handleHasUpdated={this.handleHasUpdated}
                 endcaps={this.state.endcaps}
               />
-            </Route>
+            </Route>}
+            <Route path="/" render={() => <Redirect to="/login"/>} />
+            
+
           </Switch>
         </div>
         <Footer />
