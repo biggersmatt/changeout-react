@@ -214,7 +214,6 @@ class App extends React.Component {
   
   handleToggleEndcap = (toggle, endcapId) => {
     if(!toggle) {
-      console.log('Toggle was False')
       this.state.endcaps.forEach((endcap) => {
         if(endcap._id === endcapId) {
           const updatedEndcap = {
@@ -234,7 +233,6 @@ class App extends React.Component {
         }
       })
     } else {
-      console.log('Toggle was True')
       this.state.endcaps.forEach((endcap) => {
         if(endcap._id === endcapId) {
           const updatedEndcap = {

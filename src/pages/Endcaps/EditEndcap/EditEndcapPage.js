@@ -13,7 +13,9 @@ class EditEndcapPage extends React.Component {
   }
 
   componentDidMount() {
-    fetch(`http://localhost:4000/api/endcaps/${this.props.match.params.id}`)
+    fetch(`http://localhost:4000/api/endcaps/${this.props.match.params.id}`,{
+      credentials: 'include',
+    })
       .then((response) => response.json())
       .then((jsonData) => {
         const endcap = jsonData.foundEndcap;
@@ -31,6 +33,7 @@ class EditEndcapPage extends React.Component {
   handleSubmit = (event) => {
     event.preventDefault();
     fetch(`http://localhost:4000/api/endcaps/${this.props.match.params.id}`, {
+      credentials: 'include',
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
@@ -44,6 +47,7 @@ class EditEndcapPage extends React.Component {
 
   handleDeleteEndcap = (endcapId) => {
     fetch(`http://localhost:4000/api/endcaps/${endcapId}`, {
+      credentials: 'include',
       method: 'DELETE',
     })
     fetch('http://localhost:4000/api/settings')
@@ -62,6 +66,7 @@ class EditEndcapPage extends React.Component {
       }
       jsonData.settings.forEach((setting) => {
         fetch(`http://localhost:4000/api/settings/${setting._id}`, {
+          credentials: 'include',
           method: 'PUT',
           headers: {
             'Content-Type': 'application/json',
