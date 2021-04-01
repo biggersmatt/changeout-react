@@ -17,7 +17,9 @@ class NewFlankPage extends React.Component {
   }
 
   componentDidMount() {
-    fetch('http://localhost:4000/api/endcaps')
+    fetch('http://localhost:4000/api/endcaps', {
+      credentials: 'include',
+    })
       .then((response) => response.json())
       .then((jsonData => {
         const endcapData = jsonData.allEndcaps;
