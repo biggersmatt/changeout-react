@@ -1,5 +1,4 @@
 import React from 'react';
-
 import { Switch, Route, Redirect } from 'react-router-dom';
 import HomePage from './pages/Homepage/HomePage';
 import NewEndcapPage from './pages/Endcaps/NewEndcap/NewEndcapPage';
@@ -46,7 +45,6 @@ class App extends React.Component {
     })
     .then((response) => response.json())
     .then((jsonData) => {
-  
       this.setState({user: jsonData})
     })
     .then(() => this.setIsLoggedIn())
@@ -60,26 +58,25 @@ class App extends React.Component {
           'Content-Type': 'application/json'
         },
       })
-        .then((res) => res.json)
-        .then((jsonData) => console.log(jsonData))
-        .then(() => {
-          this.setState({
-      month: '',
-      period: '',
-      endcaps: [],
-      columns: {
-        'column-1': {
-          id: 'column-1',
-          title: 'To do',
-          endcapIds: [],
-        }
-      },
-      columnOrder: ['column-1'],
-      hasUpdated: false,
-      isLoggedIn: false
+    .then((res) => res.json)
+    .then((jsonData) => console.log(jsonData))
+    .then(() => {
+      this.setState({
+        month: '',
+        period: '',
+        endcaps: [],
+        columns: {
+          'column-1': {
+            id: 'column-1',
+            title: 'To do',
+            endcapIds: [],
+          }
+        },
+        columnOrder: ['column-1'],
+        hasUpdated: false,
+        isLoggedIn: false
       })
-        })
-    
+    })
   }
 
   fetchEndcaps = () => {
@@ -171,17 +168,7 @@ class App extends React.Component {
                     hasUpdated: hasUpdated,
                   })
               })
-              // .then(() => {
-              //   fetch('http://localhost:4000/api/settings')
-              //   .then((response) => response.json())
-              //   .then((jsonData) => {
-              //     const currentColumnOrder = currentColNew[0].columnOrder.endcapIds;
-              //     console.log(jsonData);
-                  
-              //   })
-              // })
               .catch((err) => console.log(err));
-
           })
         } else {
           fetch('http://localhost:4000/api/settings')
@@ -360,17 +347,13 @@ class App extends React.Component {
     })
   }
 
-685
-691
   render() {
-    console.log(this.state.endcaps)
-    console.log(this.state.columns['column-1'].endcapIds)
     return (
       <div className="wrapper">
         <Navbar logout={this.logout}/>
         <div className="content">
           <Switch>
-          <Route path='/login'>
+            <Route path='/login'>
               <LoginPage 
                 login={this.login}
                 isLoggedIn={this.state.isLoggedIn}
@@ -415,8 +398,6 @@ class App extends React.Component {
               />
             </Route>}
             <Route path="/" render={() => <Redirect to="/login"/>} />
-            
-
           </Switch>
         </div>
         <Footer />
