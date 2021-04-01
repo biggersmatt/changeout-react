@@ -89,7 +89,6 @@ class App extends React.Component {
     .then((response) => response.json())
     .then((jsonData) => {
       const endcapData = jsonData.allEndcaps;
-      // Checks and Updates Settings
       fetch('http://localhost:4000/api/settings', {
         credentials: 'include'
       })
@@ -130,9 +129,7 @@ class App extends React.Component {
       .then((response) => response.json())
       .then((jsonData) => {
         const endcapData = jsonData.allEndcaps;
-        // Executes If A New Endcap Has Been Created
         if(endcapData.length > this.state.endcaps.length) {
-          // Index Database For Current IDs to Compare
           fetch('http://localhost:4000/api/settings')
           .then((response) => response.json())
           .then((jsonData) => {
@@ -340,8 +337,9 @@ class App extends React.Component {
     fetch('http://localhost:4000/api/settings')
     .then((response) => response.json())
     .then((jsonData) => {
-      if(jsonData.settings.length === 1) {
-        // If Settings do exist, Update date them
+      const userSetting = jsonData.settings.find((setting) => {
+        return setting.user === this.state.user._id;
+      })
         const settings = {
           columnOrder: {
             id: 'column-1',
@@ -351,23 +349,22 @@ class App extends React.Component {
           promoMonth: 'March',
           promoPeriod: 'B',
         }
-        jsonData.settings.forEach((setting) => {
-          fetch(`http://localhost:4000/api/settings/${setting._id}`, {
-            method: 'PUT',
-            headers: {
-              'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(settings),
-          })
-          .catch((err) => console.log(err));
+        fetch(`http://localhost:4000/api/settings/${userSetting._id}`, {
+          method: 'PUT',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(settings),
         })
-      }
+        .catch((err) => console.log(err));
     })
   }
 
-
+685
+691
   render() {
-    
+    console.log(this.state.endcaps)
+    console.log(this.state.columns['column-1'].endcapIds)
     return (
       <div className="wrapper">
         <Navbar logout={this.logout}/>
@@ -413,6 +410,8 @@ class App extends React.Component {
               <EditEndcapPage 
                 handleHasUpdated={this.handleHasUpdated}
                 endcaps={this.state.endcaps}
+                endcapsIds={this.state.columns['column-1'].endcapIds}
+                user={this.state.user}
               />
             </Route>}
             <Route path="/" render={() => <Redirect to="/login"/>} />

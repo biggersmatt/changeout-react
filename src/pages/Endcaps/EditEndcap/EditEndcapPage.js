@@ -53,32 +53,60 @@ class EditEndcapPage extends React.Component {
     fetch('http://localhost:4000/api/settings')
     .then((response) => response.json())
     .then((jsonData) => {
-      const currentColumnOrder = jsonData.settings[0].columnOrder.endcapIds;
-      const updatedColumnOrder = currentColumnOrder.filter((remainingId) => remainingId !== endcapId);
-      const settings = {
-        columnOrder: {
-          id: 'column-1',
-          title: 'To Do',
-          endcapIds: updatedColumnOrder,
-        },
-        promoMonth: 'March',
-        promoPeriod: 'B',
-      }
-      jsonData.settings.forEach((setting) => {
-        fetch(`http://localhost:4000/api/settings/${setting._id}`, {
-          credentials: 'include',
+      console.log(jsonData.settings)
+      const userSetting = jsonData.settings.find((setting) => {
+        return setting.user === this.props.user._id;
+      })
+      const updatedColumnOrder = userSetting.columnOrder.endcapIds.filter((remainingId) => remainingId !== endcapId);
+        const settings = {
+          columnOrder: {
+            id: 'column-1',
+            title: 'To Do',
+            endcapIds: updatedColumnOrder,
+          },
+          promoMonth: 'March',
+          promoPeriod: 'B',
+        }
+        fetch(`http://localhost:4000/api/settings/${userSetting._id}`, {
           method: 'PUT',
           headers: {
             'Content-Type': 'application/json',
           },
           body: JSON.stringify(settings),
         })
+        .then(() => this.props.handleHasUpdated(true))
         .catch((err) => console.log(err));
-      })
     })
-    .then(() => this.props.handleHasUpdated(true))
-    .catch((err) => console.log(err))
   }
+  //   fetch('http://localhost:4000/api/settings')
+  //   .then((response) => response.json())
+  //   .then((jsonData) => {
+  //     const currentColumnOrder = jsonData.settings[0].columnOrder.endcapIds;
+  //     const updatedColumnOrder = currentColumnOrder.filter((remainingId) => remainingId !== endcapId);
+  //     const settings = {
+  //       columnOrder: {
+  //         id: 'column-1',
+  //         title: 'To Do',
+  //         endcapIds: updatedColumnOrder,
+  //       },
+  //       promoMonth: 'March',
+  //       promoPeriod: 'B',
+  //     }
+  //     jsonData.settings.forEach((setting) => {
+  //       fetch(`http://localhost:4000/api/settings/${setting._id}`, {
+  //         credentials: 'include',
+  //         method: 'PUT',
+  //         headers: {
+  //           'Content-Type': 'application/json',
+  //         },
+  //         body: JSON.stringify(settings),
+  //       })
+  //       .catch((err) => console.log(err));
+  //     })
+  //   })
+  //   .then(() => this.props.handleHasUpdated(true))
+  //   .catch((err) => console.log(err))
+  // }
 
   render() {
     return (
