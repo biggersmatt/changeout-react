@@ -1,25 +1,13 @@
-import { Redirect, useHistory } from 'react-router-dom'
+import { useHistory } from 'react-router-dom'
 import { useForm } from "react-hook-form";
 
 
 const LoginPage = (props) => {
-  const { register, handleSubmit, watch, errors } = useForm();
+  const { register, handleSubmit } = useForm();
 
   const history = useHistory()
   
   const onSubmit = (data) => {
-    
-    // fetch(`http://localhost:4000/api/users/login`, {
-    //   method: "POST",
-    //   credentials: "include",
-    //   headers: {
-    //     "Content-Type": "application/json",
-    //   },
-    //   body: JSON.stringify(data),
-    // })
-    // .then(() => props.setIsLoggedIn())
-    // .then(() => history.push('/'))
-    // .catch((err) => console.log(err))
     props.login(data)
     history.push('/')
   }
@@ -38,7 +26,6 @@ const LoginPage = (props) => {
         </div>
         <button type="submit">Login</button>
       </form>
-
     </div>
   )
 }
