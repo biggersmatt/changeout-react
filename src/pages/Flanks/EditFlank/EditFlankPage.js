@@ -14,19 +14,19 @@ class EditFlankPage extends React.Component {
 
   componentDidMount() {
     fetch(`http://localhost:4000/api/flanks/${this.props.match.params.id}`)
-      .then((response) => response.json())
-      .then((jsonData) => {
-        const flank = jsonData.foundFlank;
-        this.setState({
-          title: flank.title,
-          itemOne: flank.itemOne,
-          itemTwo: flank.itemTwo,
-          itemThree: flank.itemThree,
-          itemFour: flank.itemFour,
-          itemFive: flank.itemFive,
-        })
+    .then((response) => response.json())
+    .then((jsonData) => {
+      const flank = jsonData.foundFlank;
+      this.setState({
+        title: flank.title,
+        itemOne: flank.itemOne,
+        itemTwo: flank.itemTwo,
+        itemThree: flank.itemThree,
+        itemFour: flank.itemFour,
+        itemFive: flank.itemFive,
       })
-      .catch((err) => console.log(err));
+    })
+    .catch((err) => console.log(err));
   }
 
   handleChange = (event) => {
@@ -44,9 +44,9 @@ class EditFlankPage extends React.Component {
       },
       body: JSON.stringify(this.state),
     })
-      .then(() => this.props.history.push('/'))
-      .then(() => this.props.handleHasUpdated(true))
-      .catch((err) => console.log(err));
+    .then(() => this.props.history.push('/'))
+    .then(() => this.props.handleHasUpdated(true))
+    .catch((err) => console.log(err));
   }
 
   handleDeleteEndcap = (flankId) => {
@@ -57,8 +57,8 @@ class EditFlankPage extends React.Component {
       },
       body: JSON.stringify(this.props)
     })
-      .then(() => this.props.handleHasUpdated(true))
-      .catch((err) => console.log(err))
+    .then(() => this.props.handleHasUpdated(true))
+    .catch((err) => console.log(err))
   }
 
   render() {

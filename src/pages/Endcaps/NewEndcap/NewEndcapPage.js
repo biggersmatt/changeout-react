@@ -40,7 +40,6 @@ class NewEndcapPage extends React.Component {
       <div className="new-endcap-wrapper">
         <h1 className="new-endcap-title">Create a New Endcap</h1>
         <form onSubmit={this.handleSubmit}  className="new-endcap-form">
-
           <div className="new-endcap-form-section">
             <label htmlFor="title">Title</label><br />
             <input type="text" id="title" name="title" 
@@ -48,7 +47,6 @@ class NewEndcapPage extends React.Component {
               onChange={this.handleChange}
             />
           </div>
-
           <div className="new-endcap-form-section">
             <label htmlFor="itemOne">Item One</label><br />
             <input type="text" id="itemOne" name="itemOne" 
