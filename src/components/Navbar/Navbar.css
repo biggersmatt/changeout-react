@@ -3,21 +3,53 @@ nav {
   justify-content: space-around;
   align-items: center;
   background-color: var(--wfm-green);
-  height: 60px;
+  height: 5vh;
   border-bottom: 1px solid grey;
 }
 
 .navbar-greeting {
   color: white;
-  font-size: 14px;
+  font-size: 0.8em;
+}
+
+.navbar-links {
+  display: flex;
 }
 
 .navbar-link {
   color: white;
-  font-size: 12px;
-  margin: 0 -10px;
+  font-size: 0.7em;
+  margin: 0 10px;
 }
 
-.nav-items li:hover {
-  transform: scale(1.2);
+/* iPhone */
+@media (min-width: 414px) {
+  .navbar-greeting {
+    font-size: 1.1em;
+  }
+  .navbar-link {
+    font-size: 1em;
+  }
+}
+
+/* iPad */
+@media (min-width: 768px) {
+  .navbar-greeting {
+    font-size: 1.5em;
+  }
+  .navbar-link {
+    font-size: 1.25em;
+    margin: 0 20px;
+  }
+}
+
+/* iPad Pro */
+@media (min-width: 1024px) {
+  .navbar-greeting {
+    font-size: 1.8em;
+  }
+  .navbar-link {
+    font-size: 1.5em;
+    margin: 0 30px;
+  }
 }
