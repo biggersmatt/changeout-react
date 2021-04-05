@@ -27,8 +27,9 @@
 .new-endcap-form-section {
   display: flex;
   flex-direction: column;
+  height: 12%;
   width: 70%;
-  margin: 7px;
+  margin: 5px;
 }
 
 .new-endcap-form-label {
@@ -37,6 +38,7 @@
 
 .new-endcap-form-input {
   font-size: 0.75em;
+  line-height: 1.5em;
 }
 
 .new-endcap-btn {
@@ -48,6 +50,17 @@
   margin-top: 10px;
 }
 
+/* iPhone */
 @media (min-width: 414px) {
-
+  .new-endcap-form-label {
+    font-size: 1.25em;
+  }
+  .new-endcap-form-input {
+    font-size: 1em;
+    line-height: 1.25em;
+  }
+  .new-endcap-btn {
+    height: 10%;
+    font-size: 1em;
+  }
 }
