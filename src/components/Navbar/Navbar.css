@@ -8,11 +8,14 @@ nav {
 }
 
 .navbar-greeting {
-  color: white; 
+  color: white;
+  font-size: 14px;
 }
 
 .navbar-link {
   color: white;
+  font-size: 12px;
+  margin: 0 -10px;
 }
 
 .nav-items li:hover {
