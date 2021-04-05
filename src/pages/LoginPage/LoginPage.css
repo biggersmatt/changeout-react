@@ -15,6 +15,7 @@
   border-radius: 20px 20px 5px 5px;
   height: 60%;
   width: 75%;
+  max-width: 800px;
   margin-top: -40px;
   padding: 20px;
 }
@@ -111,5 +112,25 @@
 
 /* iPad Pro */
 @media (min-width: 1024px) {
-
+  .login-header {
+    font-size: 3em;
+  }
+  .login-form {
+    padding: 75px;
+  }
+  .login-form-signup {
+    font-size: 2em;
+  }
+  .login-form-label {
+    font-size: 1.5em;
+  }
+  .login-form-input {
+    line-height: 2.75em;
+  }
+  .login-signup-prompt {
+    font-size: 2em;
+  }
+  .login-submit-btn {
+    font-size: 2em;
+  }
 }
