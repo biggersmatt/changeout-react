@@ -13,13 +13,15 @@ class EditEndcapPage extends React.Component {
   }
 
   componentDidMount() {
-    fetch(`http://localhost:4000/api/endcaps/${this.props.match.params.id}`)
-      .then((response) => response.json())
-      .then((jsonData) => {
-        const endcap = jsonData.foundEndcap;
-        this.setState(endcap);
-      })
-      .catch((err) => console.log(err));
+    fetch(`http://localhost:4000/api/endcaps/${this.props.match.params.id}`,{
+      credentials: 'include',
+    })
+    .then((response) => response.json())
+    .then((jsonData) => {
+      const endcap = jsonData.foundEndcap;
+      this.setState(endcap);
+    })
+    .catch((err) => console.log(err));
   }
 
   handleChange = (event) => {
@@ -31,26 +33,30 @@ class EditEndcapPage extends React.Component {
   handleSubmit = (event) => {
     event.preventDefault();
     fetch(`http://localhost:4000/api/endcaps/${this.props.match.params.id}`, {
+      credentials: 'include',
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify(this.state),
     })
-      .then(() => this.props.history.push('/'))
-      .then(() => this.props.handleHasUpdated(true))
-      .catch((err) => console.log(err));
+    .then(() => this.props.history.push('/'))
+    .then(() => this.props.handleHasUpdated(true))
+    .catch((err) => console.log(err));
   }
 
   handleDeleteEndcap = (endcapId) => {
     fetch(`http://localhost:4000/api/endcaps/${endcapId}`, {
+      credentials: 'include',
       method: 'DELETE',
     })
     fetch('http://localhost:4000/api/settings')
     .then((response) => response.json())
     .then((jsonData) => {
-      const currentColumnOrder = jsonData.settings[0].columnOrder.endcapIds;
-      const updatedColumnOrder = currentColumnOrder.filter((remainingId) => remainingId !== endcapId);
+      const userSetting = jsonData.settings.find((setting) => {
+        return setting.user === this.props.user._id;
+      })
+      const updatedColumnOrder = userSetting.columnOrder.endcapIds.filter((remainingId) => remainingId !== endcapId);
       const settings = {
         columnOrder: {
           id: 'column-1',
@@ -60,19 +66,16 @@ class EditEndcapPage extends React.Component {
         promoMonth: 'March',
         promoPeriod: 'B',
       }
-      jsonData.settings.forEach((setting) => {
-        fetch(`http://localhost:4000/api/settings/${setting._id}`, {
-          method: 'PUT',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify(settings),
-        })
-        .catch((err) => console.log(err));
+      fetch(`http://localhost:4000/api/settings/${userSetting._id}`, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(settings),
       })
+      .then(() => this.props.handleHasUpdated(true))
+      .catch((err) => console.log(err));
     })
-    .then(() => this.props.handleHasUpdated(true))
-    .catch((err) => console.log(err))
   }
 
   render() {

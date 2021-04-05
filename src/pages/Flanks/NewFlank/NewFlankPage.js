@@ -17,21 +17,24 @@ class NewFlankPage extends React.Component {
   }
 
   componentDidMount() {
-    fetch('http://localhost:4000/api/endcaps')
-      .then((response) => response.json())
-      .then((jsonData => {
-        const endcapData = jsonData.allEndcaps;
-        let currentEndcapTitle = '';
-        endcapData.map(endcap => {
-          if(endcap._id === this.props.match.params.id)
-          currentEndcapTitle = endcap.title;
-          return currentEndcapTitle;
-        })
-        this.setState({
-          currentEndcapTitle: currentEndcapTitle,
-          selectedEndcap: this.props.match.params.id,
-        })
-      }))
+    fetch('http://localhost:4000/api/endcaps', {
+      credentials: 'include',
+    })
+    .then((response) => response.json())
+    .then((jsonData => {
+      const endcapData = jsonData.allEndcaps;
+      let currentEndcapTitle = '';
+      endcapData.map(endcap => {
+        if(endcap._id === this.props.match.params.id)
+        currentEndcapTitle = endcap.title;
+        return currentEndcapTitle;
+      })
+      this.setState({
+        currentEndcapTitle: currentEndcapTitle,
+        selectedEndcap: this.props.match.params.id,
+      })
+    }))
+    .catch((err) => (console.log(err)))
   }
 
   handleChange = (event) => {
@@ -49,9 +52,9 @@ class NewFlankPage extends React.Component {
       },
       body: JSON.stringify(this.state),
     })
-      .then(() => this.props.history.push('/'))
-      .then(() => this.props.handleHasUpdated(true))
-      .catch((err) => console.log(err));
+    .then(() => this.props.history.push('/'))
+    .then(() => this.props.handleHasUpdated(true))
+    .catch((err) => console.log(err));
   }
 
   render() {
