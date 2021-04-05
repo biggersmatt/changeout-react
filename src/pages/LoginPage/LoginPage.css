@@ -87,3 +87,29 @@
     font-size: 1.25em;
   }
 }
+@media (max-height: 320px) {
+  .login-header {
+    font-size: 1.25em;
+  }
+  .login-form {
+    height: 70%;
+    margin-top: 0;
+  }
+  .login-form-signup {
+    font-size: 0.75em;
+  }
+  .login-form-label {
+    font-size: 0.75em;
+  }
+  .login-form-input {
+    line-height: 1em;
+    font-size: 1em;
+  }
+  .login-signup-prompt {
+    font-size: 1em;
+  }
+  .login-submit-btn {
+    font-size: 1.25em;
+    height: 10vh;
+  }
+}
