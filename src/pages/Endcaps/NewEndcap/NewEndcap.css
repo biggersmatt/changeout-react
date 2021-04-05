@@ -6,7 +6,7 @@
 }
 
 .new-endcap-title {
-  font-size: 1.5em;
+  font-size: 8vw;
   margin: 20px 0 0 0;
 }
 
@@ -14,6 +14,7 @@
   background-color: var(--green);
   height: 75%;
   width: 80%;
+  max-width: 600px;
   border: 1px solid var(--green-border);
   border-radius: 20px 20px 5px 5px;
   display: flex;
@@ -33,34 +34,38 @@
 }
 
 .new-endcap-form-label {
-  font-size: 1em;
+  font-size: 5vw;
 }
 
 .new-endcap-form-input {
-  font-size: 0.75em;
-  line-height: 1.5em;
+  font-size: 4vw;
+  line-height: 4vh;
+  padding-left: 10px;
 }
 
 .new-endcap-btn {
   background-color: var(--yellow);
   border: 1px solid var(--yellow-border);
   border-radius: 8px;
+  font-size: 4vw;
   height: 12%;
   width: 75%;
   margin-top: 10px;
 }
 
-/* iPhone */
-@media (min-width: 414px) {
-  .new-endcap-form-label {
-    font-size: 1.25em;
+@media (min-width: 500px) {
+  .new-endcap-title {
+    font-size: 50px;
   }
+  .new-endcap-form-label {
+    font-size: 24px;
+  }
+  
   .new-endcap-form-input {
-    font-size: 1em;
-    line-height: 1.25em;
+    font-size: 20px;
+    line-height: 36px;
   }
   .new-endcap-btn {
-    height: 10%;
-    font-size: 1em;
+    font-size: 24px;
   }
 }
