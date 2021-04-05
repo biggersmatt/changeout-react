@@ -16,7 +16,7 @@
   height: 60%;
   width: 75%;
   margin-top: -100px;
-  padding: 10px;
+  padding: 20px;
 }
 
 .login-header {
@@ -36,7 +36,7 @@
 }
 
 .login-form-label {
-  font-size: 15px;
+  font-size: 12px;
   margin-bottom: 5px;
 }
 
