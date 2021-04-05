@@ -65,7 +65,7 @@
   cursor: pointer;
 }
 
-/* iPhone */
+/* iPhone(Portrait) */
 @media (min-width: 414px) {
   .login-header {
     font-size: 2em;
@@ -87,6 +87,7 @@
     font-size: 1.25em;
   }
 }
+/* iPhone(Landscape) */
 @media (max-height: 320px) {
   .login-header {
     font-size: 1.25em;
