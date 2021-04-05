@@ -18,6 +18,11 @@
   margin-top: -100px;
 }
 
+.login-form-signup {
+  width: 60%;
+  font-weight: 900;
+}
+
 .login-form-section {
   display: flex;
   flex-direction: column;
@@ -25,7 +30,8 @@
 }
 
 .login-form-label {
-  /* color: red; */
+  font-size: 15px;
+  margin-bottom: 5px;
 }
 
 .login-form-input {
@@ -34,10 +40,11 @@
 
 .login-submit-btn {
   background-color: var(--yellow);
-  height: 75px;
-  width: 250px;
+  height: 12%;
+  width: 50%;
   border: 1px solid var(--yellow-border);
   border-radius: 10px;
+  font-size: 20px;
 }
 
 .login-submit-btn:hover {
