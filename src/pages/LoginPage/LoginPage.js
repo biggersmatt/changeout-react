@@ -14,7 +14,7 @@ const LoginPage = (props) => {
 
   return (
     <div className="login-container">
-      <form className="login-form" onSubmit={handleSubmit(onSubmit)}>
+      <form className="login-form shadow" onSubmit={handleSubmit(onSubmit)}>
         <h1 className="login-header">Change Out</h1>
         <h2 className="login-form-signup">Sign In</h2>
         <div className="login-form-section">
@@ -40,7 +40,7 @@ const LoginPage = (props) => {
           />
         </div>
         <h4 className="login-signup-prompt">Don't have an account? <a href="www.google.com"><span>Sign up.</span></a></h4>
-        <button className="login-submit-btn" type="submit">Login</button>
+        <button className="login-submit-btn shadow" type="submit">Login</button>
       </form>
     </div>
   )
