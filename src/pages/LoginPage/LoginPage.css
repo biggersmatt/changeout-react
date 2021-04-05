@@ -45,6 +45,10 @@
   margin: 0;
 }
 
+.login-signup-prompt {
+  font-size: 1em;
+}
+
 .login-submit-btn {
   background-color: var(--yellow);
   height: 8vh;
@@ -72,6 +76,9 @@
   .login-form-input {
     line-height: 2em;
   }
+  .login-signup-prompt {
+    font-size: 1.25em;
+  }
   .login-submit-btn {
     font-size: 1.25em;
   }
@@ -79,7 +86,27 @@
 
 /* iPad */
 @media (min-width: 768px) {
-
+  .login-header {
+    font-size: 2.5em;
+  }
+  .login-form {
+    padding: 50px;
+  }
+  .login-form-signup {
+    font-size: 1.5em;
+  }
+  .login-form-label {
+    font-size: 1.25em;
+  }
+  .login-form-input {
+    line-height: 2.25em;
+  }
+  .login-signup-prompt {
+    font-size: 1.5em;
+  }
+  .login-submit-btn {
+    font-size: 1.5em;
+  }
 }
 
 /* iPad Pro */
