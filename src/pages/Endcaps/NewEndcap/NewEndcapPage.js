@@ -38,7 +38,7 @@ class NewEndcapPage extends React.Component {
   render() {
     return (
       <div className="new-endcap-wrapper">
-        <h1 className="new-endcap-title">Create a New Endcap</h1>
+        <h1 className="new-endcap-title">New Endcap</h1>
         <form onSubmit={this.handleSubmit}  className="new-endcap-form shadow">
           <div className="new-endcap-form-section">
             <label className="new-endcap-form-label" htmlFor="title">Title of Endcap</label>
