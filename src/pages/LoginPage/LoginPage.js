@@ -15,7 +15,7 @@ const LoginPage = (props) => {
   return (
     <div className="login-container">
       <form className="login-form" onSubmit={handleSubmit(onSubmit)}>
-        <h1>Change Out</h1>
+        <h1 className="login-header">Change Out</h1>
         <h2 className="login-form-signup">Sign In</h2>
         <div className="login-form-section">
           <label className="login-form-label" htmlFor="company">Company</label>
