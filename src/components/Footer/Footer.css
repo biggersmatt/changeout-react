@@ -1,7 +1,7 @@
 footer {
   background-color: var(--wfm-green);
   color: white;
-  height: 50px;
+  height: 5vh;
   width: 100%;
   border-top: 1px solid grey;
   display: flex;
