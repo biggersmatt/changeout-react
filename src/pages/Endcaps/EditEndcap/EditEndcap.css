@@ -16,6 +16,7 @@
   justify-content: space-between;
   height: 10%;
   width: 80%;
+  max-width: 450px;
   margin: 25px 0 0;
 }
 
@@ -58,7 +59,7 @@
   background-color: var(--green);
   height: 70%;
   width: 80%;
-  max-width: 600px;
+  max-width: 450px;
   border: 1px solid var(--green-border);
   border-radius: 20px 20px 5px 5px;
   display: flex;
@@ -78,6 +79,7 @@
 
 .edit-endcap-form-label {
   font-size: 5vw;
+  margin: 0 0 5px;
 }
 
 .edit-endcap-form-input {
@@ -90,9 +92,10 @@
   background-color: var(--yellow);
   border: 1px solid var(--yellow-border);
   border-radius: 10px;
-  height: 12%;
+  height: 10%;
   width: 75%;
   font-size: 4vw;
+  margin: 10px 0 0;
   transition: transform 0.4s ease;
 }
 
@@ -102,23 +105,27 @@
 }
 
 /* Max Sizes of Edit Endcap Wrapper */
-@media (min-width: 500px) {
+@media (min-width: 562px) {
   .edit-endcap-title {
-    font-size: 8vw;
+    font-size: 45px;
   }
-  .edit-endcap-btns {
-    height: 30px;
-    width: 30px;
-    font-size: 4vw;
+  .edit-endcap-delete-btn {
+    font-size: 45px;
   }
-  .edit-endcap-btn {
-    font-size: 4vw;
+  .edit-endcap-flank-btn {
+    font-size: 45px;
+  }
+  .edit-endcap-btn-title {
+    font-size: 22.5px;
   }
   .edit-endcap-form-label {
-    font-size: 5vw;
+    font-size: 28.125px;
   }
   .edit-endcap-form-input {
-    font-size: 4vw;
-    line-height: 3vh;
+    font-size: 22.6px;
+    line-height: 25.95px;
+  }
+  .edit-endcap-btn {
+    font-size: 22.6px;
   }
 }
