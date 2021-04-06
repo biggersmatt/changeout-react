@@ -1,9 +1,10 @@
 import React from 'react';
-import { Switch, Route, Redirect } from 'react-router-dom';
+import { Switch, Route, Redirect, useHistory } from 'react-router-dom';
 import HomePage from './pages/Homepage/HomePage';
 import NewEndcapPage from './pages/Endcaps/NewEndcap/NewEndcapPage';
 import EditEndcapPage from './pages/Endcaps/EditEndcap/EditEndcapPage';
 import LoginPage from './pages/LoginPage/LoginPage'
+import SignupPage from './pages/SignupPage/SignupPage'
 import Navbar from './components/Navbar/Navbar';
 import NewFlankPage from './pages/Flanks/NewFlank/NewFlankPage';
 import EditFlankPage from './pages/Flanks/EditFlank/EditFlankPage';
@@ -30,8 +31,28 @@ class App extends React.Component {
   
 
   setIsLoggedIn = () => {
-    this.setState({isLoggedIn: true})
-    this.fetchEndcaps();
+    
+    this.setState({isLoggedIn: true},
+      this.fetchEndcaps()
+      )
+    
+  }
+
+  signup = (data) => {
+    fetch('http://localhost:4000/api/users/signup',{
+      method: "POST",
+      credentials: "include",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    })
+    .then((response) => response.json())
+    .then((jsonData => {
+      this.setState({user: jsonData})
+    }))
+    .then(() => this.setIsLoggedIn())
+    .catch((err) => console.log(err))
   }
 
   login = (data) => {
@@ -358,6 +379,14 @@ class App extends React.Component {
                 login={this.login}
                 isLoggedIn={this.state.isLoggedIn}
                 setIsLoggedIn={this.setIsLoggedIn} />
+            </Route>
+            <Route path='/signup'>
+              <SignupPage 
+                signup={this.signup}
+                isLoggedIn={this.state.isLoggedIn}
+                setIsLoggedIn={this.setIsLoggedIn}
+
+              />
             </Route>
             {this.state.isLoggedIn && <Route exact path='/'>
               <HomePage 

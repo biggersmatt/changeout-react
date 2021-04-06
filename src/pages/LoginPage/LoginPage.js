@@ -39,7 +39,7 @@ const LoginPage = (props) => {
             ref={register({ required: true })} 
           />
         </div>
-        <h4 className="login-signup-prompt">Don't have an account? <a href="www.google.com"><span>Sign up.</span></a></h4>
+        {/* <h4 className="login-signup-prompt">Don't have an account? <a href="/signup"><span>Sign up.</span></a></h4> */}
         <button className="login-submit-btn shadow" type="submit">Login</button>
       </form>
     </div>
