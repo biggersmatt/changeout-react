@@ -59,10 +59,12 @@
   border: 1px solid var(--yellow-border);
   border-radius: 10px;
   font-size: 5vw;
+  transition:transform 0.4s ease;
 }
 
 .login-submit-btn:hover {
   cursor: pointer;
+  transform: scale(1.1);
 }
 
 /* Max Sizes of Login Container */
