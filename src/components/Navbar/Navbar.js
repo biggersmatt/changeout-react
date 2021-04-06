@@ -7,7 +7,13 @@ const Navbar = (props) => {
       <h1 className="navbar-greeting">Welcome Username</h1>
       <div className="navbar-links">
         <Link to='/' className="navbar-link">Home</Link>
-        <Link to='/login' onClick={() => props.logout()} className="navbar-link">Sign out</Link>
+        <Link 
+          to='/login' 
+          onClick={() => props.logout()} 
+          className="navbar-link"
+        >
+        Sign out
+        </Link>
       </div>
     </nav>
   )
