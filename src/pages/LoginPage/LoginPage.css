@@ -15,18 +15,18 @@
   border-radius: 20px 20px 5px 5px;
   height: 60%;
   width: 75%;
-  max-width: 600px;
+  max-width: 400px;
   margin-top: -40px;
   padding: 20px;
 }
 
 .login-header {
-  font-size: 1.5em;
+  font-size: 8vw;
 }
 
 .login-form-signup {
   width: 100%;
-  font-size: 1.25em;
+  font-size: 6vw;
   font-weight: 900;
 }
 
@@ -37,19 +37,19 @@
 }
 
 .login-form-label {
-  font-size: 1em;
+  font-size: 4vw;
   margin-bottom: 5px;
 }
 
 .login-form-input {
-  line-height: 2em;
+  line-height: 4vh;
+  font-size: 5vw;
   margin: 0;
   padding-left: 10px;
-  font-size: 1em;
 }
 
 .login-signup-prompt {
-  font-size: 1em;
+  font-size: 4vw;
 }
 
 .login-submit-btn {
@@ -58,59 +58,32 @@
   width: 50%;
   border: 1px solid var(--yellow-border);
   border-radius: 10px;
-  font-size: 1em;
+  font-size: 5vw;
 }
 
 .login-submit-btn:hover {
   cursor: pointer;
 }
 
-/* iPhone(Portrait) */
-@media (min-width: 414px) {
+/* Max Sizes of Login Container */
+@media (min-width: 500px) {
   .login-header {
-    font-size: 2em;
+    font-size: 40px;
   }
   .login-form-signup {
-    font-size: 1.25em;
+    font-size: 30px;
   }
   .login-form-label {
-    font-size: 1em;
+    font-size: 20px;
   }
   .login-form-input {
-    line-height: 2.5em;
-    font-size: 1em;
+    line-height: 34.6px;
+    font-size: 25px;
   }
   .login-signup-prompt {
-    font-size: 1.25em;
+    font-size: 20px;
   }
   .login-submit-btn {
-    font-size: 1.25em;
-  }
-}
-/* iPhone(Landscape) */
-@media (max-height: 320px) {
-  .login-header {
-    font-size: 1.25em;
-  }
-  .login-form {
-    height: 70%;
-    margin-top: 0;
-  }
-  .login-form-signup {
-    font-size: 0.75em;
-  }
-  .login-form-label {
-    font-size: 0.75em;
-  }
-  .login-form-input {
-    line-height: 1em;
-    font-size: 1em;
-  }
-  .login-signup-prompt {
-    font-size: 1em;
-  }
-  .login-submit-btn {
-    font-size: 1.25em;
-    height: 10vh;
+    font-size: 25px;
   }
 }
