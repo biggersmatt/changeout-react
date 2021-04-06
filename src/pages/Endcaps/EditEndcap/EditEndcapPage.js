@@ -86,22 +86,21 @@ class EditEndcapPage extends React.Component {
           <div className="edit-endcap-btn-wrapper" id={this.props.endcaps.length === 1 ? 'hidden' : null}>
             <Link to="/">
               <i 
-                className="far fa-trash-alt edit-endcap-btns" 
+                className="far fa-trash-alt edit-endcap-delete-btn" 
                 onClick={() => this.handleDeleteEndcap(this.state._id)}
               >
               </i>
             </Link>
-            <h4>Delete</h4>
+            <h4 className="edit-endcap-btn-title">Delete</h4>
           </div>
           <div className="edit-endcap-btn-wrapper">
             <Link to={`/edit/${this.props.match.params.id}/flank/new`}>
-              <button 
-                className="edit-endcap-btns" 
-                >
-                +
-              </button>
+              <i 
+                className="far fa-plus-square edit-endcap-flank-btn"
+              >
+              </i>
             </Link>
-            <h4>Flank</h4>
+            <h4 className="edit-endcap-btn-title">Flank</h4>
           </div>
         </div>
         <form onSubmit={this.handleSubmit} className="edit-endcap-form">
