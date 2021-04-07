@@ -11,12 +11,6 @@
   align-items: center;
 }
 
-@media (min-width: 768px) {
-  .flank-green {
-    width: 25vw;
-  }
-}
-
 .flank-yellow {
   background-color: var(--yellow);
   border: 1px solid var(--yellow-border);
@@ -30,31 +24,13 @@
   align-items: center;
 }
 
-@media (min-width: 768px) {
-  .flank-yellow {
-    width: 25vw;
-  }
-}
-
 .flank-title {
   padding-top: 10px;
   border-bottom: 1px solid black;
 }
 
-@media (min-width: 768px) {
-  .flank-title {
-    font-size: 20px;
-  }
-}
-
 .flank-item {
   font-size: 12px;
-}
-
-@media (min-width: 768px) {
-  .flank-item {
-    font-size: 16px;
-  }
 }
 
 .flank-btns {
@@ -78,13 +54,6 @@
   padding: 5px;
 }
 
-@media (min-width: 768px) {
-  .flank-edit-change {
-    width: 75px;
-    font-size: 14px;
-  }
-}
-
 .flank-edit-completed {
   height: 20px;
   width: 38px;
@@ -96,13 +65,6 @@
   border: 1px solid var(--green-border);
   border-radius: 10px 10px 0 0;
   padding: 5px;
-}
-
-@media (min-width: 768px) {
-  .flank-edit-completed {
-    width: 75px;
-    font-size: 14px;
-  }
 }
 
 /* Flank Change/Complete */
@@ -118,19 +80,6 @@
   padding: 5px;
 }
 
-@media (min-width: 375px) {
-  .flank-change {
-    margin-left: 7px;
-  }
-}
-
-@media (min-width: 768px) {
-  .flank-change {
-    width: 75px;
-    font-size: 14px;
-  }
-}
-
 .flank-completed {
   height: 20px;
   width: 38px;
@@ -141,17 +90,4 @@
   border: 1px solid var(--green-border);
   border-radius: 10px 10px 0 0;
   padding: 5px;
-}
-
-@media (min-width: 375px) {
-  .flank-completed {
-    margin-left: 7px;
-  }
-}
-
-@media (min-width: 768px) {
-  .flank-completed {
-    width: 75px;
-    font-size: 14px;
-  }
 }

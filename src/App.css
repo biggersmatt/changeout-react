@@ -38,8 +38,8 @@ li {
   list-style-type: none;
 }
 
-label {
-  font-size: 0.75em;
+#hidden {
+  display:none;
 }
 
 /* App.js */
