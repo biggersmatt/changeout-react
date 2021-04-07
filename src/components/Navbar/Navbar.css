@@ -3,18 +3,37 @@ nav {
   justify-content: space-around;
   align-items: center;
   background-color: var(--wfm-green);
-  height: 60px;
+  height: 5vh;
   border-bottom: 1px solid grey;
 }
 
 .navbar-greeting {
-  color: white; 
+  color: white;
+  font-size: 4vw;
+}
+
+.navbar-links {
+  display: flex;
 }
 
 .navbar-link {
   color: white;
+  font-size: 3vw;
+  margin: 0 20px;
+  transition: transform 0.4s ease;
 }
 
-.nav-items li:hover {
-  transform: scale(1.2);
+.navbar-link:hover {
+  cursor: pointer;
+  transform: scale(1.1);
+}
+
+/* Max Sizes for Nav */
+@media (min-width: 793px) {
+  .navbar-greeting {
+    font-size: 31.75px;
+  }
+  .navbar-link {
+    font-size: 23.8125px;
+  }
 }

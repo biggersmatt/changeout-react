@@ -1,10 +1,18 @@
 footer {
   background-color: var(--wfm-green);
   color: white;
-  height: 50px;
+  height: 5vh;
   width: 100%;
   border-top: 1px solid grey;
   display: flex;
   justify-content: center;
   align-items: center;
+  font-size: 4vw;
+}
+
+/* Max Sizes for Footer */
+@media (min-width: 400px) {
+  footer {
+    font-size: 16px;
+  }
 }
