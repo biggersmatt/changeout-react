@@ -13,8 +13,6 @@ require ('./App.css');
 
 class App extends React.Component {
   state = {
-    month: '',
-    period: '',
     endcaps: [],
     columns: {
       'column-1': {
@@ -92,8 +90,6 @@ class App extends React.Component {
     .then((jsonData) => console.log(jsonData))
     .then(() => {
       this.setState({
-        month: '',
-        period: '',
         endcaps: [],
         columns: {
           'column-1': {
@@ -173,8 +169,6 @@ class App extends React.Component {
                 title: 'To Do',
                 endcapIds: currentColumnOrder,
               },
-              promoMonth: 'March',
-              promoPeriod: 'B',
             }
             // Updates Database with New Order
               fetch(`http://localhost:4000/api/settings/${currentColNew._id}`, {
@@ -312,15 +306,6 @@ class App extends React.Component {
       [event.target.id]: event.target.value
     })
   }
-
-  handleChangeMonth = (event) => {
-    event.preventDefault();
-  }
-  
-  handleChangePeriod = (event) => {
-    const periodIndex = event.target.value;
-    this.setState({ period: periodIndex });
-  }
   
   onDragEnd = (result) => {
     const { destination, source, draggableId } = result;
@@ -364,8 +349,6 @@ class App extends React.Component {
             title: 'To Do',
             endcapIds: this.state.columns['column-1'].endcapIds,
           },
-          promoMonth: 'March',
-          promoPeriod: 'B',
         }
         fetch(`http://localhost:4000/api/settings/${userSetting._id}`, {
           method: 'PUT',
@@ -399,18 +382,13 @@ class App extends React.Component {
                 signup={this.signup}
                 isLoggedIn={this.state.isLoggedIn}
                 setIsLoggedIn={this.setIsLoggedIn}
-
               />
             </Route>
             <Route exact path='/'>
               <HomePage 
-                month={this.state.month} 
-                period={this.state.period} 
                 handleChange={this.handleChange}
                 handleToggleEndcap={this.handleToggleEndcap}
                 handleToggleFlank={this.handleToggleFlank}
-                handleChangeMonth={this.handleChangeMonth} 
-                handleChangePeriod={this.handleChangePeriod} 
                 columnOrder={this.state.columnOrder}
                 columns={this.state.columns}
                 endcaps={this.state.endcaps}

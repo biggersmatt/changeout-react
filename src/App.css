@@ -42,24 +42,6 @@ label {
   font-size: 0.75em;
 }
 
-@media (min-width: 768px) {
-  label {
-    font-size: 1.5em;
-  }
-}
-/* 
-input {
-  margin-top: -20px;
-  margin-bottom: 15px;
-} */
-
-/* @media (min-width: 768px) {
-  input {
-    line-height: 35px;
-    font-size: 24px;
-  }
-} */
-
 /* App.js */
 .wrapper {
   display: flex;
