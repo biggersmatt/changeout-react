@@ -1,9 +1,10 @@
 import React from 'react';
-import { Switch, Route, Redirect } from 'react-router-dom';
+import { Switch, Route, Redirect, useHistory } from 'react-router-dom';
 import HomePage from './pages/Homepage/HomePage';
 import NewEndcapPage from './pages/Endcaps/NewEndcap/NewEndcapPage';
 import EditEndcapPage from './pages/Endcaps/EditEndcap/EditEndcapPage';
 import LoginPage from './pages/LoginPage/LoginPage'
+import SignupPage from './pages/SignupPage/SignupPage'
 import Navbar from './components/Navbar/Navbar';
 import NewFlankPage from './pages/Flanks/NewFlank/NewFlankPage';
 import EditFlankPage from './pages/Flanks/EditFlank/EditFlankPage';
@@ -30,9 +31,35 @@ class App extends React.Component {
   
 
   setIsLoggedIn = () => {
-    this.setState({isLoggedIn: true})
-    this.fetchEndcaps();
+    
+    this.setState({isLoggedIn: true},
+      this.fetchEndcaps()
+      )
+    
   }
+
+  signup = (data) => {
+    fetch('http://localhost:4000/api/users/signup',{
+      method: "POST",
+      credentials: "include",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    })
+    .then((response) => response.json())
+    .then((jsonData => {
+      this.setState({
+        user: jsonData,
+        isLoggedIn: true
+      })
+    }))
+    
+    .catch((err) => console.log(err))
+  }
+
+
+
 
   login = (data) => {
     fetch(`http://localhost:4000/api/users/login`, {
@@ -45,9 +72,12 @@ class App extends React.Component {
     })
     .then((response) => response.json())
     .then((jsonData) => {
-      this.setState({user: jsonData})
+      this.setState({
+        user: jsonData,
+        isLoggedIn: true
+      })
     })
-    .then(() => this.setIsLoggedIn())
+    .then(() => this.fetchEndcaps())
     .catch((err) => console.log(err))
   }
 
@@ -74,7 +104,8 @@ class App extends React.Component {
         },
         columnOrder: ['column-1'],
         hasUpdated: false,
-        isLoggedIn: false
+        isLoggedIn: false,
+        user: ''
       })
     })
   }
@@ -350,16 +381,28 @@ class App extends React.Component {
   render() {
     return (
       <div className="wrapper">
-        <Navbar logout={this.logout}/>
+        <Navbar
+          user={this.state.user}
+          isLoggedIn={this.state.isLoggedIn}
+          logout={this.logout}/>
         <div className="content">
           <Switch>
             <Route path='/login'>
-              <LoginPage 
+              <LoginPage
+                handleHistory={this.handleHistory}
                 login={this.login}
                 isLoggedIn={this.state.isLoggedIn}
                 setIsLoggedIn={this.setIsLoggedIn} />
             </Route>
-            {this.state.isLoggedIn && <Route exact path='/'>
+            <Route path='/signup'>
+              <SignupPage 
+                signup={this.signup}
+                isLoggedIn={this.state.isLoggedIn}
+                setIsLoggedIn={this.setIsLoggedIn}
+
+              />
+            </Route>
+            <Route exact path='/'>
               <HomePage 
                 month={this.state.month} 
                 period={this.state.period} 
@@ -372,8 +415,9 @@ class App extends React.Component {
                 columns={this.state.columns}
                 endcaps={this.state.endcaps}
                 onDragEnd={this.onDragEnd}
+                isLoggedIn={this.state.isLoggedIn}
               />
-            </Route>}
+            </Route>
             {this.state.isLoggedIn && <Route path='/new'>
               <NewEndcapPage 
                 handleHasUpdated={this.handleHasUpdated}
