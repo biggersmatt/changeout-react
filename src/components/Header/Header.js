@@ -5,11 +5,12 @@ const Header = (props) => {
   return (
     <header>
       <h1 className="header-title">ChangeOut</h1>
-      {props.isLoggedIn && <div className="endcap-btn-wrapper">
+      {props.isLoggedIn && <div className="add-endcap-wrapper">
         <Link to="/new">
-          <button className="endcap-btn">+</button>
+          <i class="far fa-plus-square add-endcap-btn"></i>
+          {/* <button className="endcap-btn">+</button> */}
         </Link>
-        <h3>New Endcap</h3>
+        <h3 className="add-endcap-title">New Endcap</h3>
       </div>}
       {!props.isLoggedIn && <div>
         <Link to='/signup' >Sign up </Link> or {' '}
