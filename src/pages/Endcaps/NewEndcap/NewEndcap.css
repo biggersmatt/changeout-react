@@ -13,7 +13,7 @@
 
 .new-endcap-form {
   background-color: var(--green);
-  height: 75%;
+  height: 80%;
   width: 80%;
   max-width: 600px;
   border: 1px solid var(--green-border);
@@ -35,7 +35,8 @@
 }
 
 .new-endcap-form-label {
-  font-size: 5vw;
+  font-size: 4vw;
+  margin: 0 0 5px;
 }
 
 .new-endcap-form-input {
@@ -49,7 +50,7 @@
   border: 1px solid var(--yellow-border);
   border-radius: 8px;
   height: 12%;
-  width: 75%;
+  width: 70%;
   font-size: 4vw;
   margin-top: 10px;
   transition: transform 0.4s ease;

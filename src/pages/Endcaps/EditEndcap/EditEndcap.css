@@ -78,7 +78,7 @@
 }
 
 .edit-endcap-form-label {
-  font-size: 5vw;
+  font-size: 4vw;
   margin: 0 0 5px;
 }
 
@@ -93,7 +93,7 @@
   border: 1px solid var(--yellow-border);
   border-radius: 10px;
   height: 10%;
-  width: 75%;
+  width: 70%;
   font-size: 4vw;
   margin: 10px 0 0;
   transition: transform 0.4s ease;
