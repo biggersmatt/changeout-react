@@ -57,6 +57,10 @@ const SignupPage = (props) => {
             id="password" 
             ref={register({
             required: "You must create a password",
+            minLength: {
+              value: 2,
+              message: "Password must have at least 6 characters",
+            },
           })} 
           />
         </div>
@@ -76,7 +80,7 @@ const SignupPage = (props) => {
         {errors.confPassword && <p>{errors.confPassword.message}</p>}
 
         </div>
-        {/* <h4 className="login-signup-prompt">Already have an account? <a href="/login"><span>Login.</span></a></h4> */}
+        <h4 className="login-signup-prompt">Already have an account? <a href="/login"><span>Login.</span></a></h4>
         <button className="login-submit-btn shadow" type="submit">Signup</button>
       </form>
     </div>

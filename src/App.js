@@ -49,11 +49,17 @@ class App extends React.Component {
     })
     .then((response) => response.json())
     .then((jsonData => {
-      this.setState({user: jsonData})
+      this.setState({
+        user: jsonData,
+        isLoggedIn: true
+      })
     }))
-    .then(() => this.setIsLoggedIn())
+    
     .catch((err) => console.log(err))
   }
+
+
+
 
   login = (data) => {
     fetch(`http://localhost:4000/api/users/login`, {
@@ -66,9 +72,12 @@ class App extends React.Component {
     })
     .then((response) => response.json())
     .then((jsonData) => {
-      this.setState({user: jsonData})
+      this.setState({
+        user: jsonData,
+        isLoggedIn: true
+      })
     })
-    .then(() => this.setIsLoggedIn())
+    .then(() => this.fetchEndcaps())
     .catch((err) => console.log(err))
   }
 
@@ -95,7 +104,8 @@ class App extends React.Component {
         },
         columnOrder: ['column-1'],
         hasUpdated: false,
-        isLoggedIn: false
+        isLoggedIn: false,
+        user: ''
       })
     })
   }
@@ -371,11 +381,15 @@ class App extends React.Component {
   render() {
     return (
       <div className="wrapper">
-        <Navbar logout={this.logout}/>
+        <Navbar
+          user={this.state.user}
+          isLoggedIn={this.state.isLoggedIn}
+          logout={this.logout}/>
         <div className="content">
           <Switch>
             <Route path='/login'>
-              <LoginPage 
+              <LoginPage
+                handleHistory={this.handleHistory}
                 login={this.login}
                 isLoggedIn={this.state.isLoggedIn}
                 setIsLoggedIn={this.setIsLoggedIn} />
@@ -388,7 +402,7 @@ class App extends React.Component {
 
               />
             </Route>
-            {this.state.isLoggedIn && <Route exact path='/'>
+            <Route exact path='/'>
               <HomePage 
                 month={this.state.month} 
                 period={this.state.period} 
@@ -401,8 +415,9 @@ class App extends React.Component {
                 columns={this.state.columns}
                 endcaps={this.state.endcaps}
                 onDragEnd={this.onDragEnd}
+                isLoggedIn={this.state.isLoggedIn}
               />
-            </Route>}
+            </Route>
             {this.state.isLoggedIn && <Route path='/new'>
               <NewEndcapPage 
                 handleHasUpdated={this.handleHasUpdated}
