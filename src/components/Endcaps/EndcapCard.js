@@ -29,7 +29,7 @@ class EndcapCard extends React.Component {
               handleToggleFlank={this.props.handleToggleFlank}
             />
             <div 
-              className={`endcap-card ${this.props.endcap.change && 'yellow'}`} 
+              className={`endcap-card shadow ${this.props.endcap.change && 'yellow'}`} 
               id={
                 (flankA.title && flankB.title ? 'nothing' : null) ||
                 (flankA.title ? 'endcap-flank-a': '') || 

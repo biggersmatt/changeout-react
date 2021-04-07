@@ -17,6 +17,11 @@
   justify-content: space-between;
   align-items: center;
   margin-bottom: 20px;
+  transition: transform 0.4s ease;
+}
+
+.endcap-card:hover {
+  transform: scale(1.1);
 }
 
 .endcap-card-title {
