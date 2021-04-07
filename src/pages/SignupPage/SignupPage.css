@@ -1,0 +1,91 @@
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: calc(90vh - 2px);
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  background-color: var(--green);
+  border: 1px solid var(--green-border);
+  border-radius: 20px 20px 5px 5px;
+  height: 60%;
+  width: 75%;
+  max-width: 400px;
+  margin-top: -40px;
+  padding: 20px;
+}
+
+.login-header {
+  font-size: 8vw;
+}
+
+.login-form-signup {
+  width: 100%;
+  font-size: 6vw;
+  font-weight: 900;
+}
+
+.login-form-section {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.login-form-label {
+  font-size: 4vw;
+  margin-bottom: 5px;
+}
+
+.login-form-input {
+  line-height: 4vh;
+  font-size: 5vw;
+  margin: 0;
+  padding-left: 10px;
+}
+
+.login-signup-prompt {
+  font-size: 4vw;
+}
+
+.login-submit-btn {
+  background-color: var(--yellow);
+  height: 6vh;
+  width: 50%;
+  border: 1px solid var(--yellow-border);
+  border-radius: 10px;
+  font-size: 5vw;
+  transition:transform 0.4s ease;
+}
+
+.login-submit-btn:hover {
+  cursor: pointer;
+  transform: scale(1.1);
+}
+
+/* Max Sizes of Login Container */
+@media (min-width: 500px) {
+  .login-header {
+    font-size: 40px;
+  }
+  .login-form-signup {
+    font-size: 30px;
+  }
+  .login-form-label {
+    font-size: 20px;
+  }
+  .login-form-input {
+    line-height: 34.6px;
+    font-size: 25px;
+  }
+  .login-signup-prompt {
+    font-size: 20px;
+  }
+  .login-submit-btn {
+    font-size: 25px;
+  }
+}
