@@ -15,7 +15,7 @@ const SignupPage = (props) => {
   const onSubmit = (data) => {
     const { confPassword, ...rest } = data;
     props.signup(rest)
-    history.push('/')
+    history.push('/login')
   }
 
   return (

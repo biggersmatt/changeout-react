@@ -47,13 +47,13 @@ class App extends React.Component {
       },
       body: JSON.stringify(data),
     })
-    .then((response) => response.json())
-    .then((jsonData => {
-      this.setState({
-        user: jsonData,
-        isLoggedIn: true
-      })
-    }))
+    // .then((response) => response.json())
+    // .then((jsonData => {
+    //   this.setState({
+    //     user: jsonData,
+    //     isLoggedIn: true
+    //   })
+    // }))
     
     .catch((err) => console.log(err))
   }
