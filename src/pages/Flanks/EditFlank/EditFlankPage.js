@@ -64,59 +64,76 @@ class EditFlankPage extends React.Component {
   render() {
     return (
       <div className="edit-flank-wrapper">
-        <h1 className="edit-flank-title">Edit Flank {this.state.title}</h1>
+        <h1 className="edit-flank-title">Edit {this.state.title}</h1>
         <div className="edit-flank-header">
           <div className="edit-flank-btn-wrapper">
             <Link to="/">
-              <button 
-                className="edit-flank-btn" 
+              <i 
+                className="far fa-trash-alt edit-flank-delete-btn"
                 onClick={() => this.handleDeleteEndcap(this.props.match.params.id)}
-                >
-                -
-              </button>
+              >
+              </i>
             </Link>
             <h4>Delete</h4>
           </div>
         </div>
         <form onSubmit={this.handleSubmit} className="edit-flank-form">
           <div className="edit-flank-form-section">
-            <label htmlFor="title">Title</label><br />
-            <input type="text" id="title" 
+            <label className="edit-flank-form-label" htmlFor="title">Title of Flank</label>
+            <input 
+              type="text" 
+              id="title" 
+              className="edit-flank-form-input"
               value={this.state.title} 
               onChange={this.handleChange}
             />
           </div>
           <div className="edit-flank-form-section">
-            <label htmlFor="itemOne">Item One</label><br />
-            <input type="text" id="itemOne" 
+            <label className="edit-flank-form-label" htmlFor="itemOne">One</label>
+            <input 
+              type="text"  
+              id="itemOne" 
+              className="edit-flank-form-input"
               value={this.state.itemOne} 
               onChange={this.handleChange}
             />
           </div>
           <div className="edit-flank-form-section">
-            <label htmlFor="itemOne">Item Two</label><br />
-            <input type="text" id="itemTwo" 
+            <label className="edit-flank-form-label" htmlFor="itemOne">Two</label>
+            <input 
+              type="text" 
+              id="itemTwo" 
+              className="edit-flank-form-input"
               value={this.state.itemTwo} 
               onChange={this.handleChange}
             />
           </div>
           <div className="edit-flank-form-section">
-            <label htmlFor="itemOne">Item Three</label><br />
-            <input type="text" id="itemThree" 
+            <label className="edit-flank-form-label" htmlFor="itemOne">Three</label>
+            <input 
+              type="text" 
+              id="itemThree" 
+              className="edit-flank-form-input"
               value={this.state.itemThree} 
               onChange={this.handleChange}
             />
           </div>
           <div className="edit-flank-form-section">
-            <label htmlFor="itemOne">Item Four</label><br />
-            <input type="text" id="itemFour" 
+            <label className="edit-flank-form-label" htmlFor="itemOne">Four</label>
+            <input 
+              type="text" 
+              id="itemFour" 
+              className="edit-flank-form-input"
               value={this.state.itemFour} 
               onChange={this.handleChange}
             />
           </div>
           <div className="edit-flank-form-section">
-            <label htmlFor="itemOne">Item Five</label><br />
-            <input type="text" id="itemFive" 
+            <label className="edit-flank-form-label" htmlFor="itemOne">Five</label>
+            <input 
+              type="text" 
+              id="itemFive" 
+              className="edit-flank-form-input"
               value={this.state.itemFive} 
               onChange={this.handleChange}
             />
