@@ -1,8 +1,7 @@
-import { Link, useHistory } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 require('./Header.css');
 
 const Header = (props) => {
-  let history = useHistory()
   return (
     <header>
       <h1 className="header-title">ChangeOut</h1>

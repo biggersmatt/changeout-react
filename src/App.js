@@ -1,5 +1,5 @@
 import React from 'react';
-import { Switch, Route, Redirect, useHistory } from 'react-router-dom';
+import { Switch, Route, Redirect } from 'react-router-dom';
 import HomePage from './pages/Homepage/HomePage';
 import NewEndcapPage from './pages/Endcaps/NewEndcap/NewEndcapPage';
 import EditEndcapPage from './pages/Endcaps/EditEndcap/EditEndcapPage';
