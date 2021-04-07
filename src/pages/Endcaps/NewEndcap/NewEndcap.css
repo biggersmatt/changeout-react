@@ -6,6 +6,7 @@
 }
 
 .new-endcap-title {
+  border-bottom: 1px solid black;
   font-size: 8vw;
   margin: 20px 0 0 0;
 }
@@ -47,9 +48,9 @@
   background-color: var(--yellow);
   border: 1px solid var(--yellow-border);
   border-radius: 8px;
-  font-size: 4vw;
   height: 12%;
   width: 75%;
+  font-size: 4vw;
   margin-top: 10px;
   transition: transform 0.4s ease;
 }
@@ -59,6 +60,7 @@
   transform: scale(1.1);
 }
 
+/* Max Sizes of New Endcap Wrapper */
 @media (min-width: 500px) {
   .new-endcap-title {
     font-size: 50px;
@@ -66,7 +68,6 @@
   .new-endcap-form-label {
     font-size: 24px;
   }
-  
   .new-endcap-form-input {
     font-size: 20px;
     line-height: 36px;

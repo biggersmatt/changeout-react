@@ -9,7 +9,7 @@ nav {
 
 .navbar-greeting {
   color: white;
-  font-size: 0.8em;
+  font-size: 4vw;
 }
 
 .navbar-links {
@@ -18,38 +18,22 @@ nav {
 
 .navbar-link {
   color: white;
-  font-size: 0.7em;
-  margin: 0 10px;
+  font-size: 3vw;
+  margin: 0 20px;
+  transition: transform 0.4s ease;
 }
 
-/* iPhone */
-@media (min-width: 414px) {
-  .navbar-greeting {
-    font-size: 1.1em;
-  }
-  .navbar-link {
-    font-size: 1em;
-  }
+.navbar-link:hover {
+  cursor: pointer;
+  transform: scale(1.1);
 }
 
-/* iPad */
-@media (min-width: 768px) {
+/* Max Sizes for Nav */
+@media (min-width: 793px) {
   .navbar-greeting {
-    font-size: 1.5em;
+    font-size: 31.75px;
   }
   .navbar-link {
-    font-size: 1.25em;
-    margin: 0 20px;
-  }
-}
-
-/* iPad Pro */
-@media (min-width: 1024px) {
-  .navbar-greeting {
-    font-size: 1.8em;
-  }
-  .navbar-link {
-    font-size: 1.5em;
-    margin: 0 30px;
+    font-size: 23.8125px;
   }
 }

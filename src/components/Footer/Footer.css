@@ -7,26 +7,12 @@ footer {
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 0.8em;
+  font-size: 4vw;
 }
 
-/* iPhone */
-@media (min-width: 414px) {
+/* Max Sizes for Footer */
+@media (min-width: 400px) {
   footer {
-    font-size: 1.1em;
-  }
-}
-
-/* iPad */
-@media (min-width: 768px) {
-  footer {
-    font-size: 1.5em;
-  }
-}
-
-/* iPad Pro */
-@media (min-width: 1024px) {
-  footer {
-    font-size: 1.8em;
+    font-size: 16px;
   }
 }
