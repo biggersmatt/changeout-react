@@ -10,13 +10,13 @@
   border: 1px solid var(--green-border);
   border-radius: 20px 20px 5px 5px;
   height: 25vh;
-  width: 36vw;
+  width: 33vw;
   max-width: 210px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 20px;
+  margin: 0 2px 20px;
   transition: transform 0.4s ease;
 }
 
@@ -40,11 +40,11 @@
 }
 
 #endcap-flank-a {
-  margin-right: 30vw;
+  margin-right: calc(27vw + 6px);
 }
 
 #endcap-flank-b {
-  margin-left: 30vw;
+  margin-left: 27vw;
 }
 
 .endcap-card-btns {
@@ -65,7 +65,7 @@
   background-color: var(--yellow);
   border: 1px solid var(--yellow-border);
   border-radius: 10px 10px 0 0;
-  width: 15vw;
+  width: 13vw;
   max-width: 82.5px;
   color: black;
   font-weight: 700;
@@ -79,7 +79,7 @@
   background-color: var(--green);
   border: 1px solid var(--green-border);
   border-radius: 10px 10px 0 0;
-  width: 15vw;
+  width: 13vw;
   max-width: 82.5px;
   color: black;
   font-weight: 700;
@@ -94,7 +94,7 @@
   background-color: var(--yellow);
   border: 1px solid var(--yellow-border);
   border-radius: 10px 10px 0 0;
-  width: 15vw;
+  width: 13vw;
   max-width: 82.5px;
   font-weight: 700;
   padding: 5px;
@@ -107,7 +107,7 @@
   background-color: var(--green);
   border: 1px solid var(--green-border);
   border-radius: 10px 10px 0 0;
-  width: 15vw;
+  width: 13vw;
   max-width: 82.5px;
   font-weight: 700;
   padding: 5px;
@@ -120,13 +120,16 @@
   .endcap-card-item {
     font-size: 16.5px;
   }
+  .endcap-card-btns {
+    font-size: 13.75px;
+  }
+}
+
+@media (min-width: 715px) {
   #endcap-flank-a {
-    margin-right: 30vw;
+    margin-right: 150px;
   }
   #endcap-flank-b {
     margin-left: 30vw;
-  }
-  .endcap-card-btns {
-    font-size: 13.75px;
   }
 }
