@@ -8,8 +8,8 @@ const Navbar = (props) => {
       <div className="navbar-links">
         {props.isLoggedIn && <Link to='/' className="navbar-link">Home</Link>}
         {props.isLoggedIn && <Link to='/login' onClick={() => props.logout()} className="navbar-link">Sign out</Link>}
-        {!props.isLoggedIn && <Link to='/signup'  className="navbar-link">Signup</Link>}
         {!props.isLoggedIn && <Link to='/login'  className="navbar-link">Login</Link>}
+        {!props.isLoggedIn && <Link to='/signup'  className="navbar-link">Signup</Link>}
       </div>
     </nav>
   )
