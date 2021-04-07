@@ -68,7 +68,7 @@ class NewFlankPage extends React.Component {
               type="text" 
               id="side" 
               name="side"
-              placeholder="Choose A Side"
+              placeholder="Choose Side"
               className="new-flank-form-input"
               value={this.state.side} 
               onChange={this.handleChange}
