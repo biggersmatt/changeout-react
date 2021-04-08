@@ -21,7 +21,6 @@ class NewEndcapPage extends React.Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
-    console.log(this.state)
     fetch('http://localhost:4000/api/endcaps', {
       credentials: 'include',
       method: 'POST',

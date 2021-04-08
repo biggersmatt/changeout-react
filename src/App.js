@@ -86,8 +86,8 @@ class App extends React.Component {
           'Content-Type': 'application/json'
         },
       })
-    .then((res) => res.json)
-    .then((jsonData) => console.log(jsonData))
+    // .then((res) => res.json)
+    // .then((jsonData) => console.log(jsonData))
     .then(() => {
       this.setState({
         endcaps: [],
