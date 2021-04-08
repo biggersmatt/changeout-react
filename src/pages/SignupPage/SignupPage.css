@@ -13,7 +13,7 @@
   background-color: var(--green);
   border: 1px solid var(--green-border);
   border-radius: 20px 20px 5px 5px;
-  height: 60%;
+  height: 70%;
   width: 75%;
   max-width: 400px;
   margin-top: -40px;
@@ -43,7 +43,7 @@
 
 .login-form-input {
   line-height: 4vh;
-  font-size: 5vw;
+  font-size: 4vw;
   margin: 0;
   padding-left: 10px;
 }
@@ -79,8 +79,8 @@
     font-size: 20px;
   }
   .login-form-input {
-    line-height: 34.6px;
-    font-size: 25px;
+    line-height: 34.5px;
+    font-size: 20px;
   }
   .login-signup-prompt {
     font-size: 20px;

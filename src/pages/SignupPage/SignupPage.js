@@ -1,21 +1,19 @@
 import React, { useRef } from "react";
-
-import { useHistory } from 'react-router-dom'
+import { useHistory } from "react-router-dom"
 import { useForm } from "react-hook-form";
-require('./SignupPage.css')
+require("./SignupPage.css")
 
 
 const SignupPage = (props) => {
   const { register, handleSubmit, watch, errors } = useForm();
   const password = useRef({});
   password.current = watch("password", "");
-
   const history = useHistory()  
 
   const onSubmit = (data) => {
     const { confPassword, ...rest } = data;
     props.signup(rest)
-    history.push('/login')
+    history.push("/login")
   }
 
   return (
@@ -27,7 +25,7 @@ const SignupPage = (props) => {
           <label className="login-form-label" htmlFor="company">Company</label>
           <input 
             className="login-form-input"
-            placeholder="Your company"
+            placeholder="Your Company"
             type="text" 
             name="company" 
             id="company" 
@@ -38,7 +36,7 @@ const SignupPage = (props) => {
           <label className="login-form-label" htmlFor="storeNumber">Store Number</label>
           <input 
             className="login-form-input"
-            placeholder="Your storeNumber"
+            placeholder="Your Store Number"
             type="text" 
             name="storeNumber" 
             id="storeNumber" 
@@ -49,7 +47,7 @@ const SignupPage = (props) => {
           <label className="login-form-label" htmlFor="password">Password</label>
           <input 
             className="login-form-input"
-            placeholder="Your password"
+            placeholder="Create Password"
             type="password" 
             name="password" 
             id="password" 
@@ -76,7 +74,6 @@ const SignupPage = (props) => {
           })}
           />
         {errors.confPassword && <p>{errors.confPassword.message}</p>}
-
         </div>
         <h4 className="login-signup-prompt">Already have an account? <a href="/login"><span>Login.</span></a></h4>
         <button className="login-submit-btn shadow" type="submit">Signup</button>
