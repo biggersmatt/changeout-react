@@ -6,38 +6,30 @@
   --yellow-border: rgb(232,212,155);
   --wfm-green: rgb(13,94,54);
 }
-
 * {
   padding: 0;
   margin: 0;
 }
-
 *:focus {
   outline: 0;
 }
-
 body {
   background-color: whitesmoke;
   font-family: 'Raleway', sans-serif;
 }
-
 a {
   text-decoration: none;
-  color: green;
+  color: var(--wfm-green);
 }
-
 a:focus {
   text-decoration: none;
 }
-
 a:visited {
   text-decoration: none;
 }
-
 li {
   list-style-type: none;
 }
-
 #hidden {
   display:none;
 }

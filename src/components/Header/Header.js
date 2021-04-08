@@ -11,9 +11,16 @@ const Header = (props) => {
         </Link>
         <h3 className="add-endcap-title">New Endcap</h3>
       </div>}
-      {!props.isLoggedIn && <div>
-        <Link to='/signup' >Sign up </Link> or {' '}
-        <Link to="/login" >Login</Link>
+      {!props.isLoggedIn && 
+      <div className="login-error-container">
+        <div className="login-error-message">
+          <h3>Trouble Logging In.</h3>
+          <h3>Please Login or Sign Up with ChangeOut.</h3>
+        </div>
+        <div className="login-error-links">
+          <Link to="/login">Login</Link> | {' '}
+          <Link to="/signup">Sign up</Link>
+        </div>
       </div>}
 
     </header>
