@@ -63,8 +63,6 @@ class EditEndcapPage extends React.Component {
           title: 'To Do',
           endcapIds: updatedColumnOrder,
         },
-        promoMonth: 'March',
-        promoPeriod: 'B',
       }
       fetch(`http://localhost:4000/api/settings/${userSetting._id}`, {
         method: 'PUT',

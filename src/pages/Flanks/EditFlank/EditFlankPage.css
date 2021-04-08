@@ -30,12 +30,13 @@
 .edit-flank-delete-btn {
   color: rgb(240,54,41);
   font-size: 8vw;
+  margin: 0 0 5px 0;
   transition: transform 0.4s ease;
 }
 
 .edit-flank-delete-btn:hover {
   cursor: pointer;
-  transform: scale(1.1);
+  transform: scale(1.15);
 }
 
 .edit-flank-form {
@@ -61,13 +62,13 @@
 }
 
 .edit-flank-form-label {
-  font-size: 4vw;
+  font-size: 3vw;
   margin: 0 0 5px;
 }
 
 .edit-flank-form-input {
-  font-size: 4vw;
-  line-height: 3vh;
+  font-size: 3.5vw;
+  line-height: 4vh;
   padding-left: 10px;
 }
 
@@ -96,14 +97,12 @@
     font-size: 44px;
   }
   .edit-flank-form-label {
-    font-size: 22px;
+    font-size: 16.5px;
   }
-  
   .edit-flank-form-input {
-    font-size: 22px;
-    line-height: 25.875px;
+    font-size: 19.5px;
+    line-height: 34.5px;
   }
-  
   .edit-flank-submit {
     font-size: 22px;
   }
