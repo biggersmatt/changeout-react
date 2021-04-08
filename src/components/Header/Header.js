@@ -8,7 +8,6 @@ const Header = (props) => {
       {props.isLoggedIn && <div className="add-endcap-wrapper">
         <Link to="/new">
           <i class="far fa-plus-square add-endcap-btn"></i>
-          {/* <button className="endcap-btn">+</button> */}
         </Link>
         <h3 className="add-endcap-title">New Endcap</h3>
       </div>}

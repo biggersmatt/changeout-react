@@ -33,6 +33,9 @@ header {
 
 /* Max Sizes for Header */
 @media (min-width: 550px) {
+  header {
+    margin: 10px 0;
+  }
   .header-title {
     font-size: 44px;
   }
