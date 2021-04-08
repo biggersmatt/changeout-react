@@ -109,15 +109,14 @@
   padding: 5px;
 }
 
-@media (min-width: 550px) {
+@media (min-width: 670px) {
   .flank-title {
-    color: pink;
-    font-size: 22px;
+    font-size: 26.8px;
   }
   .flank-item {
-    font-size: 16.5px;
+    font-size: 20.1px;
   }
   .flank-btns {
-    font-size: 13.75px;
+    font-size: 16.75px;
   }
 }
