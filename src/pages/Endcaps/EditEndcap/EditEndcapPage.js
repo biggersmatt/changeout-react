@@ -10,6 +10,8 @@ class EditEndcapPage extends React.Component {
     itemThree: '',
     itemFour: '',
     itemFive: '',
+    flankA: '',
+    flankB: '',
   }
 
   componentDidMount() {
@@ -63,8 +65,6 @@ class EditEndcapPage extends React.Component {
           title: 'To Do',
           endcapIds: updatedColumnOrder,
         },
-        promoMonth: 'March',
-        promoPeriod: 'B',
       }
       fetch(`http://localhost:4000/api/settings/${userSetting._id}`, {
         method: 'PUT',
@@ -73,16 +73,30 @@ class EditEndcapPage extends React.Component {
         },
         body: JSON.stringify(settings),
       })
+      .then(() => this.handleDeleteFlank(this.state.flankA))
+      .then(() => this.handleDeleteFlank(this.state.flankB))
       .then(() => this.props.handleHasUpdated(true))
       .catch((err) => console.log(err));
     })
+  }
+
+  handleDeleteFlank = (flankId) => {
+    fetch(`http://localhost:4000/api/flanks/${flankId}`, {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(this.props)
+    })
+    .then(() => this.props.handleHasUpdated(true))
+    .catch((err) => console.log(err))
   }
 
   render() {
     return (
       <div className="edit-endcap-wrapper">
         <h1 className="edit-endcap-title">Edit {this.state.title}</h1>
-        <div className="edit-endcap-header-btns">
+        <div id={`${(this.props.endcaps.length === 1 && (this.state.flankA && this.state.flankB)) ? 'hidden' : null}`} className="edit-endcap-header-btns">
           <div className="edit-endcap-btn-wrapper" id={this.props.endcaps.length === 1 ? 'hidden' : null}>
             <Link to="/">
               <i 
@@ -93,7 +107,7 @@ class EditEndcapPage extends React.Component {
             </Link>
             <h4 className="edit-endcap-btn-title">Delete</h4>
           </div>
-          <div className="edit-endcap-btn-wrapper">
+          <div id={`${(this.state.flankA && this.state.flankB) ? 'hidden' : null}`} className="edit-endcap-btn-wrapper">
             <Link to={`/edit/${this.props.match.params.id}/flank/new`}>
               <i 
                 className="far fa-plus-square edit-endcap-flank-btn"

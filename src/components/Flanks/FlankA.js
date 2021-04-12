@@ -16,7 +16,7 @@ const FlankA = (props) => {
 
   return (
     <div 
-      className={flankA.change ? 'flank-yellow' : 'flank-green'} 
+      className={`shadow ${flankA.change ? 'flank-yellow' : 'flank-green'}`} 
       id={!flankA.title ? 'hidden' : null}
     >
       <h4 className="flank-title">{flankA.title}</h4>

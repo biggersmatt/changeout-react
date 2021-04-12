@@ -1,53 +1,38 @@
-#hidden {
-  display:none;
-}
-
 .endcap-flank-container {
   display: flex;
   justify-content: center;
   width: 100%;
+  max-width: 600px;
 }
 
 .endcap-card {
   position: relative;
   background-color: var(--green);
-  height: 225px;
-  /* width: 38%; */
   border: 1px solid var(--green-border);
   border-radius: 20px 20px 5px 5px;
-  overflow: hidden;
+  height: 25vh;
+  width: 33vw;
+  max-width: 210px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 20px;
+  margin: 0 2px 20px;
+  transition: transform 0.4s ease;
 }
 
-@media (min-width: 768px) {
-  .endcap-card {
-    width: 40vw;
-  }
+.endcap-card:hover {
+  transform: scale(1.025);
 }
 
 .endcap-card-title {
-  padding-top: 10px;
   border-bottom: 1px solid black;
-}
-
-@media (min-width: 768px) {
-  .endcap-card-title {
-    font-size: 20px;
-  }
+  font-size: 4vw;
+  padding-top: 10px;
 }
 
 .endcap-card-item {
-  font-size: 12px;
-}
-
-@media (min-width: 768px) {
-  .endcap-card-item {
-    font-size: 16px;
-  }
+  font-size: 3vw;
 }
 
 .yellow {
@@ -56,122 +41,93 @@
 }
 
 #endcap-flank-a {
-  margin-right: 31%;
-}
-
-@media (min-width: 768px) {
-  #endcap-flank-a {
-    margin-right: 25vw;
-  }
+  margin-right: calc(27vw + 6px);
 }
 
 #endcap-flank-b {
-  margin-left: 31%;
-}
-
-@media (min-width: 768px) {
-  #endcap-flank-b {
-    margin-left: 25vw;
-  }
+  margin-left: 27vw;
 }
 
 .endcap-card-btns {
-  font-size: 9px;
-  width: 100%;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
+  align-items: flex-end;
+  font-size: 2.5vw;
+  width: 100%;
+  max-width: 210px;
+  margin: 0 0 -2px 0;
 }
 
 /* Edit Info Change/Complete */
 .endcap-edit-change {
-  height: 20px;
-  width: 46px;
   display: flex;
   justify-content: center;
   align-items: center;
   background-color: var(--yellow);
-  color: black;
   border: 1px solid var(--yellow-border);
   border-radius: 10px 10px 0 0;
+  width: 13vw;
+  max-width: 82.5px;
+  color: black;
+  font-weight: 700;
   padding: 5px;
 }
 
-@media (min-width: 768px) {
-  .endcap-edit-change {
-    width: 100px;
-    font-size: 14px;
-  }
-}
-
 .endcap-edit-completed {
-  height: 20px;
-  width: 45px;
   display: flex;
   justify-content: center;
   align-items: center;
   background-color: var(--green);
-  color: black;
   border: 1px solid var(--green-border);
   border-radius: 10px 10px 0 0;
+  width: 13vw;
+  max-width: 82.5px;
+  color: black;
+  font-weight: 700;
   padding: 5px;
-}
-
-@media (min-width: 768px) {
-  .endcap-edit-completed {
-    width: 100px;
-    font-size: 14px;
-  }
 }
 
 /* Btn Change/Complete */
 .endcap-change {
-  height: 20px;
-  width: 46px;
   display: flex;
   justify-content: center;
   align-items: center;
   background-color: var(--yellow);
   border: 1px solid var(--yellow-border);
   border-radius: 10px 10px 0 0;
+  width: 13vw;
+  max-width: 82.5px;
+  font-weight: 700;
   padding: 5px;
 }
 
-@media (min-width: 375px) {
-  .endcap-change {
-    margin-left: 7px;
-  }
-}
-
-@media (min-width: 768px) {
-  .endcap-change {
-    width: 100px;
-    font-size: 14px;
-    margin-left: 15px;
-  }
-}
-
 .endcap-completed {
-  height: 20px;
-  width: 45px;
   display: flex;
   justify-content: center;
   align-items: center;
   background-color: var(--green);
   border: 1px solid var(--green-border);
   border-radius: 10px 10px 0 0;
+  width: 13vw;
+  max-width: 82.5px;
+  font-weight: 700;
   padding: 5px;
 }
 
-@media (min-width: 375px) {
-  .endcap-completed {
-    margin-left: 7px;
+@media (min-width: 670px) {
+  .endcap-card-title {
+    font-size: 26.8px;
   }
-}
-
-@media (min-width: 768px) {
-  .endcap-completed {
-    width: 100px;
-    font-size: 14px;
-    margin-left: 15px;
+  #endcap-flank-a {
+    margin-right: 196px;
+  }
+  #endcap-flank-b {
+    margin-left: 196px;
+  }
+  .endcap-card-item {
+    font-size: 20.1px;
+  }
+  .endcap-card-btns {
+    font-size: 16.75px;
   }
 }

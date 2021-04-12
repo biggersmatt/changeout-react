@@ -3,61 +3,69 @@ header {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 100px;
+  height: 15vh;
 }
 
 .header-title {
-  font-size: 30px;
+  font-size: 8vw;
 }
 
-@media (min-width: 768px) {
-  .header-title {
-    font-size: 50px;
-    margin: 75px 0 0 0;
-  }
-}
-
-.endcap-btn-wrapper {
+.add-endcap-wrapper {
   display: flex;
   align-items: center;
-  margin: 20px 150px 0 0;
+  margin: 20px 40vw 0 0;
 }
 
-@media (min-width: 375px) {
-  .endcap-btn-wrapper {
-    margin: 20px 200px 0 0;
-  }
-}
-
-@media (min-width: 414px) {
-  .endcap-btn-wrapper {
-    margin: 20px 250px 0 0;
-  }
-}
-
-@media (min-width: 768px) {
-  .endcap-btn-wrapper {
-    margin: 20px 400px 20px 0;
-  }
-}
-
-.endcap-btn {
-  height: 30px;
-  width: 30px;
+.add-endcap-btn {
+  font-size: 8vw;
   margin-right: 10px;
-  border-radius: 100px;
-  font-size: 20px;
-  background-color: var(--green);
+  transition: transform 0.4s ease;
 }
 
-@media (min-width: 768px) {
-  .endcap-btn {
-    height: 50px;
-    width: 50px;
-  }
-}
-
-.endcap-btn:hover {
-  transform: scale(1.1);
+.add-endcap-btn:hover {
   cursor: pointer;
+  transform: scale(1.15);
+}
+
+.add-endcap-title {
+  font-size: 3vw;
+}
+
+.login-error-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 80vw;
+  margin: 25px 0 -400px 0;
+}
+
+.login-error-message h3 {
+  font-size: 4vw;
+}
+
+.login-error-links {
+  margin: 10px 0;
+  font-weight: 900;
+}
+
+/* Max Sizes for Header */
+@media (min-width: 550px) {
+  header {
+    margin: 10px 0;
+  }
+  .header-title {
+    font-size: 44px;
+  }
+  .add-endcap-wrapper {
+    margin: 20px 220px 0 0;
+  }
+  .add-endcap-btn {
+    font-size: 44px;
+  }
+  .add-endcap-title {
+    font-size: 16.5px;
+  }
+  .login-error-message h3 {
+    font-size: 22px;
+  }
 }

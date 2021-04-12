@@ -6,59 +6,33 @@
   --yellow-border: rgb(232,212,155);
   --wfm-green: rgb(13,94,54);
 }
-
 * {
   padding: 0;
   margin: 0;
 }
-
 *:focus {
   outline: 0;
 }
-
 body {
   background-color: whitesmoke;
   font-family: 'Raleway', sans-serif;
 }
-
 a {
   text-decoration: none;
-  color: green;
+  color: var(--wfm-green);
 }
-
 a:focus {
   text-decoration: none;
 }
-
 a:visited {
   text-decoration: none;
 }
-
 li {
   list-style-type: none;
 }
-
-label {
-  font-size: 0.75em;
+#hidden {
+  display:none;
 }
-
-@media (min-width: 768px) {
-  label {
-    font-size: 1.5em;
-  }
-}
-/* 
-input {
-  margin-top: -20px;
-  margin-bottom: 15px;
-} */
-
-/* @media (min-width: 768px) {
-  input {
-    line-height: 35px;
-    font-size: 24px;
-  }
-} */
 
 /* App.js */
 .wrapper {

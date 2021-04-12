@@ -1,157 +1,122 @@
 .flank-green {
   background-color: var(--green);
   border: 1px solid var(--green-border);
-  height: 225px;
-  width: 31%;
   border-radius: 20px 20px 5px 5px;
-  overflow: hidden;
+  height: 25vh;
+  width: 27vw;
+  max-width: 200px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
+  transition: transform 0.4s ease;
 }
 
-@media (min-width: 768px) {
-  .flank-green {
-    width: 25vw;
-  }
+.flank-green:hover {
+  transform: scale(1.025);
 }
 
 .flank-yellow {
   background-color: var(--yellow);
   border: 1px solid var(--yellow-border);
-  height: 225px;
-  width: 31%;
   border-radius: 20px 20px 5px 5px;
-  overflow: hidden;
+  height: 25vh;
+  width: 27vw;
+  max-width: 200px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
+  transition: transform 0.4s ease;
 }
-
-@media (min-width: 768px) {
-  .flank-yellow {
-    width: 25vw;
-  }
+.flank-yellow:hover {
+  transform: scale(1.025);
 }
 
 .flank-title {
-  padding-top: 10px;
   border-bottom: 1px solid black;
-}
-
-@media (min-width: 768px) {
-  .flank-title {
-    font-size: 20px;
-  }
+  font-size: 4vw;
+  padding-top: 10px;
 }
 
 .flank-item {
-  font-size: 12px;
-}
-
-@media (min-width: 768px) {
-  .flank-item {
-    font-size: 16px;
-  }
+  font-size: 3vw;
 }
 
 .flank-btns {
-  font-size: 9px;
-  width: 80%;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
+  align-items: flex-end;
+  font-size: 2.5vw;
+  width: 100%;
+  max-width: 210px;
+  margin: 0 0 -2px 0;
 }
 
 /* Edit Info Change/Complete */
 .flank-edit-change {
-  height: 20px;
-  width: 38px;
   display: flex;
   justify-content: center;
   align-items: center;
   background-color: var(--yellow);
-  color: black;
   border: 1px solid var(--yellow-border);
   border-radius: 10px 10px 0 0;
+  width: 10vw;
+  max-width: 82.5px;
+  font-weight: 700;
+  color: black;
   padding: 5px;
 }
 
-@media (min-width: 768px) {
-  .flank-edit-change {
-    width: 75px;
-    font-size: 14px;
-  }
-}
-
 .flank-edit-completed {
-  height: 20px;
-  width: 38px;
   display: flex;
   justify-content: center;
   align-items: center;
   background-color: var(--green);
-  color: black;
   border: 1px solid var(--green-border);
   border-radius: 10px 10px 0 0;
+  width: 12vw;
+  max-width: 82.5px;
+  font-weight: 700;
+  color: black;
   padding: 5px;
-}
-
-@media (min-width: 768px) {
-  .flank-edit-completed {
-    width: 75px;
-    font-size: 14px;
-  }
 }
 
 /* Flank Change/Complete */
 .flank-change {
-  height: 20px;
-  width: 38px;
   display: flex;
   justify-content: center;
   align-items: center;
   background-color: var(--yellow);
   border: 1px solid var(--yellow-border);
   border-radius: 10px 10px 0 0;
+  width: 10vw;
+  max-width: 82.5px;
+  font-weight: 700;
   padding: 5px;
 }
 
-@media (min-width: 375px) {
-  .flank-change {
-    margin-left: 7px;
-  }
-}
-
-@media (min-width: 768px) {
-  .flank-change {
-    width: 75px;
-    font-size: 14px;
-  }
-}
-
 .flank-completed {
-  height: 20px;
-  width: 38px;
   display: flex;
   justify-content: center;
   align-items: center;
   background-color: var(--green);
   border: 1px solid var(--green-border);
   border-radius: 10px 10px 0 0;
+  width: 12vw;
+  max-width: 82.5px;
+  font-weight: 700;
   padding: 5px;
 }
 
-@media (min-width: 375px) {
-  .flank-completed {
-    margin-left: 7px;
+@media (min-width: 670px) {
+  .flank-title {
+    font-size: 26.8px;
   }
-}
-
-@media (min-width: 768px) {
-  .flank-completed {
-    width: 75px;
-    font-size: 14px;
+  .flank-item {
+    font-size: 20.1px;
+  }
+  .flank-btns {
+    font-size: 16.75px;
   }
 }

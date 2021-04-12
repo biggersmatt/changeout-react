@@ -9,7 +9,6 @@ const EndcapsList = (props) => {
         <div
           ref={provided.innerRef}
           {...provided.droppableProps}
-          // id={snapshot.isDraggingOver}
         >
           {props.endcaps.map((endcap, index) => {
             return <EndcapCard 
