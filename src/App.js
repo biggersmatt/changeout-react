@@ -29,11 +29,7 @@ class App extends React.Component {
   
 
   setIsLoggedIn = () => {
-    
-    this.setState({isLoggedIn: true},
-      this.fetchEndcaps()
-      )
-    
+    this.setState({isLoggedIn: true}, this.fetchEndcaps())
   }
 
   signup = (data) => {
@@ -52,12 +48,8 @@ class App extends React.Component {
     //     isLoggedIn: true
     //   })
     // }))
-    
     .catch((err) => console.log(err))
   }
-
-
-
 
   login = (data) => {
     fetch(`http://localhost:4000/api/users/login`, {

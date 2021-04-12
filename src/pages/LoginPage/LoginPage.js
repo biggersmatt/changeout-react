@@ -18,13 +18,13 @@ const LoginPage = (props) => {
         <h1 className="login-header">Change Out</h1>
         <h2 className="login-form-signup">Sign In</h2>
         <div className="login-form-section">
-          <label className="login-form-label" htmlFor="company">Company</label>
+          <label className="login-form-label" htmlFor="username">Username</label>
           <input 
             className="login-form-input"
-            placeholder="Your company"
+            placeholder="Your username"
             type="text" 
-            name="company" 
-            id="company" 
+            name="username" 
+            id="username" 
             ref={register({ required: true })} 
           />
         </div>

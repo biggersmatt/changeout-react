@@ -4,7 +4,7 @@ require("./Navbar.css");
 const Navbar = (props) => {
   return (
     <nav>
-      <h1 className="navbar-greeting">Welcome {props.user.company}</h1>
+      <h1 className="navbar-greeting">Welcome {props.user.username}</h1>
       <div className="navbar-links">
         {props.isLoggedIn && <Link to="/" className="navbar-link">Home</Link>}
         {props.isLoggedIn && <Link to="/login" onClick={() => props.logout()} className="navbar-link">Sign out</Link>}

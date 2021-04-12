@@ -22,7 +22,6 @@ const Header = (props) => {
           <Link to="/signup">Sign up</Link>
         </div>
       </div>}
-
     </header>
   )
 }
