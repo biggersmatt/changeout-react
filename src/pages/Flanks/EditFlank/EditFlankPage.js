@@ -49,7 +49,7 @@ class EditFlankPage extends React.Component {
     .catch((err) => console.log(err));
   }
 
-  handleDeleteEndcap = (flankId) => {
+  handleDeleteFlank = (flankId) => {
     fetch(`http://localhost:4000/api/flanks/${flankId}`, {
       method: 'DELETE',
       headers: {
@@ -70,7 +70,7 @@ class EditFlankPage extends React.Component {
             <Link to="/">
               <i 
                 className="far fa-trash-alt edit-flank-delete-btn"
-                onClick={() => this.handleDeleteEndcap(this.props.match.params.id)}
+                onClick={() => this.handleDeleteFlank(this.props.match.params.id)}
               >
               </i>
             </Link>

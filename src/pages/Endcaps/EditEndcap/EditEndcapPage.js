@@ -73,9 +73,23 @@ class EditEndcapPage extends React.Component {
         },
         body: JSON.stringify(settings),
       })
+      .then(() => this.handleDeleteFlank(this.state.flankA))
+      .then(() => this.handleDeleteFlank(this.state.flankB))
       .then(() => this.props.handleHasUpdated(true))
       .catch((err) => console.log(err));
     })
+  }
+
+  handleDeleteFlank = (flankId) => {
+    fetch(`http://localhost:4000/api/flanks/${flankId}`, {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(this.props)
+    })
+    .then(() => this.props.handleHasUpdated(true))
+    .catch((err) => console.log(err))
   }
 
   render() {
