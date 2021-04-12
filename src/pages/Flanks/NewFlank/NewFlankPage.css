@@ -41,6 +41,7 @@
   align-items: center;
   height: 4vh;
   width: 45%;
+  font-weight: 900;
   margin: 5px 0 0;
   transition: transform 0.4s ease;
 }
@@ -48,6 +49,12 @@
 .new-flank-side-btn:hover {
   cursor: pointer;
   transform: scale(1.1);
+}
+
+.side-selected {
+  background-color: var(--wfm-green);
+  border: 1px solid white;
+  color: white;
 }
 
 .new-flank-form-section {

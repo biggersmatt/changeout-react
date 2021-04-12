@@ -70,8 +70,16 @@ class NewFlankPage extends React.Component {
         <form onSubmit={this.handleSubmit}  className="new-flank-form">
           <h3>Choose a Side</h3>
           <div className="new-flank-side-btns">
-            <div className="new-flank-side-btn" onClick={() => this.handleSide('A')}>A</div>
-            <div className="new-flank-side-btn" onClick={() => this.handleSide('B')}>B</div>
+            <div 
+              className={`new-flank-side-btn ${this.state.side === 'A' ? 'side-selected' : null}`} 
+              onClick={() => this.handleSide('A')}
+            >A
+            </div>
+            <div 
+              className={`new-flank-side-btn ${this.state.side === 'B' ? 'side-selected' : null}`} 
+              onClick={() => this.handleSide('B')}
+            >B
+            </div>
           </div>
           {/* <div className="new-flank-form-section">
             <label className="new-flank-form-label" htmlFor="itemOne">Side A or B</label>
