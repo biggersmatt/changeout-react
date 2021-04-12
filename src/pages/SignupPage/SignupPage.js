@@ -32,17 +32,6 @@ const SignupPage = (props) => {
             ref={register({ required: true })} 
           />
         </div>
-        {/* <div className="login-form-section">
-          <label className="login-form-label" htmlFor="storeNumber">Store Number</label>
-          <input 
-            className="login-form-input"
-            placeholder="Your Store Number"
-            type="text" 
-            name="storeNumber" 
-            id="storeNumber" 
-            ref={register({ required: true })} 
-          />
-        </div> */}
         <div className="login-form-section">
           <label className="login-form-label" htmlFor="password">Password</label>
           <input 

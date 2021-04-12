@@ -41,13 +41,6 @@ class App extends React.Component {
       },
       body: JSON.stringify(data),
     })
-    // .then((response) => response.json())
-    // .then((jsonData => {
-    //   this.setState({
-    //     user: jsonData,
-    //     isLoggedIn: true
-    //   })
-    // }))
     .catch((err) => console.log(err))
   }
 
@@ -78,8 +71,6 @@ class App extends React.Component {
           'Content-Type': 'application/json'
         },
       })
-    // .then((res) => res.json)
-    // .then((jsonData) => console.log(jsonData))
     .then(() => {
       this.setState({
         endcaps: [],
