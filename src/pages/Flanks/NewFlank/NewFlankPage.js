@@ -4,7 +4,7 @@ require('./NewFlankPage.css');
 
 class NewFlankPage extends React.Component {
   state = {
-    currentEndcapTitle: '',
+    currentEndcap: {},
     selectedEndcap: '',
     title: '',
     itemOne: '',
@@ -23,14 +23,14 @@ class NewFlankPage extends React.Component {
     .then((response) => response.json())
     .then((jsonData => {
       const endcapData = jsonData.allEndcaps;
-      let currentEndcapTitle = '';
+      let currentEndcap = {};
       endcapData.map(endcap => {
         if(endcap._id === this.props.match.params.id)
-        currentEndcapTitle = endcap.title;
-        return currentEndcapTitle;
+        currentEndcap = endcap;
+        return currentEndcap;
       })
       this.setState({
-        currentEndcapTitle: currentEndcapTitle,
+        currentEndcap: currentEndcap,
         selectedEndcap: this.props.match.params.id,
       })
     }))
@@ -66,33 +66,23 @@ class NewFlankPage extends React.Component {
   render() {
     return (
       <div className="new-flank-wrapper">
-        <h1 className="new-flank-title">Add Flank to {this.state.currentEndcapTitle}</h1>
+        <h1 className="new-flank-title">Add Flank to {this.state.currentEndcap.title}</h1>
         <form onSubmit={this.handleSubmit}  className="new-flank-form">
           <h3>Choose a Side</h3>
           <div className="new-flank-side-btns">
             <div 
+              id={`${this.state.currentEndcap.flankA ? 'hidden' : null}`}
               className={`new-flank-side-btn ${this.state.side === 'A' ? 'side-selected' : null}`} 
               onClick={() => this.handleSide('A')}
             >A
             </div>
             <div 
+              id={`${this.state.currentEndcap.flankB ? 'hidden' : null}`}
               className={`new-flank-side-btn ${this.state.side === 'B' ? 'side-selected' : null}`} 
               onClick={() => this.handleSide('B')}
             >B
             </div>
           </div>
-          {/* <div className="new-flank-form-section">
-            <label className="new-flank-form-label" htmlFor="itemOne">Side A or B</label>
-            <input 
-              type="text" 
-              id="side" 
-              name="side"
-              placeholder="Choose Side"
-              className="new-flank-form-input"
-              value={this.state.side} 
-              onChange={this.handleChange}
-            />
-          </div> */}
           <div className="new-flank-form-section">
             <label className="new-flank-form-label" htmlFor="title">Title of Flank</label>
             <input 
