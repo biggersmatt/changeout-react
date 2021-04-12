@@ -33,7 +33,7 @@ class App extends React.Component {
   }
 
   signup = (data) => {
-    fetch('https://calm-forest-99785.herokuapp.com/users/signup',{
+    fetch('https://gentle-savannah-74717.herokuapp.com/users/signup',{
       method: "POST",
       credentials: "include",
       headers: {
@@ -45,7 +45,7 @@ class App extends React.Component {
   }
 
   login = (data) => {
-    fetch(`https://calm-forest-99785.herokuapp.com/users/login`, {
+    fetch(`https://gentle-savannah-74717.herokuapp.com/users/login`, {
       method: "POST",
       credentials: "include",
       headers: {
@@ -65,7 +65,7 @@ class App extends React.Component {
   }
 
   logout = () => {
-    fetch(`https://calm-forest-99785.herokuapp.com/users/logout`, {
+    fetch(`https://gentle-savannah-74717.herokuapp.com/users/logout`, {
         credentials: 'include',
         headers: {
           'Content-Type': 'application/json'
@@ -90,13 +90,13 @@ class App extends React.Component {
   }
 
   fetchEndcaps = () => {
-    fetch('https://calm-forest-99785.herokuapp.com/endcaps', {
+    fetch('https://gentle-savannah-74717.herokuapp.com/endcaps', {
       credentials: 'include'
     })
     .then((response) => response.json())
     .then((jsonData) => {
       const endcapData = jsonData.allEndcaps;
-      fetch('https://calm-forest-99785.herokuapp.com/settings', {
+      fetch('https://gentle-savannah-74717.herokuapp.com/settings', {
         credentials: 'include'
       })
       .then((response) => response.json())
@@ -130,14 +130,14 @@ class App extends React.Component {
   
   componentDidUpdate() {
     if(this.state.hasUpdated){
-      fetch('https://calm-forest-99785.herokuapp.com/endcaps', {
+      fetch('https://gentle-savannah-74717.herokuapp.com/endcaps', {
         credentials: "include"
       })
       .then((response) => response.json())
       .then((jsonData) => {
         const endcapData = jsonData.allEndcaps;
         if(endcapData.length > this.state.endcaps.length) {
-          fetch('https://calm-forest-99785.herokuapp.com/settings')
+          fetch('https://gentle-savannah-74717.herokuapp.com/settings')
           .then((response) => response.json())
           .then((jsonData) => {
               const currentColNew = jsonData.settings.find((setting) => {
@@ -154,7 +154,7 @@ class App extends React.Component {
               },
             }
             // Updates Database with New Order
-              fetch(`https://calm-forest-99785.herokuapp.com/settings/${currentColNew._id}`, {
+              fetch(`https://gentle-savannah-74717.herokuapp.com/settings/${currentColNew._id}`, {
                 method: 'PUT',
                 headers: {
                   'Content-Type': 'application/json',
@@ -179,7 +179,7 @@ class App extends React.Component {
               .catch((err) => console.log(err));
           })
         } else {
-          fetch('https://calm-forest-99785.herokuapp.com/settings')
+          fetch('https://gentle-savannah-74717.herokuapp.com/settings')
           .then((response) => response.json())
           .then((jsonData) => {
             const currentColNew = jsonData.settings.find((setting) => {
@@ -212,7 +212,7 @@ class App extends React.Component {
             ...endcap,
             change: true,
           }
-          fetch(`https://calm-forest-99785.herokuapp.com/endcaps/${endcapId}`, {
+          fetch(`https://gentle-savannah-74717.herokuapp.com/endcaps/${endcapId}`, {
             credentials: 'include',
             method: 'PUT',
             headers: {
@@ -231,7 +231,7 @@ class App extends React.Component {
             ...endcap,
             change: false,
           }
-          fetch(`https://calm-forest-99785.herokuapp.com/endcaps/${endcapId}`, {
+          fetch(`https://gentle-savannah-74717.herokuapp.com/endcaps/${endcapId}`, {
             credentials: 'include',
             method: 'PUT',
             headers: {
@@ -252,7 +252,7 @@ class App extends React.Component {
         ...flank,
         change: true,
       }
-      fetch(`https://calm-forest-99785.herokuapp.com/flanks/${flank._id}`, {
+      fetch(`https://gentle-savannah-74717.herokuapp.com/flanks/${flank._id}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -266,7 +266,7 @@ class App extends React.Component {
         ...flank,
         change: false,
       }
-      fetch(`https://calm-forest-99785.herokuapp.com/flanks/${flank._id}`, {
+      fetch(`https://gentle-savannah-74717.herokuapp.com/flanks/${flank._id}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -320,7 +320,7 @@ class App extends React.Component {
       }
     });
     // Update column in Database
-    fetch('https://calm-forest-99785.herokuapp.com/settings')
+    fetch('https://gentle-savannah-74717.herokuapp.com/settings')
     .then((response) => response.json())
     .then((jsonData) => {
       const userSetting = jsonData.settings.find((setting) => {
@@ -333,7 +333,7 @@ class App extends React.Component {
             endcapIds: this.state.columns['column-1'].endcapIds,
           },
         }
-        fetch(`https://calm-forest-99785.herokuapp.com/settings/${userSetting._id}`, {
+        fetch(`https://gentle-savannah-74717.herokuapp.com/settings/${userSetting._id}`, {
           method: 'PUT',
           headers: {
             'Content-Type': 'application/json',
