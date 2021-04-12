@@ -42,6 +42,12 @@ class NewFlankPage extends React.Component {
       [event.target.id]: event.target.value,
     })
   }
+  
+  handleSide = (side) => {
+    this.setState({
+      side: side,
+    })
+  }
 
   handleSubmit = (event) => {
     event.preventDefault();
@@ -62,7 +68,12 @@ class NewFlankPage extends React.Component {
       <div className="new-flank-wrapper">
         <h1 className="new-flank-title">Add Flank to {this.state.currentEndcapTitle}</h1>
         <form onSubmit={this.handleSubmit}  className="new-flank-form">
-          <div className="new-flank-form-section">
+          <h3>Choose a Side</h3>
+          <div className="new-flank-side-btns">
+            <div className="new-flank-side-btn" onClick={() => this.handleSide('A')}>A</div>
+            <div className="new-flank-side-btn" onClick={() => this.handleSide('B')}>B</div>
+          </div>
+          {/* <div className="new-flank-form-section">
             <label className="new-flank-form-label" htmlFor="itemOne">Side A or B</label>
             <input 
               type="text" 
@@ -73,7 +84,7 @@ class NewFlankPage extends React.Component {
               value={this.state.side} 
               onChange={this.handleChange}
             />
-          </div>
+          </div> */}
           <div className="new-flank-form-section">
             <label className="new-flank-form-label" htmlFor="title">Title of Flank</label>
             <input 

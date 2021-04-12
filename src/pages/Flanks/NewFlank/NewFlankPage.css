@@ -26,6 +26,30 @@
   padding: 15px;
 }
 
+.new-flank-side-btns {
+  display: flex;
+  justify-content: space-around;
+  width: 70%;
+}
+
+.new-flank-side-btn {
+  background-color: var(--yellow);
+  border: 1px solid var(--yellow-border);
+  border-radius: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 4vh;
+  width: 45%;
+  margin: 5px 0 0;
+  transition: transform 0.4s ease;
+}
+
+.new-flank-side-btn:hover {
+  cursor: pointer;
+  transform: scale(1.1);
+}
+
 .new-flank-form-section {
   display: flex;
   flex-direction: column;
