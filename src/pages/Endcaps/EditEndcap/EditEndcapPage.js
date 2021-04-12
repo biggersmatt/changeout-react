@@ -15,7 +15,7 @@ class EditEndcapPage extends React.Component {
   }
 
   componentDidMount() {
-    fetch(`http://localhost:4000/api/endcaps/${this.props.match.params.id}`,{
+    fetch(`https://calm-forest-99785.herokuapp.com/endcaps/${this.props.match.params.id}`,{
       credentials: 'include',
     })
     .then((response) => response.json())
@@ -34,7 +34,7 @@ class EditEndcapPage extends React.Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
-    fetch(`http://localhost:4000/api/endcaps/${this.props.match.params.id}`, {
+    fetch(`https://calm-forest-99785.herokuapp.com/endcaps/${this.props.match.params.id}`, {
       credentials: 'include',
       method: 'PUT',
       headers: {
@@ -48,11 +48,11 @@ class EditEndcapPage extends React.Component {
   }
 
   handleDeleteEndcap = (endcapId) => {
-    fetch(`http://localhost:4000/api/endcaps/${endcapId}`, {
+    fetch(`https://calm-forest-99785.herokuapp.com/endcaps/${endcapId}`, {
       credentials: 'include',
       method: 'DELETE',
     })
-    fetch('http://localhost:4000/api/settings')
+    fetch('https://calm-forest-99785.herokuapp.com/settings')
     .then((response) => response.json())
     .then((jsonData) => {
       const userSetting = jsonData.settings.find((setting) => {
@@ -66,7 +66,7 @@ class EditEndcapPage extends React.Component {
           endcapIds: updatedColumnOrder,
         },
       }
-      fetch(`http://localhost:4000/api/settings/${userSetting._id}`, {
+      fetch(`https://calm-forest-99785.herokuapp.com/settings/${userSetting._id}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -81,7 +81,7 @@ class EditEndcapPage extends React.Component {
   }
 
   handleDeleteFlank = (flankId) => {
-    fetch(`http://localhost:4000/api/flanks/${flankId}`, {
+    fetch(`https://calm-forest-99785.herokuapp.com/flanks/${flankId}`, {
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json',

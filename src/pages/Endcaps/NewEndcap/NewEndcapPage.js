@@ -21,7 +21,7 @@ class NewEndcapPage extends React.Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
-    fetch('http://localhost:4000/api/endcaps', {
+    fetch('https://calm-forest-99785.herokuapp.com/endcaps', {
       credentials: 'include',
       method: 'POST',
       headers: {
