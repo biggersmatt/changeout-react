@@ -15,7 +15,7 @@ class EditEndcapPage extends React.Component {
   }
 
   componentDidMount() {
-    fetch(`https://gentle-savannah-74717.herokuapp.com/endcaps/${this.props.match.params.id}`,{
+    fetch(`http://gentle-savannah-74717.herokuapp.com/endcaps/${this.props.match.params.id}`,{
       credentials: 'include',
     })
     .then((response) => response.json())
@@ -34,7 +34,7 @@ class EditEndcapPage extends React.Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
-    fetch(`https://gentle-savannah-74717.herokuapp.com/endcaps/${this.props.match.params.id}`, {
+    fetch(`http://gentle-savannah-74717.herokuapp.com/endcaps/${this.props.match.params.id}`, {
       credentials: 'include',
       method: 'PUT',
       headers: {
@@ -48,11 +48,11 @@ class EditEndcapPage extends React.Component {
   }
 
   handleDeleteEndcap = (endcapId) => {
-    fetch(`https://gentle-savannah-74717.herokuapp.com/endcaps/${endcapId}`, {
+    fetch(`http://gentle-savannah-74717.herokuapp.com/endcaps/${endcapId}`, {
       credentials: 'include',
       method: 'DELETE',
     })
-    fetch('https://gentle-savannah-74717.herokuapp.com/settings')
+    fetch('http://gentle-savannah-74717.herokuapp.com/settings')
     .then((response) => response.json())
     .then((jsonData) => {
       const userSetting = jsonData.settings.find((setting) => {
@@ -66,7 +66,7 @@ class EditEndcapPage extends React.Component {
           endcapIds: updatedColumnOrder,
         },
       }
-      fetch(`https://gentle-savannah-74717.herokuapp.com/settings/${userSetting._id}`, {
+      fetch(`http://gentle-savannah-74717.herokuapp.com/settings/${userSetting._id}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -81,7 +81,7 @@ class EditEndcapPage extends React.Component {
   }
 
   handleDeleteFlank = (flankId) => {
-    fetch(`https://gentle-savannah-74717.herokuapp.com/flanks/${flankId}`, {
+    fetch(`http://gentle-savannah-74717.herokuapp.com/flanks/${flankId}`, {
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json',
