@@ -11,7 +11,7 @@ const Header = (props) => {
         </Link>
         <h3 className="add-endcap-title">New Endcap</h3>
       </div>}
-      {!props.isLoggedIn && 
+      {/* {!props.isLoggedIn && 
       <div className="login-error-container">
         <div className="login-error-message">
           <h3>Trouble Logging In.</h3>
@@ -21,7 +21,7 @@ const Header = (props) => {
           <Link to="/login">Login</Link> | {' '}
           <Link to="/signup">Sign up</Link>
         </div>
-      </div>}
+      </div>} */}
     </header>
   )
 }
