@@ -1,10 +1,10 @@
 import React from 'react';
-import { Switch, Route, Redirect } from 'react-router-dom';
+import { Switch, Route } from 'react-router-dom';
 import HomePage from './pages/Homepage/HomePage';
 import NewEndcapPage from './pages/Endcaps/NewEndcap/NewEndcapPage';
 import EditEndcapPage from './pages/Endcaps/EditEndcap/EditEndcapPage';
-import LoginPage from './pages/LoginPage/LoginPage'
-import SignupPage from './pages/SignupPage/SignupPage'
+// import LoginPage from './pages/LoginPage/LoginPage'
+// import SignupPage from './pages/SignupPage/SignupPage'
 import Navbar from './components/Navbar/Navbar';
 import NewFlankPage from './pages/Flanks/NewFlank/NewFlankPage';
 import EditFlankPage from './pages/Flanks/EditFlank/EditFlankPage';
@@ -22,81 +22,81 @@ class App extends React.Component {
       }
     },
     columnOrder: ['column-1'],
-    hasUpdated: false,
-    isLoggedIn: false,
-    user: ''
+    // hasUpdated: false,
+    // isLoggedIn: false,
+    // user: ''
   }
   
 
-  setIsLoggedIn = () => {
-    this.setState({isLoggedIn: true}, this.fetchEndcaps())
-  }
+  // setIsLoggedIn = () => {
+  //   this.setState({isLoggedIn: true}, this.fetchEndcaps())
+  // }
 
-  signup = (data) => {
-    fetch('https://gentle-savannah-74717.herokuapp.com/users/signup',{
-      method: "POST",
-      credentials: "include",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(data),
-    })
-    .catch((err) => console.log(err))
-  }
+  // signup = (data) => {
+  //   fetch('https://localhost:4000/users/signup',{
+  //     method: "POST",
+  //     credentials: "include",
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //     },
+  //     body: JSON.stringify(data),
+  //   })
+  //   .catch((err) => console.log(err))
+  // }
 
-  login = (data) => {
-    fetch(`https://gentle-savannah-74717.herokuapp.com/users/login`, {
-      method: "POST",
-      credentials: "include",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(data),
-    })
-    .then((response) => response.json())
-    .then((jsonData) => {
-      this.setState({
-        user: jsonData,
-        isLoggedIn: true
-      })
-    })
-    .then(() => this.fetchEndcaps())
-    .catch((err) => console.log(err))
-  }
+  // login = (data) => {
+  //   fetch(`https://localhost:4000/users/login`, {
+  //     method: "POST",
+  //     credentials: "include",
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //     },
+  //     body: JSON.stringify(data),
+  //   })
+  //   .then((response) => response.json())
+  //   .then((jsonData) => {
+  //     this.setState({
+  //       user: jsonData,
+  //       isLoggedIn: true
+  //     })
+  //   })
+  //   .then(() => this.fetchEndcaps())
+  //   .catch((err) => console.log(err))
+  // }
 
-  logout = () => {
-    fetch(`https://gentle-savannah-74717.herokuapp.com/users/logout`, {
-        credentials: 'include',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-      })
-    .then(() => {
-      this.setState({
-        endcaps: [],
-        columns: {
-          'column-1': {
-            id: 'column-1',
-            title: 'To do',
-            endcapIds: [],
-          }
-        },
-        columnOrder: ['column-1'],
-        hasUpdated: false,
-        isLoggedIn: false,
-        user: ''
-      })
-    })
-  }
+  // logout = () => {
+  //   fetch(`https://localhost:4000/users/logout`, {
+  //       credentials: 'include',
+  //       headers: {
+  //         'Content-Type': 'application/json'
+  //       },
+  //     })
+  //   .then(() => {
+  //     this.setState({
+  //       endcaps: [],
+  //       columns: {
+  //         'column-1': {
+  //           id: 'column-1',
+  //           title: 'To do',
+  //           endcapIds: [],
+  //         }
+  //       },
+  //       columnOrder: ['column-1'],
+  //       hasUpdated: false,
+  //       isLoggedIn: false,
+  //       user: ''
+  //     })
+  //   })
+  // }
 
   fetchEndcaps = () => {
-    fetch('https://gentle-savannah-74717.herokuapp.com/endcaps', {
+    fetch('https://localhost:4000/endcaps', {
       credentials: 'include'
     })
     .then((response) => response.json())
     .then((jsonData) => {
       const endcapData = jsonData.allEndcaps;
-      fetch('https://gentle-savannah-74717.herokuapp.com/settings', {
+      fetch('https://localhost:4000/settings', {
         credentials: 'include'
       })
       .then((response) => response.json())
@@ -130,14 +130,14 @@ class App extends React.Component {
   
   componentDidUpdate() {
     if(this.state.hasUpdated){
-      fetch('https://gentle-savannah-74717.herokuapp.com/endcaps', {
+      fetch('https://localhost:4000/endcaps', {
         credentials: "include"
       })
       .then((response) => response.json())
       .then((jsonData) => {
         const endcapData = jsonData.allEndcaps;
         if(endcapData.length > this.state.endcaps.length) {
-          fetch('https://gentle-savannah-74717.herokuapp.com/settings')
+          fetch('https://localhost:4000/settings')
           .then((response) => response.json())
           .then((jsonData) => {
               const currentColNew = jsonData.settings.find((setting) => {
@@ -154,7 +154,7 @@ class App extends React.Component {
               },
             }
             // Updates Database with New Order
-              fetch(`https://gentle-savannah-74717.herokuapp.com/settings/${currentColNew._id}`, {
+              fetch(`https://localhost:4000/settings/${currentColNew._id}`, {
                 method: 'PUT',
                 headers: {
                   'Content-Type': 'application/json',
@@ -179,7 +179,7 @@ class App extends React.Component {
               .catch((err) => console.log(err));
           })
         } else {
-          fetch('https://gentle-savannah-74717.herokuapp.com/settings')
+          fetch('https://localhost:4000/settings')
           .then((response) => response.json())
           .then((jsonData) => {
             const currentColNew = jsonData.settings.find((setting) => {
@@ -212,7 +212,7 @@ class App extends React.Component {
             ...endcap,
             change: true,
           }
-          fetch(`https://gentle-savannah-74717.herokuapp.com/endcaps/${endcapId}`, {
+          fetch(`https://localhost:4000/endcaps/${endcapId}`, {
             credentials: 'include',
             method: 'PUT',
             headers: {
@@ -231,7 +231,7 @@ class App extends React.Component {
             ...endcap,
             change: false,
           }
-          fetch(`https://gentle-savannah-74717.herokuapp.com/endcaps/${endcapId}`, {
+          fetch(`https://localhost:4000/endcaps/${endcapId}`, {
             credentials: 'include',
             method: 'PUT',
             headers: {
@@ -252,7 +252,7 @@ class App extends React.Component {
         ...flank,
         change: true,
       }
-      fetch(`https://gentle-savannah-74717.herokuapp.com/flanks/${flank._id}`, {
+      fetch(`https://localhost:4000/flanks/${flank._id}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -266,7 +266,7 @@ class App extends React.Component {
         ...flank,
         change: false,
       }
-      fetch(`https://gentle-savannah-74717.herokuapp.com/flanks/${flank._id}`, {
+      fetch(`https://localhost:4000/flanks/${flank._id}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -320,7 +320,7 @@ class App extends React.Component {
       }
     });
     // Update column in Database
-    fetch('https://gentle-savannah-74717.herokuapp.com/settings')
+    fetch('https://localhost:4000/settings')
     .then((response) => response.json())
     .then((jsonData) => {
       const userSetting = jsonData.settings.find((setting) => {
@@ -333,7 +333,7 @@ class App extends React.Component {
             endcapIds: this.state.columns['column-1'].endcapIds,
           },
         }
-        fetch(`https://gentle-savannah-74717.herokuapp.com/settings/${userSetting._id}`, {
+        fetch(`https://localhost:4000/settings/${userSetting._id}`, {
           method: 'PUT',
           headers: {
             'Content-Type': 'application/json',
@@ -348,12 +348,13 @@ class App extends React.Component {
     return (
       <div className="wrapper">
         <Navbar
-          user={this.state.user}
-          isLoggedIn={this.state.isLoggedIn}
-          logout={this.logout}/>
+          // user={this.state.user}
+          // isLoggedIn={this.state.isLoggedIn}
+          // logout={this.logout}
+        />
         <div className="content">
           <Switch>
-            <Route path='/login'>
+            {/* <Route path='/login'>
               <LoginPage
                 handleHistory={this.handleHistory}
                 login={this.login}
@@ -366,7 +367,7 @@ class App extends React.Component {
                 isLoggedIn={this.state.isLoggedIn}
                 setIsLoggedIn={this.setIsLoggedIn}
               />
-            </Route>
+            </Route> */}
             <Route exact path='/'>
               <HomePage 
                 handleChange={this.handleChange}
@@ -376,33 +377,41 @@ class App extends React.Component {
                 columns={this.state.columns}
                 endcaps={this.state.endcaps}
                 onDragEnd={this.onDragEnd}
-                isLoggedIn={this.state.isLoggedIn}
+                // isLoggedIn={this.state.isLoggedIn}
               />
             </Route>
-            {this.state.isLoggedIn && <Route path='/new'>
+            {/* {this.state.isLoggedIn &&  */}
+            <Route path='/new'>
               <NewEndcapPage 
                 handleHasUpdated={this.handleHasUpdated}
               />
-            </Route>}
-            {this.state.isLoggedIn && <Route path='/edit/:id/flank/new'>
+            </Route>
+            {/* } */}
+            {/* {this.state.isLoggedIn &&  */}
+            <Route path='/edit/:id/flank/new'>
               <NewFlankPage 
                 handleHasUpdated={this.handleHasUpdated}
               />
-            </Route>}
-            {this.state.isLoggedIn && <Route path='/edit/:id/flank/:id'>
+            </Route>
+            {/* } */}
+            {/* {this.state.isLoggedIn &&  */}
+            <Route path='/edit/:id/flank/:id'>
               <EditFlankPage 
                 handleHasUpdated={this.handleHasUpdated}
               />
-            </Route>}
-            {this.state.isLoggedIn && <Route path='/edit/:id'>
+            </Route>
+            {/* } */}
+            {/* {this.state.isLoggedIn &&  */}
+            <Route path='/edit/:id'>
               <EditEndcapPage 
                 handleHasUpdated={this.handleHasUpdated}
                 endcaps={this.state.endcaps}
                 endcapsIds={this.state.columns['column-1'].endcapIds}
                 user={this.state.user}
               />
-            </Route>}
-            <Route path="/" render={() => <Redirect to="/login"/>} />
+            </Route>
+            {/* } */}
+            {/* <Route path="/" render={() => <Redirect to="/login"/>} /> */}
           </Switch>
         </div>
         <Footer />

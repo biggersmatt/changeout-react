@@ -17,7 +17,7 @@ class NewFlankPage extends React.Component {
   }
 
   componentDidMount() {
-    fetch('https://gentle-savannah-74717.herokuapp.com/endcaps', {
+    fetch('https://localhost:4000/endcaps', {
       credentials: 'include',
     })
     .then((response) => response.json())
@@ -51,7 +51,7 @@ class NewFlankPage extends React.Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
-    fetch('https://gentle-savannah-74717.herokuapp.com/flanks', {
+    fetch('https://localhost:4000/flanks', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

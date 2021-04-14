@@ -13,7 +13,7 @@ class EditFlankPage extends React.Component {
   }
 
   componentDidMount() {
-    fetch(`https://gentle-savannah-74717.herokuapp.com/flanks/${this.props.match.params.id}`)
+    fetch(`https://localhost:4000/flanks/${this.props.match.params.id}`)
     .then((response) => response.json())
     .then((jsonData) => {
       const flank = jsonData.foundFlank;
@@ -37,7 +37,7 @@ class EditFlankPage extends React.Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
-    fetch(`https://gentle-savannah-74717.herokuapp.com/flanks/${this.props.match.params.id}`, {
+    fetch(`https://localhost:4000/flanks/${this.props.match.params.id}`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
@@ -50,7 +50,7 @@ class EditFlankPage extends React.Component {
   }
 
   handleDeleteFlank = (flankId) => {
-    fetch(`https://gentle-savannah-74717.herokuapp.com/flanks/${flankId}`, {
+    fetch(`https://localhost:4000/flanks/${flankId}`, {
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json',
