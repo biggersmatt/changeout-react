@@ -17,7 +17,7 @@ class NewFlankPage extends React.Component {
   }
 
   componentDidMount() {
-    fetch("https://localhost:4000/endcaps", {
+    fetch("http://localhost:5000/endcaps", {
       // credentials: "include",
     })
     .then((response) => response.json())
@@ -51,7 +51,7 @@ class NewFlankPage extends React.Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
-    fetch("https://localhost:4000/flanks", {
+    fetch("http://localhost:5000/flanks", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

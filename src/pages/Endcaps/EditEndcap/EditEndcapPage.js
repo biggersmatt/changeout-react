@@ -15,7 +15,7 @@ class EditEndcapPage extends React.Component {
   }
 
   componentDidMount() {
-    fetch(`https://localhost:4000/endcaps/${this.props.match.params.id}`,{
+    fetch(`http://localhost:5000/endcaps/${this.props.match.params.id}`,{
       // credentials: "include",
     })
     .then((response) => response.json())
@@ -34,7 +34,7 @@ class EditEndcapPage extends React.Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
-    fetch(`https://localhost:4000/endcaps/${this.props.match.params.id}`, {
+    fetch(`http://localhost:5000/endcaps/${this.props.match.params.id}`, {
       // credentials: "include",
       method: "PUT",
       headers: {
@@ -48,11 +48,11 @@ class EditEndcapPage extends React.Component {
   }
 
   handleDeleteEndcap = (endcapId) => {
-    fetch(`https://localhost:4000/endcaps/${endcapId}`, {
+    fetch(`http://localhost:5000/endcaps/${endcapId}`, {
       // credentials: "include",
       method: "DELETE",
     })
-    fetch("https://localhost:4000/settings")
+    fetch("http://localhost:5000/settings")
     .then((response) => response.json())
     .then((jsonData) => {
       const userSetting = jsonData.settings.find((setting) => {
@@ -66,7 +66,7 @@ class EditEndcapPage extends React.Component {
           endcapIds: updatedColumnOrder,
         },
       }
-      fetch(`https://localhost:4000/settings/${userSetting._id}`, {
+      fetch(`http://localhost:5000/settings/${userSetting._id}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
@@ -81,7 +81,7 @@ class EditEndcapPage extends React.Component {
   }
 
   handleDeleteFlank = (flankId) => {
-    fetch(`https://localhost:4000/flanks/${flankId}`, {
+    fetch(`http://localhost:5000/flanks/${flankId}`, {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",

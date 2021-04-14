@@ -3,8 +3,8 @@ import { Switch, Route } from "react-router-dom";
 import HomePage from "./pages/Homepage/HomePage";
 import NewEndcapPage from "./pages/Endcaps/NewEndcap/NewEndcapPage";
 import EditEndcapPage from "./pages/Endcaps/EditEndcap/EditEndcapPage";
-// import LoginPage from "./pages/LoginPage/LoginPage"
-// import SignupPage from "./pages/SignupPage/SignupPage"
+import LoginPage from "./pages/LoginPage/LoginPage"
+import SignupPage from "./pages/SignupPage/SignupPage"
 import Navbar from "./components/Navbar/Navbar";
 import NewFlankPage from "./pages/Flanks/NewFlank/NewFlankPage";
 import EditFlankPage from "./pages/Flanks/EditFlank/EditFlankPage";
@@ -14,14 +14,15 @@ require ("./App.css");
 class App extends React.Component {
   state = {
     endcaps: [],
-    columns: {
-      "column-1": {
-        id: "column-1",
-        title: "To do",
-        endcapIds: [],
-      }
-    },
-    columnOrder: ["column-1"],
+    columnOrder: [],
+    // columns: {
+    //   "column-1": {
+    //     id: "column-1",
+    //     title: "To do",
+    //     endcapIds: [],
+    //   }
+    // },
+    // columnOrder: ["column-1"],
     // hasUpdated: false,
     // isLoggedIn: false,
     // user: ''
@@ -33,7 +34,7 @@ class App extends React.Component {
   // }
 
   // signup = (data) => {
-  //   fetch('https://localhost:4000/users/signup',{
+  //   fetch('http://localhost:5000/users/signup',{
   //     method: "POST",
   //     credentials: "include",
   //     headers: {
@@ -45,7 +46,7 @@ class App extends React.Component {
   // }
 
   // login = (data) => {
-  //   fetch(`https://localhost:4000/users/login`, {
+  //   fetch(`http://localhost:5000/users/login`, {
   //     method: "POST",
   //     credentials: "include",
   //     headers: {
@@ -65,7 +66,7 @@ class App extends React.Component {
   // }
 
   // logout = () => {
-  //   fetch(`https://localhost:4000/users/logout`, {
+  //   fetch(`http://localhost:5000/users/logout`, {
   //       credentials: 'include',
   //       headers: {
   //         'Content-Type': 'application/json'
@@ -90,35 +91,36 @@ class App extends React.Component {
   // }
 
   fetchEndcaps = () => {
-    fetch("https://localhost:4000/endcaps", {
-      // credentials: "include"
-    })
+    fetch("http://localhost:5000/endcaps")
     .then((response) => response.json())
     .then((jsonData) => {
-      const endcapData = jsonData.allEndcaps;
-      fetch("https://localhost:4000/settings", {
-        // credentials: "include"
-      })
-      .then((response) => response.json())
-      .then((jsonData => {
-        const currentColNew = jsonData.settings.find((setting) => {
-          return setting.user === this.state.user._id 
-        })
-        const currentColumnOrder = currentColNew.columnOrder.endcapIds;
-        const newState = {
-          ...this.state,
-          endcaps: endcapData,
-          columns: {
-            ...this.state.columns,
-            "column-1": {
-              ...this.state.columns["column-1"],
-              endcapIds: currentColumnOrder,
-            }
-          },
-        }
-        this.setState(newState);
-      })
-    )})
+      console.log(jsonData)
+    })
+  
+    //   const endcapData = jsonData.allEndcaps;
+    //   fetch("http://localhost:5000/settings", {
+    //     // credentials: "include"
+    //   })
+    //   .then((response) => response.json())
+    //   .then((jsonData => {
+    //     const currentColNew = jsonData.settings.find((setting) => {
+    //       return setting.user === this.state.user._id 
+    //     })
+    //     const currentColumnOrder = currentColNew.columnOrder.endcapIds;
+    //     const newState = {
+    //       ...this.state,
+    //       endcaps: endcapData,
+    //       columns: {
+    //         ...this.state.columns,
+    //         "column-1": {
+    //           ...this.state.columns["column-1"],
+    //           endcapIds: currentColumnOrder,
+    //         }
+    //       },
+    //     }
+    //     this.setState(newState);
+    //   })
+    // )})
       .catch((err) => console.log(err));
   }
   
@@ -130,14 +132,14 @@ class App extends React.Component {
   
   componentDidUpdate() {
     if(this.state.hasUpdated){
-      fetch("https://localhost:4000/endcaps", {
+      fetch("http://localhost:5000/endcaps", {
         // credentials: "include"
       })
       .then((response) => response.json())
       .then((jsonData) => {
         const endcapData = jsonData.allEndcaps;
         if(endcapData.length > this.state.endcaps.length) {
-          fetch("https://localhost:4000/settings")
+          fetch("http://localhost:5000/settings")
           .then((response) => response.json())
           .then((jsonData) => {
               const currentColNew = jsonData.settings.find((setting) => {
@@ -154,7 +156,7 @@ class App extends React.Component {
               },
             }
             // Updates Database with New Order
-              fetch(`https://localhost:4000/settings/${currentColNew._id}`, {
+              fetch(`http://localhost:5000/settings/${currentColNew._id}`, {
                 method: "PUT",
                 headers: {
                   "Content-Type": "application/json",
@@ -179,7 +181,7 @@ class App extends React.Component {
               .catch((err) => console.log(err));
           })
         } else {
-          fetch("https://localhost:4000/settings")
+          fetch("http://localhost:5000/settings")
           .then((response) => response.json())
           .then((jsonData) => {
             const currentColNew = jsonData.settings.find((setting) => {
@@ -212,7 +214,7 @@ class App extends React.Component {
             ...endcap,
             change: true,
           }
-          fetch(`https://localhost:4000/endcaps/${endcapId}`, {
+          fetch(`http://localhost:5000/endcaps/${endcapId}`, {
             // credentials: "include",
             method: "PUT",
             headers: {
@@ -231,7 +233,7 @@ class App extends React.Component {
             ...endcap,
             change: false,
           }
-          fetch(`https://localhost:4000/endcaps/${endcapId}`, {
+          fetch(`http://localhost:5000/endcaps/${endcapId}`, {
             // credentials: "include",
             method: "PUT",
             headers: {
@@ -252,7 +254,7 @@ class App extends React.Component {
         ...flank,
         change: true,
       }
-      fetch(`https://localhost:4000/flanks/${flank._id}`, {
+      fetch(`http://localhost:5000/flanks/${flank._id}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
@@ -266,7 +268,7 @@ class App extends React.Component {
         ...flank,
         change: false,
       }
-      fetch(`https://localhost:4000/flanks/${flank._id}`, {
+      fetch(`http://localhost:5000/flanks/${flank._id}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
@@ -320,7 +322,7 @@ class App extends React.Component {
       }
     });
     // Update column in Database
-    fetch("https://localhost:4000/settings")
+    fetch("http://localhost:5000/settings")
     .then((response) => response.json())
     .then((jsonData) => {
       const userSetting = jsonData.settings.find((setting) => {
@@ -333,7 +335,7 @@ class App extends React.Component {
             endcapIds: this.state.columns["column-1"].endcapIds,
           },
         }
-        fetch(`https://localhost:4000/settings/${userSetting._id}`, {
+        fetch(`http://localhost:5000/settings/${userSetting._id}`, {
           method: "PUT",
           headers: {
             "Content-Type": "application/json",
@@ -354,12 +356,13 @@ class App extends React.Component {
         />
         <div className="content">
           <Switch>
-            {/* <Route path="/login">
+            <Route exact path="/">
               <LoginPage
-                handleHistory={this.handleHistory}
-                login={this.login}
-                isLoggedIn={this.state.isLoggedIn}
-                setIsLoggedIn={this.setIsLoggedIn} />
+                // handleHistory={this.handleHistory}
+                // login={this.login}
+                // isLoggedIn={this.state.isLoggedIn}
+                // setIsLoggedIn={this.setIsLoggedIn} 
+              />
             </Route>
             <Route path="/signup">
               <SignupPage 
@@ -367,8 +370,8 @@ class App extends React.Component {
                 isLoggedIn={this.state.isLoggedIn}
                 setIsLoggedIn={this.setIsLoggedIn}
               />
-            </Route> */}
-            <Route exact path="/">
+            </Route>
+            <Route exact path="/home">
               <HomePage 
                 handleChange={this.handleChange}
                 handleToggleEndcap={this.handleToggleEndcap}
@@ -406,7 +409,7 @@ class App extends React.Component {
               <EditEndcapPage 
                 handleHasUpdated={this.handleHasUpdated}
                 endcaps={this.state.endcaps}
-                endcapsIds={this.state.columns["column-1"].endcapIds}
+                columnOrder={this.state.columnOrder}
                 user={this.state.user}
               />
             </Route>

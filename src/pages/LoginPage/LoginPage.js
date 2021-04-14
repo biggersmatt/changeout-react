@@ -1,50 +1,73 @@
-import { useHistory } from 'react-router-dom'
-import { useForm } from "react-hook-form";
-require('./LoginPage.css');
+// import { useHistory } from "react-router-dom"
+// import { useForm } from "react-hook-form";
+import React from "react";
+require("./LoginPage.css");
 
-const LoginPage = (props) => {
-  const { register, handleSubmit } = useForm();
-
-  const history = useHistory()
-
-  const onSubmit = (data) => {
-    props.login(data)
-    history.push('/')
+class LoginPage extends React.Component {
+  state = {
+    username: "",
+    password: "",
   }
+//   const { register, handleSubmit } = useForm();
 
-  return (
-    <div className="login-container">
-      <form className="login-form shadow" onSubmit={handleSubmit(onSubmit)}>
-        <h1 className="login-header">Change Out</h1>
-        <h2 className="login-form-signup">Sign In</h2>
-        <div className="login-form-section">
-          <label className="login-form-label" htmlFor="username">Username</label>
-          <input 
-            className="login-form-input"
-            placeholder="Your username"
-            type="text" 
-            name="username" 
-            id="username" 
-            ref={register({ required: true })} 
-          />
-        </div>
-        <div className="login-form-section">
-          <label className="login-form-label" htmlFor="password">Password</label>
-          <input 
-            className="login-form-input"
-            placeholder="Your password"
-            type="password" 
-            name="password" 
-            id="password" 
-            ref={register({ required: true })} 
-          />
+//   const history = useHistory()
 
-        </div>
-        <h4 className="login-signup-prompt">Don't have an account? <a href="/signup"><span>Sign up.</span></a></h4>
-        <button className="login-submit-btn shadow" type="submit">Login</button>
-      </form>
-    </div>
-  )
+//   const onSubmit = (data) => {
+//     props.login(data)
+//     history.push("/")
+//   }
+
+
+handleChange = (event) => {
+  this.setState({
+    [event.target.id]: event.target.value,
+  })
+}
+
+handleSubmit = (event) => {
+  event.preventDefault();
+  fetch("http://localhost:5000/users")
+  .then(response => response.json())
+  .then(jsonData => {
+    console.log(jsonData)
+  })
+}
+  render() {
+    return (
+      <div className="login-container">
+        <form className="login-form shadow" onSubmit={this.handleSubmit}>
+          <h1 className="login-header">Change Out</h1>
+          <h2 className="login-form-signup">Sign In</h2>
+          <div className="login-form-section">
+            <label className="login-form-label" htmlFor="username">Username</label>
+            <input 
+              type="text" 
+              id="username" 
+              name="username" 
+              placeholder="Your username"
+              className="login-form-input"
+              onChange={this.handleChange}
+              // ref={register({ required: true })} 
+            />
+          </div>
+          <div className="login-form-section">
+            <label className="login-form-label" htmlFor="password">Password</label>
+            <input 
+              type="password" 
+              id="password" 
+              name="password" 
+              placeholder="Your password"
+              className="login-form-input"
+              onChange={this.handleChange}
+              // ref={register({ required: true })} 
+            />
+          </div>
+          <h4 className="login-signup-prompt">Don"t have an account? <a href="/signup"><span>Sign up.</span></a></h4>
+          <button className="login-submit-btn shadow" type="submit">Login</button>
+        </form>
+      </div>
+    )
+  }
 }
 
 export default LoginPage;
