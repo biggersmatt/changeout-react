@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { Switch, Route } from "react-router-dom";
 import HomePage from "./pages/Homepage/HomePage";
 import NewEndcapPage from "./pages/Endcaps/NewEndcap/NewEndcapPage";
@@ -14,7 +14,7 @@ require ("./App.css");
 function App() {
   // let [endcaps, setEndcaps] = useState([])
   // let [columnOrder,setColumnOrder] = useState([])
-  let [updated, setUpdated] = useState(false)
+  // let [updated, setUpdated] = useState(false)
 
   // state = {
   //   endcaps: [],

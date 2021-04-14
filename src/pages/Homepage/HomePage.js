@@ -7,29 +7,31 @@ require("./Homepage.css");
 function HomePage(props) {
   const [endcaps, setEndcaps] = useState({
     userEndcaps: [],
-    columnOrder: [],
+    columnOrder: [{
+      orderIds: [],
+      id: "column",
+    }],
   })
 
-
-  // let [endcaps, setEndcaps] = useState([])
-  // let [columnOrder,setColumnOrder] = useState([])
-
-    const handleFetchEndcaps = () => {
-    const tempColumnOrder = ['607653e41534e6626175a40b', '607726d74947d672c85ff13c']
+  const handleFetchEndcaps = () => {
+    const tempColumnOrder = ['607726d74947d672c85ff13c', '607653e41534e6626175a40b']
+    // const tempColumnOrder = ['607653e41534e6626175a40b', '607726d74947d672c85ff13c']
     fetch("http://localhost:5000/endcaps")
     .then((response) => response.json())
     .then((jsonData) => {
       const allEndcaps = jsonData.allEndcaps;
       setEndcaps({
         userEndcaps: allEndcaps,
-        columnOrder: tempColumnOrder,
+        columnOrder: [{
+          orderIds: tempColumnOrder,
+          id: "column",
+        }],
       });
     })
     .catch((err) => console.log(err));
   }
 
   useEffect(() => {
-    console.log(endcaps.userEndcaps)
     if(endcaps.userEndcaps.length === 0) {
       handleFetchEndcaps();
     }
@@ -45,6 +47,18 @@ function HomePage(props) {
         onDragEnd={props.onDragEnd}
       >
         <main>
+          {/* {currentEndcaps = endcaps.columnOrder.orderIds.map(orderId => {
+            return endcaps.userEndcaps.find(endcap => endcap._id === orderId);
+          })
+          } */}
+          {/* <EndcapsList 
+            handleToggleEndcap={props.handleToggleEndcap}
+            handleToggleFlank={props.handleToggleFlank}
+            endcaps={endcaps.userEndcaps}
+            key={endcaps.columnOrder.orderIds.id}  
+            column={endcaps.columnOrder} 
+          />; */}
+
           {/* {this.props.columnOrder.map(columnId => {
           const column = this.props.columns[columnId];
           const endcaps = column.endcapIds.map(endcapId => {
@@ -57,7 +71,22 @@ function HomePage(props) {
                     key={column.id}  
                     column={column} 
                   />;
-          })} */}
+          }
+          )} */}
+          
+          {endcaps.columnOrder.map(column => {
+          const currentEndcaps = column.orderIds.map(orderId => {
+          return endcaps.userEndcaps.find(endcap => endcap._id === orderId);
+          });
+          return <EndcapsList 
+                    handleToggleEndcap={props.handleToggleEndcap}
+                    handleToggleFlank={props.handleToggleFlank}
+                    endcaps={currentEndcaps}
+                    key={column.id}  
+                    column={column} 
+                  />;
+          }
+          )}
         </main>
       </DragDropContext>
     </div>
