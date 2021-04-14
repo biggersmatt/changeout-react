@@ -94,7 +94,7 @@ class App extends React.Component {
     fetch("http://localhost:5000/endcaps")
     .then((response) => response.json())
     .then((jsonData) => {
-      console.log(jsonData)
+      // console.log(jsonData)
     })
   
     //   const endcapData = jsonData.allEndcaps;
