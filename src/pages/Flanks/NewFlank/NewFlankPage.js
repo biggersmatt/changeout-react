@@ -1,24 +1,24 @@
-import React from 'react';
-import { withRouter } from 'react-router-dom';
-require('./NewFlankPage.css');
+import React from "react";
+import { withRouter } from "react-router-dom";
+require("./NewFlankPage.css");
 
 class NewFlankPage extends React.Component {
   state = {
     currentEndcap: {},
-    selectedEndcap: '',
-    title: '',
-    itemOne: '',
-    itemTwo: '',
-    itemThree: '',
-    itemFour: '',
-    itemFive: '',
+    selectedEndcap: "",
+    title: "",
+    itemOne: "",
+    itemTwo: "",
+    itemThree: "",
+    itemFour: "",
+    itemFive: "",
     change: false,
-    side: '',
+    side: "",
   }
 
   componentDidMount() {
-    fetch('https://localhost:4000/endcaps', {
-      credentials: 'include',
+    fetch("https://localhost:4000/endcaps", {
+      // credentials: "include",
     })
     .then((response) => response.json())
     .then((jsonData => {
@@ -51,14 +51,14 @@ class NewFlankPage extends React.Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
-    fetch('https://localhost:4000/flanks', {
-      method: 'POST',
+    fetch("https://localhost:4000/flanks", {
+      method: "POST",
       headers: {
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
       },
       body: JSON.stringify(this.state),
     })
-    .then(() => this.props.history.push('/'))
+    .then(() => this.props.history.push("/"))
     .then(() => this.props.handleHasUpdated(true))
     .catch((err) => console.log(err));
   }
@@ -71,15 +71,15 @@ class NewFlankPage extends React.Component {
           <h3>Choose a Side</h3>
           <div className="new-flank-side-btns">
             <div 
-              id={`${this.state.currentEndcap.flankA ? 'hidden' : null}`}
-              className={`new-flank-side-btn ${this.state.side === 'A' ? 'side-selected' : null}`} 
-              onClick={() => this.handleSide('A')}
+              id={`${this.state.currentEndcap.flankA ? "hidden" : null}`}
+              className={`new-flank-side-btn ${this.state.side === "A" ? "side-selected" : null}`} 
+              onClick={() => this.handleSide("A")}
             >A
             </div>
             <div 
-              id={`${this.state.currentEndcap.flankB ? 'hidden' : null}`}
-              className={`new-flank-side-btn ${this.state.side === 'B' ? 'side-selected' : null}`} 
-              onClick={() => this.handleSide('B')}
+              id={`${this.state.currentEndcap.flankB ? "hidden" : null}`}
+              className={`new-flank-side-btn ${this.state.side === "B" ? "side-selected" : null}`} 
+              onClick={() => this.handleSide("B")}
             >B
             </div>
           </div>

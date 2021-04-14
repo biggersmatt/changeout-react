@@ -1,15 +1,15 @@
-import React from 'react';
-import { Link, withRouter } from 'react-router-dom';
-require('./EditFlankPage.css');
+import React from "react";
+import { Link, withRouter } from "react-router-dom";
+require("./EditFlankPage.css");
 
 class EditFlankPage extends React.Component {
   state = {
-    title: '',
-    itemOne: '',
-    itemTwo: '',
-    itemThree: '',
-    itemFour: '',
-    itemFive: '',
+    title: "",
+    itemOne: "",
+    itemTwo: "",
+    itemThree: "",
+    itemFour: "",
+    itemFive: "",
   }
 
   componentDidMount() {
@@ -38,22 +38,22 @@ class EditFlankPage extends React.Component {
   handleSubmit = (event) => {
     event.preventDefault();
     fetch(`https://localhost:4000/flanks/${this.props.match.params.id}`, {
-      method: 'PUT',
+      method: "PUT",
       headers: {
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
       },
       body: JSON.stringify(this.state),
     })
-    .then(() => this.props.history.push('/'))
+    .then(() => this.props.history.push("/"))
     .then(() => this.props.handleHasUpdated(true))
     .catch((err) => console.log(err));
   }
 
   handleDeleteFlank = (flankId) => {
     fetch(`https://localhost:4000/flanks/${flankId}`, {
-      method: 'DELETE',
+      method: "DELETE",
       headers: {
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
       },
       body: JSON.stringify(this.props)
     })

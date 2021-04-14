@@ -1,8 +1,8 @@
-import React from 'react';
-import { DragDropContext } from 'react-beautiful-dnd';
-import Header from '../../components/Header/Header';
-import EndcapsList from '../../components/Endcaps/EndcapsList';
-require('./Homepage.css');
+import React from "react";
+import { DragDropContext } from "react-beautiful-dnd";
+import Header from "../../components/Header/Header";
+import EndcapsList from "../../components/Endcaps/EndcapsList";
+require("./Homepage.css");
 
 class HomePage extends React.Component {
   render() {
