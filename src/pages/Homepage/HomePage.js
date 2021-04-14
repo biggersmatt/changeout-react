@@ -47,18 +47,6 @@ function HomePage(props) {
         onDragEnd={props.onDragEnd}
       >
         <main>
-          {/* {currentEndcaps = endcaps.columnOrder.orderIds.map(orderId => {
-            return endcaps.userEndcaps.find(endcap => endcap._id === orderId);
-          })
-          } */}
-          {/* <EndcapsList 
-            handleToggleEndcap={props.handleToggleEndcap}
-            handleToggleFlank={props.handleToggleFlank}
-            endcaps={endcaps.userEndcaps}
-            key={endcaps.columnOrder.orderIds.id}  
-            column={endcaps.columnOrder} 
-          />; */}
-
           {/* {this.props.columnOrder.map(columnId => {
           const column = this.props.columns[columnId];
           const endcaps = column.endcapIds.map(endcapId => {

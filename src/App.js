@@ -469,7 +469,7 @@ function App() {
           {/* {this.state.isLoggedIn &&  */}
           <Route path="/new">
             <NewEndcapPage 
-              handleHasUpdated={handleHasUpdated}
+              // handleHasUpdated={handleHasUpdated}
             />
           </Route>
           {/* } */}
