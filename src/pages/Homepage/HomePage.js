@@ -8,7 +8,9 @@ class HomePage extends React.Component {
   render() {
     return (
       <div>
-        <Header isLoggedIn={this.props.isLoggedIn} />
+        <Header 
+        // isLoggedIn={this.props.isLoggedIn} 
+        />
         <DragDropContext
           onDragEnd={this.props.onDragEnd}
         >

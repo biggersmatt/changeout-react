@@ -1,27 +1,27 @@
-import React from 'react';
-import { Switch, Route } from 'react-router-dom';
-import HomePage from './pages/Homepage/HomePage';
-import NewEndcapPage from './pages/Endcaps/NewEndcap/NewEndcapPage';
-import EditEndcapPage from './pages/Endcaps/EditEndcap/EditEndcapPage';
-// import LoginPage from './pages/LoginPage/LoginPage'
-// import SignupPage from './pages/SignupPage/SignupPage'
-import Navbar from './components/Navbar/Navbar';
-import NewFlankPage from './pages/Flanks/NewFlank/NewFlankPage';
-import EditFlankPage from './pages/Flanks/EditFlank/EditFlankPage';
-import Footer from './components/Footer/Footer';
-require ('./App.css');
+import React from "react";
+import { Switch, Route } from "react-router-dom";
+import HomePage from "./pages/Homepage/HomePage";
+import NewEndcapPage from "./pages/Endcaps/NewEndcap/NewEndcapPage";
+import EditEndcapPage from "./pages/Endcaps/EditEndcap/EditEndcapPage";
+// import LoginPage from "./pages/LoginPage/LoginPage"
+// import SignupPage from "./pages/SignupPage/SignupPage"
+import Navbar from "./components/Navbar/Navbar";
+import NewFlankPage from "./pages/Flanks/NewFlank/NewFlankPage";
+import EditFlankPage from "./pages/Flanks/EditFlank/EditFlankPage";
+import Footer from "./components/Footer/Footer";
+require ("./App.css");
 
 class App extends React.Component {
   state = {
     endcaps: [],
     columns: {
-      'column-1': {
-        id: 'column-1',
-        title: 'To do',
+      "column-1": {
+        id: "column-1",
+        title: "To do",
         endcapIds: [],
       }
     },
-    columnOrder: ['column-1'],
+    columnOrder: ["column-1"],
     // hasUpdated: false,
     // isLoggedIn: false,
     // user: ''
@@ -90,14 +90,14 @@ class App extends React.Component {
   // }
 
   fetchEndcaps = () => {
-    fetch('https://localhost:4000/endcaps', {
-      credentials: 'include'
+    fetch("https://localhost:4000/endcaps", {
+      // credentials: "include"
     })
     .then((response) => response.json())
     .then((jsonData) => {
       const endcapData = jsonData.allEndcaps;
-      fetch('https://localhost:4000/settings', {
-        credentials: 'include'
+      fetch("https://localhost:4000/settings", {
+        // credentials: "include"
       })
       .then((response) => response.json())
       .then((jsonData => {
@@ -110,8 +110,8 @@ class App extends React.Component {
           endcaps: endcapData,
           columns: {
             ...this.state.columns,
-            'column-1': {
-              ...this.state.columns['column-1'],
+            "column-1": {
+              ...this.state.columns["column-1"],
               endcapIds: currentColumnOrder,
             }
           },
@@ -123,21 +123,21 @@ class App extends React.Component {
   }
   
   componentDidMount() {
-    if (this.state.isLoggedIn) {
+    // if (this.state.isLoggedIn) {
       this.fetchEndcaps()
-    }
+    // }
   }
   
   componentDidUpdate() {
     if(this.state.hasUpdated){
-      fetch('https://localhost:4000/endcaps', {
-        credentials: "include"
+      fetch("https://localhost:4000/endcaps", {
+        // credentials: "include"
       })
       .then((response) => response.json())
       .then((jsonData) => {
         const endcapData = jsonData.allEndcaps;
         if(endcapData.length > this.state.endcaps.length) {
-          fetch('https://localhost:4000/settings')
+          fetch("https://localhost:4000/settings")
           .then((response) => response.json())
           .then((jsonData) => {
               const currentColNew = jsonData.settings.find((setting) => {
@@ -148,16 +148,16 @@ class App extends React.Component {
             currentColumnOrder.push(newEndCapId);
             const settings = {
               columnOrder: {
-                id: 'column-1',
-                title: 'To Do',
+                id: "column-1",
+                title: "To Do",
                 endcapIds: currentColumnOrder,
               },
             }
             // Updates Database with New Order
               fetch(`https://localhost:4000/settings/${currentColNew._id}`, {
-                method: 'PUT',
+                method: "PUT",
                 headers: {
-                  'Content-Type': 'application/json',
+                  "Content-Type": "application/json",
                 },
                 body: JSON.stringify(settings),
               })
@@ -168,8 +168,8 @@ class App extends React.Component {
                     endcaps: endcapData,
                     columns: {
                       ...this.state.columns,
-                      'column-1': {
-                        ...this.state.columns['column-1'],
+                      "column-1": {
+                        ...this.state.columns["column-1"],
                         endcapIds: currentColumnOrder,
                       }
                     },
@@ -179,7 +179,7 @@ class App extends React.Component {
               .catch((err) => console.log(err));
           })
         } else {
-          fetch('https://localhost:4000/settings')
+          fetch("https://localhost:4000/settings")
           .then((response) => response.json())
           .then((jsonData) => {
             const currentColNew = jsonData.settings.find((setting) => {
@@ -191,8 +191,8 @@ class App extends React.Component {
               endcaps: endcapData,
               columns: {
                 ...this.state.columns,
-                'column-1': {
-                  ...this.state.columns['column-1'],
+                "column-1": {
+                  ...this.state.columns["column-1"],
                   endcapIds: currentColumnOrder,
                 }
               },
@@ -213,10 +213,10 @@ class App extends React.Component {
             change: true,
           }
           fetch(`https://localhost:4000/endcaps/${endcapId}`, {
-            credentials: 'include',
-            method: 'PUT',
+            // credentials: "include",
+            method: "PUT",
             headers: {
-              'Content-Type': 'application/json',
+              "Content-Type": "application/json",
             },
             body: JSON.stringify(updatedEndcap),
           })
@@ -232,10 +232,10 @@ class App extends React.Component {
             change: false,
           }
           fetch(`https://localhost:4000/endcaps/${endcapId}`, {
-            credentials: 'include',
-            method: 'PUT',
+            // credentials: "include",
+            method: "PUT",
             headers: {
-              'Content-Type': 'application/json',
+              "Content-Type": "application/json",
             },
             body: JSON.stringify(updatedEndcap),
           })
@@ -253,9 +253,9 @@ class App extends React.Component {
         change: true,
       }
       fetch(`https://localhost:4000/flanks/${flank._id}`, {
-        method: 'PUT',
+        method: "PUT",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
         body: JSON.stringify(updatedFlank),
       })
@@ -267,9 +267,9 @@ class App extends React.Component {
         change: false,
       }
       fetch(`https://localhost:4000/flanks/${flank._id}`, {
-        method: 'PUT',
+        method: "PUT",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
         body: JSON.stringify(updatedFlank),
       })
@@ -302,25 +302,25 @@ class App extends React.Component {
       return;
     }
     this.setState(function(state) {
-      const newEndcapIds = [...state.columns['column-1'].endcapIds];
+      const newEndcapIds = [...state.columns["column-1"].endcapIds];
       const sourceIndex = source.index;
       const destinationIndex = destination.index;
       newEndcapIds.splice(sourceIndex, 1);
       newEndcapIds.splice(destinationIndex, 0, draggableId);
       const newColumnOne = {
-        ...state.columns['column-1'],
+        ...state.columns["column-1"],
         endcapIds: [...newEndcapIds],
       }
       return {
         ...state,
         columns: {
           ...state.columns,
-          'column-1': newColumnOne,
+          "column-1": newColumnOne,
         }
       }
     });
     // Update column in Database
-    fetch('https://localhost:4000/settings')
+    fetch("https://localhost:4000/settings")
     .then((response) => response.json())
     .then((jsonData) => {
       const userSetting = jsonData.settings.find((setting) => {
@@ -328,15 +328,15 @@ class App extends React.Component {
       })
         const settings = {
           columnOrder: {
-            id: 'column-1',
-            title: 'To Do',
-            endcapIds: this.state.columns['column-1'].endcapIds,
+            id: "column-1",
+            title: "To Do",
+            endcapIds: this.state.columns["column-1"].endcapIds,
           },
         }
         fetch(`https://localhost:4000/settings/${userSetting._id}`, {
-          method: 'PUT',
+          method: "PUT",
           headers: {
-            'Content-Type': 'application/json',
+            "Content-Type": "application/json",
           },
           body: JSON.stringify(settings),
         })
@@ -354,21 +354,21 @@ class App extends React.Component {
         />
         <div className="content">
           <Switch>
-            {/* <Route path='/login'>
+            {/* <Route path="/login">
               <LoginPage
                 handleHistory={this.handleHistory}
                 login={this.login}
                 isLoggedIn={this.state.isLoggedIn}
                 setIsLoggedIn={this.setIsLoggedIn} />
             </Route>
-            <Route path='/signup'>
+            <Route path="/signup">
               <SignupPage 
                 signup={this.signup}
                 isLoggedIn={this.state.isLoggedIn}
                 setIsLoggedIn={this.setIsLoggedIn}
               />
             </Route> */}
-            <Route exact path='/'>
+            <Route exact path="/">
               <HomePage 
                 handleChange={this.handleChange}
                 handleToggleEndcap={this.handleToggleEndcap}
@@ -381,32 +381,32 @@ class App extends React.Component {
               />
             </Route>
             {/* {this.state.isLoggedIn &&  */}
-            <Route path='/new'>
+            <Route path="/new">
               <NewEndcapPage 
                 handleHasUpdated={this.handleHasUpdated}
               />
             </Route>
             {/* } */}
             {/* {this.state.isLoggedIn &&  */}
-            <Route path='/edit/:id/flank/new'>
+            <Route path="/edit/:id/flank/new">
               <NewFlankPage 
                 handleHasUpdated={this.handleHasUpdated}
               />
             </Route>
             {/* } */}
             {/* {this.state.isLoggedIn &&  */}
-            <Route path='/edit/:id/flank/:id'>
+            <Route path="/edit/:id/flank/:id">
               <EditFlankPage 
                 handleHasUpdated={this.handleHasUpdated}
               />
             </Route>
             {/* } */}
             {/* {this.state.isLoggedIn &&  */}
-            <Route path='/edit/:id'>
+            <Route path="/edit/:id">
               <EditEndcapPage 
                 handleHasUpdated={this.handleHasUpdated}
                 endcaps={this.state.endcaps}
-                endcapsIds={this.state.columns['column-1'].endcapIds}
+                endcapsIds={this.state.columns["column-1"].endcapIds}
                 user={this.state.user}
               />
             </Route>

@@ -1,22 +1,22 @@
-import React from 'react';
-import { Link, withRouter } from 'react-router-dom';
-require('./EditEndcap.css');
+import React from "react";
+import { Link, withRouter } from "react-router-dom";
+require("./EditEndcap.css");
 
 class EditEndcapPage extends React.Component {
   state = {
-    title: '',
-    itemOne: '',
-    itemTwo: '',
-    itemThree: '',
-    itemFour: '',
-    itemFive: '',
-    flankA: '',
-    flankB: '',
+    title: "",
+    itemOne: "",
+    itemTwo: "",
+    itemThree: "",
+    itemFour: "",
+    itemFive: "",
+    flankA: "",
+    flankB: "",
   }
 
   componentDidMount() {
     fetch(`https://localhost:4000/endcaps/${this.props.match.params.id}`,{
-      credentials: 'include',
+      // credentials: "include",
     })
     .then((response) => response.json())
     .then((jsonData) => {
@@ -35,24 +35,24 @@ class EditEndcapPage extends React.Component {
   handleSubmit = (event) => {
     event.preventDefault();
     fetch(`https://localhost:4000/endcaps/${this.props.match.params.id}`, {
-      credentials: 'include',
-      method: 'PUT',
+      // credentials: "include",
+      method: "PUT",
       headers: {
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
       },
       body: JSON.stringify(this.state),
     })
-    .then(() => this.props.history.push('/'))
+    .then(() => this.props.history.push("/"))
     .then(() => this.props.handleHasUpdated(true))
     .catch((err) => console.log(err));
   }
 
   handleDeleteEndcap = (endcapId) => {
     fetch(`https://localhost:4000/endcaps/${endcapId}`, {
-      credentials: 'include',
-      method: 'DELETE',
+      // credentials: "include",
+      method: "DELETE",
     })
-    fetch('https://localhost:4000/settings')
+    fetch("https://localhost:4000/settings")
     .then((response) => response.json())
     .then((jsonData) => {
       const userSetting = jsonData.settings.find((setting) => {
@@ -61,15 +61,15 @@ class EditEndcapPage extends React.Component {
       const updatedColumnOrder = userSetting.columnOrder.endcapIds.filter((remainingId) => remainingId !== endcapId);
       const settings = {
         columnOrder: {
-          id: 'column-1',
-          title: 'To Do',
+          id: "column-1",
+          title: "To Do",
           endcapIds: updatedColumnOrder,
         },
       }
       fetch(`https://localhost:4000/settings/${userSetting._id}`, {
-        method: 'PUT',
+        method: "PUT",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
         body: JSON.stringify(settings),
       })
@@ -82,9 +82,9 @@ class EditEndcapPage extends React.Component {
 
   handleDeleteFlank = (flankId) => {
     fetch(`https://localhost:4000/flanks/${flankId}`, {
-      method: 'DELETE',
+      method: "DELETE",
       headers: {
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
       },
       body: JSON.stringify(this.props)
     })
@@ -96,8 +96,8 @@ class EditEndcapPage extends React.Component {
     return (
       <div className="edit-endcap-wrapper">
         <h1 className="edit-endcap-title">Edit {this.state.title}</h1>
-        <div id={`${(this.props.endcaps.length === 1 && (this.state.flankA && this.state.flankB)) ? 'hidden' : null}`} className="edit-endcap-header-btns">
-          <div className="edit-endcap-btn-wrapper" id={this.props.endcaps.length === 1 ? 'hidden' : null}>
+        <div id={`${(this.props.endcaps.length === 1 && (this.state.flankA && this.state.flankB)) ? "hidden" : null}`} className="edit-endcap-header-btns">
+          <div className="edit-endcap-btn-wrapper" id={this.props.endcaps.length === 1 ? "hidden" : null}>
             <Link to="/">
               <i 
                 className="far fa-trash-alt edit-endcap-delete-btn" 
@@ -107,7 +107,7 @@ class EditEndcapPage extends React.Component {
             </Link>
             <h4 className="edit-endcap-btn-title">Delete</h4>
           </div>
-          <div id={`${(this.state.flankA && this.state.flankB) ? 'hidden' : null}`} className="edit-endcap-btn-wrapper">
+          <div id={`${(this.state.flankA && this.state.flankB) ? "hidden" : null}`} className="edit-endcap-btn-wrapper">
             <Link to={`/edit/${this.props.match.params.id}/flank/new`}>
               <i 
                 className="far fa-plus-square edit-endcap-flank-btn"

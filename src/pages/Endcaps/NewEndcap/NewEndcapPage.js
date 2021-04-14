@@ -1,15 +1,15 @@
-import React from 'react';
-import { withRouter } from 'react-router-dom';
-require ('./NewEndcap.css');
+import React from "react";
+import { withRouter } from "react-router-dom";
+require ("./NewEndcap.css");
 
 class NewEndcapPage extends React.Component {
   state = {
-    title: '',
-    itemOne: '',
-    itemTwo: '',
-    itemThree: '',
-    itemFour: '',
-    itemFive: '',
+    title: "",
+    itemOne: "",
+    itemTwo: "",
+    itemThree: "",
+    itemFour: "",
+    itemFive: "",
     change: false,
   }
 
@@ -21,15 +21,15 @@ class NewEndcapPage extends React.Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
-    fetch('https://localhost:4000/endcaps', {
-      credentials: 'include',
-      method: 'POST',
+    fetch("https://localhost:4000/endcaps", {
+      // credentials: "include",
+      method: "POST",
       headers: {
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
       },
       body: JSON.stringify(this.state),
     })
-      .then(() => this.props.history.push('/'))
+      .then(() => this.props.history.push("/"))
       .then(() => this.props.handleHasUpdated(true))
       .catch((err) => console.log(err));
   }
