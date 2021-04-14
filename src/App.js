@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Switch, Route } from "react-router-dom";
 import HomePage from "./pages/Homepage/HomePage";
 import NewEndcapPage from "./pages/Endcaps/NewEndcap/NewEndcapPage";
@@ -11,10 +11,14 @@ import EditFlankPage from "./pages/Flanks/EditFlank/EditFlankPage";
 import Footer from "./components/Footer/Footer";
 require ("./App.css");
 
-class App extends React.Component {
-  state = {
-    endcaps: [],
-    columnOrder: [],
+function App() {
+  let [endcaps, setEndcaps] = useState([])
+  let [columnOrder,setColumnOrder] = useState([])
+  let [updated, setUpdated] = useState(false)
+
+  // state = {
+  //   endcaps: [],
+  //   columnOrder: [],
     // columns: {
     //   "column-1": {
     //     id: "column-1",
@@ -26,7 +30,7 @@ class App extends React.Component {
     // hasUpdated: false,
     // isLoggedIn: false,
     // user: ''
-  }
+  // }
   
 
   // setIsLoggedIn = () => {
@@ -90,11 +94,13 @@ class App extends React.Component {
   //   })
   // }
 
-  fetchEndcaps = () => {
+  const handleFetchEndcaps = () => {
     fetch("http://localhost:5000/endcaps")
     .then((response) => response.json())
     .then((jsonData) => {
-      // console.log(jsonData)
+      const allEndcaps = jsonData.allEndcaps;
+      setEndcaps(allEndcaps);
+      console.log(jsonData)
     })
   
     //   const endcapData = jsonData.allEndcaps;
@@ -124,14 +130,9 @@ class App extends React.Component {
       .catch((err) => console.log(err));
   }
   
-  componentDidMount() {
-    // if (this.state.isLoggedIn) {
-      this.fetchEndcaps()
-    // }
-  }
-  
-  componentDidUpdate() {
-    if(this.state.hasUpdated){
+  useEffect(() => {
+    handleFetchEndcaps();
+    if(updated){
       fetch("http://localhost:5000/endcaps", {
         // credentials: "include"
       })
@@ -204,9 +205,91 @@ class App extends React.Component {
         }
       })
     }
-  }
+  })
   
-  handleToggleEndcap = (toggle, endcapId) => {
+  // componentDidMount() {
+  //   // if (this.state.isLoggedIn) {
+  //     this.fetchEndcaps()
+  //   // }
+  // }
+  
+  // componentDidUpdate() {
+    // if(this.state.hasUpdated){
+    //   fetch("http://localhost:5000/endcaps", {
+    //     // credentials: "include"
+    //   })
+    //   .then((response) => response.json())
+    //   .then((jsonData) => {
+    //     const endcapData = jsonData.allEndcaps;
+    //     if(endcapData.length > this.state.endcaps.length) {
+    //       fetch("http://localhost:5000/settings")
+    //       .then((response) => response.json())
+    //       .then((jsonData) => {
+    //           const currentColNew = jsonData.settings.find((setting) => {
+    //           return setting.user === this.state.user._id
+    //         })
+    //         const currentColumnOrder = currentColNew.columnOrder.endcapIds;
+    //         const newEndCapId = endcapData[endcapData.length - 1]._id;
+    //         currentColumnOrder.push(newEndCapId);
+    //         const settings = {
+    //           columnOrder: {
+    //             id: "column-1",
+    //             title: "To Do",
+    //             endcapIds: currentColumnOrder,
+    //           },
+    //         }
+    //         // Updates Database with New Order
+    //           fetch(`http://localhost:5000/settings/${currentColNew._id}`, {
+    //             method: "PUT",
+    //             headers: {
+    //               "Content-Type": "application/json",
+    //             },
+    //             body: JSON.stringify(settings),
+    //           })
+    //           .then(() => {
+    //             const hasUpdated = !this.state.hasUpdated;
+    //               // Sets state With New Order
+    //               this.setState({
+    //                 endcaps: endcapData,
+    //                 columns: {
+    //                   ...this.state.columns,
+    //                   "column-1": {
+    //                     ...this.state.columns["column-1"],
+    //                     endcapIds: currentColumnOrder,
+    //                   }
+    //                 },
+    //                 hasUpdated: hasUpdated,
+    //               })
+    //           })
+    //           .catch((err) => console.log(err));
+    //       })
+    //     } else {
+    //       fetch("http://localhost:5000/settings")
+    //       .then((response) => response.json())
+    //       .then((jsonData) => {
+    //         const currentColNew = jsonData.settings.find((setting) => {
+    //           return setting.user === this.state.user._id
+    //         })
+    //         const currentColumnOrder = currentColNew.columnOrder.endcapIds;
+    //         const hasUpdated = !this.state.hasUpdated;
+    //         this.setState({
+    //           endcaps: endcapData,
+    //           columns: {
+    //             ...this.state.columns,
+    //             "column-1": {
+    //               ...this.state.columns["column-1"],
+    //               endcapIds: currentColumnOrder,
+    //             }
+    //           },
+    //           hasUpdated: hasUpdated,
+    //         })
+    //       })
+    //     }
+    //   })
+    // }
+  // }
+  
+  const handleToggleEndcap = (toggle, endcapId) => {
     if(!toggle) {
       this.state.endcaps.forEach((endcap) => {
         if(endcap._id === endcapId) {
@@ -248,7 +331,7 @@ class App extends React.Component {
     }
   }
 
-  handleToggleFlank = (toggle, flank) => {
+  const handleToggleFlank = (toggle, flank) => {
     if(!toggle) {
       const updatedFlank = {
         ...flank,
@@ -280,19 +363,19 @@ class App extends React.Component {
     }
   }
   
-  handleHasUpdated = (hasUpdated) => {
+  const handleHasUpdated = (hasUpdated) => {
     this.setState({
       hasUpdated: hasUpdated,
     })
   }
 
-  handleChange = (event) => {
+  const handleChange = (event) => {
     this.setState({
       [event.target.id]: event.target.value
     })
   }
   
-  onDragEnd = (result) => {
+  const onDragEnd = (result) => {
     const { destination, source, draggableId } = result;
     if(!destination) {
       return;
@@ -346,82 +429,80 @@ class App extends React.Component {
     })
   }
 
-  render() {
-    console.log("App.js");
-    return (
-      <div className="wrapper">
-        <Navbar
-          // user={this.state.user}
-          // isLoggedIn={this.state.isLoggedIn}
-          // logout={this.logout}
-        />
-        <div className="content">
-          <Switch>
-            <Route exact path="/">
-              <LoginPage
-                // handleHistory={this.handleHistory}
-                // login={this.login}
-                // isLoggedIn={this.state.isLoggedIn}
-                // setIsLoggedIn={this.setIsLoggedIn} 
-              />
-            </Route>
-            <Route path="/signup">
-              <SignupPage 
-                // signup={this.signup}
-                // isLoggedIn={this.state.isLoggedIn}
-                // setIsLoggedIn={this.setIsLoggedIn}
-              />
-            </Route>
-            <Route exact path="/home">
-              <HomePage 
-                handleChange={this.handleChange}
-                handleToggleEndcap={this.handleToggleEndcap}
-                handleToggleFlank={this.handleToggleFlank}
-                columnOrder={this.state.columnOrder}
-                columns={this.state.columns}
-                endcaps={this.state.endcaps}
-                onDragEnd={this.onDragEnd}
-                // isLoggedIn={this.state.isLoggedIn}
-              />
-            </Route>
-            {/* {this.state.isLoggedIn &&  */}
-            <Route path="/new">
-              <NewEndcapPage 
-                handleHasUpdated={this.handleHasUpdated}
-              />
-            </Route>
-            {/* } */}
-            {/* {this.state.isLoggedIn &&  */}
-            <Route path="/edit/:id/flank/new">
-              <NewFlankPage 
-                handleHasUpdated={this.handleHasUpdated}
-              />
-            </Route>
-            {/* } */}
-            {/* {this.state.isLoggedIn &&  */}
-            <Route path="/edit/:id/flank/:id">
-              <EditFlankPage 
-                handleHasUpdated={this.handleHasUpdated}
-              />
-            </Route>
-            {/* } */}
-            {/* {this.state.isLoggedIn &&  */}
-            <Route path="/edit/:id">
-              <EditEndcapPage 
-                handleHasUpdated={this.handleHasUpdated}
-                endcaps={this.state.endcaps}
-                columnOrder={this.state.columnOrder}
-                user={this.state.user}
-              />
-            </Route>
-            {/* } */}
-            {/* <Route path="/" render={() => <Redirect to="/login"/>} /> */}
-          </Switch>
-        </div>
-        <Footer />
+  console.log("App.js");
+  return (
+    <div className="wrapper">
+      <Navbar
+        // user={this.state.user}
+        // isLoggedIn={this.state.isLoggedIn}
+        // logout={this.logout}
+      />
+      <div className="content">
+        <Switch>
+          <Route exact path="/">
+            <LoginPage
+              // handleHistory={this.handleHistory}
+              // login={this.login}
+              // isLoggedIn={this.state.isLoggedIn}
+              // setIsLoggedIn={this.setIsLoggedIn} 
+            />
+          </Route>
+          <Route path="/signup">
+            <SignupPage 
+              // signup={this.signup}
+              // isLoggedIn={this.state.isLoggedIn}
+              // setIsLoggedIn={this.setIsLoggedIn}
+            />
+          </Route>
+          <Route exact path="/home">
+            <HomePage 
+              handleChange={handleChange}
+              handleToggleEndcap={handleToggleEndcap}
+              handleToggleFlank={handleToggleFlank}
+              columnOrder={columnOrder}
+              // columns={this.state.columns}
+              endcaps={endcaps}
+              onDragEnd={onDragEnd}
+              // isLoggedIn={this.state.isLoggedIn}
+            />
+          </Route>
+          {/* {this.state.isLoggedIn &&  */}
+          <Route path="/new">
+            <NewEndcapPage 
+              handleHasUpdated={handleHasUpdated}
+            />
+          </Route>
+          {/* } */}
+          {/* {this.state.isLoggedIn &&  */}
+          <Route path="/edit/:id/flank/new">
+            <NewFlankPage 
+              handleHasUpdated={handleHasUpdated}
+            />
+          </Route>
+          {/* } */}
+          {/* {this.state.isLoggedIn &&  */}
+          <Route path="/edit/:id/flank/:id">
+            <EditFlankPage 
+              handleHasUpdated={handleHasUpdated}
+            />
+          </Route>
+          {/* } */}
+          {/* {this.state.isLoggedIn &&  */}
+          <Route path="/edit/:id">
+            <EditEndcapPage 
+              handleHasUpdated={handleHasUpdated}
+              endcaps={endcaps}
+              columnOrder={columnOrder}
+              // user={this.state.user}
+            />
+          </Route>
+          {/* } */}
+          {/* <Route path="/" render={() => <Redirect to="/login"/>} /> */}
+        </Switch>
       </div>
-    );
-  }
+      <Footer />
+    </div>
+  );
 }
 
 export default App;
