@@ -1,14 +1,16 @@
 // import { useHistory } from "react-router-dom"
 // import { useForm } from "react-hook-form";
-import { Switch, Route } from "react-router-dom";
+// import { Switch, Route, Redirect } from "react-router-dom";
+import { Redirect } from "react-router-dom";
 import React from "react";
-import HomePage from "../Homepage/HomePage";
+// import HomePage from "../Homepage/HomePage";
 require("./LoginPage.css");
 
 class LoginPage extends React.Component {
   state = {
     username: "",
     password: "",
+    redirect: null,
   }
 //   const { register, handleSubmit } = useForm();
 
@@ -36,17 +38,17 @@ handleSubmit = (event) => {
       const username = user.username;
       const password = user.password;
       if(username === this.state.username && password === this.state.password) {
-        console.log('Its a Match!')
-        return <Switch>
-                  <Route path="/home">
-                    <HomePage />
-                  </Route>
-                </Switch>
+        this.setState({ redirect: "/home" });
+      } else {
+        alert("Incorrect Login Information. Try Again.")
       }
     })
   })
 }
   render() {
+    if(this.state.redirect) {
+      return <Redirect to={this.state.redirect} />
+    }
     return (
       <div className="login-container">
         <form className="login-form shadow" onSubmit={this.handleSubmit}>
