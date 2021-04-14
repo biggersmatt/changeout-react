@@ -1,6 +1,8 @@
 // import { useHistory } from "react-router-dom"
 // import { useForm } from "react-hook-form";
+import { Switch, Route } from "react-router-dom";
 import React from "react";
+import HomePage from "../Homepage/HomePage";
 require("./LoginPage.css");
 
 class LoginPage extends React.Component {
@@ -29,7 +31,19 @@ handleSubmit = (event) => {
   fetch("http://localhost:5000/users")
   .then(response => response.json())
   .then(jsonData => {
-    console.log(jsonData)
+    const allUsers = jsonData.allUsers;
+    allUsers.forEach(user => {
+      const username = user.username;
+      const password = user.password;
+      if(username === this.state.username && password === this.state.password) {
+        console.log('Its a Match!')
+        return <Switch>
+                  <Route path="/home">
+                    <HomePage />
+                  </Route>
+                </Switch>
+      }
+    })
   })
 }
   render() {

@@ -1,6 +1,6 @@
 import React from "react";
 import { Switch, Route } from "react-router-dom";
-import HomePage from "./pages/Homepage/HomePage";
+// import HomePage from "./pages/Homepage/HomePage";
 import NewEndcapPage from "./pages/Endcaps/NewEndcap/NewEndcapPage";
 import EditEndcapPage from "./pages/Endcaps/EditEndcap/EditEndcapPage";
 import LoginPage from "./pages/LoginPage/LoginPage"
@@ -371,7 +371,7 @@ class App extends React.Component {
                 setIsLoggedIn={this.setIsLoggedIn}
               />
             </Route>
-            <Route exact path="/home">
+            {/* <Route exact path="/home">
               <HomePage 
                 handleChange={this.handleChange}
                 handleToggleEndcap={this.handleToggleEndcap}
@@ -382,7 +382,7 @@ class App extends React.Component {
                 onDragEnd={this.onDragEnd}
                 // isLoggedIn={this.state.isLoggedIn}
               />
-            </Route>
+            </Route> */}
             {/* {this.state.isLoggedIn &&  */}
             <Route path="/new">
               <NewEndcapPage 
