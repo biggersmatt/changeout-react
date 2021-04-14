@@ -46,54 +46,65 @@ function NewEndcapPage() {
   })
     
   const handleChange = (event) => {
-    if(event.target.id === "title") {
-      setNewEndcap(prevNewEndcap => {
-        return {
-          ...prevNewEndcap,
-          title: event.target.value
-        }
-      })
+
+    for(let prop in newEndcap) {
+      if(event.target.id === prop) {
+        setNewEndcap(prevNewEndcap => {
+          return {
+            ...prevNewEndcap,
+            prop: event.target.value
+          }
+        })
+      }
     }
-    if(event.target.id === "itemOne") {
-      setNewEndcap(prevNewEndcap => {
-        return {
-          ...prevNewEndcap,
-          itemOne: event.target.value
-        }
-      })
-    }
-    if(event.target.id === "itemTwo") {
-      setNewEndcap(prevNewEndcap => {
-        return {
-          ...prevNewEndcap,
-          itemTwo: event.target.value
-        }
-      })
-    }
-    if(event.target.id === "itemThree") {
-      setNewEndcap(prevNewEndcap => {
-        return {
-          ...prevNewEndcap,
-          itemThree: event.target.value
-        }
-      })
-    }
-    if(event.target.id === "itemFour") {
-      setNewEndcap(prevNewEndcap => {
-        return {
-          ...prevNewEndcap,
-          itemFour: event.target.value
-        }
-      })
-    }
-    if(event.target.id === "itemFive") {
-      setNewEndcap(prevNewEndcap => {
-        return {
-          ...prevNewEndcap,
-          itemFive: event.target.value
-        }
-      })
-    }
+    // if(event.target.id === "title") {
+    //   setNewEndcap(prevNewEndcap => {
+    //     return {
+    //       ...prevNewEndcap,
+    //       title: event.target.value
+    //     }
+    //   })
+    // }
+    // if(event.target.id === "itemOne") {
+    //   setNewEndcap(prevNewEndcap => {
+    //     return {
+    //       ...prevNewEndcap,
+    //       itemOne: event.target.value
+    //     }
+    //   })
+    // }
+    // if(event.target.id === "itemTwo") {
+    //   setNewEndcap(prevNewEndcap => {
+    //     return {
+    //       ...prevNewEndcap,
+    //       itemTwo: event.target.value
+    //     }
+    //   })
+    // }
+    // if(event.target.id === "itemThree") {
+    //   setNewEndcap(prevNewEndcap => {
+    //     return {
+    //       ...prevNewEndcap,
+    //       itemThree: event.target.value
+    //     }
+    //   })
+    // }
+    // if(event.target.id === "itemFour") {
+    //   setNewEndcap(prevNewEndcap => {
+    //     return {
+    //       ...prevNewEndcap,
+    //       itemFour: event.target.value
+    //     }
+    //   })
+    // }
+    // if(event.target.id === "itemFive") {
+    //   setNewEndcap(prevNewEndcap => {
+    //     return {
+    //       ...prevNewEndcap,
+    //       itemFive: event.target.value
+    //     }
+    //   })
+    // }
   }
 
   const handleSubmit = (event) => {
