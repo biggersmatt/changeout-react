@@ -62,6 +62,7 @@ class EditFlankPage extends React.Component {
   }
 
   render() {
+    console.log("Edit Flank Page");
     return (
       <div className="edit-flank-wrapper">
         <h1 className="edit-flank-title">Edit {this.state.title}</h1>

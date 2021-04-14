@@ -64,6 +64,7 @@ class NewFlankPage extends React.Component {
   }
 
   render() {
+    console.log("New Flank Page");
     return (
       <div className="new-flank-wrapper">
         <h1 className="new-flank-title">Add Flank to {this.state.currentEndcap.title}</h1>

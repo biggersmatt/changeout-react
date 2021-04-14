@@ -93,6 +93,7 @@ class EditEndcapPage extends React.Component {
   }
 
   render() {
+    console.log("Edit Endcap");
     return (
       <div className="edit-endcap-wrapper">
         <h1 className="edit-endcap-title">Edit {this.state.title}</h1>

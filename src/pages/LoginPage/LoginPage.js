@@ -46,6 +46,7 @@ handleSubmit = (event) => {
   })
 }
   render() {
+    console.log("Login Page");
     if(this.state.redirect) {
       return <Redirect to={this.state.redirect} />
     }

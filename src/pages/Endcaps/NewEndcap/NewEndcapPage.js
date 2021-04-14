@@ -35,6 +35,7 @@ class NewEndcapPage extends React.Component {
   }
 
   render() {
+    console.log("New Endcap");
     return (
       <div className="new-endcap-wrapper">
         <h1 className="new-endcap-title">New Endcap</h1>

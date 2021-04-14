@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 require("./Header.css");
 
 const Header = (props) => {
+  console.log("Header");
   return (
     <header>
       <h1 className="header-title">ChangeOut</h1>

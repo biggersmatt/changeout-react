@@ -3,6 +3,7 @@ import EndcapCard from "../Endcaps/EndcapCard";
 require("./EndcapCard.css");
 
 const EndcapsList = (props) => {
+  console.log("EndcapList");
     return (
       <Droppable droppableId={props.column.id}>
         {(provided, snapshot) => (

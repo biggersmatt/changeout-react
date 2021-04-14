@@ -6,6 +6,7 @@ require("./Homepage.css");
 
 class HomePage extends React.Component {
   render() {
+    console.log("HomePage");
     return (
       <div>
         <Header 

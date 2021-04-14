@@ -15,7 +15,7 @@ const SignupPage = (props) => {
     props.signup(rest)
     history.push("/login")
   }
-
+  console.log('SignUp Page');
   return (
     <div className="login-container">
       <form className="login-form shadow" onSubmit={handleSubmit(onSubmit)}>

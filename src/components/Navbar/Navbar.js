@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 require("./Navbar.css");
 
 const Navbar = (props) => {
+  console.log("Navbar");
   return (
     <nav>
       <h1 className="navbar-greeting">Welcome 

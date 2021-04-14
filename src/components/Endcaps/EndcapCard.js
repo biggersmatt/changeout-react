@@ -14,7 +14,7 @@ class EndcapCard extends React.Component {
     const flankB = {
       title: this.props.endcap.flankB ? this.props.endcap.flankB.title : "",
     }
-
+    console.log("EndcapCard");
     return (
       <Draggable draggableId={this.props.endcap._id} index={this.props.index}>
         {(provided, snapshot) => (

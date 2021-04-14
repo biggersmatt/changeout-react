@@ -347,6 +347,7 @@ class App extends React.Component {
   }
 
   render() {
+    console.log("App.js");
     return (
       <div className="wrapper">
         <Navbar

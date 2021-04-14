@@ -13,7 +13,7 @@ const FlankB = (props) => {
     change: props.endcap.flankB ? props.endcap.flankB.change : "",
     side: props.endcap.flankB ? props.endcap.flankB.side : "",
   }
-
+  console.log("Flank B");
   return (
     <div className={`shadow ${flankB.change ? "flank-yellow" : "flank-green"}`} id={!flankB.title ? "hidden" : null}>
       <h4 className="flank-title">{flankB.title}</h4>
