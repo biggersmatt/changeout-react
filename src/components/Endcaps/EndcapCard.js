@@ -1,18 +1,18 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import { Draggable } from 'react-beautiful-dnd';
-import FlankA from '../Flanks/FlankA';
-import FlankB from '../Flanks/FlankB';
-require('./EndcapCard.css')
+import React from "react";
+import { Link } from "react-router-dom";
+import { Draggable } from "react-beautiful-dnd";
+import FlankA from "../Flanks/FlankA";
+import FlankB from "../Flanks/FlankB";
+require("./EndcapCard.css")
 
 class EndcapCard extends React.Component {
   render() {
     const flankA = {
-      title: this.props.flankA ? this.props.flankA.title : '',
+      title: this.props.flankA ? this.props.flankA.title : "",
     }
 
     const flankB = {
-      title: this.props.endcap.flankB ? this.props.endcap.flankB.title : '',
+      title: this.props.endcap.flankB ? this.props.endcap.flankB.title : "",
     }
 
     return (
@@ -29,11 +29,11 @@ class EndcapCard extends React.Component {
               handleToggleFlank={this.props.handleToggleFlank}
             />
             <div 
-              className={`endcap-card shadow ${this.props.endcap.change && 'yellow'}`} 
+              className={`endcap-card shadow ${this.props.endcap.change && "yellow"}`} 
               id={
-                (flankA.title && flankB.title ? 'nothing' : null) ||
-                (flankA.title ? 'endcap-flank-a': '') || 
-                (flankB.title ? 'endcap-flank-b' : '') 
+                (flankA.title && flankB.title ? "nothing" : null) ||
+                (flankA.title ? "endcap-flank-a": "") || 
+                (flankB.title ? "endcap-flank-b" : "") 
               }
             >
               <h3 className="endcap-card-title">{this.props.endcap.title}</h3>
@@ -45,14 +45,14 @@ class EndcapCard extends React.Component {
               <p className="endcap-card-item">{this.props.endcap.change}</p>
               <div className="endcap-card-btns">
                 <Link to={`/edit/${this.props.endcap._id}`}>
-                  <p className={this.props.endcap.change ? 'endcap-edit-completed' : 'endcap-edit-change'}>Edit Info</p>
+                  <p className={this.props.endcap.change ? "endcap-edit-completed" : "endcap-edit-change"}>Edit Info</p>
                 </Link>
                 <div>
                   <p 
-                    className={this.props.endcap.change ? 'endcap-completed' : 'endcap-change'}
+                    className={this.props.endcap.change ? "endcap-completed" : "endcap-change"}
                     onClick={() => this.props.handleToggleEndcap(this.props.endcap.change, this.props.endcap._id)}
                   >
-                    {this.props.endcap.change ? 'Complete' : 'Change'}
+                    {this.props.endcap.change ? "Complete" : "Change"}
                   </p>
                 </div>
               </div>

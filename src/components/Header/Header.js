@@ -1,5 +1,5 @@
-import { Link } from 'react-router-dom';
-require('./Header.css');
+import { Link } from "react-router-dom";
+require("./Header.css");
 
 const Header = (props) => {
   return (
@@ -20,7 +20,7 @@ const Header = (props) => {
           <h3>Please Login or Sign Up with ChangeOut.</h3>
         </div>
         <div className="login-error-links">
-          <Link to="/login">Login</Link> | {' '}
+          <Link to="/login">Login</Link> | {" "}
           <Link to="/signup">Sign up</Link>
         </div>
       </div>} */}

@@ -1,4 +1,4 @@
-require('./Footer.css')
+require("./Footer.css")
 
 const Footer = () => {
   return (
