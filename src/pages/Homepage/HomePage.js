@@ -68,7 +68,7 @@ function HomePage(props) {
                     endcaps={userEndcaps}
                     key={userId}  
                     // column={column} 
-                  />;
+                  />
           {/* {this.props.columnOrder.map(columnId => {
           const column = this.props.columns[columnId];
           const endcaps = column.endcapIds.map(endcapId => {

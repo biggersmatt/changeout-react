@@ -289,46 +289,67 @@ function App() {
     // }
   // }
   
-  const handleToggleEndcap = (toggle, endcapId) => {
-    if(!toggle) {
-      this.state.endcaps.forEach((endcap) => {
-        if(endcap._id === endcapId) {
-          const updatedEndcap = {
-            ...endcap,
-            change: true,
-          }
-          fetch(`http://localhost:5000/endcaps/${endcapId}`, {
-            // credentials: "include",
-            method: "PUT",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify(updatedEndcap),
-          })
-          .then(() => this.handleHasUpdated(true))
-          .catch((err) => console.log(err));
-        }
-      })
-    } else {
-      this.state.endcaps.forEach((endcap) => {
-        if(endcap._id === endcapId) {
-          const updatedEndcap = {
-            ...endcap,
-            change: false,
-          }
-          fetch(`http://localhost:5000/endcaps/${endcapId}`, {
-            // credentials: "include",
-            method: "PUT",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify(updatedEndcap),
-          })
-          .then(() => this.handleHasUpdated(true))
-          .catch((err) => console.log(err));
-        }
-      })
+  const handleToggleEndcap = (endcap) => {
+    console.log(endcap.change)
+    console.log(endcap._id)
+    if(!endcap.change) {
+      const updatedEndcap = {
+        ...endcap,
+        change: !endcap.change,
+      }
+      console.log("*************")
+      console.log(updatedEndcap)
+      console.log("*************")
+      // fetch(`http://localhost:5000/endcaps/${endcap._id}`, {
+      //   // credentials: "include",
+      //   method: "PUT",
+      //   headers: {
+      //     "Content-Type": "application/json",
+      //   },
+      //   body: JSON.stringify(endcap),
+      // })
+      // .then(() => this.handleHasUpdated(true))
+      // .catch((err) => console.log(err));
     }
+    // if(!toggle) {
+    //   this.state.endcaps.forEach((endcap) => {
+    //     if(endcap._id === endcapId) {
+    //       const updatedEndcap = {
+    //         ...endcap,
+    //         change: true,
+    //       }
+    //       fetch(`http://localhost:5000/endcaps/${endcapId}`, {
+    //         // credentials: "include",
+    //         method: "PUT",
+    //         headers: {
+    //           "Content-Type": "application/json",
+    //         },
+    //         body: JSON.stringify(updatedEndcap),
+    //       })
+    //       .then(() => this.handleHasUpdated(true))
+    //       .catch((err) => console.log(err));
+    //     }
+    //   })
+    // } else {
+    //   this.state.endcaps.forEach((endcap) => {
+    //     if(endcap._id === endcapId) {
+    //       const updatedEndcap = {
+    //         ...endcap,
+    //         change: false,
+    //       }
+    //       fetch(`http://localhost:5000/endcaps/${endcapId}`, {
+    //         // credentials: "include",
+    //         method: "PUT",
+    //         headers: {
+    //           "Content-Type": "application/json",
+    //         },
+    //         body: JSON.stringify(updatedEndcap),
+    //       })
+    //       .then(() => this.handleHasUpdated(true))
+    //       .catch((err) => console.log(err));
+    //     }
+    //   })
+    // }
   }
 
   const handleToggleFlank = (toggle, flank) => {
