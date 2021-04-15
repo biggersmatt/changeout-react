@@ -46,7 +46,7 @@ function EndcapCard(props) {
         >
           <FlankA 
             endcap={props.endcap} 
-            flankA={props.flankA} 
+            // flankA={props.flankA} 
             handleToggleFlank={props.handleToggleFlank}
           />
           <div 
@@ -81,7 +81,7 @@ function EndcapCard(props) {
           </div>
           <FlankB 
             endcap={props.endcap} 
-            flankB={props.flankB} 
+            // flankB={props.flankB} 
             handleToggleFlank={props.handleToggleFlank}
           />
         </div>
