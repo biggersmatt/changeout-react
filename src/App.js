@@ -289,17 +289,17 @@ function App() {
     // }
   // }
   
-  const handleToggleEndcap = (endcap) => {
-    console.log(endcap.change)
-    console.log(endcap._id)
-    if(!endcap.change) {
-      const updatedEndcap = {
-        ...endcap,
-        change: !endcap.change,
-      }
-      console.log("*************")
-      console.log(updatedEndcap)
-      console.log("*************")
+  // const handleToggleEndcap = (endcap) => {
+  //   console.log(endcap.change)
+  //   console.log(endcap._id)
+  //   if(!endcap.change) {
+  //     const updatedEndcap = {
+  //       ...endcap,
+  //       change: !endcap.change,
+  //     }
+  //     console.log("*************")
+  //     console.log(updatedEndcap)
+  //     console.log("*************")
       // fetch(`http://localhost:5000/endcaps/${endcap._id}`, {
       //   // credentials: "include",
       //   method: "PUT",
@@ -310,7 +310,7 @@ function App() {
       // })
       // .then(() => this.handleHasUpdated(true))
       // .catch((err) => console.log(err));
-    }
+    // }
     // if(!toggle) {
     //   this.state.endcaps.forEach((endcap) => {
     //     if(endcap._id === endcapId) {
@@ -350,7 +350,7 @@ function App() {
     //     }
     //   })
     // }
-  }
+  // }
 
   const handleToggleFlank = (toggle, flank) => {
     if(!toggle) {
@@ -484,7 +484,7 @@ function App() {
             <HomePage 
               // handleChange={handleChange}
               userId={userId}
-              handleToggleEndcap={handleToggleEndcap}
+              // handleToggleEndcap={handleToggleEndcap}
               handleToggleFlank={handleToggleFlank}
               // handleFetchEndcaps={handleFetchEndcaps}
               // columnOrder={columnOrder}
