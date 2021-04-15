@@ -2,7 +2,17 @@ import React, { useState } from "react";
 import { withRouter } from "react-router-dom";
 require ("./NewEndcap.css");
 
-function NewEndcapPage() {
+function NewEndcapPage(props) {
+  const [newEndcap, setNewEndcap] = useState({
+    title: "",
+    itemOne: "",
+    itemTwo: "",
+    itemThree: "",
+    itemFour: "",
+    itemFive: "",
+    change: false,
+    user: props.userId,
+  })
   // state = {
   //   title: "",
   //   itemOne: "",
@@ -12,14 +22,75 @@ function NewEndcapPage() {
   //   itemFive: "",
   //   change: false,
   // }
-
-  // handleChange = (event) => {
-  //   this.setState({
-  //     [event.target.id]: event.target.value,
-  //   })
-  // }
-
   
+  // handleChange = (event) => {
+    //   this.setState({
+      //     [event.target.id]: event.target.value,
+      //   })
+      // }
+      
+  const handleChange = (event) => {
+
+    // for(let prop in newEndcap) {
+    //   if(event.target.id === prop) {
+    //     setNewEndcap(prevNewEndcap => {
+    //       return {
+    //         ...prevNewEndcap,
+    //         prop: event.target.value
+    //       }
+    //     })
+    //   }
+    // }
+    if(event.target.id === "title") {
+      setNewEndcap(prevNewEndcap => {
+        return {
+          ...prevNewEndcap,
+          title: event.target.value
+        }
+      })
+    }
+    if(event.target.id === "itemOne") {
+      setNewEndcap(prevNewEndcap => {
+        return {
+          ...prevNewEndcap,
+          itemOne: event.target.value
+        }
+      })
+    }
+    if(event.target.id === "itemTwo") {
+      setNewEndcap(prevNewEndcap => {
+        return {
+          ...prevNewEndcap,
+          itemTwo: event.target.value
+        }
+      })
+    }
+    if(event.target.id === "itemThree") {
+      setNewEndcap(prevNewEndcap => {
+        return {
+          ...prevNewEndcap,
+          itemThree: event.target.value
+        }
+      })
+    }
+    if(event.target.id === "itemFour") {
+      setNewEndcap(prevNewEndcap => {
+        return {
+          ...prevNewEndcap,
+          itemFour: event.target.value
+        }
+      })
+    }
+    if(event.target.id === "itemFive") {
+      setNewEndcap(prevNewEndcap => {
+        return {
+          ...prevNewEndcap,
+          itemFive: event.target.value
+        }
+      })
+    }
+  }
+      
   // handleSubmit = (event) => {
     //   event.preventDefault();
     //   fetch("http://localhost:5000/endcaps", {
@@ -35,90 +106,17 @@ function NewEndcapPage() {
     //     .catch((err) => console.log(err));
     // }
 
-  const [newEndcap, setNewEndcap] = useState({
-    title: "",
-    itemOne: "",
-    itemTwo: "",
-    itemThree: "",
-    itemFour: "",
-    itemFive: "",
-    change: false,
-  })
-    
-  const handleChange = (event) => {
-
-    for(let prop in newEndcap) {
-      if(event.target.id === prop) {
-        setNewEndcap(prevNewEndcap => {
-          return {
-            ...prevNewEndcap,
-            prop: event.target.value
-          }
-        })
-      }
-    }
-    // if(event.target.id === "title") {
-    //   setNewEndcap(prevNewEndcap => {
-    //     return {
-    //       ...prevNewEndcap,
-    //       title: event.target.value
-    //     }
-    //   })
-    // }
-    // if(event.target.id === "itemOne") {
-    //   setNewEndcap(prevNewEndcap => {
-    //     return {
-    //       ...prevNewEndcap,
-    //       itemOne: event.target.value
-    //     }
-    //   })
-    // }
-    // if(event.target.id === "itemTwo") {
-    //   setNewEndcap(prevNewEndcap => {
-    //     return {
-    //       ...prevNewEndcap,
-    //       itemTwo: event.target.value
-    //     }
-    //   })
-    // }
-    // if(event.target.id === "itemThree") {
-    //   setNewEndcap(prevNewEndcap => {
-    //     return {
-    //       ...prevNewEndcap,
-    //       itemThree: event.target.value
-    //     }
-    //   })
-    // }
-    // if(event.target.id === "itemFour") {
-    //   setNewEndcap(prevNewEndcap => {
-    //     return {
-    //       ...prevNewEndcap,
-    //       itemFour: event.target.value
-    //     }
-    //   })
-    // }
-    // if(event.target.id === "itemFive") {
-    //   setNewEndcap(prevNewEndcap => {
-    //     return {
-    //       ...prevNewEndcap,
-    //       itemFive: event.target.value
-    //     }
-    //   })
-    // }
-  }
-
   const handleSubmit = (event) => {
     event.preventDefault();
-    // fetch("http://localhost:5000/users")
-    // .then(response => response.json())
-    // .then(jsonData => {
-    //   const allUsers = jsonData.allUsers;
-    //   allUsers.forEach(user => {
-    //     const currentUsername = user.username;
-    //     const currentPassword = user.password;
-    //     handleUserCheck(currentUsername, currentPassword);
-    //   })
-    // })
+    fetch("http://localhost:5000/endcaps", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(newEndcap),
+    })
+    .then(() => props.history.push("/home"))
+    .catch(err => console.log(err));
   }
 
   console.log("New Endcap");
