@@ -46,7 +46,6 @@ function HomePage(props) {
   let userEndcaps = [];
 
   console.log("HomePage");
-  console.log(userId)
   return (
     <div>
       <Header 
@@ -63,7 +62,6 @@ function HomePage(props) {
             userEndcaps.push(endcap);
           }
         })}
-        {console.log(userEndcaps)}
         <EndcapsList 
                     handleToggleEndcap={props.handleToggleEndcap}
                     handleToggleFlank={props.handleToggleFlank}

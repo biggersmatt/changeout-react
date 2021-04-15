@@ -434,7 +434,6 @@ function App() {
   }
 
   console.log("App.js");
-  console.log(userId)
   return (
     <div className="wrapper">
       <Navbar
