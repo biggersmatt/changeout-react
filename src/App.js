@@ -362,17 +362,17 @@ function App() {
     }
   }
   
-  const handleHasUpdated = (hasUpdated) => {
-    this.setState({
-      hasUpdated: hasUpdated,
-    })
-  }
+  // const handleHasUpdated = (hasUpdated) => {
+  //   this.setState({
+  //     hasUpdated: hasUpdated,
+  //   })
+  // }
 
-  const handleChange = (event) => {
-    this.setState({
-      [event.target.id]: event.target.value
-    })
-  }
+  // const handleChange = (event) => {
+  //   this.setState({
+  //     [event.target.id]: event.target.value
+  //   })
+  // }
   
   // const onDragEnd = (result) => {
   //   const { destination, source, draggableId } = result;
@@ -455,7 +455,7 @@ function App() {
           </Route>
           <Route exact path="/home">
             <HomePage 
-              handleChange={handleChange}
+              // handleChange={handleChange}
               handleToggleEndcap={handleToggleEndcap}
               handleToggleFlank={handleToggleFlank}
               // handleFetchEndcaps={handleFetchEndcaps}
@@ -476,21 +476,21 @@ function App() {
           {/* {this.state.isLoggedIn &&  */}
           <Route path="/edit/:id/flank/new">
             <NewFlankPage 
-              handleHasUpdated={handleHasUpdated}
+              // handleHasUpdated={handleHasUpdated}
             />
           </Route>
           {/* } */}
           {/* {this.state.isLoggedIn &&  */}
           <Route path="/edit/:id/flank/:id">
             <EditFlankPage 
-              handleHasUpdated={handleHasUpdated}
+              // handleHasUpdated={handleHasUpdated}
             />
           </Route>
           {/* } */}
           {/* {this.state.isLoggedIn &&  */}
           <Route path="/edit/:id">
             <EditEndcapPage 
-              handleHasUpdated={handleHasUpdated}
+              // handleHasUpdated={handleHasUpdated}
               // endcaps={endcaps}
               // columnOrder={columnOrder}
               // user={this.state.user}

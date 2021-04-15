@@ -10,7 +10,8 @@ const Navbar = (props) => {
       </h1>
       <div className="navbar-links">
         {/* {props.isLoggedIn &&  */}
-        <Link to="/" className="navbar-link">Home</Link>
+        <Link to="/home" className="navbar-link">Home</Link>
+        <Link to="/" className="navbar-link">Login</Link>
         {/* } */}
         {/* {props.isLoggedIn && <Link to="/login" onClick={() => props.logout()} className="navbar-link">Sign out</Link>} */}
         {/* {!props.isLoggedIn && <Link to="/login"  className="navbar-link">Login</Link>} */}
