@@ -5,7 +5,7 @@ import EndcapsList from "../../components/Endcaps/EndcapsList";
 require("./Homepage.css");
 
 function HomePage(props) {
-  let [endcaps, setEndcaps] = useState([])
+  const [endcaps, setEndcaps] = useState([]);
   // useState({
   //   userEndcaps: [],
   //   columnOrder: [{
@@ -22,7 +22,7 @@ function HomePage(props) {
     .then((response) => response.json())
     .then((jsonData) => {
       const allEndcaps = jsonData.allEndcaps;
-      setEndcaps(endcaps = allEndcaps);
+      setEndcaps(allEndcaps);
       // setEndcaps({
       //   userEndcaps: allEndcaps,
       //   columnOrder: [{
@@ -35,10 +35,8 @@ function HomePage(props) {
   }
 
   useEffect(() => {
-    if(endcaps.length === 0) {
-      handleFetchEndcaps();
-    }
-  })
+    handleFetchEndcaps();
+  }, [])
 
   console.log("HomePage");
   return (
