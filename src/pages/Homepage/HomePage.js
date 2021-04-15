@@ -14,6 +14,7 @@ function HomePage(props) {
   //   }],
   // })
 
+  const userId = props.userId;
 
   const handleFetchEndcaps = () => {
     // const tempColumnOrder = ['607726d74947d672c85ff13c', '607653e41534e6626175a40b']
@@ -22,6 +23,10 @@ function HomePage(props) {
     .then((response) => response.json())
     .then((jsonData) => {
       const allEndcaps = jsonData.allEndcaps;
+      // const userEndcaps = allEndcaps.map((endcap) => {
+      //   console.log(endcap.user)
+      //   console.log(props)
+      // })
       setEndcaps(allEndcaps);
       // setEndcaps({
       //   userEndcaps: allEndcaps,
@@ -38,7 +43,10 @@ function HomePage(props) {
     handleFetchEndcaps();
   }, [])
 
+  let userEndcaps = [];
+
   console.log("HomePage");
+  console.log(userId)
   return (
     <div>
       <Header 
@@ -49,11 +57,18 @@ function HomePage(props) {
         onDragEnd={props.onDragEnd}
       > */}
         <main>
+        {
+        endcaps.forEach((endcap) => {
+          if(endcap.user === userId) {
+            userEndcaps.push(endcap);
+          }
+        })}
+        {console.log(userEndcaps)}
         <EndcapsList 
                     handleToggleEndcap={props.handleToggleEndcap}
                     handleToggleFlank={props.handleToggleFlank}
-                    endcaps={endcaps}
-                    // key={column.id}  
+                    endcaps={userEndcaps}
+                    key={userId}  
                     // column={column} 
                   />;
           {/* {this.props.columnOrder.map(columnId => {
@@ -72,13 +87,13 @@ function HomePage(props) {
           )} */}
           
           {/* {endcaps.columnOrder.map(column => {
-          const currentEndcaps = column.orderIds.map(orderId => {
+          const userEndcaps = column.orderIds.map(orderId => {
           return endcaps.userEndcaps.find(endcap => endcap._id === orderId);
           });
           return <EndcapsList 
                     handleToggleEndcap={props.handleToggleEndcap}
                     handleToggleFlank={props.handleToggleFlank}
-                    endcaps={currentEndcaps}
+                    endcaps={userEndcaps}
                     // key={column.id}  
                     // column={column} 
                   />;

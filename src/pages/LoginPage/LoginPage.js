@@ -6,7 +6,7 @@ import React, { useState } from "react";
 // import HomePage from "../Homepage/HomePage";
 require("./LoginPage.css");
 
-function LoginPage() {
+function LoginPage(props) {
   let [username, setUsername] = useState("");
   let [password, setPassword] = useState("");
   let [redirect, setRedirect] = useState(null);
@@ -43,14 +43,16 @@ function LoginPage() {
       allUsers.forEach(user => {
         const currentUsername = user.username;
         const currentPassword = user.password;
-        handleUserCheck(currentUsername, currentPassword);
+        const userId = user._id;
+        handleUserCheck(currentUsername, currentPassword, userId);
       })
     })
   }
 
-  const handleUserCheck = (currentUsername, currentPassword) => {
+  const handleUserCheck = (currentUsername, currentPassword, userId) => {
     if(currentUsername === username && currentPassword === password) {
       setRedirect(redirect = "/home" );
+      props.handleUserId(userId)
     }
   }
 

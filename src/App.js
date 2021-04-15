@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Switch, Route } from "react-router-dom";
 import HomePage from "./pages/Homepage/HomePage";
 import NewEndcapPage from "./pages/Endcaps/NewEndcap/NewEndcapPage";
@@ -12,6 +12,7 @@ import Footer from "./components/Footer/Footer";
 require ("./App.css");
 
 function App() {
+  let [userId, setUserId] = useState("");
   // let [endcaps, setEndcaps] = useState([])
   // let [columnOrder,setColumnOrder] = useState([])
   // let [updated, setUpdated] = useState(false)
@@ -428,7 +429,12 @@ function App() {
   //   })
   // }
 
+  const handleUserId = (userId) => {
+    setUserId(userId);
+  }
+
   console.log("App.js");
+  console.log(userId)
   return (
     <div className="wrapper">
       <Navbar
@@ -440,6 +446,7 @@ function App() {
         <Switch>
           <Route exact path="/">
             <LoginPage
+            handleUserId={handleUserId}
               // handleHistory={this.handleHistory}
               // login={this.login}
               // isLoggedIn={this.state.isLoggedIn}
@@ -456,6 +463,7 @@ function App() {
           <Route exact path="/home">
             <HomePage 
               // handleChange={handleChange}
+              userId={userId}
               handleToggleEndcap={handleToggleEndcap}
               handleToggleFlank={handleToggleFlank}
               // handleFetchEndcaps={handleFetchEndcaps}
