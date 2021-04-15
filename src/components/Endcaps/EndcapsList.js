@@ -1,15 +1,15 @@
-import { Droppable } from "react-beautiful-dnd";
+// import { Droppable } from "react-beautiful-dnd";
 import EndcapCard from "../Endcaps/EndcapCard";
 require("./EndcapCard.css");
 
 const EndcapsList = (props) => {
   console.log("EndcapList");
     return (
-      <Droppable droppableId={props.column.id}>
-        {(provided, snapshot) => (
+      // <Droppable droppableId={props.column.id}>
+        // {(provided, snapshot) => (
         <div
-          ref={provided.innerRef}
-          {...provided.droppableProps}
+          // ref={provided.innerRef}
+          // {...provided.droppableProps}
         >
           {props.endcaps.map((endcap, index) => {
             return <EndcapCard 
@@ -22,10 +22,10 @@ const EndcapsList = (props) => {
                       // flankB={endcap.flankB}
                     />
           })}
-          {provided.placeholder}
+          {/* {provided.placeholder} */}
         </div>
-        )}
-      </Droppable>
+        // )}
+      // </Droppable>
     )
 };
 

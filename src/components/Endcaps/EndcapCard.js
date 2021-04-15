@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { Draggable } from "react-beautiful-dnd";
+// import { Draggable } from "react-beautiful-dnd";
 import FlankA from "../Flanks/FlankA";
 import FlankB from "../Flanks/FlankB";
 require("./EndcapCard.css")
@@ -16,12 +16,12 @@ class EndcapCard extends React.Component {
     }
     console.log("EndcapCard");
     return (
-      <Draggable draggableId={this.props.endcap._id} index={this.props.index}>
-        {(provided, snapshot) => (
+      // <Draggable draggableId={this.props.endcap._id} index={this.props.index}>
+        // {(provided, snapshot) => (
           <div className="endcap-flank-container"
-            {...provided.draggableProps}
-            {...provided.dragHandleProps}
-            ref={provided.innerRef}
+            // {...provided.draggableProps}
+            // {...provided.dragHandleProps}
+            // ref={provided.innerRef}
           >
             <FlankA 
               endcap={this.props.endcap} 
@@ -63,8 +63,8 @@ class EndcapCard extends React.Component {
               handleToggleFlank={this.props.handleToggleFlank}
             />
           </div>
-        )}
-      </Draggable>
+        // )}
+      // </Draggable>
     )
   }
 }

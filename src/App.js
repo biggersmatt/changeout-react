@@ -374,59 +374,59 @@ function App() {
     })
   }
   
-  const onDragEnd = (result) => {
-    const { destination, source, draggableId } = result;
-    if(!destination) {
-      return;
-    }
-    if(
-      destination.droppableId === source.droppableId &&
-      destination.index === source.index
-    ) {
-      return;
-    }
-    this.setState(function(state) {
-      const newEndcapIds = [...state.columns["column-1"].endcapIds];
-      const sourceIndex = source.index;
-      const destinationIndex = destination.index;
-      newEndcapIds.splice(sourceIndex, 1);
-      newEndcapIds.splice(destinationIndex, 0, draggableId);
-      const newColumnOne = {
-        ...state.columns["column-1"],
-        endcapIds: [...newEndcapIds],
-      }
-      return {
-        ...state,
-        columns: {
-          ...state.columns,
-          "column-1": newColumnOne,
-        }
-      }
-    });
-    // Update column in Database
-    fetch("http://localhost:5000/settings")
-    .then((response) => response.json())
-    .then((jsonData) => {
-      const userSetting = jsonData.settings.find((setting) => {
-        return setting.user === this.state.user._id;
-      })
-        const settings = {
-          columnOrder: {
-            id: "column-1",
-            title: "To Do",
-            endcapIds: this.state.columns["column-1"].endcapIds,
-          },
-        }
-        fetch(`http://localhost:5000/settings/${userSetting._id}`, {
-          method: "PUT",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(settings),
-        })
-        .catch((err) => console.log(err));
-    })
-  }
+  // const onDragEnd = (result) => {
+  //   const { destination, source, draggableId } = result;
+  //   if(!destination) {
+  //     return;
+  //   }
+  //   if(
+  //     destination.droppableId === source.droppableId &&
+  //     destination.index === source.index
+  //   ) {
+  //     return;
+  //   }
+  //   this.setState(function(state) {
+  //     const newEndcapIds = [...state.columns["column-1"].endcapIds];
+  //     const sourceIndex = source.index;
+  //     const destinationIndex = destination.index;
+  //     newEndcapIds.splice(sourceIndex, 1);
+  //     newEndcapIds.splice(destinationIndex, 0, draggableId);
+  //     const newColumnOne = {
+  //       ...state.columns["column-1"],
+  //       endcapIds: [...newEndcapIds],
+  //     }
+  //     return {
+  //       ...state,
+  //       columns: {
+  //         ...state.columns,
+  //         "column-1": newColumnOne,
+  //       }
+  //     }
+  //   });
+  //   // Update column in Database
+  //   fetch("http://localhost:5000/settings")
+  //   .then((response) => response.json())
+  //   .then((jsonData) => {
+  //     const userSetting = jsonData.settings.find((setting) => {
+  //       return setting.user === this.state.user._id;
+  //     })
+  //       const settings = {
+  //         columnOrder: {
+  //           id: "column-1",
+  //           title: "To Do",
+  //           endcapIds: this.state.columns["column-1"].endcapIds,
+  //         },
+  //       }
+  //       fetch(`http://localhost:5000/settings/${userSetting._id}`, {
+  //         method: "PUT",
+  //         headers: {
+  //           "Content-Type": "application/json",
+  //         },
+  //         body: JSON.stringify(settings),
+  //       })
+  //       .catch((err) => console.log(err));
+  //   })
+  // }
 
   console.log("App.js");
   return (
@@ -462,7 +462,7 @@ function App() {
               // columnOrder={columnOrder}
               // columns={this.state.columns}
               // endcaps={endcaps}
-              onDragEnd={onDragEnd}
+              // onDragEnd={onDragEnd}
               // isLoggedIn={this.state.isLoggedIn}
             />
           </Route>
