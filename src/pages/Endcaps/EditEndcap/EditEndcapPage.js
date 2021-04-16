@@ -107,8 +107,16 @@ function EditEndcapPage(props) {
     fetch(`http://localhost:5000/endcaps/${props.match.params.id}`, {
       method: "DELETE",
     })
-    .then(() => handleDeleteFlank(editEndcap.flankA))
-    .then(() => handleDeleteFlank(editEndcap.flankB))
+    .then(() => {
+      if(editEndcap.flankA) {
+        handleDeleteFlank(editEndcap.flankA)
+      }
+    })
+    .then(() => {
+      if(editEndcap.flankB) {
+        handleDeleteFlank(editEndcap.flankB)
+      }
+    })
     .then(() => props.history.push("/home"))
     .catch(err => console.log(err));
   }
