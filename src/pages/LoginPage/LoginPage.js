@@ -56,7 +56,7 @@ function LoginPage(props) {
   const handleUserCheck = (currentUsername, currentPassword, userId) => {
     if(currentUsername === username && currentPassword === password) {
       setRedirect(redirect = "/home" );
-      props.handleUserId(userId);
+      props.handleUserId(currentUsername, userId);
     } else {
       alert("Incorrect Login");
     }

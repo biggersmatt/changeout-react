@@ -12,7 +12,11 @@ import Footer from "./components/Footer/Footer";
 require ("./App.css");
 
 function App() {
-  let [userId, setUserId] = useState("");
+  // let [userId, setUserId] = useState("");
+  const [user, setUser] = useState({
+    username: "",
+    userId: "",
+  })
   // let [endcaps, setEndcaps] = useState([])
   // let [columnOrder,setColumnOrder] = useState([])
   // let [updated, setUpdated] = useState(false)
@@ -450,14 +454,19 @@ function App() {
   //   })
   // }
 
-  const handleUserId = (userId) => {
-    setUserId(userId);
+  const handleUserInfo = (currentUsername, userId) => {
+    setUser({
+      username: currentUsername,
+      userId: userId,
+    });
   }
 
   console.log("App.js");
   return (
     <div className="wrapper">
       <Navbar
+        username={user.username}
+        // userId={user.userId}
         // user={this.state.user}
         // isLoggedIn={this.state.isLoggedIn}
         // logout={this.logout}
@@ -466,7 +475,7 @@ function App() {
         <Switch>
           <Route exact path="/">
             <LoginPage
-            handleUserId={handleUserId}
+            handleUserId={handleUserInfo}
               // handleHistory={this.handleHistory}
               // login={this.login}
               // isLoggedIn={this.state.isLoggedIn}
@@ -483,7 +492,7 @@ function App() {
           <Route exact path="/home">
             <HomePage 
               // handleChange={handleChange}
-              userId={userId}
+              userId={user.userId}
               // handleToggleEndcap={handleToggleEndcap}
               // handleToggleFlank={handleToggleFlank}
               // handleFetchEndcaps={handleFetchEndcaps}
@@ -497,7 +506,7 @@ function App() {
           {/* {this.state.isLoggedIn &&  */}
           <Route path="/new">
             <NewEndcapPage 
-              userId={userId}
+              userId={user.userId}
               // handleHasUpdated={handleHasUpdated}
             />
           </Route>

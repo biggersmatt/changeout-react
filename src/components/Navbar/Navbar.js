@@ -5,9 +5,7 @@ const Navbar = (props) => {
   console.log("Navbar");
   return (
     <nav>
-      <h1 className="navbar-greeting">Welcome 
-      {/* {props.user.username} */}
-      </h1>
+      <h1 className="navbar-greeting">Welcome {props.username}</h1>
       <div className="navbar-links">
         {/* {props.isLoggedIn &&  */}
         <Link to="/home" className="navbar-link">Home</Link>
