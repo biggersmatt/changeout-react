@@ -9,7 +9,7 @@ function EndcapCard(props) {
   const [change, setChange] = useState(props.endcap.change)
 
   const flankA = {
-    title: props.flankA ? props.flankA.title : "",
+    title: props.endcap.flankA ? props.endcap.flankA.title : "",
   }
 
   const flankB = {
@@ -47,7 +47,7 @@ function EndcapCard(props) {
           <FlankA 
             endcap={props.endcap} 
             // flankA={props.flankA} 
-            handleToggleFlank={props.handleToggleFlank}
+            // handleToggleFlank={props.handleToggleFlank}
           />
           <div 
             className={`endcap-card shadow ${change && "yellow"}`} 
@@ -82,7 +82,7 @@ function EndcapCard(props) {
           <FlankB 
             endcap={props.endcap} 
             // flankB={props.flankB} 
-            handleToggleFlank={props.handleToggleFlank}
+            // handleToggleFlank={props.handleToggleFlank}
           />
         </div>
       // )}

@@ -3,21 +3,19 @@ import { Link } from "react-router-dom";
 require("./Flanks.css");
 
 function FlankA(props) {
-  const flankA = props.endcap.flankA;
+  const flankA = {
+    id: props.endcap.flankA ? props.endcap.flankA._id: "",
+    title: props.endcap.flankA ? props.endcap.flankA.title : "",
+    itemOne: props.endcap.flankA ? props.endcap.flankA.itemOne : "",
+    itemTwo: props.endcap.flankA ? props.endcap.flankA.itemTwo: "",
+    itemThree: props.endcap.flankA ? props.endcap.flankA.itemThree : "",
+    itemFour: props.endcap.flankA ? props.endcap.flankA.itemFour : "",
+    itemFive: props.endcap.flankA ? props.endcap.flankA.itemFive : "",
+    change: props.endcap.flankA ? props.endcap.flankA.change : "",
+    side: props.endcap.flankA ? props.endcap.flankA.side : "",
+  }
 
   const [change, setChange] = useState(flankA.change)
-
-  // const flankA = {
-  //   id: props.endcap.flankA ? props.endcap.flankA._id: "",
-  //   title: props.endcap.flankA ? props.endcap.flankA.title : "",
-  //   itemOne: props.endcap.flankA ? props.endcap.flankA.itemOne : "",
-  //   itemTwo: props.endcap.flankA ? props.endcap.flankA.itemTwo: "",
-  //   itemThree: props.endcap.flankA ? props.endcap.flankA.itemThree : "",
-  //   itemFour: props.endcap.flankA ? props.endcap.flankA.itemFour : "",
-  //   itemFive: props.endcap.flankA ? props.endcap.flankA.itemFive : "",
-  //   change: props.endcap.flankA ? props.endcap.flankA.change : "",
-  //   side: props.endcap.flankA ? props.endcap.flankA.side : "",
-  // }
 
   const handleToggleFlank = (flank) => {
     console.log(flank)
@@ -38,7 +36,7 @@ function FlankA(props) {
   }
 
   console.log("Flank A");
-  console.log(flankA)
+  console.log(props.endcap.flankA)
   return (
     <div 
       className={`shadow ${change ? "flank-yellow" : "flank-green"}`} 
@@ -57,7 +55,7 @@ function FlankA(props) {
         <div>
           <h4 
             className={change ? "flank-completed" : "flank-change"}
-            onClick={() => handleToggleFlank(flankA)
+            onClick={() => handleToggleFlank(props.endcap.flankA)
             }
           >
             {change ? "Complete" : "Change"}
