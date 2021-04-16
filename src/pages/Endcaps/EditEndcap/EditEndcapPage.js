@@ -12,8 +12,8 @@ function EditEndcapPage(props) {
     itemThree: "",
     itemFour: "",
     itemFive: "",
-    // flankA: "",
-    // flankB: "",
+    flankA: "",
+    flankB: "",
   })
 
   const handleFetchSelectedEndcap = () => {
@@ -21,14 +21,7 @@ function EditEndcapPage(props) {
     .then((response) => response.json())
     .then((jsonData) => {
       const endcap = jsonData.foundEndcap;
-      setEditEndcap({
-        title: endcap.title,
-        itemOne: endcap.itemOne,
-        itemTwo: endcap.itemTwo,
-        itemThree: endcap.itemThree,
-        itemFour: endcap.itemFour,
-        itemFive: endcap.itemFive,
-      })
+      setEditEndcap(endcap);
     })
     .catch(err => console.log(err));
   }
@@ -114,23 +107,22 @@ function EditEndcapPage(props) {
     fetch(`http://localhost:5000/endcaps/${props.match.params.id}`, {
       method: "DELETE",
     })
-    // .then(() => this.handleDeleteFlank(this.state.flankA))
-    // .then(() => this.handleDeleteFlank(this.state.flankB))
+    .then(() => handleDeleteFlank(editEndcap.flankA))
+    .then(() => handleDeleteFlank(editEndcap.flankB))
     .then(() => props.history.push("/home"))
     .catch(err => console.log(err));
   }
 
-  // handleDeleteFlank = (flankId) => {
-  //   fetch(`http://localhost:5000/flanks/${flankId}`, {
-  //     method: "DELETE",
-  //     headers: {
-  //       "Content-Type": "application/json",
-  //     },
-  //     body: JSON.stringify(this.props)
-  //   })
-  //   .then(() => this.props.handleHasUpdated(true))
-  //   .catch((err) => console.log(err))
-  // }
+  const handleDeleteFlank = (flankId) => {
+    fetch(`http://localhost:5000/flanks/${flankId}`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(props)
+    })
+    .catch((err) => console.log(err))
+  }
 
   const handleChange = (event) => {
     if(event.target.id === "title") {
