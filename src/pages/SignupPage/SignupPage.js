@@ -112,7 +112,7 @@ function SignupPage() {
           />
         {/* {errors.confPassword && <p>{errors.confPassword.message}</p>} */}
         </div>
-        <h4 className="login-signup-prompt">Already have an account? <a href="/login"><span>Login.</span></a></h4>
+        <h4 className="login-signup-prompt">Already have an account? <a href="/"><span>Login.</span></a></h4>
         <button className="login-submit-btn shadow" type="submit">Signup</button>
       </form>
     </div>

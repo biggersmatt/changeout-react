@@ -461,11 +461,19 @@ function App() {
     });
   }
 
+  const handleSignOut = () => {
+    setUser({
+      username: "",
+      userId: "",
+    })
+  }
+
   console.log("App.js");
   return (
     <div className="wrapper">
       <Navbar
         username={user.username}
+        handleSignOut={handleSignOut}
         // userId={user.userId}
         // user={this.state.user}
         // isLoggedIn={this.state.isLoggedIn}
