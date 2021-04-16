@@ -117,7 +117,7 @@ function EditEndcapPage(props) {
     // .then(() => this.handleDeleteFlank(this.state.flankA))
     // .then(() => this.handleDeleteFlank(this.state.flankB))
     .then(() => props.history.push("/home"))
-    .catch((err) => console.log(err));
+    .catch(err => console.log(err));
   }
 
   // handleDeleteFlank = (flankId) => {
