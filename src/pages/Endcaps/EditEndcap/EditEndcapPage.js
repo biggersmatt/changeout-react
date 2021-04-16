@@ -33,12 +33,6 @@ function EditEndcapPage(props) {
     .catch(err => console.log(err));
   }
 
-  useEffect(() => {
-    handleFetchSelectedEndcap();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
-
-
   // state = {
   //   title: "",
   //   itemOne: "",
@@ -217,10 +211,15 @@ function EditEndcapPage(props) {
     .catch(err => console.log(err));
   }
 
+  useEffect(() => {
+    handleFetchSelectedEndcap();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
+
   console.log("Edit Endcap");
   return (
     <div className="edit-endcap-wrapper">
-      <h1 className="edit-endcap-title">Edit {editEndcap.title}</h1>
+      <h1 className="edit-endcap-title">Edit {editEndcap.title} </h1>
       <div className="edit-endcap-header-btns">
       {/* <div id={`${(this.props.endcaps.length === 1 && (this.state.flankA && this.state.flankB)) ? "hidden" : null}`} className="edit-endcap-header-btns"> */}
         <div className="edit-endcap-btn-wrapper">
