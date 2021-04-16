@@ -352,37 +352,37 @@ function App() {
     // }
   // }
 
-  const handleToggleFlank = (toggle, flank) => {
-    if(!toggle) {
-      const updatedFlank = {
-        ...flank,
-        change: true,
-      }
-      fetch(`http://localhost:5000/flanks/${flank._id}`, {
-        method: "PUT",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(updatedFlank),
-      })
-      .then(() => this.handleHasUpdated(true))
-      .catch((err) => console.log(err));
-    } else {
-      const updatedFlank = {
-        ...flank,
-        change: false,
-      }
-      fetch(`http://localhost:5000/flanks/${flank._id}`, {
-        method: "PUT",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(updatedFlank),
-      })
-      .then(() => this.handleHasUpdated(true))
-      .catch((err) => console.log(err));
-    }
-  }
+  // const handleToggleFlank = (toggle, flank) => {
+  //   if(!toggle) {
+  //     const updatedFlank = {
+  //       ...flank,
+  //       change: true,
+  //     }
+  //     fetch(`http://localhost:5000/flanks/${flank._id}`, {
+  //       method: "PUT",
+  //       headers: {
+  //         "Content-Type": "application/json",
+  //       },
+  //       body: JSON.stringify(updatedFlank),
+  //     })
+  //     .then(() => this.handleHasUpdated(true))
+  //     .catch((err) => console.log(err));
+  //   } else {
+  //     const updatedFlank = {
+  //       ...flank,
+  //       change: false,
+  //     }
+  //     fetch(`http://localhost:5000/flanks/${flank._id}`, {
+  //       method: "PUT",
+  //       headers: {
+  //         "Content-Type": "application/json",
+  //       },
+  //       body: JSON.stringify(updatedFlank),
+  //     })
+  //     .then(() => this.handleHasUpdated(true))
+  //     .catch((err) => console.log(err));
+  //   }
+  // }
   
   // const handleHasUpdated = (hasUpdated) => {
   //   this.setState({
@@ -485,7 +485,7 @@ function App() {
               // handleChange={handleChange}
               userId={userId}
               // handleToggleEndcap={handleToggleEndcap}
-              handleToggleFlank={handleToggleFlank}
+              // handleToggleFlank={handleToggleFlank}
               // handleFetchEndcaps={handleFetchEndcaps}
               // columnOrder={columnOrder}
               // columns={this.state.columns}

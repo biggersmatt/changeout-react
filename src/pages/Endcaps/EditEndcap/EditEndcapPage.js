@@ -1,6 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link, withRouter } from "react-router-dom";
 require("./EditEndcap.css");
+
+// useEffect to fetch specific endcap and set state info to that endcap
 
 function EditEndcapPage(props) {
   const [editEndcap, setEditEndcap] = useState({
@@ -13,6 +15,28 @@ function EditEndcapPage(props) {
     // flankA: "",
     // flankB: "",
   })
+
+  const handleFetchSelectedEndcap = () => {
+    fetch(`http://localhost:5000/endcaps/${props.match.params.id}`)
+    .then((response) => response.json())
+    .then((jsonData) => {
+      const endcap = jsonData.foundEndcap;
+      setEditEndcap({
+        title: endcap.title,
+        itemOne: endcap.itemOne,
+        itemTwo: endcap.itemTwo,
+        itemThree: endcap.itemThree,
+        itemFour: endcap.itemFour,
+        itemFive: endcap.itemFive,
+      })
+    })
+    .catch(err => console.log(err));
+  }
+
+  useEffect(() => {
+    handleFetchSelectedEndcap();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
 
 
   // state = {

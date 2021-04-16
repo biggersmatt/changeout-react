@@ -18,7 +18,6 @@ function FlankA(props) {
   const [change, setChange] = useState(flankA.change)
 
   const handleToggleFlank = (flank) => {
-    console.log(flank)
     const updatedChange = !change;
     const updatedFlank = {
       ...flank,
@@ -36,7 +35,6 @@ function FlankA(props) {
   }
 
   console.log("Flank A");
-  console.log(props.endcap.flankA)
   return (
     <div 
       className={`shadow ${change ? "flank-yellow" : "flank-green"}`} 
