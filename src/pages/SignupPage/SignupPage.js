@@ -8,6 +8,7 @@ require("./SignupPage.css")
 function SignupPage() {
   let [username, setUsername] = useState("");
   let [password, setPassword] = useState("");
+  let [confirmPassword, setConfirmPassword] = useState("");
   let [redirect, setRedirect] = useState(null);
   // const { register, handleSubmit, watch, errors } = useForm();
   // const password = useRef({});
@@ -21,33 +22,37 @@ function SignupPage() {
     if(event.target.id === "password") {
       setPassword(password = event.target.value);
     }
+    if(event.target.id === "confirmPassword") {
+      setConfirmPassword(confirmPassword = event.target.value);
+    }
   }
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    const newUser = {
-      username: username,
-      password: password,
+    if(username.length === 0 || password === 0) {
+      alert("Please fill out username & password fields");
+    } else if(username.length === 0) {
+      alert("Please fill out username field");
+    } else if(password.length === 0) {
+      alert("Please fill out password field");
+    } else if(password !== confirmPassword) {
+      alert("Passwords do not match");
+    } else if(password === confirmPassword) {
+      const newUser = {
+        username: username,
+        password: password,
+      }
+      fetch("http://localhost:5000/users/new", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(newUser),
+      })
+      .then(() => alert("New User Created"))
+      .then(() => setRedirect(redirect = "/"))
+      .catch(err => console.log(err));
     }
-    fetch("http://localhost:5000/users/new", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(newUser),
-    })
-    .then(() => alert("New User Created"))
-    .then(() => setRedirect(redirect = "/"))
-    .catch(err => console.log(err));
-    // .then(response => response.json())
-    // .then(jsonData => {
-    //   const allUsers = jsonData.allUsers;
-    //   allUsers.forEach(user => {
-    //     const currentUsername = user.username;
-    //     const currentPassword = user.password;
-    //     handleUserCheck(currentUsername, currentPassword);
-    //   })
-    // })
   }
 
   // const handleSubmit = () => {
@@ -102,8 +107,8 @@ function SignupPage() {
             className="login-form-input"
             placeholder="Confirm Password"
             type="password" 
-            name="confPassword" 
-            id="confPassword" 
+            name="confirmPassword" 
+            id="confirmPassword" 
             onChange={handleChange}
           //   ref={register({
           //   validate: (value) =>
