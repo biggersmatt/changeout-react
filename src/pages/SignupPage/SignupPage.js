@@ -65,11 +65,13 @@ function SignupPage() {
           if(users[i].username === username) {
             console.log("It's a Match")
             return alert("That username is already taken")
-          } else if(users[i].username !== username) {
-            console.log("Unique User")
-            return handleCreateUser();
           }
+          // else if(users[i].username !== username) {
+          //   console.log("Unique User")
+          //   return handleCreateUser();
+          // }
         }
+        handleCreateUser();
       })
       .catch((err) => console.log(err));
     }
