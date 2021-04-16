@@ -40,19 +40,25 @@ function LoginPage(props) {
     .then(response => response.json())
     .then(jsonData => {
       const allUsers = jsonData.allUsers;
-      allUsers.forEach(user => {
-        const currentUsername = user.username;
-        const currentPassword = user.password;
-        const userId = user._id;
-        handleUserCheck(currentUsername, currentPassword, userId);
-      })
+      if(allUsers.length > 0) {
+        allUsers.forEach(user => {
+          const currentUsername = user.username;
+          const currentPassword = user.password;
+          const userId = user._id;
+          handleUserCheck(currentUsername, currentPassword, userId);
+        })
+      } else {
+        alert("Incorrect Login")
+      }
     })
   }
 
   const handleUserCheck = (currentUsername, currentPassword, userId) => {
     if(currentUsername === username && currentPassword === password) {
       setRedirect(redirect = "/home" );
-      props.handleUserId(userId)
+      props.handleUserId(userId);
+    } else {
+      alert("Incorrect Login");
     }
   }
 
