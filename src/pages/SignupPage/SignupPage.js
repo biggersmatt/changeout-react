@@ -58,18 +58,12 @@ function SignupPage() {
       fetch("http://localhost:5000/users")
       .then((response) => response.json())
       .then((jsonData) => {
-        console.log(jsonData)
         const users = jsonData.allUsers;
-
         for(let i = 0; i < users.length; i++) {
           if(users[i].username === username) {
             console.log("It's a Match")
             return alert("That username is already taken")
           }
-          // else if(users[i].username !== username) {
-          //   console.log("Unique User")
-          //   return handleCreateUser();
-          // }
         }
         handleCreateUser();
       })
