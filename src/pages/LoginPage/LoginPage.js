@@ -48,6 +48,9 @@ function LoginPage(props) {
           const userId = users[i]._id;
           loggedIn = handleUserCheck(currentUsername, currentPassword, userId);
         }
+        if(!loggedIn) {
+          alert("Incorrect Login Information")
+        }
       }
     })
   }
