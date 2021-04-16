@@ -39,16 +39,15 @@ function LoginPage(props) {
     fetch("http://localhost:5000/users")
     .then(response => response.json())
     .then(jsonData => {
-      const allUsers = jsonData.allUsers;
-      if(allUsers.length > 0) {
-        allUsers.forEach(user => {
-          const currentUsername = user.username;
-          const currentPassword = user.password;
-          const userId = user._id;
-          handleUserCheck(currentUsername, currentPassword, userId);
-        })
-      } else {
-        alert("Incorrect Login")
+      const users = jsonData.allUsers;
+      if(users.length > 0) {
+        let loggedIn = false;
+        for(let i = 0; i < users.length && !loggedIn; i++) {
+          const currentUsername = users[i].username;
+          const currentPassword = users[i].password;
+          const userId = users[i]._id;
+          loggedIn = handleUserCheck(currentUsername, currentPassword, userId);
+        }
       }
     })
   }
@@ -57,8 +56,7 @@ function LoginPage(props) {
     if(currentUsername === username && currentPassword === password) {
       setRedirect(redirect = "/home" );
       props.handleUserId(currentUsername, userId);
-    } else {
-      alert("Incorrect Login");
+      return true;
     }
   }
 
