@@ -1,36 +1,32 @@
-// import { useHistory } from "react-router-dom"
-// import { useForm } from "react-hook-form";
-// import { Switch, Route, Redirect } from "react-router-dom";
 import { Redirect } from "react-router-dom";
 import React, { useState } from "react";
-// import HomePage from "../Homepage/HomePage";
 require("./LoginPage.css");
 
 function LoginPage(props) {
-  let [username, setUsername] = useState("");
-  let [password, setPassword] = useState("");
+
+  const [loginUser, setLoginUser] = useState({
+    username: "", 
+    password: "",
+  })
+
   let [redirect, setRedirect] = useState(null);
-
-  // state = {
-  //   username: "",
-  //   password: "",
-  //   redirect: null,
-  // }
-  //   const { register, handleSubmit } = useForm();
-
-  //   const history = useHistory()
-
-  //   const onSubmit = (data) => {
-  //     props.login(data)
-  //     history.push("/")
-  //   }
 
   const handleChange = (event) => {
     if(event.target.id === "username") {
-      setUsername(username = event.target.value);
+      setLoginUser(prevNewEndcap => {
+        return {
+          ...prevNewEndcap,
+          username: event.target.value,
+        }
+      })
     }
     if(event.target.id === "password") {
-      setPassword(password = event.target.value);
+      setLoginUser(prevNewEndcap => {
+        return {
+          ...prevNewEndcap,
+          password: event.target.value,
+        }
+      })
     }
   }
 
@@ -56,19 +52,18 @@ function LoginPage(props) {
   }
 
   const handleUserCheck = (currentUsername, currentPassword, userId) => {
-    if(currentUsername === username && currentPassword === password) {
+    if(currentUsername === loginUser.username && currentPassword === loginUser.password) {
       setRedirect(redirect = "/home" );
       props.handleUserId(currentUsername, userId);
       return true;
     }
   }
 
-  console.log("Login Page");
-
   if(redirect) {
     return <Redirect to={redirect} />
   }
-
+  
+  console.log("Login Page");
   return (
     <div className="login-container">
       <form className="login-form shadow" onSubmit={handleSubmit}>
@@ -82,8 +77,7 @@ function LoginPage(props) {
             name="username" 
             placeholder="Your username"
             className="login-form-input"
-            onChange={handleChange}
-            // ref={register({ required: true })} 
+            onChange={handleChange} 
           />
         </div>
         <div className="login-form-section">
@@ -95,10 +89,9 @@ function LoginPage(props) {
             placeholder="Your password"
             className="login-form-input"
             onChange={handleChange}
-            // ref={register({ required: true })} 
           />
         </div>
-        <h4 className="login-signup-prompt">Don"t have an account? <a href="/signup"><span>Sign up.</span></a></h4>
+        <h4 className="login-signup-prompt">Don"t have an account?<a href="/signup"><span>Sign up.</span></a></h4>
         <button className="login-submit-btn shadow" type="submit">Login</button>
       </form>
     </div>

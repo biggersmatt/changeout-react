@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { Redirect } from "react-router-dom";
 require("./SignupPage.css")
 
-
 function SignupPage() {
 
   const [newUser, setNewUser] = useState({
@@ -41,20 +40,20 @@ function SignupPage() {
   }
 
   const handleCreateUser = () => {
-      const newUserCreated = {
-        username: newUser.username,
-        password: newUser.password,
-      }
-      fetch("http://localhost:5000/users/new", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(newUserCreated),
-      })
-      .then(() => alert("New User Created"))
-      .then(() => setRedirect(redirect = "/"))
-      .catch(err => console.log(err));
+    const newUserCreated = {
+      username: newUser.username,
+      password: newUser.password,
+    }
+    fetch("http://localhost:5000/users/new", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(newUserCreated),
+    })
+    .then(() => alert("New User Created"))
+    .then(() => setRedirect(redirect = "/"))
+    .catch(err => console.log(err));
   }
 
   const handleSubmit = (event) => {
