@@ -1,43 +1,56 @@
 import React, { useState } from "react";
 import { Redirect } from "react-router-dom";
-// import { useHistory } from "react-router-dom"
-// import { useForm } from "react-hook-form";
 require("./SignupPage.css")
 
 
 function SignupPage() {
-  let [username, setUsername] = useState("");
-  let [password, setPassword] = useState("");
-  let [confirmPassword, setConfirmPassword] = useState("");
+
+  const [newUser, setNewUser] = useState({
+    username: "",
+    password: "",
+    confirmPassword: "",
+  })
+
   let [redirect, setRedirect] = useState(null);
-  // const { register, handleSubmit, watch, errors } = useForm();
-  // const password = useRef({});
-  // password.current = watch("password", "");
-  // const history = useHistory()  
 
   const handleChange = (event) => {
     if(event.target.id === "username") {
-      setUsername(username = event.target.value);
+      setNewUser(prevNewEndcap => {
+        return {
+          ...prevNewEndcap,
+          username: event.target.value,
+        }
+      })
     }
     if(event.target.id === "password") {
-      setPassword(password = event.target.value);
+      setNewUser(prevNewEndcap => {
+        return {
+          ...prevNewEndcap,
+          password: event.target.value,
+        }
+      })
     }
     if(event.target.id === "confirmPassword") {
-      setConfirmPassword(confirmPassword = event.target.value);
+      setNewUser(prevNewEndcap => {
+        return {
+          ...prevNewEndcap,
+          confirmPassword: event.target.value,
+        }
+      })
     }
   }
 
   const handleCreateUser = () => {
-      const newUser = {
-        username: username,
-        password: password,
+      const newUserCreated = {
+        username: newUser.username,
+        password: newUser.password,
       }
       fetch("http://localhost:5000/users/new", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(newUser),
+        body: JSON.stringify(newUserCreated),
       })
       .then(() => alert("New User Created"))
       .then(() => setRedirect(redirect = "/"))
@@ -46,22 +59,21 @@ function SignupPage() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    if(username.length === 0 || password === 0) {
+    if(newUser.username.length === 0 || newUser.password === 0) {
       alert("Please fill out username & password fields");
-    } else if(username.length === 0) {
+    } else if(newUser.username.length === 0) {
       alert("Please fill out username field");
-    } else if(password.length === 0) {
+    } else if(newUser.password.length === 0) {
       alert("Please fill out password field");
-    } else if(password !== confirmPassword) {
+    } else if(newUser.password !== newUser.confirmPassword) {
       alert("Passwords do not match");
-    } else if(password === confirmPassword) {
+    } else if(newUser.password === newUser.confirmPassword) {
       fetch("http://localhost:5000/users")
       .then((response) => response.json())
       .then((jsonData) => {
         const users = jsonData.allUsers;
         for(let i = 0; i < users.length; i++) {
-          if(users[i].username === username) {
-            console.log("It's a Match")
+          if(users[i].username === newUser.username) {
             return alert("That username is already taken")
           }
         }
@@ -70,12 +82,6 @@ function SignupPage() {
       .catch((err) => console.log(err));
     }
   }
-
-  // const handleSubmit = () => {
-    // const { confPassword, ...rest } = data;
-    // props.signup(rest)
-    // history.push("/login")
-  // }
 
   if(redirect) {
     return <Redirect to={redirect} />
@@ -96,7 +102,6 @@ function SignupPage() {
             name="username" 
             id="username" 
             onChange={handleChange}
-            // ref={register({ required: true })} 
           />
         </div>
         <div className="login-form-section">
@@ -108,13 +113,6 @@ function SignupPage() {
             name="password" 
             id="password" 
             onChange={handleChange}
-          //   ref={register({
-          //   required: "You must create a password",
-          //   minLength: {
-          //     value: 2,
-          //     message: "Password must have at least 6 characters",
-          //   },
-          // })} 
           />
         </div>
         <div className="login-form-section">
@@ -126,12 +124,7 @@ function SignupPage() {
             name="confirmPassword" 
             id="confirmPassword" 
             onChange={handleChange}
-          //   ref={register({
-          //   validate: (value) =>
-          //     value === password.current || "The passwords do not match",
-          // })}
           />
-        {/* {errors.confPassword && <p>{errors.confPassword.message}</p>} */}
         </div>
         <h4 className="login-signup-prompt">Already have an account? <a href="/"><span>Login.</span></a></h4>
         <button className="login-submit-btn shadow" type="submit">Signup</button>
