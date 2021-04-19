@@ -2,8 +2,6 @@ import React, { useState, useEffect } from "react";
 import { Link, withRouter } from "react-router-dom";
 require("./EditEndcap.css");
 
-// useEffect to fetch specific endcap and set state info to that endcap
-
 function EditEndcapPage(props) {
   const [editEndcap, setEditEndcap] = useState({
     title: "",
@@ -124,7 +122,6 @@ function EditEndcapPage(props) {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
-  console.log("Edit Endcap");
   return (
     <div className="edit-endcap-wrapper">
       <h1 className="edit-endcap-title">Edit {editEndcap.title} </h1>

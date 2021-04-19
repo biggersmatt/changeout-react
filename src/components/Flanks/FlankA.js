@@ -34,7 +34,6 @@ function FlankA(props) {
     .catch((err) => console.log(err));
   }
 
-  console.log("Flank A");
   return (
     <div 
       className={`shadow ${change ? "flank-yellow" : "flank-green"}`} 
