@@ -1,23 +1,43 @@
-import { Link } from 'react-router-dom';
-require('./Flanks.css');
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
+require("./Flanks.css");
 
-const FlankA = (props) => {
+function FlankA(props) {
   const flankA = {
-    id: props.endcap.flankA ? props.endcap.flankA._id: '',
-    title: props.endcap.flankA ? props.endcap.flankA.title : '',
-    itemOne: props.endcap.flankA ? props.endcap.flankA.itemOne : '',
-    itemTwo: props.endcap.flankA ? props.endcap.flankA.itemTwo: '',
-    itemThree: props.endcap.flankA ? props.endcap.flankA.itemThree : '',
-    itemFour: props.endcap.flankA ? props.endcap.flankA.itemFour : '',
-    itemFive: props.endcap.flankA ? props.endcap.flankA.itemFive : '',
-    change: props.endcap.flankA ? props.endcap.flankA.change : '',
-    side: props.endcap.flankA ? props.endcap.flankA.side : '',
+    id: props.endcap.flankA ? props.endcap.flankA._id: "",
+    title: props.endcap.flankA ? props.endcap.flankA.title : "",
+    itemOne: props.endcap.flankA ? props.endcap.flankA.itemOne : "",
+    itemTwo: props.endcap.flankA ? props.endcap.flankA.itemTwo: "",
+    itemThree: props.endcap.flankA ? props.endcap.flankA.itemThree : "",
+    itemFour: props.endcap.flankA ? props.endcap.flankA.itemFour : "",
+    itemFive: props.endcap.flankA ? props.endcap.flankA.itemFive : "",
+    change: props.endcap.flankA ? props.endcap.flankA.change : "",
+    side: props.endcap.flankA ? props.endcap.flankA.side : "",
+  }
+
+  const [change, setChange] = useState(flankA.change)
+
+  const handleToggleFlank = (flank) => {
+    const updatedChange = !change;
+    const updatedFlank = {
+      ...flank,
+      change: updatedChange,
+    }
+    fetch(`http://localhost:5000/flanks/${flank._id}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(updatedFlank),
+    })
+    .then(() => setChange(updatedFlank.change))
+    .catch((err) => console.log(err));
   }
 
   return (
     <div 
-      className={`shadow ${flankA.change ? 'flank-yellow' : 'flank-green'}`} 
-      id={!flankA.title ? 'hidden' : null}
+      className={`shadow ${change ? "flank-yellow" : "flank-green"}`} 
+      id={!flankA.title ? "hidden" : null}
     >
       <h4 className="flank-title">{flankA.title}</h4>
       <p className="flank-item">{flankA.itemOne}</p>
@@ -27,17 +47,15 @@ const FlankA = (props) => {
       <p className="flank-item">{flankA.itemFive}</p>
       <div className="flank-btns">
         <Link to={`/edit/${props.endcap._id}/flank/${flankA.id}`}>
-          <h4 className={flankA.change ? 'flank-edit-completed' : 'flank-edit-change'}>Edit Info</h4>
+          <h4 className={change ? "flank-edit-completed" : "flank-edit-change"}>Edit Info</h4>
         </Link>
         <div>
           <h4 
-            className={flankA.change ? 'flank-completed' : 'flank-change'}
-            onClick={() => props.handleToggleFlank(
-              flankA.change, 
-              props.flankA)
+            className={change ? "flank-completed" : "flank-change"}
+            onClick={() => handleToggleFlank(props.endcap.flankA)
             }
           >
-            {flankA.change ? 'Complete' : 'Change'}
+            {change ? "Finish" : "Change"}
           </h4>
         </div>
       </div>

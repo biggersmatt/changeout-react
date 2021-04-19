@@ -1,189 +1,220 @@
-import React from 'react';
-import { Link, withRouter } from 'react-router-dom';
-require('./EditEndcap.css');
+import React, { useState, useEffect } from "react";
+import { Link, withRouter } from "react-router-dom";
+require("./EditEndcap.css");
 
-class EditEndcapPage extends React.Component {
-  state = {
-    title: '',
-    itemOne: '',
-    itemTwo: '',
-    itemThree: '',
-    itemFour: '',
-    itemFive: '',
-    flankA: '',
-    flankB: '',
-  }
+function EditEndcapPage(props) {
+  const [editEndcap, setEditEndcap] = useState({
+    title: "",
+    itemOne: "",
+    itemTwo: "",
+    itemThree: "",
+    itemFour: "",
+    itemFive: "",
+    flankA: "",
+    flankB: "",
+  })
 
-  componentDidMount() {
-    fetch(`https://gentle-savannah-74717.herokuapp.com/endcaps/${this.props.match.params.id}`,{
-      credentials: 'include',
-    })
+  const handleFetchSelectedEndcap = () => {
+    fetch(`http://localhost:5000/endcaps/${props.match.params.id}`)
     .then((response) => response.json())
     .then((jsonData) => {
       const endcap = jsonData.foundEndcap;
-      this.setState(endcap);
+      setEditEndcap(endcap);
     })
-    .catch((err) => console.log(err));
+    .catch(err => console.log(err));
   }
 
-  handleChange = (event) => {
-    this.setState({
-      [event.target.id]: event.target.value
+  const handleDeleteEndcap = () => {
+    fetch(`http://localhost:5000/endcaps/${props.match.params.id}`, {
+      method: "DELETE",
     })
-  }
-
-  handleSubmit = (event) => {
-    event.preventDefault();
-    fetch(`https://gentle-savannah-74717.herokuapp.com/endcaps/${this.props.match.params.id}`, {
-      credentials: 'include',
-      method: 'PUT',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(this.state),
-    })
-    .then(() => this.props.history.push('/'))
-    .then(() => this.props.handleHasUpdated(true))
-    .catch((err) => console.log(err));
-  }
-
-  handleDeleteEndcap = (endcapId) => {
-    fetch(`https://gentle-savannah-74717.herokuapp.com/endcaps/${endcapId}`, {
-      credentials: 'include',
-      method: 'DELETE',
-    })
-    fetch('https://gentle-savannah-74717.herokuapp.com/settings')
-    .then((response) => response.json())
-    .then((jsonData) => {
-      const userSetting = jsonData.settings.find((setting) => {
-        return setting.user === this.props.user._id;
-      })
-      const updatedColumnOrder = userSetting.columnOrder.endcapIds.filter((remainingId) => remainingId !== endcapId);
-      const settings = {
-        columnOrder: {
-          id: 'column-1',
-          title: 'To Do',
-          endcapIds: updatedColumnOrder,
-        },
+    .then(() => {
+      if(editEndcap.flankA) {
+        handleDeleteFlank(editEndcap.flankA)
       }
-      fetch(`https://gentle-savannah-74717.herokuapp.com/settings/${userSetting._id}`, {
-        method: 'PUT',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(settings),
-      })
-      .then(() => this.handleDeleteFlank(this.state.flankA))
-      .then(() => this.handleDeleteFlank(this.state.flankB))
-      .then(() => this.props.handleHasUpdated(true))
-      .catch((err) => console.log(err));
     })
+    .then(() => {
+      if(editEndcap.flankB) {
+        handleDeleteFlank(editEndcap.flankB)
+      }
+    })
+    .then(() => props.history.push("/home"))
+    .catch(err => console.log(err));
   }
 
-  handleDeleteFlank = (flankId) => {
-    fetch(`https://gentle-savannah-74717.herokuapp.com/flanks/${flankId}`, {
-      method: 'DELETE',
+  const handleDeleteFlank = (flankId) => {
+    fetch(`http://localhost:5000/flanks/${flankId}`, {
+      method: "DELETE",
       headers: {
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
       },
-      body: JSON.stringify(this.props)
+      body: JSON.stringify(props)
     })
-    .then(() => this.props.handleHasUpdated(true))
     .catch((err) => console.log(err))
   }
 
-  render() {
-    return (
-      <div className="edit-endcap-wrapper">
-        <h1 className="edit-endcap-title">Edit {this.state.title}</h1>
-        <div id={`${(this.props.endcaps.length === 1 && (this.state.flankA && this.state.flankB)) ? 'hidden' : null}`} className="edit-endcap-header-btns">
-          <div className="edit-endcap-btn-wrapper" id={this.props.endcaps.length === 1 ? 'hidden' : null}>
-            <Link to="/">
-              <i 
-                className="far fa-trash-alt edit-endcap-delete-btn" 
-                onClick={() => this.handleDeleteEndcap(this.state._id)}
-              >
-              </i>
-            </Link>
-            <h4 className="edit-endcap-btn-title">Delete</h4>
-          </div>
-          <div id={`${(this.state.flankA && this.state.flankB) ? 'hidden' : null}`} className="edit-endcap-btn-wrapper">
-            <Link to={`/edit/${this.props.match.params.id}/flank/new`}>
-              <i 
-                className="far fa-plus-square edit-endcap-flank-btn"
-              >
-              </i>
-            </Link>
-            <h4 className="edit-endcap-btn-title">Flank</h4>
-          </div>
-        </div>
-        <form onSubmit={this.handleSubmit} className="edit-endcap-form">
-          <div className="edit-endcap-form-section">
-            <label className="edit-endcap-form-label" htmlFor="title">Title of Endcap</label>
-            <input 
-              type="text" 
-              id="title" 
-              className="edit-endcap-form-input"
-              value={this.state.title} 
-              onChange={this.handleChange}
-            />
-          </div>
-          <div className="edit-endcap-form-section">
-            <label className="edit-endcap-form-label" htmlFor="itemOne">One</label>
-            <input 
-              type="text" 
-              id="itemOne" 
-              className="edit-endcap-form-input"
-              value={this.state.itemOne} 
-              onChange={this.handleChange}
-            />
-          </div>
-          <div className="edit-endcap-form-section">
-            <label className="edit-endcap-form-label" htmlFor="itemOne">Two</label>
-            <input 
-              type="text" 
-              id="itemTwo" 
-              className="edit-endcap-form-input"
-              value={this.state.itemTwo} 
-              onChange={this.handleChange}
-            />
-          </div>
-          <div className="edit-endcap-form-section">
-            <label className="edit-endcap-form-label" htmlFor="itemOne">Three</label>
-            <input 
-              type="text" 
-              id="itemThree" 
-              className="edit-endcap-form-input"
-              value={this.state.itemThree} 
-              onChange={this.handleChange}
-            />
-          </div>
-          <div className="edit-endcap-form-section">
-            <label className="edit-endcap-form-label" htmlFor="itemOne">Four</label>
-            <input 
-              type="text" 
-              id="itemFour" 
-              className="edit-endcap-form-input"
-              value={this.state.itemFour} 
-              onChange={this.handleChange}
-            />
-          </div>
-          <div className="edit-endcap-form-section">
-            <label className="edit-endcap-form-label" htmlFor="itemOne">Five</label>
-            <input 
-              type="text" 
-              id="itemFive" 
-              className="edit-endcap-form-input"
-              value={this.state.itemFive} 
-              onChange={this.handleChange}
-            />
-          </div>
-          <button type="submit" className="edit-endcap-btn">Update Endcap</button>
-        </form>
-      </div>
-
-    )
+  const handleChange = (event) => {
+    if(event.target.id === "title") {
+      setEditEndcap(prevNewEndcap => {
+        return {
+          ...prevNewEndcap,
+          title: event.target.value
+        }
+      })
+    }
+    if(event.target.id === "itemOne") {
+      setEditEndcap(prevNewEndcap => {
+        return {
+          ...prevNewEndcap,
+          itemOne: event.target.value
+        }
+      })
+    }
+    if(event.target.id === "itemTwo") {
+      setEditEndcap(prevNewEndcap => {
+        return {
+          ...prevNewEndcap,
+          itemTwo: event.target.value
+        }
+      })
+    }
+    if(event.target.id === "itemThree") {
+      setEditEndcap(prevNewEndcap => {
+        return {
+          ...prevNewEndcap,
+          itemThree: event.target.value
+        }
+      })
+    }
+    if(event.target.id === "itemFour") {
+      setEditEndcap(prevNewEndcap => {
+        return {
+          ...prevNewEndcap,
+          itemFour: event.target.value
+        }
+      })
+    }
+    if(event.target.id === "itemFive") {
+      setEditEndcap(prevNewEndcap => {
+        return {
+          ...prevNewEndcap,
+          itemFive: event.target.value
+        }
+      })
+    }
   }
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    if(!editEndcap.title) {
+      alert("Endcaps require a title");
+    } else {
+      fetch(`http://localhost:5000/endcaps/${props.match.params.id}`, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(editEndcap),
+      })
+      .then(() => props.history.push("/home"))
+      .catch(err => console.log(err));
+    }
+  }
+
+  useEffect(() => {
+    handleFetchSelectedEndcap();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
+
+  return (
+    <div className="edit-endcap-wrapper">
+      <h1 className="edit-endcap-title">Edit {editEndcap.title} </h1>
+      <div className="edit-endcap-header-btns">
+        <div className="edit-endcap-btn-wrapper">
+          <Link to="/">
+            <i 
+              className="far fa-trash-alt edit-endcap-delete-btn" 
+              onClick={() => handleDeleteEndcap()}
+            >
+            </i>
+          </Link>
+          <h4 className="edit-endcap-btn-title">Delete</h4>
+        </div>
+        <div id={`${editEndcap.flankA && editEndcap.flankB ? "hidden" : null}`} className="edit-endcap-btn-wrapper">
+          <Link to={`/edit/${props.match.params.id}/flank/new`}>
+            <i 
+              className="far fa-plus-square edit-endcap-flank-btn"
+            >
+            </i>
+          </Link>
+          <h4 className="edit-endcap-btn-title">Flank</h4>
+        </div>
+      </div>
+      <form onSubmit={handleSubmit} className="edit-endcap-form">
+        <div className="edit-endcap-form-section">
+          <label className="edit-endcap-form-label" htmlFor="title">Title of Endcap</label>
+          <input 
+            type="text" 
+            id="title" 
+            className="edit-endcap-form-input"
+            value={editEndcap.title} 
+            onChange={handleChange}
+          />
+        </div>
+        <div className="edit-endcap-form-section">
+          <label className="edit-endcap-form-label" htmlFor="itemOne">One</label>
+          <input 
+            type="text" 
+            id="itemOne" 
+            className="edit-endcap-form-input"
+            value={editEndcap.itemOne} 
+            onChange={handleChange}
+          />
+        </div>
+        <div className="edit-endcap-form-section">
+          <label className="edit-endcap-form-label" htmlFor="itemOne">Two</label>
+          <input 
+            type="text" 
+            id="itemTwo" 
+            className="edit-endcap-form-input"
+            value={editEndcap.itemTwo} 
+            onChange={handleChange}
+          />
+        </div>
+        <div className="edit-endcap-form-section">
+          <label className="edit-endcap-form-label" htmlFor="itemOne">Three</label>
+          <input 
+            type="text" 
+            id="itemThree" 
+            className="edit-endcap-form-input"
+            value={editEndcap.itemThree} 
+            onChange={handleChange}
+          />
+        </div>
+        <div className="edit-endcap-form-section">
+          <label className="edit-endcap-form-label" htmlFor="itemOne">Four</label>
+          <input 
+            type="text" 
+            id="itemFour" 
+            className="edit-endcap-form-input"
+            value={editEndcap.itemFour} 
+            onChange={handleChange}
+          />
+        </div>
+        <div className="edit-endcap-form-section">
+          <label className="edit-endcap-form-label" htmlFor="itemOne">Five</label>
+          <input 
+            type="text" 
+            id="itemFive" 
+            className="edit-endcap-form-input"
+            value={editEndcap.itemFive} 
+            onChange={handleChange}
+          />
+        </div>
+        <button type="submit" className="edit-endcap-btn">Update Endcap</button>
+      </form>
+    </div>
+  )
 }
 
 export default withRouter(EditEndcapPage);

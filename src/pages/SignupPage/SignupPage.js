@@ -1,24 +1,93 @@
-import React, { useRef } from "react";
-import { useHistory } from "react-router-dom"
-import { useForm } from "react-hook-form";
+import React, { useState } from "react";
+import { Redirect } from "react-router-dom";
 require("./SignupPage.css")
 
+function SignupPage() {
+  const [newUser, setNewUser] = useState({
+    username: "",
+    password: "",
+    confirmPassword: "",
+  })
 
-const SignupPage = (props) => {
-  const { register, handleSubmit, watch, errors } = useForm();
-  const password = useRef({});
-  password.current = watch("password", "");
-  const history = useHistory()  
+  let [redirect, setRedirect] = useState(null);
 
-  const onSubmit = (data) => {
-    const { confPassword, ...rest } = data;
-    props.signup(rest)
-    history.push("/login")
+  const handleChange = (event) => {
+    if(event.target.id === "username") {
+      setNewUser(prevNewEndcap => {
+        return {
+          ...prevNewEndcap,
+          username: event.target.value,
+        }
+      })
+    }
+    if(event.target.id === "password") {
+      setNewUser(prevNewEndcap => {
+        return {
+          ...prevNewEndcap,
+          password: event.target.value,
+        }
+      })
+    }
+    if(event.target.id === "confirmPassword") {
+      setNewUser(prevNewEndcap => {
+        return {
+          ...prevNewEndcap,
+          confirmPassword: event.target.value,
+        }
+      })
+    }
+  }
+
+  const handleCreateUser = () => {
+    const newUserCreated = {
+      username: newUser.username,
+      password: newUser.password,
+    }
+    fetch("http://localhost:5000/users/new", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(newUserCreated),
+    })
+    .then(() => alert("New User Created"))
+    .then(() => setRedirect(redirect = "/"))
+    .catch(err => console.log(err));
+  }
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    if(newUser.username.length === 0 || newUser.password === 0) {
+      alert("Please fill out username & password fields");
+    } else if(newUser.username.length === 0) {
+      alert("Please fill out username field");
+    } else if(newUser.password.length === 0) {
+      alert("Please fill out password field");
+    } else if(newUser.password !== newUser.confirmPassword) {
+      alert("Passwords do not match");
+    } else if(newUser.password === newUser.confirmPassword) {
+      fetch("http://localhost:5000/users")
+      .then((response) => response.json())
+      .then((jsonData) => {
+        const users = jsonData.allUsers;
+        for(let i = 0; i < users.length; i++) {
+          if(users[i].username === newUser.username) {
+            return alert("That username is already taken")
+          }
+        }
+        handleCreateUser();
+      })
+      .catch((err) => console.log(err));
+    }
+  }
+
+  if(redirect) {
+    return <Redirect to={redirect} />
   }
 
   return (
     <div className="login-container">
-      <form className="login-form shadow" onSubmit={handleSubmit(onSubmit)}>
+      <form className="login-form shadow" onSubmit={handleSubmit}>
         <h1 className="login-header">Change Out</h1>
         <h2 className="login-form-signup">Sign Up</h2>
         <div className="login-form-section">
@@ -29,7 +98,7 @@ const SignupPage = (props) => {
             type="text" 
             name="username" 
             id="username" 
-            ref={register({ required: true })} 
+            onChange={handleChange}
           />
         </div>
         <div className="login-form-section">
@@ -40,13 +109,7 @@ const SignupPage = (props) => {
             type="password" 
             name="password" 
             id="password" 
-            ref={register({
-            required: "You must create a password",
-            minLength: {
-              value: 2,
-              message: "Password must have at least 6 characters",
-            },
-          })} 
+            onChange={handleChange}
           />
         </div>
         <div className="login-form-section">
@@ -55,16 +118,12 @@ const SignupPage = (props) => {
             className="login-form-input"
             placeholder="Confirm Password"
             type="password" 
-            name="confPassword" 
-            id="confPassword" 
-            ref={register({
-            validate: (value) =>
-              value === password.current || "The passwords do not match",
-          })}
+            name="confirmPassword" 
+            id="confirmPassword" 
+            onChange={handleChange}
           />
-        {errors.confPassword && <p>{errors.confPassword.message}</p>}
         </div>
-        <h4 className="login-signup-prompt">Already have an account? <a href="/login"><span>Login.</span></a></h4>
+        <h4 className="login-signup-prompt">Already have an account? <a href="/"><span>Login.</span></a></h4>
         <button className="login-submit-btn shadow" type="submit">Signup</button>
       </form>
     </div>
