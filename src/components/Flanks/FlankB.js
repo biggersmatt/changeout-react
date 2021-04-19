@@ -55,7 +55,7 @@ function FlankB(props) {
             onClick={() => handleToggleFlank(props.endcap.flankB)
             }
           >
-            {change ? "Complete" : "Change"}
+            {change ? "Finish" : "Change"}
           </h4>
         </div>
       </div>

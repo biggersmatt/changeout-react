@@ -59,7 +59,7 @@ function EndcapCard(props) {
               className={change ? "endcap-completed" : "endcap-change"}
               onClick={() => handleToggleEndcap(props.endcap)}
             >
-              {change ? "Complete" : "Change"}
+              {change ? "Finish" : "Change"}
             </p>
           </div>
         </div>
