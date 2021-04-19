@@ -26,83 +26,6 @@ function EditEndcapPage(props) {
     .catch(err => console.log(err));
   }
 
-  // state = {
-  //   title: "",
-  //   itemOne: "",
-  //   itemTwo: "",
-  //   itemThree: "",
-  //   itemFour: "",
-  //   itemFive: "",
-  //   flankA: "",
-  //   flankB: "",
-  // }
-
-  // componentDidMount() {
-  //   fetch(`http://localhost:5000/endcaps/${this.props.match.params.id}`,{
-  //     // credentials: "include",
-  //   })
-  //   .then((response) => response.json())
-  //   .then((jsonData) => {
-  //     const endcap = jsonData.foundEndcap;
-  //     this.setState(endcap);
-  //   })
-  //   .catch((err) => console.log(err));
-  // }
-
-  // handleChange = (event) => {
-  //   this.setState({
-  //     [event.target.id]: event.target.value
-  //   })
-  // }
-
-  // handleSubmit = (event) => {
-  //   event.preventDefault();
-  //   fetch(`http://localhost:5000/endcaps/${this.props.match.params.id}`, {
-  //     // credentials: "include",
-  //     method: "PUT",
-  //     headers: {
-  //       "Content-Type": "application/json",
-  //     },
-  //     body: JSON.stringify(this.state),
-  //   })
-  //   .then(() => this.props.history.push("/"))
-  //   .then(() => this.props.handleHasUpdated(true))
-  //   .catch((err) => console.log(err));
-  // }
-
-  // handleDeleteEndcap = (endcapId) => {
-  //   fetch(`http://localhost:5000/endcaps/${endcapId}`, {
-  //     // credentials: "include",
-  //     method: "DELETE",
-  //   })
-  //   fetch("http://localhost:5000/settings")
-  //   .then((response) => response.json())
-  //   .then((jsonData) => {
-  //     const userSetting = jsonData.settings.find((setting) => {
-  //       return setting.user === this.props.user._id;
-  //     })
-  //     const updatedColumnOrder = userSetting.columnOrder.endcapIds.filter((remainingId) => remainingId !== endcapId);
-  //     const settings = {
-  //       columnOrder: {
-  //         id: "column-1",
-  //         title: "To Do",
-  //         endcapIds: updatedColumnOrder,
-  //       },
-  //     }
-  //     fetch(`http://localhost:5000/settings/${userSetting._id}`, {
-  //       method: "PUT",
-  //       headers: {
-  //         "Content-Type": "application/json",
-  //       },
-  //       body: JSON.stringify(settings),
-  //     })
-  //     .then(() => this.handleDeleteFlank(this.state.flankA))
-  //     .then(() => this.handleDeleteFlank(this.state.flankB))
-  //     .then(() => this.props.handleHasUpdated(true))
-  //     .catch((err) => console.log(err));
-  //   })
-  // }
-
   const handleDeleteEndcap = () => {
     fetch(`http://localhost:5000/endcaps/${props.match.params.id}`, {
       method: "DELETE",
@@ -183,21 +106,6 @@ function EditEndcapPage(props) {
     }
   }
 
-  //   handleSubmit = (event) => {
-  //   event.preventDefault();
-  //   fetch(`http://localhost:5000/endcaps/${this.props.match.params.id}`, {
-  //     // credentials: "include",
-  //     method: "PUT",
-  //     headers: {
-  //       "Content-Type": "application/json",
-  //     },
-  //     body: JSON.stringify(this.state),
-  //   })
-  //   .then(() => this.props.history.push("/"))
-  //   .then(() => this.props.handleHasUpdated(true))
-  //   .catch((err) => console.log(err));
-  // }
-
   const handleSubmit = (event) => {
     event.preventDefault();
     fetch(`http://localhost:5000/endcaps/${props.match.params.id}`, {
@@ -221,9 +129,7 @@ function EditEndcapPage(props) {
     <div className="edit-endcap-wrapper">
       <h1 className="edit-endcap-title">Edit {editEndcap.title} </h1>
       <div className="edit-endcap-header-btns">
-      {/* <div id={`${(this.props.endcaps.length === 1 && (this.state.flankA && this.state.flankB)) ? "hidden" : null}`} className="edit-endcap-header-btns"> */}
         <div className="edit-endcap-btn-wrapper">
-        {/* <div className="edit-endcap-btn-wrapper" id={this.props.endcaps.length === 1 ? "hidden" : null}> */}
           <Link to="/">
             <i 
               className="far fa-trash-alt edit-endcap-delete-btn" 

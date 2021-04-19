@@ -13,34 +13,8 @@ function NewEndcapPage(props) {
     change: false,
     user: props.userId,
   })
-  // state = {
-  //   title: "",
-  //   itemOne: "",
-  //   itemTwo: "",
-  //   itemThree: "",
-  //   itemFour: "",
-  //   itemFive: "",
-  //   change: false,
-  // }
-  
-  // handleChange = (event) => {
-    //   this.setState({
-      //     [event.target.id]: event.target.value,
-      //   })
-      // }
-      
-  const handleChange = (event) => {
 
-    // for(let prop in newEndcap) {
-    //   if(event.target.id === prop) {
-    //     setNewEndcap(prevNewEndcap => {
-    //       return {
-    //         ...prevNewEndcap,
-    //         prop: event.target.value
-    //       }
-    //     })
-    //   }
-    // }
+  const handleChange = (event) => {
     if(event.target.id === "title") {
       setNewEndcap(prevNewEndcap => {
         return {
@@ -90,21 +64,6 @@ function NewEndcapPage(props) {
       })
     }
   }
-      
-  // handleSubmit = (event) => {
-    //   event.preventDefault();
-    //   fetch("http://localhost:5000/endcaps", {
-      //     // credentials: "include",
-      //     method: "POST",
-  //     headers: {
-    //       "Content-Type": "application/json",
-    //     },
-    //     body: JSON.stringify(this.state),
-    //   })
-    //     .then(() => this.props.history.push("/"))
-    //     .then(() => this.props.handleHasUpdated(true))
-    //     .catch((err) => console.log(err));
-    // }
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -119,7 +78,6 @@ function NewEndcapPage(props) {
     .catch(err => console.log(err));
   }
 
-  console.log("New Endcap");
   return (
     <div className="new-endcap-wrapper">
       <h1 className="new-endcap-title">New Endcap</h1>
