@@ -94,6 +94,8 @@ function NewFlankPage(props) {
     event.preventDefault();
     if(!newFlank.title) {
       alert("Flanks require a title");
+    } else if(!newFlank.side) {
+      alert("Please select a side");
     } else {
       fetch("http://localhost:5000/flanks", {
         method: "POST",
