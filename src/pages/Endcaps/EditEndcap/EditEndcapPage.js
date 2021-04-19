@@ -220,10 +220,10 @@ function EditEndcapPage(props) {
   return (
     <div className="edit-endcap-wrapper">
       <h1 className="edit-endcap-title">Edit {editEndcap.title} </h1>
-      <div className="edit-endcap-header-btns">
+      <div id={editEndcap.flankA && editEndcap.flankB ? "hidden" : null} className="edit-endcap-header-btns">
       {/* <div id={`${(this.props.endcaps.length === 1 && (this.state.flankA && this.state.flankB)) ? "hidden" : null}`} className="edit-endcap-header-btns"> */}
-        <div className="edit-endcap-btn-wrapper">
-        {/* <div className="edit-endcap-btn-wrapper" id={this.props.endcaps.length === 1 ? "hidden" : null}> */}
+        {/* <div className="edit-endcap-btn-wrapper"> */}
+        <div className="edit-endcap-btn-wrapper" id={this.props.endcaps.length === 1 ? "hidden" : null}>
           <Link to="/">
             <i 
               className="far fa-trash-alt edit-endcap-delete-btn" 
