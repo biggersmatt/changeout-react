@@ -3,7 +3,6 @@ import React, { useState } from "react";
 require("./LoginPage.css");
 
 function LoginPage(props) {
-
   const [loginUser, setLoginUser] = useState({
     username: "", 
     password: "",
@@ -63,7 +62,6 @@ function LoginPage(props) {
     return <Redirect to={redirect} />
   }
   
-  console.log("Login Page");
   return (
     <div className="login-container">
       <form className="login-form shadow" onSubmit={handleSubmit}>

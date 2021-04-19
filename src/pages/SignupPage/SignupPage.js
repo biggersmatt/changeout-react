@@ -3,7 +3,6 @@ import { Redirect } from "react-router-dom";
 require("./SignupPage.css")
 
 function SignupPage() {
-
   const [newUser, setNewUser] = useState({
     username: "",
     password: "",
@@ -86,7 +85,6 @@ function SignupPage() {
     return <Redirect to={redirect} />
   }
 
-  console.log('SignUp Page');
   return (
     <div className="login-container">
       <form className="login-form shadow" onSubmit={handleSubmit}>
