@@ -43,7 +43,7 @@ function SignupPage() {
       username: newUser.username,
       password: newUser.password,
     }
-    fetch("http://localhost:5000/users/new", {
+    fetch("https://gentle-savannah-74717.herokuapp.com/users/new", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -66,7 +66,7 @@ function SignupPage() {
     } else if(newUser.password !== newUser.confirmPassword) {
       alert("Passwords do not match");
     } else if(newUser.password === newUser.confirmPassword) {
-      fetch("http://localhost:5000/users")
+      fetch("https://gentle-savannah-74717.herokuapp.com/users")
       .then((response) => response.json())
       .then((jsonData) => {
         const users = jsonData.allUsers;

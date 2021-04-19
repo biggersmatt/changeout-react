@@ -21,7 +21,7 @@ function EndcapCard(props) {
       ...endcap,
       change: updatedChange,
     }
-    fetch(`http://localhost:5000/endcaps/${endcap._id}`, {
+    fetch(`https://gentle-savannah-74717.herokuapp.com/endcaps/${endcap._id}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",

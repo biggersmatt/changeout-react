@@ -23,7 +23,7 @@ function FlankA(props) {
       ...flank,
       change: updatedChange,
     }
-    fetch(`http://localhost:5000/flanks/${flank._id}`, {
+    fetch(`https://gentle-savannah-74717.herokuapp.com/flanks/${flank._id}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",

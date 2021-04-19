@@ -67,7 +67,7 @@ function NewFlankPage(props) {
   }
 
   const handleFetchSelectedEndcap = () => {
-    fetch(`http://localhost:5000/endcaps/${props.match.params.id}`)
+    fetch(`https://gentle-savannah-74717.herokuapp.com/endcaps/${props.match.params.id}`)
     .then((response) => response.json())
     .then((jsonData) => {
       const endcap = jsonData.foundEndcap;
@@ -97,7 +97,7 @@ function NewFlankPage(props) {
     } else if(!newFlank.side) {
       alert("Please select a side");
     } else {
-      fetch("http://localhost:5000/flanks", {
+      fetch("https://gentle-savannah-74717.herokuapp.com/flanks", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

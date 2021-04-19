@@ -13,7 +13,7 @@ function EditFlankPage(props) {
   })
 
   const handleFetchSelectedFlank = () => {
-    fetch(`http://localhost:5000/flanks/${props.match.params.id}`)
+    fetch(`https://gentle-savannah-74717.herokuapp.com/flanks/${props.match.params.id}`)
     .then((response) => response.json())
     .then((jsonData) => {
       const flank = jsonData.foundFlank;
@@ -30,7 +30,7 @@ function EditFlankPage(props) {
   }
 
   const handleDeleteFlank = () => {
-    fetch(`http://localhost:5000/flanks/${props.match.params.id}`, {
+    fetch(`https://gentle-savannah-74717.herokuapp.com/flanks/${props.match.params.id}`, {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",
@@ -97,7 +97,7 @@ function EditFlankPage(props) {
     if(!editFlank.title) {
       alert("Flanks require a title");
     } else {
-      fetch(`http://localhost:5000/flanks/${props.match.params.id}`, {
+      fetch(`https://gentle-savannah-74717.herokuapp.com/flanks/${props.match.params.id}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",

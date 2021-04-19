@@ -70,7 +70,7 @@ function NewEndcapPage(props) {
     if(!newEndcap.title) {
       alert("Endcaps require a title");
     } else {
-      fetch("http://localhost:5000/endcaps", {
+      fetch("https://gentle-savannah-74717.herokuapp.com/endcaps", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

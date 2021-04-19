@@ -15,7 +15,7 @@ function EditEndcapPage(props) {
   })
 
   const handleFetchSelectedEndcap = () => {
-    fetch(`http://localhost:5000/endcaps/${props.match.params.id}`)
+    fetch(`https://gentle-savannah-74717.herokuapp.com/endcaps/${props.match.params.id}`)
     .then((response) => response.json())
     .then((jsonData) => {
       const endcap = jsonData.foundEndcap;
@@ -25,7 +25,7 @@ function EditEndcapPage(props) {
   }
 
   const handleDeleteEndcap = () => {
-    fetch(`http://localhost:5000/endcaps/${props.match.params.id}`, {
+    fetch(`https://gentle-savannah-74717.herokuapp.com/endcaps/${props.match.params.id}`, {
       method: "DELETE",
     })
     .then(() => {
@@ -43,7 +43,7 @@ function EditEndcapPage(props) {
   }
 
   const handleDeleteFlank = (flankId) => {
-    fetch(`http://localhost:5000/flanks/${flankId}`, {
+    fetch(`https://gentle-savannah-74717.herokuapp.com/flanks/${flankId}`, {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",
@@ -109,7 +109,7 @@ function EditEndcapPage(props) {
     if(!editEndcap.title) {
       alert("Endcaps require a title");
     } else {
-      fetch(`http://localhost:5000/endcaps/${props.match.params.id}`, {
+      fetch(`https://gentle-savannah-74717.herokuapp.com/endcaps/${props.match.params.id}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",

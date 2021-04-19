@@ -31,7 +31,7 @@ function LoginPage(props) {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    fetch("http://localhost:5000/users")
+    fetch("https://gentle-savannah-74717.herokuapp.com/users")
     .then(response => response.json())
     .then(jsonData => {
       const users = jsonData.allUsers;

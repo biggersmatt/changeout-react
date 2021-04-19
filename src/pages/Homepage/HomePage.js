@@ -9,7 +9,7 @@ function HomePage(props) {
   const userId = props.userId;
 
   const handleFetchEndcaps = () => {
-    fetch("http://localhost:5000/endcaps")
+    fetch("https://gentle-savannah-74717.herokuapp.com/endcaps")
     .then((response) => response.json())
     .then((jsonData) => {
       const allEndcaps = jsonData.allEndcaps;
