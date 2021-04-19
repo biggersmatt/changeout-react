@@ -3,24 +3,14 @@ import { Link, withRouter } from "react-router-dom";
 require("./EditFlankPage.css");
 
 function EditFlankPage(props) {
-    const [editFlank, setEditFlank] = useState({
-      title: "",
-      itemOne: "",
-      itemTwo: "",
-      itemThree: "",
-      itemFour: "",
-      itemFive: "",
-    })
-
-
-  // state = {
-  //   title: "",
-  //   itemOne: "",
-  //   itemTwo: "",
-  //   itemThree: "",
-  //   itemFour: "",
-  //   itemFive: "",
-  // }
+  const [editFlank, setEditFlank] = useState({
+    title: "",
+    itemOne: "",
+    itemTwo: "",
+    itemThree: "",
+    itemFour: "",
+    itemFive: "",
+  })
 
   const handleFetchSelectedFlank = () => {
     fetch(`http://localhost:5000/flanks/${props.match.params.id}`)
@@ -38,43 +28,6 @@ function EditFlankPage(props) {
     })
     .catch(err => console.log(err));
   }
-
-  // componentDidMount() {
-  //   fetch(`http://localhost:5000/flanks/${this.props.match.params.id}`)
-  //   .then((response) => response.json())
-  //   .then((jsonData) => {
-  //     const flank = jsonData.foundFlank;
-  //     this.setState({
-  //       title: flank.title,
-  //       itemOne: flank.itemOne,
-  //       itemTwo: flank.itemTwo,
-  //       itemThree: flank.itemThree,
-  //       itemFour: flank.itemFour,
-  //       itemFive: flank.itemFive,
-  //     })
-  //   })
-  //   .catch((err) => console.log(err));
-  // }
-
-  // handleChange = (event) => {
-  //   this.setState({
-  //     [event.target.id]: event.target.value
-  //   })
-  // }
-
-  // handleSubmit = (event) => {
-  //   event.preventDefault();
-  //   fetch(`http://localhost:5000/flanks/${this.props.match.params.id}`, {
-  //     method: "PUT",
-  //     headers: {
-  //       "Content-Type": "application/json",
-  //     },
-  //     body: JSON.stringify(this.state),
-  //   })
-  //   .then(() => this.props.history.push("/"))
-  //   .then(() => this.props.handleHasUpdated(true))
-  //   .catch((err) => console.log(err));
-  // }
 
   const handleDeleteFlank = () => {
     fetch(`http://localhost:5000/flanks/${props.match.params.id}`, {
@@ -139,18 +92,6 @@ function EditFlankPage(props) {
     }
   }
 
-  // handleDeleteFlank = (flankId) => {
-  //   fetch(`http://localhost:5000/flanks/${flankId}`, {
-  //     method: "DELETE",
-  //     headers: {
-  //       "Content-Type": "application/json",
-  //     },
-  //     body: JSON.stringify(this.props)
-  //   })
-  //   .then(() => this.props.handleHasUpdated(true))
-  //   .catch((err) => console.log(err))
-  // }
-
   const handleSubmit = (event) => {
     event.preventDefault();
     fetch(`http://localhost:5000/flanks/${props.match.params.id}`, {
@@ -169,7 +110,6 @@ function EditFlankPage(props) {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
-  console.log("Edit Flank Page");
   return (
     <div className="edit-flank-wrapper">
       <h1 className="edit-flank-title">Edit {editFlank.title}</h1>

@@ -108,8 +108,6 @@ function NewFlankPage(props) {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
-  console.log("New Flank Page");
-  console.log(newFlank.endcap)
   return (
     <div className="new-flank-wrapper">
       <h1 className="new-flank-title">Add Flank to {newFlank.endcap.title}</h1>
