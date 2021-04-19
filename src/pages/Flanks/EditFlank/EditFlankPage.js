@@ -94,15 +94,19 @@ function EditFlankPage(props) {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    fetch(`http://localhost:5000/flanks/${props.match.params.id}`, {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(editFlank),
-    })
-    .then(() => props.history.push("/home"))
-    .catch(err => console.log(err));
+    if(!editFlank.title) {
+      alert("Flanks require a title");
+    } else {
+      fetch(`http://localhost:5000/flanks/${props.match.params.id}`, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(editFlank),
+      })
+      .then(() => props.history.push("/home"))
+      .catch(err => console.log(err));
+    }
   }
 
   useEffect(() => {

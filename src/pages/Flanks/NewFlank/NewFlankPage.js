@@ -92,15 +92,19 @@ function NewFlankPage(props) {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    fetch("http://localhost:5000/flanks", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(newFlank),
-    })
-    .then(() => props.history.push("/home"))
-    .catch(err => console.log(err));
+    if(!newFlank.title) {
+      alert("Flanks require a title");
+    } else {
+      fetch("http://localhost:5000/flanks", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(newFlank),
+      })
+      .then(() => props.history.push("/home"))
+      .catch(err => console.log(err));
+    }
   }
 
   useEffect(() => {
