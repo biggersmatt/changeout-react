@@ -106,15 +106,19 @@ function EditEndcapPage(props) {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    fetch(`http://localhost:5000/endcaps/${props.match.params.id}`, {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(editEndcap),
-    })
-    .then(() => props.history.push("/home"))
-    .catch(err => console.log(err));
+    if(!editEndcap.title) {
+      alert("Endcaps require a title");
+    } else {
+      fetch(`http://localhost:5000/endcaps/${props.match.params.id}`, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(editEndcap),
+      })
+      .then(() => props.history.push("/home"))
+      .catch(err => console.log(err));
+    }
   }
 
   useEffect(() => {
