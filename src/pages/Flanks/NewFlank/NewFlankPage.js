@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { withRouter } from "react-router-dom";
 require("./NewFlankPage.css");
 
@@ -12,48 +12,8 @@ function NewFlankPage(props) {
     itemFive: "",
     change: false,
     side: "",
-    endcap: props.match.params.id,
+    endcap: {},
   })
-
-  // state = {
-  //   currentEndcap: {},
-  //   selectedEndcap: "",
-  //   title: "",
-  //   itemOne: "",
-  //   itemTwo: "",
-  //   itemThree: "",
-  //   itemFour: "",
-  //   itemFive: "",
-  //   change: false,
-  //   side: "",
-  // }
-
-  // componentDidMount() {
-  //   fetch("http://localhost:5000/endcaps", {
-  //     // credentials: "include",
-  //   })
-  //   .then((response) => response.json())
-  //   .then((jsonData => {
-  //     const endcapData = jsonData.allEndcaps;
-  //     let currentEndcap = {};
-  //     endcapData.map(endcap => {
-  //       if(endcap._id === this.props.match.params.id)
-  //       currentEndcap = endcap;
-  //       return currentEndcap;
-  //     })
-  //     this.setState({
-  //       currentEndcap: currentEndcap,
-  //       selectedEndcap: this.props.match.params.id,
-  //     })
-  //   }))
-  //   .catch((err) => (console.log(err)))
-  // }
-
-  // handleChange = (event) => {
-  //   this.setState({
-  //     [event.target.id]: event.target.value,
-  //   })
-  // }
 
   const handleChange = (event) => {
     if(event.target.id === "title") {
@@ -105,6 +65,21 @@ function NewFlankPage(props) {
       })
     }
   }
+
+  const handleFetchSelectedEndcap = () => {
+    fetch(`http://localhost:5000/endcaps/${props.match.params.id}`)
+    .then((response) => response.json())
+    .then((jsonData) => {
+      const endcap = jsonData.foundEndcap;
+      setNewFlank(preNewEndcap => {
+        return {
+          ...preNewEndcap,
+          endcap: endcap,
+        }
+      })
+    })
+    .catch(err => console.log(err));
+  }
   
   const handleSide = (updatedSide) => {
     setNewFlank(preNewEndcap => {
@@ -126,20 +101,15 @@ function NewFlankPage(props) {
     })
     .then(() => props.history.push("/home"))
     .catch(err => console.log(err));
-    // event.preventDefault();
-    // fetch("http://localhost:5000/flanks", {
-    //   method: "POST",
-    //   headers: {
-    //     "Content-Type": "application/json",
-    //   },
-    //   body: JSON.stringify(this.state),
-    // })
-    // .then(() => this.props.history.push("/"))
-    // .then(() => this.props.handleHasUpdated(true))
-    // .catch((err) => console.log(err));
   }
 
+  useEffect(() => {
+    handleFetchSelectedEndcap();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
+
   console.log("New Flank Page");
+  console.log(newFlank.endcap)
   return (
     <div className="new-flank-wrapper">
       <h1 className="new-flank-title">Add Flank to {newFlank.title}</h1>
@@ -147,13 +117,13 @@ function NewFlankPage(props) {
         <h3>Choose a Side</h3>
         <div className="new-flank-side-btns">
           <div 
-            id={`${newFlank.flankA ? "hidden" : null}`}
+            id={`${newFlank.endcap.flankA ? "hidden" : null}`}
             className={`new-flank-side-btn ${newFlank.side === "A" ? "side-selected" : null}`} 
             onClick={() => handleSide("A")}
           >A
           </div>
           <div 
-            id={`${newFlank.flankB ? "hidden" : null}`}
+            id={`${newFlank.endcap.flankB ? "hidden" : null}`}
             className={`new-flank-side-btn ${newFlank.side === "B" ? "side-selected" : null}`} 
             onClick={() => handleSide("B")}
           >B
