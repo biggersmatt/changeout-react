@@ -1,14 +1,14 @@
 import React, { useState } from "react";
 import { Switch, Route } from "react-router-dom";
+import Navbar from "./components/Navbar/Navbar";
+import Footer from "./components/Footer/Footer";
+import LoginPage from "./pages/LoginPage/LoginPage"
+import SignupPage from "./pages/SignupPage/SignupPage"
 import HomePage from "./pages/Homepage/HomePage";
 import NewEndcapPage from "./pages/Endcaps/NewEndcap/NewEndcapPage";
 import EditEndcapPage from "./pages/Endcaps/EditEndcap/EditEndcapPage";
-import LoginPage from "./pages/LoginPage/LoginPage"
-import SignupPage from "./pages/SignupPage/SignupPage"
-import Navbar from "./components/Navbar/Navbar";
 import NewFlankPage from "./pages/Flanks/NewFlank/NewFlankPage";
 import EditFlankPage from "./pages/Flanks/EditFlank/EditFlankPage";
-import Footer from "./components/Footer/Footer";
 require ("./App.css");
 
 function App() {
