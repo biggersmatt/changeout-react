@@ -67,15 +67,19 @@ function NewEndcapPage(props) {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    fetch("http://localhost:5000/endcaps", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(newEndcap),
-    })
-    .then(() => props.history.push("/home"))
-    .catch(err => console.log(err));
+    if(!newEndcap.title) {
+      alert("Endcaps require a title");
+    } else {
+      fetch("http://localhost:5000/endcaps", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(newEndcap),
+      })
+      .then(() => props.history.push("/home"))
+      .catch(err => console.log(err));
+    }
   }
 
   return (
