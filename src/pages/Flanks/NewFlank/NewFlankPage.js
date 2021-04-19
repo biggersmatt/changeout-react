@@ -112,7 +112,7 @@ function NewFlankPage(props) {
   console.log(newFlank.endcap)
   return (
     <div className="new-flank-wrapper">
-      <h1 className="new-flank-title">Add Flank to {newFlank.title}</h1>
+      <h1 className="new-flank-title">Add Flank to {newFlank.endcap.title}</h1>
       <form onSubmit={handleSubmit}  className="new-flank-form">
         <h3>Choose a Side</h3>
         <div className="new-flank-side-btns">
