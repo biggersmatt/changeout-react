@@ -12,7 +12,6 @@ Change Out is a MERN Application
 * React
 * React-dom
 * React-router-dom
-* React-beautiful-dnd
 * Body-parser
 * Cors
 * Express
@@ -41,32 +40,10 @@ Change Out is a MERN Application
 
 <hr />
 
-#### Unsolved Problems
-* New rotation order on a Drag and Drop is not stored in the Database.
-* Deleting a Flank from an Endcap sets that Endcaps Flank to 'null' preventing creation of a new Flank in it's place afterwards
-* The Promo Month and Period do not store in the database and on refresh, reset
-
-<hr />
-
-#### Future Features
-* Creation of a User Model
-* Login / Auth
-* Responsiveness that scales up on Desktops
-
-<hr />
-
-#### Resources
-React Beautiful DnD 
-* https://egghead.io/lessons/react-course-introduction-beautiful-and-accessible-drag-and-drop-with-react-beautiful-dnd
-
-<hr />
-
 ## Shout Outs
 Thank you to the instructional team for all of their support and knowledge. 
 * Kenny
 * Michael
 * Quin
 * Milcah
-
-
-Josh was here again
+* Josh
